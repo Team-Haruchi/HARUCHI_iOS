@@ -35,10 +35,6 @@
 		C6C139C42C41485400AE2D9C = {
 			isa = PBXGroup;
 			children = (
-				C6C139E52C414C9E00AE2D9C /* Helper */,
-				C6C139E42C414C9800AE2D9C /* Model */,
-				C6C139E32C414C9200AE2D9C /* ViewModel */,
-				C6C139E22C414C8800AE2D9C /* View */,
 				C6C139CF2C41485400AE2D9C /* HARUCHI */,
 				C6C139CE2C41485400AE2D9C /* Products */,
 			);
@@ -55,9 +51,10 @@
 		C6C139CF2C41485400AE2D9C /* HARUCHI */ = {
 			isa = PBXGroup;
 			children = (
-				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
-				C6C139D22C41485400AE2D9C /* ContentView.swift */,
 				C6C139D42C41485500AE2D9C /* Assets.xcassets */,
+				C6C139E62C414D8900AE2D9C /* Components */,
+				C6C139E52C414C9E00AE2D9C /* Helper */,
+				C6C139E72C414D9700AE2D9C /* App */,
 				C6C139D62C41485500AE2D9C /* Preview Content */,
 			);
 			path = HARUCHI;
@@ -71,32 +68,59 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C6C139E22C414C8800AE2D9C /* View */ = {
+		C6C139E52C414C9E00AE2D9C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		C6C139E62C414D8900AE2D9C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C6C139EB2C414E0D00AE2D9C /* Style */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C6C139E72C414D9700AE2D9C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
+				C6C139D22C41485400AE2D9C /* ContentView.swift */,
+				C6C139E82C414DB600AE2D9C /* FeatureA */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C6C139E82C414DB600AE2D9C /* FeatureA */ = {
+			isa = PBXGroup;
+			children = (
+				C6C139EA2C414DD300AE2D9C /* Model */,
+				C6C139E92C414DCD00AE2D9C /* View */,
+			);
+			path = FeatureA;
+			sourceTree = "<group>";
+		};
+		C6C139E92C414DCD00AE2D9C /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		C6C139E32C414C9200AE2D9C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C6C139E42C414C9800AE2D9C /* Model */ = {
+		C6C139EA2C414DD300AE2D9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C6C139E52C414C9E00AE2D9C /* Helper */ = {
+		C6C139EB2C414E0D00AE2D9C /* Style */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Helper;
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
