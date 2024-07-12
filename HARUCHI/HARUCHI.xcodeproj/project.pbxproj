@@ -35,6 +35,10 @@
 		C6C139C42C41485400AE2D9C = {
 			isa = PBXGroup;
 			children = (
+				C6C139E52C414C9E00AE2D9C /* Helper */,
+				C6C139E42C414C9800AE2D9C /* Model */,
+				C6C139E32C414C9200AE2D9C /* ViewModel */,
+				C6C139E22C414C8800AE2D9C /* View */,
 				C6C139CF2C41485400AE2D9C /* HARUCHI */,
 				C6C139CE2C41485400AE2D9C /* Products */,
 			);
@@ -65,6 +69,34 @@
 				C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C6C139E22C414C8800AE2D9C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C6C139E32C414C9200AE2D9C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C6C139E42C414C9800AE2D9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C6C139E52C414C9E00AE2D9C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
