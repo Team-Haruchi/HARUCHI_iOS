@@ -117,32 +117,8 @@
 			children = (
 				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
 				C6C139D22C41485400AE2D9C /* ContentView.swift */,
-				C6C139E82C414DB600AE2D9C /* FeatureA */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		C6C139E82C414DB600AE2D9C /* FeatureA */ = {
-			isa = PBXGroup;
-			children = (
-				C6C139EA2C414DD300AE2D9C /* Model */,
-				C6C139E92C414DCD00AE2D9C /* View */,
-			);
-			path = FeatureA;
-			sourceTree = "<group>";
-		};
-		C6C139E92C414DCD00AE2D9C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C6C139EA2C414DD300AE2D9C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		C6C139FA2C454BB300AE2D9C /* Font */ = {
