@@ -37,6 +37,7 @@
 		C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C6C13A022C454C0E00AE2D9C /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		C6C13A032C454C0E00AE2D9C /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		C6C13A0D2C464C4700AE2D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +70,7 @@
 		C6C139CF2C41485400AE2D9C /* HARUCHI */ = {
 			isa = PBXGroup;
 			children = (
+				C6C13A0D2C464C4700AE2D9C /* Info.plist */,
 				C6C139D42C41485500AE2D9C /* Assets.xcassets */,
 				C6C139FA2C454BB300AE2D9C /* Font */,
 				C6C139E62C414D8900AE2D9C /* Components */,
@@ -375,6 +377,7 @@
 				DEVELOPMENT_TEAM = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HARUCHI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -410,6 +413,7 @@
 				DEVELOPMENT_TEAM = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HARUCHI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
