@@ -20,6 +20,7 @@
 		C6C13A0A2C454C0E00AE2D9C /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */; };
 		C6C13A0B2C454C0E00AE2D9C /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A022C454C0E00AE2D9C /* Pretendard-ExtraLight.otf */; };
 		C6C13A0C2C454C0E00AE2D9C /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A032C454C0E00AE2D9C /* Pretendard-Thin.otf */; };
+		C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C6C13A022C454C0E00AE2D9C /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		C6C13A032C454C0E00AE2D9C /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		C6C13A0D2C464C4700AE2D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		C6C139E52C414C9E00AE2D9C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			files = (
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
+				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
