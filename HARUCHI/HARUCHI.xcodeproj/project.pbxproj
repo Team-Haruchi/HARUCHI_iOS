@@ -79,8 +79,8 @@
 				C6C13A0D2C464C4700AE2D9C /* Info.plist */,
 				C6C139D42C41485500AE2D9C /* Assets.xcassets */,
 				C6C139FA2C454BB300AE2D9C /* Font */,
-				C6C139E62C414D8900AE2D9C /* Components */,
 				C6C139E52C414C9E00AE2D9C /* Helper */,
+				C6C139E62C414D8900AE2D9C /* Components */,
 				C6C139E72C414D9700AE2D9C /* App */,
 				C6C139D62C41485500AE2D9C /* Preview Content */,
 			);
@@ -98,8 +98,7 @@
 		C6C139E52C414C9E00AE2D9C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				C6C139F82C454B6100AE2D9C /* FontExtension.swift */,
-				C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */,
+				C6C13A102C46604400AE2D9C /* Extension */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -135,6 +134,15 @@
 				C6C13A032C454C0E00AE2D9C /* Pretendard-Thin.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		C6C13A102C46604400AE2D9C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C6C139F82C454B6100AE2D9C /* FontExtension.swift */,
+				C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
