@@ -15,14 +15,9 @@
 		C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139F42C4549B800AE2D9C /* MainButton.swift */; };
 		C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139F82C454B6100AE2D9C /* FontExtension.swift */; };
 		C6C13A042C454C0E00AE2D9C /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C139FB2C454C0D00AE2D9C /* Pretendard-Regular.otf */; };
-		C6C13A052C454C0E00AE2D9C /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C139FC2C454C0E00AE2D9C /* Pretendard-Light.otf */; };
 		C6C13A062C454C0E00AE2D9C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C139FD2C454C0E00AE2D9C /* Pretendard-Medium.otf */; };
-		C6C13A072C454C0E00AE2D9C /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C139FE2C454C0E00AE2D9C /* Pretendard-Black.otf */; };
-		C6C13A082C454C0E00AE2D9C /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C139FF2C454C0E00AE2D9C /* Pretendard-ExtraBold.otf */; };
 		C6C13A092C454C0E00AE2D9C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A002C454C0E00AE2D9C /* Pretendard-SemiBold.otf */; };
 		C6C13A0A2C454C0E00AE2D9C /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */; };
-		C6C13A0B2C454C0E00AE2D9C /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A022C454C0E00AE2D9C /* Pretendard-ExtraLight.otf */; };
-		C6C13A0C2C454C0E00AE2D9C /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A032C454C0E00AE2D9C /* Pretendard-Thin.otf */; };
 		C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,14 +31,9 @@
 		C6C139F42C4549B800AE2D9C /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		C6C139F82C454B6100AE2D9C /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		C6C139FB2C454C0D00AE2D9C /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		C6C139FC2C454C0E00AE2D9C /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		C6C139FD2C454C0E00AE2D9C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		C6C139FE2C454C0E00AE2D9C /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
-		C6C139FF2C454C0E00AE2D9C /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		C6C13A002C454C0E00AE2D9C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		C6C13A022C454C0E00AE2D9C /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
-		C6C13A032C454C0E00AE2D9C /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		C6C13A0D2C464C4700AE2D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,15 +116,10 @@
 		C6C139FA2C454BB300AE2D9C /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				C6C139FE2C454C0E00AE2D9C /* Pretendard-Black.otf */,
 				C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */,
-				C6C139FF2C454C0E00AE2D9C /* Pretendard-ExtraBold.otf */,
-				C6C13A022C454C0E00AE2D9C /* Pretendard-ExtraLight.otf */,
-				C6C139FC2C454C0E00AE2D9C /* Pretendard-Light.otf */,
 				C6C139FD2C454C0E00AE2D9C /* Pretendard-Medium.otf */,
 				C6C139FB2C454C0D00AE2D9C /* Pretendard-Regular.otf */,
 				C6C13A002C454C0E00AE2D9C /* Pretendard-SemiBold.otf */,
-				C6C13A032C454C0E00AE2D9C /* Pretendard-Thin.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -208,14 +193,9 @@
 			files = (
 				C6C139D82C41485500AE2D9C /* Preview Assets.xcassets in Resources */,
 				C6C13A062C454C0E00AE2D9C /* Pretendard-Medium.otf in Resources */,
-				C6C13A0B2C454C0E00AE2D9C /* Pretendard-ExtraLight.otf in Resources */,
-				C6C13A082C454C0E00AE2D9C /* Pretendard-ExtraBold.otf in Resources */,
 				C6C13A092C454C0E00AE2D9C /* Pretendard-SemiBold.otf in Resources */,
-				C6C13A052C454C0E00AE2D9C /* Pretendard-Light.otf in Resources */,
 				C6C13A042C454C0E00AE2D9C /* Pretendard-Regular.otf in Resources */,
-				C6C13A072C454C0E00AE2D9C /* Pretendard-Black.otf in Resources */,
 				C6C13A0A2C454C0E00AE2D9C /* Pretendard-Bold.otf in Resources */,
-				C6C13A0C2C454C0E00AE2D9C /* Pretendard-Thin.otf in Resources */,
 				C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

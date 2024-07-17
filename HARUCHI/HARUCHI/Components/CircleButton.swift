@@ -20,7 +20,7 @@ struct CircleButton: View {
 
     var body: some View {
         Button(action: action) {
-            VStack {
+            VStack(spacing: 0) {
                 Image(imageName)
                     .resizable()
                     .scaledToFit()

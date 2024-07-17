@@ -31,13 +31,9 @@ struct MainButton: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text(description)
-                .font(.haruchi(size: 13, weight: 700))
-                .foregroundStyle(Color.haruchiGrey81)
-                .padding(.bottom, 14)
             Button(action: action) {
                 Text(text)
-                    .font(.haruchi(size: 15, weight: 700))
+                    .font(.haruchi(.button14))
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 48, height: 45)
                     .background(RoundedRectangle(cornerRadius: 14).fill(enable ? able : disable))

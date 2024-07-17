@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Home.png",
+      "filename" : "Menu.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -19,6 +19,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "original"
   }
 }
