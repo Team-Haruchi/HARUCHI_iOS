@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D22C41485400AE2D9C /* ContentView.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
 		C6C139D22C41485400AE2D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C139F42C4549B800AE2D9C /* MainButton.swift */,
+				4FB934372C47AC2700994816 /* CircleButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
+				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 			);
