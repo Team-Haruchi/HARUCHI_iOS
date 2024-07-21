@@ -19,6 +19,7 @@
 		C6C13A092C454C0E00AE2D9C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A002C454C0E00AE2D9C /* Pretendard-SemiBold.otf */; };
 		C6C13A0A2C454C0E00AE2D9C /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */; };
 		C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */; };
+		C6C13A132C4CE7F500AE2D9C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C6C13A0D2C464C4700AE2D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				C6C13A0D2C464C4700AE2D9C /* Info.plist */,
 				C6C139D42C41485500AE2D9C /* Assets.xcassets */,
+				C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */,
 				C6C139FA2C454BB300AE2D9C /* Font */,
 				C6C139E52C414C9E00AE2D9C /* Helper */,
 				C6C139E62C414D8900AE2D9C /* Components */,
@@ -197,6 +200,7 @@
 				C6C13A042C454C0E00AE2D9C /* Pretendard-Regular.otf in Resources */,
 				C6C13A0A2C454C0E00AE2D9C /* Pretendard-Bold.otf in Resources */,
 				C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */,
+				C6C13A132C4CE7F500AE2D9C /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +357,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -389,6 +394,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
