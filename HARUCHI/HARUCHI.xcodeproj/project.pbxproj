@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
+		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D22C41485400AE2D9C /* ContentView.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
+		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
 		C6C139D22C41485400AE2D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FFC87462C4D178200E30A8F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		C6C139C42C41485400AE2D9C = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 			children = (
 				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
 				C6C139D22C41485400AE2D9C /* ContentView.swift */,
+				9FFC87462C4D178200E30A8F /* Onboarding */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
+				9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 			);
@@ -371,7 +383,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = umc6th.HARUCHI;
+				PRODUCT_BUNDLE_IDENTIFIER = "umc-6th.HARUCHI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -408,7 +420,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = umc6th.HARUCHI;
+				PRODUCT_BUNDLE_IDENTIFIER = "umc-6th.HARUCHI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
