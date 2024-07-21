@@ -10,32 +10,22 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            Text("홈화면")
+            Text("홈")
                 .tabItem {
-                    Image("Home")
+                    Image("tabbar_home")
                     Text("홈")
                 }
-            Text("예산창")
+            Text("예산")
                 .tabItem {
-                    Image("Check Book")
+                    Image("tabbar_checkBook")
                     Text("예산")
                 }
-            Text("사이클 분석")
+            Text("더보기")
                 .tabItem {
-                    Image("Graph")
-                    Text("분석")
-                }
-            Text("메뉴")
-                .tabItem {
-                    Image("Menu")
+                    Image("tabbar_menu")
                     Text("더보기")
                 }
         }
-        
-        .onAppear {
-            UITabBar.appearance().unselectedItemTintColor = UIColor(Color.haruchiGrey81)
-        }
-        .accentColor(.black)
     }
 }
 
