@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct MainButton: View {
-    // 디자인 관련 확정 후 색상코드 수정 필요
-    private let disable: Color = Color(uiColor: UIColor(red: 183/255, green: 219/255, blue: 254/255, alpha: 1))
-    private let able: Color = Color(uiColor: UIColor(red: 66/255, green: 159/255, blue: 253/255, alpha: 1))
     
     private var text: String
     private var enable: Bool
@@ -36,7 +33,7 @@ struct MainButton: View {
                     .font(.haruchi(.button14))
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 48, height: 45)
-                    .background(RoundedRectangle(cornerRadius: 14).fill(enable ? able : disable))
+                    .background(RoundedRectangle(cornerRadius: 14).fill(enable ? Color.mainBlue : Color.sub2Blue))
             }
             .disabled(!enable)
         }
