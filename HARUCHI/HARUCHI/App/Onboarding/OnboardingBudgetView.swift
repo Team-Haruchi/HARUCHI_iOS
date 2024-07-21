@@ -46,7 +46,7 @@ struct OnboardingBudgetView: View {
                     .padding(.leading, 8)
                     .padding(.vertical, 5)
             }
-            .overlay(Rectangle().foregroundColor(Color.gray).frame(height: 1).padding(.top, 7), alignment: .bottom)
+            .overlay(Rectangle().foregroundColor(Color.gray5).frame(height: 1).padding(.top, 7), alignment: .bottom)
             
             .padding(.top, 333)
             .padding(.leading, 4)
