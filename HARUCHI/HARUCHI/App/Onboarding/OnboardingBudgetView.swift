@@ -11,8 +11,8 @@ struct OnboardingBudgetView: View {
     @State var text = ""
 
     var body: some View {
-        VStack(alignment: .leading) {
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text("한 달 예산을 정해볼까요?")
                     .font(.haruchi(.h1))
                     .foregroundColor(Color.black)
@@ -24,7 +24,7 @@ struct OnboardingBudgetView: View {
             }
             .frame(width: 237, height: 65)
             .padding(.top, 124)
-            .padding(.leading, 4)
+            .padding(.leading, 24)
 
             HStack(alignment: .center) {
                 Text("한 달 예산")
@@ -49,8 +49,8 @@ struct OnboardingBudgetView: View {
             .overlay(Rectangle().foregroundColor(Color.gray5).frame(height: 1).padding(.top, 7), alignment: .bottom)
             
             .padding(.top, 333)
-            .padding(.leading, 4)
-            .padding(.trailing, 4)
+            .padding(.leading, 24)
+            .padding(.trailing, 24)
             .frame(width: 345, height: 31)
             
             Spacer()
