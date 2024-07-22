@@ -23,6 +23,7 @@
 		C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A202C4D173700AE2D9C /* SignInView.swift */; };
 		C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A212C4D173700AE2D9C /* StartView.swift */; };
 		C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */; };
+		C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		C6C13A202C4D173700AE2D9C /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		C6C13A212C4D173700AE2D9C /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonModifier.swift; sourceTree = "<group>"; };
+		C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				C6C139F42C4549B800AE2D9C /* MainButton.swift */,
 				4FB934372C47AC2700994816 /* CircleButton.swift */,
+				C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */,
 				C6C13A242C4D17A900AE2D9C /* ViewModifier */,
 			);
 			path = Components;
@@ -147,8 +150,8 @@
 		C6C13A1F2C4D16ED00AE2D9C /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				C6C13A202C4D173700AE2D9C /* SignInView.swift */,
 				C6C13A212C4D173700AE2D9C /* StartView.swift */,
+				C6C13A202C4D173700AE2D9C /* SignInView.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
 				C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */,
+				C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */,
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,

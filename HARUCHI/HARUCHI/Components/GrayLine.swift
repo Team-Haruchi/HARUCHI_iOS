@@ -9,7 +9,10 @@ import SwiftUI
 
 struct GrayLine: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Rectangle()
+            .frame(maxWidth: .infinity)
+            .frame(height: 1)
+            .foregroundColor(Color.gray3)
     }
 }
 
