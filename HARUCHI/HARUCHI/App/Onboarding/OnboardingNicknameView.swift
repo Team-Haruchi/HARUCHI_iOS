@@ -6,18 +6,9 @@
 //
 
 import SwiftUI
-import Combine
-
-enum TextLengthStatus {
-    case valid
-    case invalid
-    case `default`
-}
 
 struct OnboardingNicknameView: View {
-    @State var text = ""
-    @State private var limitLength: TextLengthStatus = .default
-    private let maxLength = 5
+    @ObservedObject private var viewModel = OnboardingNicknameViewModel()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -36,27 +27,24 @@ struct OnboardingNicknameView: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .center) {
                     ZStack(alignment: .trailing) {
-                        TextField("(한글) 5글자 내로 입력해주세요.", text: $text)
+                        TextField("(한글) 5글자 내로 입력해주세요.", text: $viewModel.text)
                             .font(.haruchi(.h2))
-                            .foregroundColor(limitLength == .invalid ? Color.red : Color.black)
+                            .foregroundColor(viewModel.limitLength == .invalid ? Color.black : Color.red)
                             .keyboardType(.default)
                             .multilineTextAlignment(.leading)
                             .padding(.vertical, 5)
-                        
-                            .onChange(of: text) { newValue in
-                                self.validateAndLimitText()
-                            }
-                        Text("\(text.count)/\(maxLength)")
+                
+                        Text("\(viewModel.text.count)/\(viewModel.maxLength)")
                             .font(.haruchi(.h2))
-                            .foregroundColor(limitLength == .invalid ? Color.red : Color.gray)
-                            .padding(.trailing, 10)
+                            .foregroundColor(viewModel.text.isEmpty ? Color.gray : (viewModel.limitLength == .invalid ? Color.red : Color.black))
+                            .padding(.leading, 56)
                     }
                 }
                 .padding(.leading, 24)
                 .frame(width: 344, height: 24)
                 
                 HStack {
-                    if limitLength == .invalid {
+                    if viewModel.limitLength == .invalid && !viewModel.text.isEmpty {
                         Text("올바르지 않은 형식입니다.")
                             .font(.haruchi(.caption3))
                             .foregroundColor(Color.red)
@@ -77,28 +65,10 @@ struct OnboardingNicknameView: View {
         .toolbar {
             // action 나중에 바꿔야됨
             ToolbarItemGroup(placement: .keyboard) {
-                KeypadButton(
-                    text: "가입완료", enable: limitLength == .valid && text.count <= maxLength, action: { print("버튼 눌림 ㅇㅇ") }
-                )
+                KeypadButton( text: "가입완료", enable: viewModel.limitLength == .valid && viewModel.text.count <= viewModel.maxLength, action: { print("버튼 눌림 ㅇㅇ") }
+                              )
             }
         }
-    }
-    
-    private func validateAndLimitText() {
-        if text.count > maxLength || text.isEmpty || !isKoreanOnly(text) {
-            limitLength = .invalid
-        } else {
-            limitLength = .valid
-        }
-    }
-
-    private func isKoreanOnly(_ input: String) -> Bool {
-        let pattern = "^[가-힣]*$"
-        if let regex = try? NSRegularExpression(pattern: pattern) {
-            let range = NSRange(location: 0, length: input.utf16.count)
-            return regex.firstMatch(in: input, options: [], range: range) != nil
-        }
-        return false
     }
 }
 
