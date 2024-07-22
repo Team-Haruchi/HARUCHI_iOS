@@ -9,123 +9,179 @@ import SwiftUI
 
 struct SignInView: View {
     
+    @StateObject private var viewModel = SignInViewModel()
     @FocusState private var focusedField: Field?
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var passwordValid: String = ""
     
-    @State private var validationStatus: [Field: Bool] = [
-        .email: true,
-        .password: true,
-        .passwordValid: true
-    ]
-    
-    // 이메일 정규식
-    private func checkEmailForm(input: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: input)
-    }
-    
-    // 영어, 숫자, 특수문자 조합 8~30자 정규식
-    private func checkPasswordForm(input: String) -> Bool {
-        let pwRegex = "(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}"
-        return NSPredicate(format: "SELF MATCHES %@", pwRegex).evaluate(with: input)
+    var seeTermInfo: some View {
+        VStack(spacing: 3) {
+            Text("내용 보기")
+                .font(.haruchi(size: 10, family: .Regular))
+            
+            Rectangle()
+                .frame(height: 1)
+        }
+        .frame(width: 40)
+        .foregroundStyle(Color.sub2Blue)
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                HStack {
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 0) {
+                    HStack {
+                        Spacer()
+                        Image("signIn_circleLogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100)
+                        Spacer()
+                    }
+                    .padding(.top, 35)
+                    
+                    Group {
+                        Text("이메일")
+                            .font(.haruchi(.button12))
+                            .padding(.top, 25)
+                            .padding(.bottom, 15)
+                        
+                        TextField("이메일을 입력해주세요.", text: $viewModel.email)
+                            .font(.haruchi(.button12))
+                            .padding(.bottom, 5)
+                            .keyboardType(.alphabet)
+                            .focused($focusedField, equals: .email)
+                        
+                        GrayLine()
+                            .padding(.bottom, 8)
+                        
+                        Text(viewModel.validationStatus[.email]! ? "" : "올바르지 않은 형식입니다.")
+                            .font(.haruchi(size: 10, family: .Regular))
+                            .foregroundColor(.red)
+                            .frame(height: 20)
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 24)
+                    
+                    
+                    Group {
+                        Text("비밀번호")
+                            .font(.haruchi(.button12))
+                            .padding(.vertical, 15)
+                        
+                        SecureField("영어, 숫자, 특수문자 조합 8~30자리", text: $viewModel.password)
+                            .font(.haruchi(.button12))
+                            .padding(.bottom, 5)
+                            .focused($focusedField, equals: .password)
+                        
+                        GrayLine()
+                            .padding(.bottom, 8)
+                        
+                        Text(viewModel.validationStatus[.password]! ? "" : "비밀번호는 영어, 숫자, 특수문자 조합 8~30자리이어야 합니다.")
+                            .font(.haruchi(size: 10, family: .Regular))
+                            .foregroundColor(.red)
+                            .frame(height: 20)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 24)
+                    
+                    
+                    Group {
+                        Text("비밀번호 확인")
+                            .font(.haruchi(.button12))
+                            .padding(.vertical, 15)
+                        
+                        SecureField("비밀번호를 확인해주세요.", text: $viewModel.passwordValid)
+                            .font(.haruchi(.button12))
+                            .padding(.bottom, 5)
+                            .focused($focusedField, equals: .passwordValid)
+                        
+                        GrayLine()
+                            .padding(.bottom, 8)
+                        
+                        Text(viewModel.validationStatus[.passwordValid]! ? "" : "비밀번호가 일치하지 않습니다.")
+                            .font(.haruchi(size: 10, family: .Regular))
+                            .foregroundColor(.red)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 24)
+                    
                     Spacer()
-                    Image("signIn_circleLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                    Spacer()
-                }
-                .padding(.top, 35)
-                
-                Group {
-                    Text("이메일")
-                        .font(.haruchi(.button12))
-                        .padding(.top, 25)
-                        .padding(.bottom, 15)
                     
-                    TextField("이메일을 입력해주세요.", text: $email)
-                        .font(.haruchi(.button12))
-                        .padding(.bottom, 5)
-                        .keyboardType(.alphabet)
-                        .focused($focusedField, equals: .email)
-                        .onChange(of: email) {
-                            validationStatus[.email] = checkEmailForm(input: email)
-                        }
-                        .overlay {
-                            
-                        }
-                    
-                    GrayLine()
-                        .padding(.bottom, 8)
-                    
-                    Text(validationStatus[.email]! ? "" : "올바르지 않은 형식입니다.")
-                        .font(.haruchi(size: 10, family: .Regular))
-                        .foregroundColor(.red)
-                        .frame(height: 20)
-                    
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 24)
-                
-                
-                Group {
-                    Text("비밀번호")
-                        .font(.haruchi(.button12))
-                        .padding(.vertical, 15)
-                    
-                    SecureField("영어, 숫자, 특수문자 조합 8~30자리", text: $password)
-                        .font(.haruchi(.button12))
-                        .padding(.bottom, 5)
-                        .focused($focusedField, equals: .password)
-                        .onChange(of: password) {
-                            validationStatus[.password] = checkPasswordForm(input: password)
-                        }
-                    
-                    GrayLine()
-                        .padding(.bottom, 8)
-                    
-                    Text(validationStatus[.password]! ? "" : "비밀번호는 영어, 숫자, 특수문자 조합 8~30자리이어야 합니다.")
-                        .font(.haruchi(size: 10, family: .Regular))
-                        .foregroundColor(.red)
-                        .frame(height: 20)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 24)
-                
-                
-                Group {
-                    Text("비밀번호 확인")
-                        .font(.haruchi(.button12))
-                        .padding(.vertical, 15)
-                    
-                    SecureField("비밀번호를 확인해주세요.", text: $passwordValid)
-                        .font(.haruchi(.button12))
-                        .padding(.bottom, 5)
-                        .focused($focusedField, equals: .passwordValid)
-                        .onChange(of: passwordValid) {
-                            validationStatus[.passwordValid] = (passwordValid == password)
-                        }
-                    
-                    GrayLine()
-                        .padding(.bottom, 8)
-                    
-                    Text(validationStatus[.passwordValid]! ? "" : "비밀번호가 일치하지 않습니다.")
-                        .font(.haruchi(size: 10, family: .Regular))
-                        .foregroundColor(.red)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 24)
-                
-                Spacer()
+                    Group {
+                        Text("약관 동의")
+                            .font(.haruchi(.button12))
+                            .padding(.bottom, 15)
+                        
+                        Button {
+                            viewModel.agreeAllTapped()
+                        } label: {
+                            HStack(spacing: 5) {
+                                Image(viewModel.termAgree && viewModel.collectInfoAgree ? "signIn_checkBoxSelected" : "signIn_checkBoxUnselected")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
                                 
+                                Text("전체 동의합니다.")
+                                    .font(.haruchi(.button14))
+                            }
+                        }
+                        
+                        GrayLine()
+                            .padding(.vertical, 8)
+                        
+                        Button {
+                            viewModel.termAgree.toggle()
+                        } label: {
+                            HStack(spacing: 5) {
+                                Image(viewModel.termAgree ? "signIn_checkBoxSelected" : "signIn_checkBoxUnselected")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                
+                                Text("이용약관에 동의합니다. (필수)")
+                                    .font(.haruchi(.button12))
+                                
+                                Spacer()
+                                
+                                Button {
+                                    // to link
+                                } label: {
+                                    seeTermInfo
+                                }
+                            }
+                            .padding(.bottom, 8)
+                        }
+
+                        Button {
+                            viewModel.collectInfoAgree.toggle()
+                        } label: {
+                            HStack(spacing: 3) {
+                                Image(viewModel.collectInfoAgree ? "signIn_checkBoxSelected" : "signIn_checkBoxUnselected")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                
+                                Text("개인정보 수집 및 이용에 동의합니다. (필수)")
+                                    .font(.haruchi(.button12))
+                                
+                                Spacer()
+                                
+                                Button {
+                                    // to link
+                                } label: {
+                                    seeTermInfo
+                                }
+                            }
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 24)
+                    
+                    MainButton(text: "인증번호 받기", enable: false) {
+                        
+                    }
+                    .padding(.top, 40)
+                    .padding(.bottom, 18)
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height)
             }
         }
         .toolbar {
@@ -161,12 +217,6 @@ struct SignInView: View {
 }
 
 extension SignInView {
-    enum Field: Int, CaseIterable {
-        case email
-        case password
-        case passwordValid
-    }
-    
     private func focusPreviousField() {
         focusedField = focusedField.map {
             Field(rawValue: $0.rawValue - 1) ?? .passwordValid

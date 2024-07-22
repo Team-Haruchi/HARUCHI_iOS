@@ -24,6 +24,7 @@
 		C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A212C4D173700AE2D9C /* StartView.swift */; };
 		C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */; };
 		C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */; };
+		C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		C6C13A212C4D173700AE2D9C /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonModifier.swift; sourceTree = "<group>"; };
 		C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLine.swift; sourceTree = "<group>"; };
+		C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			children = (
 				C6C13A212C4D173700AE2D9C /* StartView.swift */,
 				C6C13A202C4D173700AE2D9C /* SignInView.swift */,
+				C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
+				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 			);
