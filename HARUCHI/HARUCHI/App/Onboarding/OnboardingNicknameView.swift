@@ -37,7 +37,7 @@ struct OnboardingNicknameView: View {
                 HStack(alignment: .center) {
                     TextField("(한글) 5글자 내로 입력해주세요.", text: $text)
                         .font(.haruchi(.h2))
-                        .foregroundColor(limitLength == .invalid ? Color.black : Color.red)
+                        .foregroundColor(limitLength == .invalid ? Color.red : Color.black)
                         .keyboardType(.default)
                         .multilineTextAlignment(.leading)
                         .padding(.vertical, 5)
@@ -50,13 +50,19 @@ struct OnboardingNicknameView: View {
                 .frame(width: 344, height: 24)
                 
                 HStack {
-                    Text(limitLength == .invalid ? "올바르지 않은 형식입니다." : "")
-                        .font(.haruchi(.caption3))
-                        .foregroundColor(Color.red)
+                    if limitLength == .invalid {
+                        Text("올바르지 않은 형식입니다.")
+                            .font(.haruchi(.caption3))
+                            .foregroundColor(Color.red)
+                    } else {
+                        Text(" ")
+                    }
+                    
                     Spacer()
+                    
                     Text("\(text.count)/\(maxLength)")
                         .font(.haruchi(.caption3))
-                        .foregroundColor(text.count > maxLength ? Color.red : Color.black)
+                        .foregroundColor(limitLength == .invalid ? Color.red : Color.black)
                 }
                 .padding(.top, 4)
                 .padding(.leading, 24)
@@ -70,30 +76,25 @@ struct OnboardingNicknameView: View {
             // action 나중에 바꿔야됨
             ToolbarItemGroup(placement: .keyboard) {
                 KeypadButton(
-                    text: "가입완료", enable: !text.isEmpty, action: { print("버튼 눌림 ㅇㅇ") }
+                    text: "가입완료", enable: limitLength == .valid && text.count <= maxLength, action: { print("버튼 눌림 ㅇㅇ") }
                 )
             }
         }
     }
     
     private func validateAndLimitText() {
-        if text.count > maxLength {
-            text = String(text.prefix(maxLength))
-            limitLength = .valid
-        } else if text.isEmpty || !isKoreanOrEnglish(text) {
+        if text.count > maxLength || text.isEmpty || !isKoreanOnly(text) {
             limitLength = .invalid
         } else {
             limitLength = .valid
         }
     }
 
-    private func isKoreanOrEnglish(_ input: String) -> Bool {
-        let pattern = "^[가-힣a-zA-Z\\s]*$"
-        if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) {
+    private func isKoreanOnly(_ input: String) -> Bool {
+        let pattern = "^[가-힣]*$"
+        if let regex = try? NSRegularExpression(pattern: pattern) {
             let range = NSRange(location: 0, length: input.utf16.count)
-            if regex.firstMatch(in: input, options: [], range: range) != nil {
-                return true
-            }
+            return regex.firstMatch(in: input, options: [], range: range) != nil
         }
         return false
     }

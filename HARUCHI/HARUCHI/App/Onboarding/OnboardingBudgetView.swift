@@ -64,7 +64,6 @@ struct OnboardingBudgetView: View {
             .ignoresSafeArea(.keyboard)
             
             .toolbar {
-                // action 나중에 바꿔야됨
                 ToolbarItemGroup(placement: .keyboard) {
                     KeypadButton(
                         text: "다음", enable: !text.isEmpty, action: { self.tag = 1 }
