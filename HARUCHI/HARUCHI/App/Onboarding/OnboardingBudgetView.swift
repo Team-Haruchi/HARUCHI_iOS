@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct OnboardingBudgetView: View {
-    @State var text = ""
-    @State private var tag: Int? = nil
-
+    @ObservedObject private var viewModel = OnboardingBudgetViewModel()
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
@@ -34,7 +32,7 @@ struct OnboardingBudgetView: View {
                         .padding(.vertical, 5)
                     
                     
-                    TextField("0", text: $text)
+                    TextField("0", text: $viewModel.text)
                         .font(.haruchi(.h2))
                         .foregroundColor(.gray6)
                         .keyboardType(.numberPad)
@@ -57,7 +55,7 @@ struct OnboardingBudgetView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: OnboardingNicknameView(), tag: 1, selection: $tag) {
+                NavigationLink(destination: OnboardingNicknameView(), tag: 1, selection: $viewModel.tag) {
                     EmptyView()
                 }
             }
@@ -66,7 +64,7 @@ struct OnboardingBudgetView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     KeypadButton(
-                        text: "다음", enable: !text.isEmpty, action: { self.tag = 1 }
+                        text: "다음", enable: !viewModel.text.isEmpty, action: { viewModel.tag = 1 }
                     )
                 }
             }
