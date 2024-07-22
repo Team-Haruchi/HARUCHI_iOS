@@ -23,15 +23,17 @@ struct OnboardingNicknameView: View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text("가입을 축하드려요!")
+                    .padding(.bottom, 7)
                 Text("어떻게 불러드리면 될까요?")
             }
             .font(.haruchi(.h1))
             .foregroundColor(Color.black)
-            .frame(width: 253, height: 64, alignment: .leading)
-            .padding(.top, 124)
+            .frame(width: 253, height: 64)
             .padding(.leading, 24)
             
-            VStack(alignment: .leading, spacing: 0) {
+            Spacer().frame(height: 183)
+            
+            VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .center) {
                     TextField("(한글) 5글자 내로 입력해주세요.", text: $text)
                         .font(.haruchi(.h2))
@@ -58,8 +60,9 @@ struct OnboardingNicknameView: View {
                 }
                 .padding(.top, 4)
                 .padding(.leading, 24)
+                .padding(.trailing, 24)
             }
-            .padding(.top, 183)
+            .padding(.top, 30)
         }
         .ignoresSafeArea(.keyboard)
         
