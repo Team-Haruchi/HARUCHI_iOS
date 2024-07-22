@@ -35,16 +35,22 @@ struct OnboardingNicknameView: View {
             
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .center) {
-                    TextField("(한글) 5글자 내로 입력해주세요.", text: $text)
-                        .font(.haruchi(.h2))
-                        .foregroundColor(limitLength == .invalid ? Color.red : Color.black)
-                        .keyboardType(.default)
-                        .multilineTextAlignment(.leading)
-                        .padding(.vertical, 5)
-                    
-                        .onChange(of: text) { newValue in
-                            self.validateAndLimitText()
-                        }
+                    ZStack(alignment: .trailing) {
+                        TextField("(한글) 5글자 내로 입력해주세요.", text: $text)
+                            .font(.haruchi(.h2))
+                            .foregroundColor(limitLength == .invalid ? Color.red : Color.black)
+                            .keyboardType(.default)
+                            .multilineTextAlignment(.leading)
+                            .padding(.vertical, 5)
+                        
+                            .onChange(of: text) { newValue in
+                                self.validateAndLimitText()
+                            }
+                        Text("\(text.count)/\(maxLength)")
+                            .font(.haruchi(.h2))
+                            .foregroundColor(limitLength == .invalid ? Color.red : Color.gray)
+                            .padding(.trailing, 10)
+                    }
                 }
                 .padding(.leading, 24)
                 .frame(width: 344, height: 24)
@@ -59,10 +65,6 @@ struct OnboardingNicknameView: View {
                     }
                     
                     Spacer()
-                    
-                    Text("\(text.count)/\(maxLength)")
-                        .font(.haruchi(.caption3))
-                        .foregroundColor(limitLength == .invalid ? Color.red : Color.black)
                 }
                 .padding(.top, 4)
                 .padding(.leading, 24)
