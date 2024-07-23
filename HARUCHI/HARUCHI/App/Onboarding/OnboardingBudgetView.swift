@@ -11,18 +11,21 @@ struct OnboardingBudgetView: View {
     @ObservedObject private var viewModel = OnboardingBudgetViewModel()
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("한 달 예산을 정해볼까요?")
                         .font(.haruchi(.h1))
                         .foregroundColor(Color.black)
+                        .frame(width: 237, height: 29)
                         .padding(.bottom, 14)
+                        .padding(.trailing, 132)
                     
                     Text("예산을 설정하고 계획적으로 관리해보세요.")
                         .font(.haruchi(.button12))
                         .foregroundColor(.gray7)
+                        .frame(width: 202, height: 22)
+                        .padding(.trailing, 24)
                 }
-                .frame(width: 237, height: 65)
                 .padding(.top, 124)
                 .padding(.leading, 24)
                 
@@ -47,17 +50,17 @@ struct OnboardingBudgetView: View {
                         .padding(.vertical, 5)
                 }
                 .overlay(Rectangle().foregroundColor(Color.gray5).frame(height: 1).padding(.top, 7), alignment: .bottom)
-                
-                .padding(.top, 333)
+                .frame(width: 345, height: 31)
+                .padding(.top, 175)
                 .padding(.leading, 24)
                 .padding(.trailing, 24)
-                .frame(width: 345, height: 31)
                 
                 Spacer()
                 
-                NavigationLink(destination: OnboardingNicknameView(), tag: 1, selection: $viewModel.tag) {
+                NavigationLink(destination: OnboardingNicknameView().navigationBarBackButtonHidden(true), tag: 1, selection: $viewModel.tag) {
                     EmptyView()
                 }
+                .navigationBarTitleDisplayMode(.inline)
             }
             .ignoresSafeArea(.keyboard)
             

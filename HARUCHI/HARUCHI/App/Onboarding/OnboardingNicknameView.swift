@@ -11,54 +11,61 @@ struct OnboardingNicknameView: View {
     @ObservedObject private var viewModel = OnboardingNicknameViewModel()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
-                Text("가입을 축하드려요!")
-                    .padding(.bottom, 7)
-                Text("어떻게 불러드리면 될까요?")
-            }
-            .font(.haruchi(.h1))
-            .foregroundColor(Color.black)
-            .frame(width: 253, height: 64)
-            .padding(.leading, 24)
-            
-            Spacer().frame(height: 183)
-            
-            VStack(alignment: .leading, spacing: 5) {
-                HStack(alignment: .center) {
-                    ZStack(alignment: .trailing) {
-                        TextField("(한글) 5글자 내로 입력해주세요.", text: $viewModel.text)
-                            .font(.haruchi(.h2))
-                            .foregroundColor(viewModel.limitLength == .invalid ? Color.black : Color.red)
-                            .keyboardType(.default)
-                            .multilineTextAlignment(.leading)
-                            .padding(.vertical, 5)
-                
-                        Text("\(viewModel.text.count)/\(viewModel.maxLength)")
-                            .font(.haruchi(.h2))
-                            .foregroundColor(viewModel.text.isEmpty ? Color.gray : (viewModel.limitLength == .invalid ? Color.red : Color.black))
-                            .padding(.leading, 56)
-                    }
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("가입을 축하드려요!")
+                        .padding(.bottom, 7)
+                    Text("어떻게 불러드리면 될까요?")
                 }
+                .font(.haruchi(.h1))
+                .foregroundColor(Color.black)
+                .frame(width: 253, height: 64)
+                .padding(.top, 124)
                 .padding(.leading, 24)
-                .frame(width: 344, height: 24)
+                .padding(.trailing, 25)
                 
-                HStack {
-                    if viewModel.limitLength == .invalid && !viewModel.text.isEmpty {
-                        Text("올바르지 않은 형식입니다.")
-                            .font(.haruchi(.caption3))
-                            .foregroundColor(Color.red)
-                    } else {
-                        Text(" ")
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .center) {
+                        ZStack(alignment: .trailing) {
+                            TextField("(한글) 5글자 내로 입력해주세요.", text: $viewModel.text)
+                                .font(.haruchi(.h2))
+                                .foregroundColor(viewModel.limitLength == .invalid ? Color.black : Color.red)
+                                .keyboardType(.default)
+                                .multilineTextAlignment(.leading)
+                                .padding(.leading, 24)
+                                .padding(.vertical, 5)
+                            
+                            Text("\(viewModel.text.count)/\(viewModel.maxLength)")
+                                .font(.haruchi(.h2))
+                                .foregroundColor(viewModel.text.isEmpty ? Color.gray : (viewModel.limitLength == .invalid ? Color.red : Color.black))
+                                .padding(.leading, 56)
+                            
+                        }
                     }
+                    .padding(.top, 30)
+                    .padding(.trailing, 24)
                     
-                    Spacer()
+                    
+                    HStack {
+                        if viewModel.limitLength == .invalid && !viewModel.text.isEmpty {
+                            Text("올바르지 않은 형식입니다.")
+                                .font(.haruchi(.caption3))
+                                .foregroundColor(Color.red)
+                        } else {
+                            Text(" ")
+                        }
+                        
+                        Spacer()
+                    }
+                    .padding(.top, 4)
+                    .padding(.leading, 24)
+                    .padding(.trailing, 24)
                 }
-                .padding(.top, 4)
-                .padding(.leading, 24)
-                .padding(.trailing, 24)
+                .padding(.top, 30)
+                Spacer()
             }
-            .padding(.top, 30)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
         }
         .ignoresSafeArea(.keyboard)
         
