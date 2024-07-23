@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */; };
-		9F9C4C212C4EBE2C00940551 /* OnboardingNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C202C4EBE2C00940551 /* OnboardingNicknameViewModel.swift */; };
-		9F9C4C232C4EC8FF00940551 /* OnboardingBudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C222C4EC8FF00940551 /* OnboardingBudgetViewModel.swift */; };
+		9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */; };
 		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
 		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
@@ -30,8 +29,7 @@
 /* Begin PBXFileReference section */
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNicknameView.swift; sourceTree = "<group>"; };
-		9F9C4C202C4EBE2C00940551 /* OnboardingNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNicknameViewModel.swift; sourceTree = "<group>"; };
-		9F9C4C222C4EC8FF00940551 /* OnboardingBudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetViewModel.swift; sourceTree = "<group>"; };
+		9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,9 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */,
-				9F9C4C222C4EC8FF00940551 /* OnboardingBudgetViewModel.swift */,
 				9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */,
-				9F9C4C202C4EBE2C00940551 /* OnboardingNicknameViewModel.swift */,
+				9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -234,9 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F9C4C232C4EC8FF00940551 /* OnboardingBudgetViewModel.swift in Sources */,
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
-				9F9C4C212C4EBE2C00940551 /* OnboardingNicknameViewModel.swift in Sources */,
+				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,

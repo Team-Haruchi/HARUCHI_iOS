@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingNicknameView: View {
-    @ObservedObject private var viewModel = OnboardingNicknameViewModel()
+    @ObservedObject private var viewModel = OnboardingViewModel()
 
     var body: some View {
         GeometryReader { geometry in

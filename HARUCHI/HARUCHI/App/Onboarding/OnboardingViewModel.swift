@@ -14,11 +14,13 @@ enum TextLengthStatus {
     case `default`
 }
 
-class OnboardingNicknameViewModel: ObservableObject {
+class OnboardingViewModel: ObservableObject {
     @Published var text = ""
+    @Published var tag: Int? = nil
+    
     @Published var limitLength: TextLengthStatus = .default
     let maxLength = 5
-    
+
     private var cancellables = Set<AnyCancellable>()
     init() {
         $text

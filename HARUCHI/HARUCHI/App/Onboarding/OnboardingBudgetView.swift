@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingBudgetView: View {
-    @ObservedObject private var viewModel = OnboardingBudgetViewModel()
+    @ObservedObject private var viewModel = OnboardingViewModel()
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
