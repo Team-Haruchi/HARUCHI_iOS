@@ -22,6 +22,7 @@ struct OnboardingNicknameView: View {
                 .foregroundColor(Color.black)
                 .frame(width: 253, height: 64)
                 .padding(.top, 124)
+                .padding(.bottom, 150)
                 .padding(.leading, 24)
                 .padding(.trailing, 25)
                 
@@ -34,7 +35,7 @@ struct OnboardingNicknameView: View {
                                 .keyboardType(.default)
                                 .multilineTextAlignment(.leading)
                                 .padding(.leading, 24)
-                                .padding(.vertical, 5)
+                                
                             
                             Text("\(viewModel.text.count)/\(viewModel.maxLength)")
                                 .font(.haruchi(.h2))
@@ -42,8 +43,9 @@ struct OnboardingNicknameView: View {
                                 .padding(.leading, 56)
                             
                         }
+                        .padding(.vertical, 5)
                     }
-                    .padding(.top, 30)
+                 
                     .padding(.trailing, 24)
                     
                     
