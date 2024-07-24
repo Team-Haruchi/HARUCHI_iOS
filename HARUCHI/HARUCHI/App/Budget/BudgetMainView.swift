@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BudgetMainView : View {
+    
+    @StateObject private var percent = BudgetPercentage()
+    
     var body: some View {
         VStack(spacing:0){
             HStack{
@@ -20,7 +23,7 @@ struct BudgetMainView : View {
                         .foregroundColor(.gray)
                 }
                     }//HStack
-            PercentageBar(percentage: 20)
+            PercentageBar(viewModel: percent)
             Spacer()
                 
         }//VStack

@@ -23,8 +23,8 @@ struct HARUCHIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            StartView()
-            //BudgetMainView()
+            //StartView()
+            BudgetMainView()
 //            ContentView()
 //            ContentView2()
         }
