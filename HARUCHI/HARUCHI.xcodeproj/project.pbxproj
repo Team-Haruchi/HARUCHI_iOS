@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
+		4FB9343B2C4F96CC00994816 /* BudgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9343A2C4F96CC00994816 /* BudgetMainView.swift */; };
+		4FB9343D2C50E49200994816 /* PercentageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9343C2C50E49200994816 /* PercentageBar.swift */; };
+		4FB9343F2C50F9A600994816 /* BudgetMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9343E2C50F9A600994816 /* BudgetMainViewModel.swift */; };
 		9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */; };
 		9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */; };
 		9FA2A7602C4F974C0082636F /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2A75F2C4F974C0082636F /* HomeMainView.swift */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		4FB9343A2C4F96CC00994816 /* BudgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMainView.swift; sourceTree = "<group>"; };
+		4FB9343C2C50E49200994816 /* PercentageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageBar.swift; sourceTree = "<group>"; };
+		4FB9343E2C50F9A600994816 /* BudgetMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMainViewModel.swift; sourceTree = "<group>"; };
 		9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNicknameView.swift; sourceTree = "<group>"; };
 		9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		9FA2A75F2C4F974C0082636F /* HomeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainView.swift; sourceTree = "<group>"; };
@@ -74,7 +80,8 @@
 		9FA2A75E2C4F96BD0082636F /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9FA2A75F2C4F974C0082636F /* HomeMainView.swift */,
+				4FB9343A2C4F96CC00994816 /* BudgetMainView.swift */,
+				4FB9343E2C50F9A600994816 /* BudgetMainViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -289,6 +296,7 @@
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
 				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
+				4FB9343F2C50F9A600994816 /* BudgetMainViewModel.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 			);
