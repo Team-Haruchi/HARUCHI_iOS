@@ -40,22 +40,22 @@ extension Color {
     
     /// #FFFFFF
     static let white = Color(uiColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1))
-
+    
     /// #429FFD
     static let mainBlue = Color(uiColor: UIColor(red: 66/255, green: 159/255, blue: 253/255, alpha: 1))
-
+    
     /// #A0CFFE
     static let subBlue = Color(uiColor: UIColor(red: 160/255, green: 207/255, blue: 254/255, alpha: 1))
-
+    
     /// #70B7FF
     static let sub2Blue = Color(uiColor: UIColor(red: 112/255, green: 183/255, blue: 255/255, alpha: 1))
-
+    
     /// #6B78DA
     static let purple = Color(uiColor: UIColor(red: 107/255, green: 120/255, blue: 218/255, alpha: 1))
-
+    
     /// #FF7777
     static let red = Color(uiColor: UIColor(red: 255/255, green: 119/255, blue: 119/255, alpha: 1))
-
-    /// #F7F7FF
-    static let sub3Blue = Color(uiColor: UIColor(red: 247/255, green: 247/255, blue: 255/255, alpha: 1))
+    
+    /// #F7F7FF -> #EAF2FF
+    static let sub3Blue = Color(uiColor: UIColor(red: 234/255, green: 242/255, blue: 255/255, alpha: 1))
 }
