@@ -29,7 +29,7 @@ struct PercentageBar: View {
                 
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 315, height: 19)
-                    .foregroundColor(.gray.opacity(0.2))
+                    .foregroundColor(Color.sub3Blue)
                 
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 315 * (viewModel.percentage / 100), height: 19)
