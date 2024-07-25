@@ -64,6 +64,12 @@ struct OnboardingBudgetView: View {
             }
             .ignoresSafeArea(.keyboard)
             
+            .onDisappear {
+                if let homebudgetValue = Int(viewModel.text) {
+                    viewModel.budget = "\(homebudgetValue)원"
+                }
+            }
+            
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     KeypadButton(

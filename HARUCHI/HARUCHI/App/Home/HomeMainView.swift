@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct HomeMainView: View {
+    @ObservedObject private var viewModel = OnboardingViewModel() // 예산 데이터 받기
     @StateObject private var percent = BudgetPercentage()
     
     var body: some View {
@@ -29,6 +30,8 @@ struct HomeMainView: View {
             
             // 월, 예산
             VStack(alignment: .leading, spacing: 20) {
+                
+                // 월 단위 나중에 수정 필요
                 Text("6월")
                     .font(.haruchi(.h2))
 
@@ -42,7 +45,7 @@ struct HomeMainView: View {
                 .font(.haruchi(.button14))
                 .foregroundColor(Color.gray6)
                 
-                Text("70000원")
+                Text(viewModel.budget)
                     .font(.haruchi(.h1))
             }
             .padding(.horizontal, 24)
@@ -57,6 +60,8 @@ struct HomeMainView: View {
                     .fill(Color.sub3Blue)
                     .frame(width: 345, height: 120)
                     .overlay (
+                        
+                        // 요일 나중에 수정 필요
                         VStack(spacing: 0) {
                             Text("15일 목요일")
                                 .font(.haruchi(.body_r16))
