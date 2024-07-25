@@ -12,7 +12,11 @@ struct BudgetMainView : View {
     @StateObject private var percent = BudgetPercentage()
     @ObservedObject private var BudgetviewModel = BudgetMainViewModel()
     @State private var isFirstButtonActive: Bool = false
-    @State private var text: String = ""
+    @State private var showOverlayPush = false //넘기기 옵션선택
+    @State private var showOverlayFull = false //당겨쓰기 옵션 선택
+    @State private var changableTextPush = "선택해주세요"
+    @State private var changableTextFull = "선택해주세요"
+
 
     
     
@@ -77,9 +81,89 @@ struct BudgetMainView : View {
                 .padding(.top, 20)
                 
                 if isFirstButtonActive {
-                    Text("First Button is Active")
-                        .font(.largeTitle)
-                        .foregroundColor(.blue)
+                    VStack{
+                        HStack{
+                            Text("이날로")
+                                .font(.haruchi(.body_m14))
+                                .foregroundColor(Color.gray5)
+                            Spacer()
+                            Button(action: {
+                                showOverlayPush.toggle()
+                            }){
+                                HStack{
+                                    Text(changableTextPush)
+                                        .font(.haruchi(.body_m14))
+                                        .foregroundColor(Color.black)
+                                    Image(systemName: "chevron.down")
+                                        .foregroundColor(Color.gray5)
+                                }
+                            }
+                        }.padding(.top, 21)//HStack
+                        if showOverlayPush {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 345, height: 107)
+                                    .border(Color.gray5, width: 0.5)
+                                    .foregroundColor(Color.white)
+                                VStack {
+                                    Spacer()
+                                    HStack {
+                                        Text("남은 일수에서 1/n")
+                                            .font(.system(size: 14)) // Custom font can be used here
+                                            .foregroundColor(Color.gray5)
+                                        Spacer()
+                                        Button(action: {
+                                            changableTextPush = "고르게 가져오기"
+                                        }) {
+                                            Text("고르게 가져오기")
+                                                .font(.system(size: 14)) // Custom font can be used here
+                                                .foregroundColor(Color.gray5)
+                                        }
+                                    }
+                                    Spacer()
+                                    Divider()
+                                    HStack {
+                                        Text("₩ 70,000")
+                                            .font(.system(size: 14)) // Custom font can be used here
+                                            .foregroundColor(Color.gray5)
+                                        Spacer()
+                                        Button(action: {
+                                            changableTextPush = "세이프박스"
+                                        }) {
+                                            Text("세이프박스")
+                                                .font(.system(size: 14)) // Custom font can be used here
+                                                .foregroundColor(Color.gray5)
+                                        }
+                                    }
+                                    Spacer()
+                                }
+                                .padding()
+                            }
+                        }
+                        HStack{
+                            Text("이날에서")
+                                .font(.haruchi(.body_m14))
+                                .foregroundColor(Color.gray5)
+                            
+                            Spacer()
+                            Text("선택해주세요")
+                                .font(.haruchi(.body_m14))
+                                .foregroundColor(Color.gray5)
+                        }.padding(.top, 21)
+                        HStack{
+                            Text("이만큼")
+                                .font(.haruchi(.body_m14))
+                                .foregroundColor(Color.gray5)
+                            Spacer()
+                            TextField("입력해주세요", text: $BudgetviewModel.moneyText)
+                                .font(.haruchi(.body_m14))
+                                .foregroundColor(Color.black)
+                                .keyboardType(.numberPad) //키보드 타입 설정
+                                .frame(width: 75)
+                            
+                        }.padding(.top, 21)
+                        
+                    }//VStack
                 } else {
                     VStack{
                         HStack{
@@ -88,10 +172,10 @@ struct BudgetMainView : View {
                                 .foregroundColor(Color.gray5)
                             Spacer()
                             Button(action: {
-                                
+                                showOverlayFull.toggle()
                             }){
                                 HStack{
-                                    Text("고르게 가져오기")
+                                    Text(changableTextFull)
                                         .font(.haruchi(.body_m14))
                                         .foregroundColor(Color.black)
                                     Image(systemName: "chevron.down")
@@ -99,6 +183,47 @@ struct BudgetMainView : View {
                                 }
                             }
                         }.padding(.top, 21)//HStack
+                        if showOverlayFull {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 345, height: 107)
+                                    .border(Color.gray5, width: 0.5)
+                                    .foregroundColor(Color.white)
+                                VStack {
+                                    Spacer()
+                                    HStack {
+                                        Text("남은 일수에서 1/n")
+                                            .font(.system(size: 14)) // Custom font can be used here
+                                            .foregroundColor(Color.gray5)
+                                        Spacer()
+                                        Button(action: {
+                                            changableTextFull = "고르게 가져오기"
+                                        }) {
+                                            Text("고르게 가져오기")
+                                                .font(.system(size: 14)) // Custom font can be used here
+                                                .foregroundColor(Color.gray5)
+                                        }
+                                    }
+                                    Spacer()
+                                    Divider()
+                                    HStack {
+                                        Text("₩ 70,000")
+                                            .font(.system(size: 14)) // Custom font can be used here
+                                            .foregroundColor(Color.gray5)
+                                        Spacer()
+                                        Button(action: {
+                                            changableTextFull = "세이프박스"
+                                        }) {
+                                            Text("세이프박스")
+                                                .font(.system(size: 14)) // Custom font can be used here
+                                                .foregroundColor(Color.gray5)
+                                        }
+                                    }
+                                    Spacer()
+                                }
+                                .padding()
+                            }
+                        }
                         HStack{
                             Text("이날로")
                                 .font(.haruchi(.body_m14))
