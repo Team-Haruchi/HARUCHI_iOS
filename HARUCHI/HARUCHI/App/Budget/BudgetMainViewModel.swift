@@ -7,3 +7,8 @@
 
 import SwiftUI
 import Combine
+
+class BudgetMainViewModel: ObservableObject {
+    @Published var moneyText = ""
+
+}
