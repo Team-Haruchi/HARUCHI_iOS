@@ -24,13 +24,13 @@ struct HomeMainView: View {
                 }
             }
             .padding(.horizontal, 24)
+            .padding(.bottom, 25)
             
             
             // 월, 예산
             VStack(alignment: .leading, spacing: 20) {
                 Text("6월")
                     .font(.haruchi(.h2))
-                    .padding(.top, 25)
 
                 HStack {
                     Text("한 달 예산")
@@ -57,15 +57,21 @@ struct HomeMainView: View {
                     .fill(Color.sub3Blue)
                     .frame(width: 345, height: 120)
                     .overlay (
-                        VStack {
+                        VStack(spacing: 0) {
                             Text("15일 목요일")
                                 .font(.haruchi(.body_r16))
                                 .foregroundColor(Color.black)
+                                .padding(.leading, 22)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            Spacer()
                             
                             HStack {
+                                Spacer()
                                 Text("하루치 20000원")
                                     .font(.haruchi(.h2))
                                     .foregroundColor(Color.gray5)
+                                
                                 
                                 Button(action: {
                                     // 화면 넘어가는거 나중에 추가
@@ -77,8 +83,15 @@ struct HomeMainView: View {
                                         .background(Circle().fill(Color.white))
                                 }
                             }
-                            GrayLine()
+                            .padding(.horizontal, 22)
+                            Rectangle()
+                                .foregroundColor(Color.gray5)
+                                .frame(height: 2)
+                                .padding(.top, 7)
+                                .padding(.bottom, 9)
+                                .padding(.horizontal, 22)
                         }
+                        .padding(.vertical, 19)
                     )
             }
             .padding(.top, 20)
@@ -90,13 +103,32 @@ struct HomeMainView: View {
                     .frame(width: 346, height: 58)
                     .overlay {
                         HStack {
-                            Image("HomeClock")
+                            ZStack {
+                                Circle()
+                                    .frame(width: 42, height: 42)
+                                    .foregroundColor(Color.white)
+                                
+                                Image("HomeClock")
+                                    .frame(width: 28, height: 30)
+                                    .scaledToFit()
+                            }
                             
                             Text("오늘 지출을 마감하세요")
+                                .font(.haruchi(.caption3))
+                                .foregroundColor(Color.gray7)
+                            
+                            Spacer()
                             
                             Text("지출 마감하기")
+                                .font(.haruchi(.body_r16))
+                                .foregroundColor(Color.black)
+                            
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(Color.black)
                         }
+                        .padding(.horizontal, 10)
                     }
+                    
             }
             .padding(.top, 20)
             
@@ -117,15 +149,31 @@ struct HomeMainView: View {
                     .frame(width: 345, height: 58)
                     .overlay {
                         HStack {
-                            Image("HomeCoin")
+                            ZStack {
+                                Circle()
+                                    .frame(width: 42, height: 42)
+                                    .foregroundColor(Color.white)
+                                
+                                Image("HomeCoin")
+                                    .frame(width: 28, height: 30)
+                                    .scaledToFit()
+                            }
                             
                             Text("세이프박스")
+                                .font(.haruchi(.caption3))
+                                .foregroundColor(Color.gray7)
+                            
+                            Spacer()
                             
                             Text("7000원")
+                                .font(.haruchi(.body_r16))
+                                .foregroundColor(Color.black)
                         }
+                        .padding(.horizontal, 10)
                     }
             }
             .padding(.top, 25)
+            Spacer()
         }
     }
 }
