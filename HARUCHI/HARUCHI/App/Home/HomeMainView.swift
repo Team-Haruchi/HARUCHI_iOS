@@ -45,8 +45,12 @@ struct HomeMainView: View {
                 .font(.haruchi(.button14))
                 .foregroundColor(Color.gray6)
                 
-                Text(viewModel.budget)
-                    .font(.haruchi(.h1))
+                HStack(spacing: 0) {
+                    Text(viewModel.budget)
+                    
+                    Text("원")
+                }
+                .font(.haruchi(.h1))
             }
             .padding(.horizontal, 24)
             
