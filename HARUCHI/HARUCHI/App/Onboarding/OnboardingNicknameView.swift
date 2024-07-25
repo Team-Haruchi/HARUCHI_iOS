@@ -68,13 +68,17 @@ struct OnboardingNicknameView: View {
                 Spacer()
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+            
+            NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true), tag: 1, selection: $viewModel.tag) {
+                EmptyView()
+            }
+            .navigationBarTitleDisplayMode(.inline)
         }
         .ignoresSafeArea(.keyboard)
         
         .toolbar {
-            // action 나중에 바꿔야됨
             ToolbarItemGroup(placement: .keyboard) {
-                KeypadButton( text: "가입완료", enable: viewModel.limitLength == .valid && viewModel.text.count <= viewModel.maxLength, action: { print("버튼 눌림 ㅇㅇ") }
+                KeypadButton( text: "가입완료", enable: viewModel.limitLength == .valid && viewModel.text.count <= viewModel.maxLength, action: { viewModel.tag = 1 }
                               )
             }
         }

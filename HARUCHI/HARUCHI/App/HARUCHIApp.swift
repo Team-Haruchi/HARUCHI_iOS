@@ -26,6 +26,7 @@ struct HARUCHIApp: App {
             StartView()
 //            ContentView()
 //            ContentView2()
+//            OnboardingBudgetView(viewModel: viewModel)
         }
     }
     
