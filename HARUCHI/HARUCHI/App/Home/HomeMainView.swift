@@ -119,7 +119,7 @@ struct HomeMainView: View {
                             }
                             
                             Text("오늘 지출을 마감하세요")
-                                .font(.haruchi(.caption3))
+                                .font(.haruchi(.button12))
                                 .foregroundColor(Color.gray7)
                             
                             Spacer()
@@ -165,7 +165,7 @@ struct HomeMainView: View {
                             }
                             
                             Text("세이프박스")
-                                .font(.haruchi(.caption3))
+                                .font(.haruchi(.button12))
                                 .foregroundColor(Color.gray7)
                             
                             Spacer()
