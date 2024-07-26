@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeSpendView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var money = ""
 
     var category = ["수입", "지출"]
@@ -20,6 +22,7 @@ struct HomeSpendView: View {
                     Text("남은 일정과 금액")
                         .font(.haruchi(.h2))
                         .foregroundColor(Color.black)
+                        .padding(.top, 21)
                         .padding(.bottom, 10)
                     
                     Text("D-14 / 230000원")
@@ -65,6 +68,8 @@ struct HomeSpendView: View {
             .padding(.horizontal, 24)
             .padding(.top, 40)
             
+            Spacer().frame(height: 10)
+            
             HStack {
                 Text("카테고리")
                 
@@ -80,13 +85,24 @@ struct HomeSpendView: View {
         }
         Spacer()
         
+            // 네비게이션바 뒤로가기 버튼 커스텀
             .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color.black)
+                    }
+                }
+                
                 ToolbarItemGroup(placement: .keyboard) {
                     KeypadButton(
                         text: "저장하기", enable: !money.isEmpty, action: { print("버튼 눌림 ㅇㅇ") }
                     )
                 }
             }
+            .navigationBarBackButtonHidden(true)
     }
 }
 
