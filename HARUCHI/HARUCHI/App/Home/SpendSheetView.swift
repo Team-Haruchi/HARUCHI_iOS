@@ -37,6 +37,8 @@ struct SpendSheetView: View {
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 30)
+            .font(.haruchi(.caption3))
+            .foregroundColor(Color.black)
             
             HStack {
                 CircleButton(imageName: "circle_gym", text: "취미", size: 90, action: {print("취미")})
@@ -47,6 +49,8 @@ struct SpendSheetView: View {
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 30)
+            .font(.haruchi(.caption3))
+            .foregroundColor(Color.black)
             
             HStack {
                 CircleButton(imageName: "circle_networking", text: "경조사", size: 90, action: {print("경조사")})
@@ -57,6 +61,8 @@ struct SpendSheetView: View {
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 30)
+            .font(.haruchi(.caption3))
+            .foregroundColor(Color.black)
         }
     }
 }
