@@ -2,7 +2,7 @@
 
 <p align="center">
   <br>
-  <img src="./images/common/logo-sample.jpeg">
+<img width="1410" alt="HARUCIReadme" src="https://github.com/user-attachments/assets/f2f9f30b-807f-427d-bc56-6a12f9747571">
   <br>
 </p>
 
@@ -10,9 +10,6 @@
 
 ## 프로젝트 소개
 
-<p align="center">
-GIF Images
-</p>
 
 <p align="justify">
 
