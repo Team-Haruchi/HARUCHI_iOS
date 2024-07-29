@@ -11,7 +11,7 @@ struct HomeSpendView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var money = ""
-    @State private var selectedCategory = ""
+    @State private var selectedCategory = "미분류"
     @State private var upSpendSheet = false
     @State private var showMainButton = false
     @State private var selectedType = ""
@@ -82,8 +82,8 @@ struct HomeSpendView: View {
                 
                 Spacer()
                 
-                Text(selectedCategory.isEmpty || selectedCategory == "지출" ? "미분류" : selectedCategory)
-                    .font(selectedCategory == "미분류" ? .haruchi(.body_sb16) : .haruchi(.body_r16))
+                Text(selectedCategory == "미분류" ? "미분류" : selectedCategory)
+                    .font(selectedCategory == "미분류" ? .haruchi(.body_r16) : .haruchi(.body_sb16))
                     .foregroundColor(selectedCategory == "미분류" ? Color.gray5 : Color.black)
                 Image(systemName: "chevron.right")
             }
