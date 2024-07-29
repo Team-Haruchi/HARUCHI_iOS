@@ -11,7 +11,7 @@ struct IncomeSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var selectedIncome: String
-    var incomes = ["카테고리를 선택해주세요","용돈", "월급", "부수입", "상여급", "근로소득", "기타"]
+    var incomes = ["용돈", "월급", "부수입", "상여급", "근로소득", "기타"]
     
     var body: some View {
         VStack(spacing: 0) {

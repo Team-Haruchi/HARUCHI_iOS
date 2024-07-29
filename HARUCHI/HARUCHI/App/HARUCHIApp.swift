@@ -9,8 +9,6 @@ import SwiftUI
 
 @main
 struct HARUCHIApp: App {
-    @State private var selectedIncome: String = "상여금"
-    
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.font: UIFont(name: "Pretendard-SemiBold", size: 20)!]
