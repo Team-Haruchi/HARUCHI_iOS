@@ -111,7 +111,7 @@ struct HomeSpendView: View {
         .sheet(isPresented: $upSpendSheet) {
             SpendSheetView(selectedCategory: $selectedCategory)
                 .presentationDragIndicator(.visible)
-                .presentationDetents([.medium]) // sheet 크기 반만
+                .presentationDetents([.height(420)])
         }
         .sheet(isPresented: $showIncomeSheet) {
             IncomeSheetView(selectedIncome: $selectedIncome)
