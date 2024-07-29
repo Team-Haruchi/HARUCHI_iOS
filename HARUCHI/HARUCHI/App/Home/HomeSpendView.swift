@@ -132,24 +132,16 @@ struct HomeSpendView: View {
         }
         Spacer()
         
-            // 네비게이션바 뒤로가기 버튼 커스텀
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color.black)
-                    }
-                }
-                
-                ToolbarItemGroup(placement: .keyboard) {
-                    KeypadButton(
-                        text: "저장하기", enable: !money.isEmpty, action: { print("버튼 눌림 ㅇㅇ") }
-                    )
-                }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                KeypadButton(
+                    text: "저장하기", enable: !money.isEmpty, action: { print("버튼 눌림 ㅇㅇ") }
+                )
             }
-            .navigationBarBackButtonHidden(true)
+        }
+        .navigationBarBackButtonHidden(true)
+        .disableAutocorrection(true)
+        .backButtonStyle()
     }
 }
 
