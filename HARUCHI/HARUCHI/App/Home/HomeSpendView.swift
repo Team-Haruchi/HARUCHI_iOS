@@ -15,6 +15,8 @@ struct HomeSpendView: View {
     @State private var upSpendSheet = false
     @State private var showMainButton = false
     @State private var selectedType = ""
+    @State private var selectedIncome = "미분류"
+    @State private var showIncomeSheet = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -59,7 +61,8 @@ struct HomeSpendView: View {
                                 selectedCategory = "미분류"
                                 upSpendSheet = true
                             } else {
-                                selectedCategory = category
+                                selectedCategory = "미분류"
+                                showIncomeSheet = true
                             }
                         }
                     
@@ -107,12 +110,24 @@ struct HomeSpendView: View {
         }
         .sheet(isPresented: $upSpendSheet) {
             SpendSheetView(selectedCategory: $selectedCategory)
-            .presentationDragIndicator(.visible)
-            .presentationDetents([.medium]) // sheet 크기 반만
+                .presentationDragIndicator(.visible)
+                .presentationDetents([.medium]) // sheet 크기 반만
         }
+        .sheet(isPresented: $showIncomeSheet) {
+            IncomeSheetView(selectedIncome: $selectedIncome)
+                .presentationDragIndicator(.visible)
+                .presentationDetents([.height(260)])
+        }
+        
         .onChange(of: selectedCategory) { newValue in
             if newValue != "미분류" && newValue != "지출" {
                 showMainButton = true
+            }
+        }
+        .onChange(of: selectedIncome) { newValue in
+            if newValue != "미분류" && newValue != "수입" {
+                selectedCategory = newValue
+                showIncomeSheet = true
             }
         }
         Spacer()
