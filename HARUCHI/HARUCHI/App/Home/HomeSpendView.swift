@@ -11,9 +11,10 @@ struct HomeSpendView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var money = ""
-
-    var category = ["수입", "지출"]
     @State private var selectedCategory = ""
+    @State private var upSpendSheet = false
+    @State private var showMainButton = false
+    @State private var selectedType = ""
     
     var body: some View {
         VStack(spacing: 0) {
@@ -47,17 +48,23 @@ struct HomeSpendView: View {
                 
                 Spacer()
                 
-                ForEach(category, id: \.self) { category in
+                ForEach(["수입", "지출"], id: \.self) { category in
                     Text(category)
                         .background(Color.clear)
-                        .foregroundColor(selectedCategory == category ? Color.black : Color.gray5)
-                        .font(selectedCategory == category ? .haruchi(.body_sb16) : .haruchi(.body_r16))
+                        .foregroundColor(selectedType == category ? Color.black : Color.gray5)
+                        .font(selectedType == category ? .haruchi(.body_sb16) : .haruchi(.body_r16))
                         .onTapGesture {
-                            selectedCategory = category
+                            selectedType = category
+                            if category == "지출" {
+                                selectedCategory = "미분류"
+                                upSpendSheet = true
+                            } else {
+                                selectedCategory = category
+                            }
                         }
                     
                     // 수입 지출 중간 간격
-                    if category != self.category.last {
+                    if category != "지출" {
                         Spacer().frame(width: 22)
                     }
                 }
@@ -75,13 +82,38 @@ struct HomeSpendView: View {
                 
                 Spacer()
                 
-                Text("미분류")
+                Text(selectedCategory.isEmpty || selectedCategory == "지출" ? "미분류" : selectedCategory)
+                    .font(selectedCategory == "미분류" ? .haruchi(.body_sb16) : .haruchi(.body_r16))
+                    .foregroundColor(selectedCategory == "미분류" ? Color.gray5 : Color.black)
                 Image(systemName: "chevron.right")
             }
             .font(.haruchi(.body_r16))
             .foregroundColor(Color.gray5)
             .frame(width: 345, height: 45)
             .padding(.horizontal, 24)
+            .onTapGesture {
+                if selectedType == "지출" {
+                    upSpendSheet = true
+                }
+            }
+            
+            // action 나중에 바꾸기
+            if showMainButton {
+                MainButton(text: "저장하기", enable: selectedCategory != "미분류", action: {
+                    print("ㅇㅋㅇㅋ")
+                })
+                .padding(.top, 400)
+            }
+        }
+        .sheet(isPresented: $upSpendSheet) {
+            SpendSheetView(selectedCategory: $selectedCategory)
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.medium]) // sheet 크기 반만
+        }
+        .onChange(of: selectedCategory) { newValue in
+            if newValue != "미분류" && newValue != "지출" {
+                showMainButton = true
+            }
         }
         Spacer()
         
