@@ -10,6 +10,7 @@
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */; };
 		9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */; };
+		9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508BC2C5A0A8600DFF5CA /* HomeViewModel.swift */; };
 		9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */; };
 		9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F70220B2C513D5C00405610 /* PercentageBar.swift */; };
 		9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */; };
@@ -40,6 +41,7 @@
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendSheetView.swift; sourceTree = "<group>"; };
 		9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSheetView.swift; sourceTree = "<group>"; };
+		9F1508BC2C5A0A8600DFF5CA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNicknameView.swift; sourceTree = "<group>"; };
 		9F70220B2C513D5C00405610 /* PercentageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentageBar.swift; sourceTree = "<group>"; };
 		9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */,
 				9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */,
 				9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */,
+				9F1508BC2C5A0A8600DFF5CA /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
 				C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */,
 				C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */,
+				9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */,
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,

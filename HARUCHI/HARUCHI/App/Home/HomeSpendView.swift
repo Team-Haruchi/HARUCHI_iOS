@@ -10,14 +10,8 @@ import SwiftUI
 struct HomeSpendView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var money = ""
-    @State private var selectedCategory = "미분류"
-    @State private var upSpendSheet = false
-    @State private var showMainButton = false
-    @State private var selectedType = ""
-    @State private var selectedIncome = "미분류"
-    @State private var showIncomeSheet = false
-    
+    @ObservedObject private var viewModel = HomeViewModel()
+
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
@@ -34,7 +28,7 @@ struct HomeSpendView: View {
                             .foregroundColor(Color.gray5)
                             .padding(.bottom, 25)
                         
-                        TextField("하루치 20000원", text: $money)
+                        TextField("하루치 20000원", text: $viewModel.money)
                             .font(.haruchi(.h2))
                             .foregroundColor(Color.black)
                             .keyboardType(.numberPad)
@@ -54,16 +48,16 @@ struct HomeSpendView: View {
                     ForEach(["수입", "지출"], id: \.self) { category in
                         Text(category)
                             .background(Color.clear)
-                            .foregroundColor(selectedType == category ? Color.black : Color.gray5)
-                            .font(selectedType == category ? .haruchi(.body_sb16) : .haruchi(.body_r16))
+                            .foregroundColor(viewModel.selectedType == category ? Color.black : Color.gray5)
+                            .font(viewModel.selectedType == category ? .haruchi(.body_sb16) : .haruchi(.body_r16))
                             .onTapGesture {
-                                selectedType = category
+                                viewModel.selectedType = category
                                 if category == "지출" {
-                                    selectedCategory = "미분류"
-                                    upSpendSheet = true
+                                    viewModel.selectedCategory = "미분류"
+                                    viewModel.upSpendSheet = true
                                 } else {
-                                    selectedCategory = "미분류"
-                                    showIncomeSheet = true
+                                    viewModel.selectedCategory = "미분류"
+                                    viewModel.showIncomeSheet = true
                                 }
                             }
                         
@@ -86,9 +80,9 @@ struct HomeSpendView: View {
                     
                     Spacer()
                     
-                    Text(selectedCategory == "미분류" ? "미분류" : selectedCategory)
-                        .font(selectedCategory == "미분류" ? .haruchi(.body_r16) : .haruchi(.body_sb16))
-                        .foregroundColor(selectedCategory == "미분류" ? Color.gray5 : Color.black)
+                    Text(viewModel.selectedCategory == "미분류" ? "미분류" : viewModel.selectedCategory)
+                        .font(viewModel.selectedCategory == "미분류" ? .haruchi(.body_r16) : .haruchi(.body_sb16))
+                        .foregroundColor(viewModel.selectedCategory == "미분류" ? Color.gray5 : Color.black)
                     Image(systemName: "chevron.right")
                 }
                 .font(.haruchi(.body_r16))
@@ -96,38 +90,38 @@ struct HomeSpendView: View {
                 .frame(width: 345, height: 45)
                 .padding(.horizontal, 24)
                 .onTapGesture {
-                    if selectedType == "지출" {
-                        upSpendSheet = true
+                    if viewModel.selectedType == "지출" {
+                        viewModel.upSpendSheet = true
                     }
                 }
                 
                 // action 나중에 바꾸기
-                if showMainButton {
-                    MainButton(text: "저장하기", enable: selectedCategory != "미분류", action: hideKeyboard
+                if viewModel.showMainButton {
+                    MainButton(text: "저장하기", enable: viewModel.selectedCategory != "미분류", action: hideKeyboard
                     )
                     .padding(.top, 400)
                 }
             }
-            .sheet(isPresented: $upSpendSheet) {
-                SpendSheetView(selectedCategory: $selectedCategory)
+            .sheet(isPresented: $viewModel.upSpendSheet) {
+                SpendSheetView(selectedCategory: $viewModel.selectedCategory)
                     .presentationDragIndicator(.visible)
                     .presentationDetents([.height(420)])
             }
-            .sheet(isPresented: $showIncomeSheet) {
-                IncomeSheetView(selectedIncome: $selectedIncome)
+            .sheet(isPresented: $viewModel.showIncomeSheet) {
+                IncomeSheetView(selectedIncome: $viewModel.selectedIncome)
                     .presentationDragIndicator(.visible)
                     .presentationDetents([.height(260)])
             }
             
-            .onChange(of: selectedCategory) { newValue in
+            .onChange(of: viewModel.selectedCategory) { newValue in
                 if newValue != "미분류" && newValue != "지출" {
-                    showMainButton = true
+                    viewModel.showMainButton = true
                 }
             }
-            .onChange(of: selectedIncome) { newValue in
+            .onChange(of: viewModel.selectedIncome) { newValue in
                 if newValue != "미분류" && newValue != "수입" {
-                    selectedCategory = newValue
-                    showIncomeSheet = true
+                    viewModel.selectedCategory = newValue
+                    viewModel.showIncomeSheet = true
                 }
             }
             Spacer()
@@ -135,7 +129,7 @@ struct HomeSpendView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
                         KeypadButton(
-                            text: "저장하기", enable: !money.isEmpty, action: hideKeyboard
+                            text: "저장하기", enable: !viewModel.money.isEmpty, action: hideKeyboard
                         )
                     }
                 }
