@@ -11,7 +11,7 @@ class CustomCalendarCell: FSCalendarCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // 예산을 표시하는 UILabel을 생성하고 설정합니다.
+        // 예산을 표시하는 UILabel을 생성하고 설정
         let budgetLabel = UILabel(frame: .zero)
         budgetLabel.textAlignment = .center
         budgetLabel.textColor = .black
@@ -36,6 +36,7 @@ class CustomCalendarCell: FSCalendarCell {
         let todayLayer = CAShapeLayer()
         todayLayer.fillColor = UIColor.clear.cgColor
         self.contentView.layer.insertSublayer(todayLayer, below: self.titleLabel!.layer)
+        self.contentView.layer.insertSublayer(todayLayer, at: 0)
         self.todayLayer = todayLayer
     }
 
@@ -47,14 +48,14 @@ class CustomCalendarCell: FSCalendarCell {
         super.layoutSubviews()
         
         // 예산 라벨의 프레임을 설정 - 날짜 아래에 위치하도록
-        self.budgetLabel.frame = CGRect(x: 0, y: self.contentView.bounds.height - 20, width: self.contentView.bounds.width, height: 20)
+        self.budgetLabel.frame = CGRect(x: 0, y: self.contentView.bounds.height - 23, width: self.contentView.bounds.width, height: 20)
         
         // 예산 라벨을 최상위에 위치하도록 설정
         self.contentView.bringSubviewToFront(self.budgetLabel)
         
         // 선택된 날짜 레이어의 경로 설정 (크기 조절)
         let diameter: CGFloat = min(self.contentView.bounds.height, self.contentView.bounds.width) * 0.8 // 크기 조절
-        let path = UIBezierPath(ovalIn: CGRect(x: (self.contentView.bounds.width - diameter) / 2, y: (self.contentView.bounds.height - 56), width: diameter, height: diameter))
+        let path = UIBezierPath(ovalIn: CGRect(x: (self.contentView.bounds.width - diameter) / 2, y: (self.contentView.bounds.height - 60), width: diameter, height: diameter))
         self.firstSelectionLayer.path = path.cgPath
         self.secondSelectionLayer.path = path.cgPath
         self.todayLayer.path = path.cgPath
@@ -91,13 +92,13 @@ struct FSCalendarView: UIViewRepresentable {
         calendar.appearance.headerDateFormat = "yyyy년 M월"
         calendar.appearance.headerTitleColor = UIColor.black
         calendar.appearance.headerTitleFont = UIFont(name: "Pretendard-SemiBold", size: 12)
-        calendar.headerHeight = 46 // 헤더 높이를 늘려서 마진 효과
+        calendar.headerHeight = 40 // 헤더 높이를 늘려서 마진 효과
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 //헤더 좌,우측 흐릿한 글씨 삭제
         
         // 날짜 텍스트 스타일 설정
         calendar.appearance.titleDefaultColor = UIColor.black
         calendar.appearance.titleFont = UIFont(name: "Pretendard-SemiBold", size: 12)
-        calendar.appearance.titleOffset = CGPoint(x: 0, y: -6) // 필요에 따라 오프셋 조정
+        calendar.appearance.titleOffset = CGPoint(x: 0, y: -10) // 필요에 따라 오프셋 조정
         
         // 오늘 날짜(Today) 관련
         calendar.appearance.titleTodayColor = .black //Today에 표시되는 특정 글자색
@@ -108,7 +109,7 @@ struct FSCalendarView: UIViewRepresentable {
         
         // 요일 숨기기
         calendar.weekdayHeight = 0 // 날짜 표시부 행의 높이
-     
+        
         return calendar
     }
     
@@ -140,6 +141,12 @@ struct FSCalendarView: UIViewRepresentable {
             let timeZoneOffset = TimeZone.current.secondsFromGMT(for: date)
             let correctedDate = Calendar.current.date(byAdding: .second, value: timeZoneOffset, to: date)!
             
+            if viewModel.isDateInCurrentMonth(date, currentMonth: currentMonth){
+                calendar.appearance.titleSelectionColor = .white
+            } else {
+                calendar.appearance.titleSelectionColor = UIColor(Color.gray5)
+            }
+            
             viewModel.selectDate(correctedDate)
             calendar.reloadData()
         }
@@ -157,24 +164,15 @@ struct FSCalendarView: UIViewRepresentable {
                 cell.budgetLabel.text = ""
             }
             
-            // 선택된 날짜의 색상 설정
+            // 선택된 날짜의 색상 설정 및 텍스트 색상 설정
             if let firstDate = viewModel.firstSelectedDate, Calendar.current.isDate(date, inSameDayAs: firstDate) {
                 cell.firstSelectionLayer.fillColor = UIColor(Color.mainBlue).cgColor
-                
-                
             } else if let secondDate = viewModel.secondSelectedDate, Calendar.current.isDate(date, inSameDayAs: secondDate) {
                 cell.firstSelectionLayer.fillColor = UIColor(Color.mainBlue).cgColor
                 cell.secondSelectionLayer.fillColor = UIColor(Color.red1).cgColor
-                
-                if viewModel.secondSelectedDate == viewModel.firstSelectedDate {
-                    calendar.appearance.titleSelectionColor = .black
-                } else {
-                    calendar.appearance.titleSelectionColor = .white
-                }
             } else {
-                //cell.firstSelectionLayer.fillColor = UIColor.clear.cgColor
-                //cell.secondSelectionLayer.fillColor = UIColor.clear.cgColor
-                //calendar.appearance.titleSelectionColor = .white
+                cell.firstSelectionLayer.fillColor = UIColor.clear.cgColor
+                cell.secondSelectionLayer.fillColor = UIColor.clear.cgColor
             }
             
             // 오늘 날짜의 색상 설정
@@ -196,12 +194,17 @@ struct FSCalendarView: UIViewRepresentable {
         
         // 선택된 날짜의 텍스트 색상을 설정하는 함수
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+            
             if let firstDate = viewModel.firstSelectedDate, Calendar.current.isDate(date, inSameDayAs: firstDate) {
                 return .white
             } else if let secondDate = viewModel.secondSelectedDate, Calendar.current.isDate(date, inSameDayAs: secondDate) {
                 return .white
             }
-            return .black
+            if Calendar.current.isDate(date, equalTo: currentMonth, toGranularity: .month) {
+                return .black
+            } else {
+                return UIColor(Color.gray5)
+            }
         }
         
         // 현재 월을 업데이트하는 함수
