@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37207B132C513CFE00F5527E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 37207B122C513CFE00F5527E /* FSCalendar */; };
+		37207B162C513D3E00F5527E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37207B152C513D3E00F5527E /* CalendarView.swift */; };
+		37207B182C513D4700F5527E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37207B172C513D4700F5527E /* CalendarViewModel.swift */; };
+		37207B242C51495100F5527E /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37207B232C51495100F5527E /* CalendarModel.swift */; };
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */; };
 		9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */; };
@@ -32,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37207B152C513D3E00F5527E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		37207B172C513D4700F5527E /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		37207B232C51495100F5527E /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNicknameView.swift; sourceTree = "<group>"; };
 		9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -63,12 +70,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37207B132C513CFE00F5527E /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37207B142C513D2E00F5527E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				37207B232C51495100F5527E /* CalendarModel.swift */,
+				37207B172C513D4700F5527E /* CalendarViewModel.swift */,
+				37207B152C513D3E00F5527E /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		9FFC87462C4D178200E30A8F /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +163,7 @@
 				C6C139D22C41485400AE2D9C /* ContentView.swift */,
 				9FFC87462C4D178200E30A8F /* Onboarding */,
 				C6C13A1F2C4D16ED00AE2D9C /* SignIn */,
+				37207B142C513D2E00F5527E /* Calendar */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -203,6 +222,9 @@
 			dependencies = (
 			);
 			name = HARUCHI;
+			packageProductDependencies = (
+				37207B122C513CFE00F5527E /* FSCalendar */,
+			);
 			productName = HARUCHI;
 			productReference = C6C139CD2C41485400AE2D9C /* HARUCHI.app */;
 			productType = "com.apple.product-type.application";
@@ -231,6 +253,9 @@
 				Base,
 			);
 			mainGroup = C6C139C42C41485400AE2D9C;
+			packageReferences = (
+				37207B112C513CFD00F5527E /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = C6C139CE2C41485400AE2D9C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
+				37207B242C51495100F5527E /* CalendarModel.swift in Sources */,
 				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
 				C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */,
@@ -275,7 +301,9 @@
 				C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */,
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
+				37207B182C513D4700F5527E /* CalendarViewModel.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
+				37207B162C513D3E00F5527E /* CalendarView.swift in Sources */,
 				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
@@ -500,6 +528,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		37207B112C513CFD00F5527E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		37207B122C513CFE00F5527E /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37207B112C513CFD00F5527E /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C6C139C52C41485400AE2D9C /* Project object */;
 }
