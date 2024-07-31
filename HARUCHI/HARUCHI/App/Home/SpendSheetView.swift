@@ -50,8 +50,8 @@ struct SpendSheetView: View {
                     presentationMode.wrappedValue.dismiss()
                 })
             }
-            .padding(.horizontal, 30)
-            .padding(.bottom, 30)
+            .padding(.horizontal, 40)
+            .padding(.bottom, 40)
             .font(.haruchi(.caption3))
             .foregroundColor(Color.black)
             
@@ -73,8 +73,8 @@ struct SpendSheetView: View {
                     presentationMode.wrappedValue.dismiss()
                 })
             }
-            .padding(.horizontal, 30)
-            .padding(.bottom, 30)
+            .padding(.horizontal, 40)
+            .padding(.bottom, 40)
             .font(.haruchi(.caption3))
             .foregroundColor(Color.black)
             
@@ -96,11 +96,12 @@ struct SpendSheetView: View {
                     presentationMode.wrappedValue.dismiss()
                 })
             }
-            .padding(.horizontal, 30)
-            .padding(.bottom, 30)
+            .padding(.horizontal, 40)
+            .padding(.bottom, 40)
             .font(.haruchi(.caption3))
             .foregroundColor(Color.black)
         }
+        .frame(height: 450)
     }
 }
 

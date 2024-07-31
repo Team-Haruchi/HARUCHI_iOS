@@ -35,19 +35,15 @@ struct OnboardingNicknameView: View {
                                 .keyboardType(.default)
                                 .multilineTextAlignment(.leading)
                                 .padding(.leading, 24)
-                                
                             
                             Text("\(viewModel.text.count)/\(viewModel.maxLength)")
                                 .font(.haruchi(.h2))
                                 .foregroundColor(viewModel.text.isEmpty ? Color.gray : (viewModel.limitLength == .invalid ? Color.red : Color.black))
                                 .padding(.leading, 56)
-                            
                         }
                         .padding(.vertical, 5)
                     }
-                 
                     .padding(.trailing, 24)
-                    
                     
                     HStack {
                         if viewModel.limitLength == .invalid && !viewModel.text.isEmpty {
@@ -69,8 +65,11 @@ struct OnboardingNicknameView: View {
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
             
-            NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true), tag: 1, selection: $viewModel.tag) {
+            NavigationLink(value: true) {
                 EmptyView()
+            }
+            .navigationDestination(isPresented: $viewModel.isNavigationActive) {
+                ContentView().navigationBarBackButtonHidden(true)
             }
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -78,8 +77,9 @@ struct OnboardingNicknameView: View {
         
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
-                KeypadButton( text: "가입완료", enable: viewModel.limitLength == .valid && viewModel.text.count <= viewModel.maxLength, action: { viewModel.tag = 1 }
-                              )
+                KeypadButton(text: "가입완료", enable: viewModel.limitLength == .valid && viewModel.text.count <= viewModel.maxLength) {
+                    viewModel.isNavigationActive = true
+                }
             }
         }
     }
