@@ -54,8 +54,8 @@ extension Color {
     static let purple = Color(uiColor: UIColor(red: 107/255, green: 120/255, blue: 218/255, alpha: 1))
     
     /// #FF7777
-    static let haruchiRed = Color(uiColor: UIColor(red: 255/255, green: 119/255, blue: 119/255, alpha: 1))
+    static let red = Color(uiColor: UIColor(red: 255/255, green: 119/255, blue: 119/255, alpha: 1))
     
-    /// #EAF2FF
+    /// #F7F7FF -> #EAF2FF
     static let sub3Blue = Color(uiColor: UIColor(red: 234/255, green: 242/255, blue: 255/255, alpha: 1))
 }
