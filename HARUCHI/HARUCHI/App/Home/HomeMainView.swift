@@ -17,7 +17,6 @@ struct HomeMainView: View {
             NavigationView {
                 ScrollView {
                     VStack(spacing: 0) {
-                        // 로고, 알림창
                         VStack(spacing: 0) {
                             HStack {
                                 Image("HomeLogo")
@@ -32,10 +31,8 @@ struct HomeMainView: View {
                         .padding(.bottom, 25)
                         
                         
-                        // 월, 예산
                         VStack(alignment: .leading, spacing: 20) {
                             
-                            // 월 단위 나중에 수정 필요
                             Text("6월")
                                 .font(.haruchi(.h2))
                             
@@ -58,18 +55,15 @@ struct HomeMainView: View {
                         }
                         .padding(.horizontal, 24)
                         
-                        // 그래프
                         PercentageBar(viewModel: percent)
                             .padding(.top, 16)
                         
-                        // 수입 - 지출
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.sub3Blue)
                                 .frame(width: 345, height: 120)
                                 .overlay (
                                     
-                                    // 요일 나중에 수정 필요
                                     VStack(spacing: 0) {
                                         Text("15일 목요일")
                                             .font(.haruchi(.body_r16))
@@ -106,8 +100,7 @@ struct HomeMainView: View {
                                 )
                         }
                         .padding(.top, 20)
-                        
-                        // 지출마감
+
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray1)
@@ -144,7 +137,6 @@ struct HomeMainView: View {
                         .padding(.top, 20)
                         
                         
-                        // 달력 나중에 넣기
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray6)
@@ -153,7 +145,6 @@ struct HomeMainView: View {
                         .padding(.top, 25)
                         
                         
-                        // 세이프박스
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray1)
