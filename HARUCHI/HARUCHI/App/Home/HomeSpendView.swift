@@ -130,12 +130,14 @@ struct HomeSpendView: View {
         .sheet(isPresented: $viewModel.upSpendSheet) {
             SpendSheetView(selectedCategory: $viewModel.selectedCategory)
                 .presentationDragIndicator(.hidden)
-                .presentationDetents([.height(450)])
+                .presentationDetents([.height(468)])
+                .presentationCornerRadius(0)
         }
         .sheet(isPresented: $viewModel.showIncomeSheet) {
             IncomeSheetView(selectedIncome: $viewModel.selectedIncome)
                 .presentationDragIndicator(.hidden)
                 .presentationDetents([.height(260)])
+                .presentationCornerRadius(0)
         }
     }
 }
