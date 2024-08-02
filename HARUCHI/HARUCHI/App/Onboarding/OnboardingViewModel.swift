@@ -17,6 +17,7 @@ enum TextLengthStatus {
 class OnboardingViewModel: ObservableObject {
     @Published var text = ""
     @Published var tag: Int? = nil
+    @Published var budget: String = "0" // 예산값 저장
     
     @Published var limitLength: TextLengthStatus = .default
     let maxLength = 5
