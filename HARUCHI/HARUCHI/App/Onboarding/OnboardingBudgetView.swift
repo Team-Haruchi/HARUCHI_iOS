@@ -9,8 +9,9 @@ import SwiftUI
 
 struct OnboardingBudgetView: View {
     @ObservedObject private var viewModel = OnboardingViewModel()
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("한 달 예산을 정해볼까요?")
@@ -34,14 +35,12 @@ struct OnboardingBudgetView: View {
                         .font(.haruchi(.body_r16))
                         .padding(.vertical, 5)
                     
-                    
                     TextField("0", text: $viewModel.text)
                         .font(.haruchi(.h2))
                         .foregroundColor(.gray6)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .padding(.vertical, 5)
-                    
                     
                     Text("원")
                         .font(.haruchi(.h2))
@@ -57,8 +56,11 @@ struct OnboardingBudgetView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: OnboardingNicknameView().navigationBarBackButtonHidden(true), tag: 1, selection: $viewModel.tag) {
+                NavigationLink(value: true) {
                     EmptyView()
+                }
+                .navigationDestination(isPresented: $viewModel.isNavigationActive) {
+                    OnboardingNicknameView().navigationBarBackButtonHidden(true)
                 }
                 .navigationBarTitleDisplayMode(.inline)
             }
@@ -73,7 +75,7 @@ struct OnboardingBudgetView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     KeypadButton(
-                        text: "다음", enable: !viewModel.text.isEmpty, action: { viewModel.tag = 1 }
+                        text: "다음", enable: !viewModel.text.isEmpty, action: { viewModel.isNavigationActive = true }
                     )
                 }
             }

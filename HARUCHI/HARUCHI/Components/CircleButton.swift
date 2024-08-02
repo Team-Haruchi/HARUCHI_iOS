@@ -21,15 +21,20 @@ struct CircleButton: View {
     var body: some View {
         Button(action: action) {
             VStack(spacing: 0) {
+                Spacer(minLength: 0)
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 48, height: 48)
+                
+                Spacer(minLength: 0)
+                
                 Text(text)
                     .font(.haruchi(size: 11, weight: 400))
                     .foregroundColor(.black)
             }
-            .padding()
+            .padding(.top, 30)
+            .padding(.bottom, 30)
             .frame(width: size, height: size)
             .background(CustomColors.lightBlue)
             .clipShape(Circle())

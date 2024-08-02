@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct HARUCHIApp: App {
-    
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.font: UIFont(name: "Pretendard-SemiBold", size: 20)!]
