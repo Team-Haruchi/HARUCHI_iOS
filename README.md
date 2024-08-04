@@ -1,4 +1,4 @@
-# 하루치(HARUCHI)
+# HARUCHI (하루치)
 
 <p align="center">
   <br>
@@ -15,30 +15,30 @@
 
 
 > 지출통제 도우미.
-> 
+>
 > 하루 예산을 기준으로 유동적으로 소비하세요.
-> 
+>
 > 지정한 한도 내에서 소비할 수 있도록 도와드립니다.
-> 
+>
 > 예산을 설정하시면 하루에 얼마나 쓸 수 있는지 알려드려요.
-> 
+>
 > 당일의 지출에 따라 그날그날의 예산을 재분배할 수도 있어요.
 >
-</p>
+> </p>
 
 
 
 <br>
 
-## iOS 개발팀원
+## 
 
 
-| 팀원 | 기능구현 |
-| :---: | :---:| 
-| 두부/이건우||
-| 위즈/이슬기||
-| 체리/채리원||
-| 이바/이상엽||
+|                      팀원                       | 기능구현 |
+| :---------------------------------------------: | :------: |
+|     [두부/이건우](https://github.com/2dubu)     |          |
+| [위즈/이슬기](https://github.com/leeseulgi0208) |          |
+|  [체리/채리원](https://github.com/cherry-p0p)   |          |
+|   [이바/이상엽](https://github.com/sangyup12)   |          |
 
 
 <br>
@@ -137,12 +137,3 @@
 
 - 오늘 과소비했더라도, 예산 재배치를 통해 긴축 목표를 잃지 않게 해줄 수 있습니다.
 </aside>
-
-
-
-<!-- Stack Icon Refernces -->
-
-[js]: /images/stack/javascript.svg
-[ts]: /images/stack/typescript.svg
-[react]: /images/stack/react.svg
-[node]: /images/stack/node.svg
