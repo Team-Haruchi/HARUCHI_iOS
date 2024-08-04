@@ -17,6 +17,7 @@ class SignInViewModel: ObservableObject {
     
     // 인증번호 요청 가능 여부 (사용자 정보값 validation 및 약관 동의 여부)
     @Published var canGoNext: Bool = false
+    @Published var showEmailAuthView: Bool = false
     
     @Published var email: String = "" {
         didSet {

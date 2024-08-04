@@ -53,7 +53,7 @@ struct SignInView: View {
                         GrayLine()
                             .padding(.bottom, 8)
                         
-                        Text(viewModel.validationStatus[.email]! ? "" : "올바르지 않은 형식입니다.")
+                        Text(viewModel.validationStatus[.email] == false ? "올바르지 않은 형식입니다." : "")
                             .font(.haruchi(size: 10, family: .Regular))
                             .foregroundColor(.red)
                             .frame(height: 20)
@@ -76,7 +76,7 @@ struct SignInView: View {
                         GrayLine()
                             .padding(.bottom, 8)
                         
-                        Text(viewModel.validationStatus[.password]! ? "" : "비밀번호는 영어, 숫자, 특수문자 조합 8~30자리이어야 합니다.")
+                        Text(viewModel.validationStatus[.password] == false ? "비밀번호는 영어, 숫자, 특수문자 조합 8~30자리이어야 합니다." : "")
                             .font(.haruchi(size: 10, family: .Regular))
                             .foregroundColor(.red)
                             .frame(height: 20)
@@ -98,7 +98,7 @@ struct SignInView: View {
                         GrayLine()
                             .padding(.bottom, 8)
                         
-                        Text(viewModel.validationStatus[.passwordValid]! ? "" : "비밀번호가 일치하지 않습니다.")
+                        Text(viewModel.validationStatus[.passwordValid] == false ? "비밀번호가 일치하지 않습니다." : "")
                             .font(.haruchi(size: 10, family: .Regular))
                             .foregroundColor(.red)
                     }
@@ -175,11 +175,13 @@ struct SignInView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 24)
                     
-                    MainButton(text: "인증번호 받기", enable: false) {
-                        
+                    
+                    MainButton(text: "인증번호 받기", enable: true) {
+                        viewModel.showEmailAuthView = true
                     }
                     .padding(.top, 40)
                     .padding(.bottom, 18)
+                    
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }
@@ -213,6 +215,9 @@ struct SignInView: View {
         .navigationBarBackButtonHidden(true)
         .disableAutocorrection(true)
         .backButtonStyle()
+        .navigationDestination(isPresented: $viewModel.showEmailAuthView) {
+            EmailAuthView()
+        }
     }
 }
 

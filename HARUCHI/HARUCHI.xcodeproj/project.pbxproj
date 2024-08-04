@@ -22,6 +22,7 @@
 		9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */; };
 		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
 		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
+		C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6346F462C5F98140048708D /* EmailAuthView.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D22C41485400AE2D9C /* ContentView.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpendView.swift; sourceTree = "<group>"; };
 		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
+		C6346F462C5F98140048708D /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
 		C6C139D22C41485400AE2D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				C6C13A212C4D173700AE2D9C /* StartView.swift */,
 				C6C13A202C4D173700AE2D9C /* SignInView.swift */,
+				C6346F462C5F98140048708D /* EmailAuthView.swift */,
 				C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */,
 			);
 			path = SignIn;
@@ -338,6 +341,7 @@
 				9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */,
 				C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */,
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
+				C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
