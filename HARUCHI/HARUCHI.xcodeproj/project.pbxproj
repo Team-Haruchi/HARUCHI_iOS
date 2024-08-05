@@ -292,6 +292,7 @@
 			mainGroup = C6C139C42C41485400AE2D9C;
 			packageReferences = (
 				374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = C6C139CE2C41485400AE2D9C /* Products */;
 			projectDirPath = "";
@@ -580,6 +581,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.8.4;
+			};
+		};
+		C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
