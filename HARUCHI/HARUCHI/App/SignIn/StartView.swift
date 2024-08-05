@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 0) {
                 Spacer()
                 
