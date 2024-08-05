@@ -23,6 +23,7 @@
 		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
 		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
 		C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6346F462C5F98140048708D /* EmailAuthView.swift */; };
+		C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDA82C60E05C009DEC3C /* AuthAPI.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D22C41485400AE2D9C /* ContentView.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
 		C6346F462C5F98140048708D /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
+		C695BDA82C60E05C009DEC3C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
 		C6C139D22C41485400AE2D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,22 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		C695BDA62C60DD33009DEC3C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDA72C60DD3D009DEC3C /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C695BDA72C60DD3D009DEC3C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDA82C60E05C009DEC3C /* AuthAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		C6C139C42C41485400AE2D9C = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +175,7 @@
 				C6C139E52C414C9E00AE2D9C /* Helper */,
 				C6C139E62C414D8900AE2D9C /* Components */,
 				C6C139E72C414D9700AE2D9C /* App */,
+				C695BDA62C60DD33009DEC3C /* Network */,
 				C6C139D62C41485500AE2D9C /* Preview Content */,
 			);
 			path = HARUCHI;
@@ -345,6 +364,7 @@
 				C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */,
+				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
 				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
 				9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */,
