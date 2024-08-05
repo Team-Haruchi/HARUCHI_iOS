@@ -22,6 +22,7 @@ enum Budget {
 
 class BudgetMainViewModel: ObservableObject {
     @Published var isPushButtonActive: Bool = false
+    @Published var isBoxButtonActive: Bool = false
     @Published var money = ""
     
     @Published var pushMethod: Budget.Push?

@@ -11,11 +11,13 @@ struct BudgetMainView : View {
     
     @EnvironmentObject var budgetViewModel : BudgetMainViewModel
     @State private var navigateToNextView = false
+    @EnvironmentObject var calendarViewModel : CalendarViewModel
     
     @State private var xOffset: CGFloat = (UIScreen.main.bounds.width - 48) / 4 // 초기값을 "당겨쓰기" 버튼 위치로 설정
     private let buttonWidth = (UIScreen.main.bounds.width - 68) / 2 // 각 버튼의 너비
     
     var bubbleRadioButton: some View {
+        
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.sub3Blue)
@@ -29,6 +31,7 @@ struct BudgetMainView : View {
                     .onTapGesture {
                         withAnimation {
                             budgetViewModel.isPushButtonActive = true
+                            budgetViewModel.isBoxButtonActive = false
                         }
                     }
                 Text("당겨쓰기")
@@ -38,6 +41,7 @@ struct BudgetMainView : View {
                     .onTapGesture {
                         withAnimation {
                             budgetViewModel.isPushButtonActive = false
+                            budgetViewModel.isBoxButtonActive = false
                         }
                     }
             }
@@ -69,10 +73,8 @@ struct BudgetMainView : View {
                     }
                 }//HStack
                 ScrollView {
-                    RoundedRectangle(cornerRadius: 8)
-                        .frame(height: 378)
-                        .foregroundColor(Color.sub3Blue)
-                        .padding(.top, 15)
+                    FSCalendarView(viewModel: calendarViewModel)
+                        .frame(width: 345, height: 380)
                     
                     bubbleRadioButton
                         .padding(.top, 20)
@@ -90,7 +92,8 @@ struct BudgetMainView : View {
                                 budgetViewModel.showOverlayPush.toggle()
                             }){
                                 HStack {
-                                    Text(budgetViewModel.activeMethodStr())
+                                    let dates = calendarViewModel.selectedDates()
+                                    Text(budgetViewModel.isBoxButtonActive ? budgetViewModel.activeMethodStr() : "\(calendarViewModel.dateString(from: dates.1))")
                                         .font(.haruchi(.body_m14))
                                         .foregroundColor(Color.black)
                                         .animation(nil)
@@ -115,6 +118,7 @@ struct BudgetMainView : View {
                                             .foregroundColor(Color.gray5)
                                         Spacer()
                                         Button(action: {
+                                            budgetViewModel.isBoxButtonActive = true
                                             if budgetViewModel.isPushButtonActive {
                                                 budgetViewModel.pushMethod = .split
                                             } else {
@@ -135,11 +139,11 @@ struct BudgetMainView : View {
                                             .foregroundColor(Color.gray5)
                                         Spacer()
                                         Button(action: {
+                                            budgetViewModel.isBoxButtonActive = true
                                             if budgetViewModel.isPushButtonActive {
                                                 budgetViewModel.pushMethod = .safebox
                                             } else {
                                                 budgetViewModel.pullMethod = .safebox
-                                                
                                             }
                                         }) {
                                             Text("세이프박스")
@@ -152,14 +156,15 @@ struct BudgetMainView : View {
                                 .padding()
                             }
                         }
-                        HStack{
+                        HStack {
                             Text(budgetViewModel.isPushButtonActive ? "이날에서" : "이날로")
                                 .font(.haruchi(.body_m14))
                                 .foregroundColor(Color.gray5)
                                 .animation(nil)
                             
                             Spacer()
-                            Text("선택해주세요")
+                            let dates = calendarViewModel.selectedDates()
+                            Text("\(calendarViewModel.dateString(from: dates.0))" )
                                 .font(.haruchi(.body_m14))
                                 .foregroundColor(Color.gray5)
                         }

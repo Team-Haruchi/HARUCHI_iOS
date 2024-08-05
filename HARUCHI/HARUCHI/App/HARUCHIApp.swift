@@ -26,6 +26,7 @@ struct HARUCHIApp: App {
 //            ToggleButtonsView()
             //StartView()
             BudgetMainView().environmentObject(BudgetMainViewModel())
+                .environmentObject(CalendarViewModel())
             //OnboardingBudgetView()
 //            ContentView()
 //            ContentView2()

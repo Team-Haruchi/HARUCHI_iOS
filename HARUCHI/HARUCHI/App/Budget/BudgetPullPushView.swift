@@ -11,6 +11,7 @@ import SwiftUI
 struct BudgetPullPushView: View {
     
     @EnvironmentObject var budgetViewModel : BudgetMainViewModel
+    @EnvironmentObject var calendarViewModel : CalendarViewModel
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -21,19 +22,30 @@ struct BudgetPullPushView: View {
                 .padding(.top, 194)
             
             HStack(spacing: 0){
-                if budgetViewModel.pushMethod == .split || budgetViewModel.pullMethod == .split {
-                    Text("고르게")
-                        .font(.haruchi(.h1))
-                        .foregroundStyle(Color.mainBlue)
+                if budgetViewModel.isBoxButtonActive {
+                    if budgetViewModel.pushMethod == .split || budgetViewModel.pullMethod == .split {
+                        Text("고르게")
+                            .font(.haruchi(.h1))
+                            .foregroundStyle(Color.mainBlue)
+                    } else {
+                        Text("세이프박스")
+                            .font(.haruchi(.h1))
+                            .foregroundStyle(Color.mainBlue)
+                        Text(budgetViewModel.isPushButtonActive ? "로" : "에서")
+                            .font(.haruchi(.h1))
+                            .foregroundStyle(Color.black)
+                    }
                 } else {
-                    Text("세이프박스")
+                    let dates = calendarViewModel.selectedDates()
+                    Text("\(calendarViewModel.dateString(from: dates.1))")
                         .font(.haruchi(.h1))
                         .foregroundStyle(Color.mainBlue)
                     Text(budgetViewModel.isPushButtonActive ? "로" : "에서")
                         .font(.haruchi(.h1))
                         .foregroundStyle(Color.black)
                 }
-            } .padding(.top, 30)
+            }
+            .padding(.top, 30)
             
             HStack(spacing: 0) {
                 if budgetViewModel.pushMethod == .split {
