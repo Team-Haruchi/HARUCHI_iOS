@@ -36,7 +36,7 @@ struct SignInView: View {
                             .frame(width: 100, height: 100)
                         Spacer()
                     }
-                    .padding(.top, 35)
+                    .padding(.top, 20)
                     
                     Group {
                         Text("이메일")
@@ -216,7 +216,7 @@ struct SignInView: View {
         .disableAutocorrection(true)
         .backButtonStyle()
         .navigationDestination(isPresented: $viewModel.showEmailAuthView) {
-            EmailAuthView()
+            EmailAuthView().environmentObject(viewModel)
         }
     }
 }
