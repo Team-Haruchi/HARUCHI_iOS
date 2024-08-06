@@ -15,7 +15,7 @@ class HomeViewModel: ObservableObject {
     @Published var selectedType = ""
     @Published var selectedIncome = "미분류"
     @Published var showIncomeSheet = false
-    
+    @Published var navigateToReceipt: Bool = false
     
     
     func hideKeyboard() {
