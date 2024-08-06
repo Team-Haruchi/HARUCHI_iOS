@@ -83,7 +83,7 @@ struct HeaderView: View {
                 .padding(.bottom, 25)
             
             TextField("하루치 20000원", text: $viewModel.money)
-                .font(.haruchi(.h2))
+                .font(.haruchi(.h1))
                 .foregroundColor(Color.black)
                 .keyboardType(.numberPad)
                 .multilineTextAlignment(.leading)
