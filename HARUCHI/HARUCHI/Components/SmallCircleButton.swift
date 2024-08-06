@@ -9,11 +9,10 @@ import SwiftUI
 
 struct SmallCircleButton: View {
     
-    private var image: String
-    private var size: CGFloat
-    private var text: String
-    private var charge: String
-    private var action: () -> Void
+    let image: String
+    let text: String
+    let charge: String
+    let action: () -> Void
     
     var body: some View {
         HStack {
@@ -22,9 +21,8 @@ struct SmallCircleButton: View {
                 .scaledToFit()
                 .frame(width: 22, height: 22)
                 .background(CustomColors.lightBlue)
-                .clipShape(Circle())
-            
-            Spacer(minLength: 10)
+                .clipShape(Circle()).frame(width: 41, height: 41)
+                .padding(.trailing, 10)
             
             Text(text)
                 .font(.haruchi(.button12))
@@ -36,7 +34,6 @@ struct SmallCircleButton: View {
                 .font(.haruchi(.button12))
                 .foregroundStyle(Color.gray5)
         }
-        .frame(width: size, height: size)
         .padding(.horizontal, 24)
     }
 }
