@@ -16,7 +16,6 @@
 		37FD1F362C5F928800B2B44B /* WeekCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */; };
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */; };
-		9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */; };
 		9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508BC2C5A0A8600DFF5CA /* HomeViewModel.swift */; };
 		9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */; };
 		9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F70220B2C513D5C00405610 /* PercentageBar.swift */; };
@@ -24,11 +23,10 @@
 		9FAB27012C5FB31D007FDD23 /* SmallCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB27002C5FB31D007FDD23 /* SmallCircleButton.swift */; };
 		9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD1F112C5126F700CDB0B8 /* HomeMainView.swift */; };
 		9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */; };
-		9FF30F312C5FBC23005994BB /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
-		9FF30F322C5FBC28005994BB /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9FF30F372C609EE4005994BB /* HomeReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF30F362C609EE4005994BB /* HomeReceiptView.swift */; };
 		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
 		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
+		C62EAD312C662C3700D199FA /* IncomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */; };
 		C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6346F462C5F98140048708D /* EmailAuthView.swift */; };
 		C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDA82C60E05C009DEC3C /* AuthAPI.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
@@ -369,8 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FF30F322C5FBC28005994BB /* CircleButton.swift in Sources */,
-				9FF30F312C5FBC23005994BB /* HARUCHIApp.swift in Sources */,
+				C62EAD312C662C3700D199FA /* IncomeSheetView.swift in Sources */,
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
 				37FD1F362C5F928800B2B44B /* WeekCalendarModel.swift in Sources */,
 				374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */,
@@ -389,11 +386,9 @@
 				C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */,
 				9FF30F372C609EE4005994BB /* HomeReceiptView.swift in Sources */,
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
-				9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */,
 				9FAB27012C5FB31D007FDD23 /* SmallCircleButton.swift in Sources */,
 				C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
-				9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
 				37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */,
