@@ -11,6 +11,9 @@
 		374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5C2C5A340E00323379 /* CalendarModel.swift */; };
 		374E1D612C5A340E00323379 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5D2C5A340E00323379 /* CalendarView.swift */; };
 		374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5E2C5A340E00323379 /* CalendarViewModel.swift */; };
+		37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */; };
+		37FD1F342C5F927C00B2B44B /* WeekCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */; };
+		37FD1F362C5F928800B2B44B /* WeekCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */; };
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */; };
 		9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */; };
@@ -47,6 +50,9 @@
 		374E1D5C2C5A340E00323379 /* CalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		374E1D5D2C5A340E00323379 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		374E1D5E2C5A340E00323379 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewModel.swift; sourceTree = "<group>"; };
+		37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarModel.swift; sourceTree = "<group>"; };
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendSheetView.swift; sourceTree = "<group>"; };
 		9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSheetView.swift; sourceTree = "<group>"; };
@@ -101,6 +107,16 @@
 				374E1D5E2C5A340E00323379 /* CalendarViewModel.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		37FD1F302C5F836700B2B44B /* WeekCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */,
+				37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */,
+				37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */,
+			);
+			path = WeekCalendar;
 			sourceTree = "<group>";
 		};
 		9FA2A75E2C4F96BD0082636F /* Home */ = {
@@ -200,6 +216,7 @@
 		C6C139E62C414D8900AE2D9C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				37FD1F302C5F836700B2B44B /* WeekCalendar */,
 				374E1D5F2C5A340E00323379 /* Calendar */,
 				C6C139F42C4549B800AE2D9C /* MainButton.swift */,
 				4FB934372C47AC2700994816 /* CircleButton.swift */,
@@ -345,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
+				37FD1F362C5F928800B2B44B /* WeekCalendarModel.swift in Sources */,
 				374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */,
 				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
@@ -353,6 +371,7 @@
 				9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */,
+				37FD1F342C5F927C00B2B44B /* WeekCalendarViewModel.swift in Sources */,
 				374E1D612C5A340E00323379 /* CalendarView.swift in Sources */,
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,
 				9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */,
@@ -366,6 +385,7 @@
 				9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
+				37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */,
 				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
 				9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
