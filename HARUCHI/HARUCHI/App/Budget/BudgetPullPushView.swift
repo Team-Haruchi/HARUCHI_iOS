@@ -18,7 +18,7 @@ struct BudgetPullPushView: View {
         
         VStack(spacing: 0) {
             
-            Image("haruchiSimbol1")
+            Image("mainLogo")
                 .padding(.top, 194)
             
             HStack(spacing: 0){

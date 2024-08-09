@@ -19,11 +19,11 @@ struct HomeMainView: View {
                     VStack(spacing: 0) {
                         VStack(spacing: 0) {
                             HStack {
-                                Image("HomeLogo")
+                                Image("mainLogo")
                                 
                                 Spacer()
                                 
-                                Image("HomeAlarm")
+                                // Image("HomeAlarm") 알림창 미구현
                             }
                         }
                         .padding(.horizontal, 24)

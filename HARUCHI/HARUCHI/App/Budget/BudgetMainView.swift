@@ -63,14 +63,14 @@ struct BudgetMainView : View {
         NavigationStack {
             VStack(alignment: .leading) {
                 HStack{
-                    Image("haruchiLogoBold1")
+                    Image("mainLogo")
                     Spacer()
-                    Button(action:{
-                        
-                    }){
-                        Image("notification")
-                            .frame(width: 30, height: 30)
-                    }
+//                    Button(action:{ 알림창 미구현
+//
+//                    }){
+//                        Image("notification")
+//                            .frame(width: 30, height: 30)
+//                    }
                 }//HStack
                 ScrollView {
                     FSCalendarView(viewModel: calendarViewModel)

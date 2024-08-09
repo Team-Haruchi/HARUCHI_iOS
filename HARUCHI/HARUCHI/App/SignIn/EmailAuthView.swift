@@ -15,7 +15,7 @@ struct EmailAuthView: View {
         VStack(spacing: 0) {
             HStack {
                 Spacer()
-                Image("signIn_circleLogo")
+                Image("circleLogo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
