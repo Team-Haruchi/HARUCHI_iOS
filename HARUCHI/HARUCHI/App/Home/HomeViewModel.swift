@@ -9,13 +9,14 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     @Published var money = ""
-    @Published var selectedCategory = "미분류"
-    @Published var upSpendSheet = false
-    @Published var showMainButton = false
-    @Published var selectedType = ""
-    @Published var selectedIncome = "미분류"
-    @Published var showIncomeSheet = false
+    @Published var selectedType: String = "미분류"
+    @Published var selectedCategory: String = "미분류"
+    @Published var selectedIncome: String = "미분류"
+    @Published var showIncomeSheet: Bool = false
+    @Published var upSpendSheet: Bool = false
     @Published var navigateToReceipt: Bool = false
+    @Published var navigateToHomeMain: Bool = false
+    @Published var showMainButton: Bool = false
     
     
     func hideKeyboard() {

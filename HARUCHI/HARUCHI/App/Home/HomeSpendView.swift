@@ -31,10 +31,17 @@ struct HomeSpendView: View {
                     )
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .disableAutocorrection(true)
-            .backButtonStyle()
-            
+            .navigationDestination(isPresented: $viewModel.navigateToHomeMain) {
+                HomeMainView()
+                    .navigationBarBackButtonHidden(true)
+                    .disableAutocorrection(true)
+            }
+            .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
+                HomeReceiptView(selectedCategory: viewModel.selectedCategory)
+                    .environmentObject(viewModel)
+                    .navigationBarBackButtonHidden(true)
+                    .disableAutocorrection(true)
+            }
             .sheet(isPresented: $viewModel.upSpendSheet) {
                 SpendSheetView(selectedCategory: $viewModel.selectedCategory)
                     .presentationDragIndicator(.hidden)
@@ -46,10 +53,6 @@ struct HomeSpendView: View {
                     .presentationDragIndicator(.hidden)
                     .presentationDetents([.height(260)])
                     .presentationCornerRadius(0)
-            }
-            .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
-                HomeReceiptView(selectedCategory: viewModel.selectedCategory)
-                    .environmentObject(viewModel)
             }
             .onChange(of: viewModel.selectedCategory) { oldValue, newValue in
                 if newValue != "미분류" && newValue != "지출" {
@@ -63,6 +66,10 @@ struct HomeSpendView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .disableAutocorrection(true)
+        .backButtonStyle()
+        
     }
 }
 
@@ -169,8 +176,10 @@ struct SaveButtonView: View {
         if viewModel.showMainButton {
             MainButton(text: "저장하기", enable: viewModel.selectedCategory != "미분류", action: {
                 viewModel.hideKeyboard()
-                if viewModel.selectedCategory != "미분류" {
+                if viewModel.selectedType == "지출" {
                     viewModel.navigateToReceipt = true
+                } else if viewModel.selectedType == "수입" {
+                    viewModel.navigateToHomeMain = true
                 }
             })
             .padding(.top, 400)
