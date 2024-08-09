@@ -60,7 +60,7 @@ struct BudgetMainView : View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading) {
                 HStack{
                     Image("haruchiLogoBold1")
@@ -189,11 +189,17 @@ struct BudgetMainView : View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: BudgetPullPushView() // 기본 백 버튼 숨김
-                        , isActive: $navigateToNextView) {
-                            EmptyView()//EmptyView()를 사용하여 NavigationLink를 보이지 않게 만들고 .hidden()으로 숨겨
+                    //                    NavigationLink(destination: BudgetPullPushView() // 기본 백 버튼 숨김
+                    //                        , isActive: $navigateToNextView) {
+                    //                            EmptyView()//EmptyView()를 사용하여 NavigationLink를 보이지 않게 만들고 .hidden()으로 숨겨
+                    //                        }
+                    //                        .hidden()
+                    Button("Go to BudgetPullPushView") {
+                        navigateToNextView = true
+                    } .hidden()
+                        .navigationDestination(isPresented: $navigateToNextView){
+                            BudgetPullPushView()
                         }
-                        .hidden()
                 }//scrollView
                 .scrollIndicators(.hidden) // 스크롤 바를 숨기도록 설정
                 .toolbar {
