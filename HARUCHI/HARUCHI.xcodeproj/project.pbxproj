@@ -7,64 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		374E1D5B2C5A33C700323379 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 374E1D5A2C5A33C700323379 /* FSCalendar */; };
-		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
-		4FB9343B2C4F96CC00994816 /* BudgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9343A2C4F96CC00994816 /* BudgetMainView.swift */; };
-		4FB9343D2C50E49200994816 /* PercentageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9343C2C50E49200994816 /* PercentageBar.swift */; };
-		4FB9343F2C50F9A600994816 /* BudgetMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9343E2C50F9A600994816 /* BudgetMainViewModel.swift */; };
-		4FB934412C5361AD00994816 /* BudgetPullPushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934402C5361AD00994816 /* BudgetPullPushView.swift */; };
-		4FB934492C5C81F000994816 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934452C5C81EF00994816 /* CalendarModel.swift */; };
-		4FB9344A2C5C81F000994816 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934462C5C81EF00994816 /* CalendarView.swift */; };
-		4FB9344B2C5C81F000994816 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934472C5C81EF00994816 /* CalendarViewModel.swift */; };
-		9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */; };
-		9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */; };
-		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
-		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D22C41485400AE2D9C /* ContentView.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
 		C6C139D82C41485500AE2D9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */; };
-		C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139F42C4549B800AE2D9C /* MainButton.swift */; };
-		C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139F82C454B6100AE2D9C /* FontExtension.swift */; };
-		C6C13A042C454C0E00AE2D9C /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C139FB2C454C0D00AE2D9C /* Pretendard-Regular.otf */; };
-		C6C13A062C454C0E00AE2D9C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C139FD2C454C0E00AE2D9C /* Pretendard-Medium.otf */; };
-		C6C13A092C454C0E00AE2D9C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A002C454C0E00AE2D9C /* Pretendard-SemiBold.otf */; };
-		C6C13A0A2C454C0E00AE2D9C /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */; };
-		C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */; };
-		C6C13A132C4CE7F500AE2D9C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */; };
-		C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */; };
-		C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
-		4FB9343A2C4F96CC00994816 /* BudgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMainView.swift; sourceTree = "<group>"; };
-		4FB9343C2C50E49200994816 /* PercentageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageBar.swift; sourceTree = "<group>"; };
-		4FB9343E2C50F9A600994816 /* BudgetMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMainViewModel.swift; sourceTree = "<group>"; };
-		4FB934402C5361AD00994816 /* BudgetPullPushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPullPushView.swift; sourceTree = "<group>"; };
-		4FB934452C5C81EF00994816 /* CalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
-		4FB934462C5C81EF00994816 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		4FB934472C5C81EF00994816 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
-		9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNicknameView.swift; sourceTree = "<group>"; };
-		9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
-		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
-		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
 		C6C139D22C41485400AE2D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C6C139D42C41485500AE2D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C6C139F42C4549B800AE2D9C /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
-		C6C139F82C454B6100AE2D9C /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
-		C6C139FB2C454C0D00AE2D9C /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		C6C139FD2C454C0E00AE2D9C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		C6C13A002C454C0E00AE2D9C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		C6C13A0D2C464C4700AE2D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonModifier.swift; sourceTree = "<group>"; };
-		C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,43 +26,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				374E1D5B2C5A33C700323379 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4FB934392C4F903B00994816 /* Budget */ = {
-			isa = PBXGroup;
-			children = (
-				4FB9343A2C4F96CC00994816 /* BudgetMainView.swift */,
-				4FB9343E2C50F9A600994816 /* BudgetMainViewModel.swift */,
-				4FB934402C5361AD00994816 /* BudgetPullPushView.swift */,
-			);
-			path = Budget;
-			sourceTree = "<group>";
-		};
-		4FB934482C5C81EF00994816 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				4FB934452C5C81EF00994816 /* CalendarModel.swift */,
-				4FB934462C5C81EF00994816 /* CalendarView.swift */,
-				4FB934472C5C81EF00994816 /* CalendarViewModel.swift */,
-			);
-			path = Calendar;
-			sourceTree = "<group>";
-		};
-		9FFC87462C4D178200E30A8F /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */,
-				9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */,
-				9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		C6C139C42C41485400AE2D9C = {
 			isa = PBXGroup;
 			children = (
@@ -128,12 +51,9 @@
 		C6C139CF2C41485400AE2D9C /* HARUCHI */ = {
 			isa = PBXGroup;
 			children = (
-				C6C13A0D2C464C4700AE2D9C /* Info.plist */,
 				C6C139D42C41485500AE2D9C /* Assets.xcassets */,
-				C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */,
-				C6C139FA2C454BB300AE2D9C /* Font */,
-				C6C139E52C414C9E00AE2D9C /* Helper */,
 				C6C139E62C414D8900AE2D9C /* Components */,
+				C6C139E52C414C9E00AE2D9C /* Helper */,
 				C6C139E72C414D9700AE2D9C /* App */,
 				C6C139D62C41485500AE2D9C /* Preview Content */,
 			);
@@ -151,7 +71,6 @@
 		C6C139E52C414C9E00AE2D9C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				C6C13A102C46604400AE2D9C /* Extension */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -159,13 +78,7 @@
 		C6C139E62C414D8900AE2D9C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4FB934482C5C81EF00994816 /* Calendar */,
-				C6C139F42C4549B800AE2D9C /* MainButton.swift */,
-				4FB934372C47AC2700994816 /* CircleButton.swift */,
-				9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */,
-				C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */,
-				4FB9343C2C50E49200994816 /* PercentageBar.swift */,
-				C6C13A242C4D17A900AE2D9C /* ViewModifier */,
+				C6C139EB2C414E0D00AE2D9C /* Style */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -175,38 +88,39 @@
 			children = (
 				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
 				C6C139D22C41485400AE2D9C /* ContentView.swift */,
-				4FB934392C4F903B00994816 /* Budget */,
-				9FFC87462C4D178200E30A8F /* Onboarding */,
+				C6C139E82C414DB600AE2D9C /* FeatureA */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		C6C139FA2C454BB300AE2D9C /* Font */ = {
+		C6C139E82C414DB600AE2D9C /* FeatureA */ = {
 			isa = PBXGroup;
 			children = (
-				C6C13A012C454C0E00AE2D9C /* Pretendard-Bold.otf */,
-				C6C139FD2C454C0E00AE2D9C /* Pretendard-Medium.otf */,
-				C6C139FB2C454C0D00AE2D9C /* Pretendard-Regular.otf */,
-				C6C13A002C454C0E00AE2D9C /* Pretendard-SemiBold.otf */,
+				C6C139EA2C414DD300AE2D9C /* Model */,
+				C6C139E92C414DCD00AE2D9C /* View */,
 			);
-			path = Font;
+			path = FeatureA;
 			sourceTree = "<group>";
 		};
-		C6C13A102C46604400AE2D9C /* Extension */ = {
+		C6C139E92C414DCD00AE2D9C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C6C139F82C454B6100AE2D9C /* FontExtension.swift */,
-				C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */,
 			);
-			path = Extension;
+			path = View;
 			sourceTree = "<group>";
 		};
-		C6C13A242C4D17A900AE2D9C /* ViewModifier */ = {
+		C6C139EA2C414DD300AE2D9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */,
 			);
-			path = ViewModifier;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C6C139EB2C414E0D00AE2D9C /* Style */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,9 +139,6 @@
 			dependencies = (
 			);
 			name = HARUCHI;
-			packageProductDependencies = (
-				374E1D5A2C5A33C700323379 /* FSCalendar */,
-			);
 			productName = HARUCHI;
 			productReference = C6C139CD2C41485400AE2D9C /* HARUCHI.app */;
 			productType = "com.apple.product-type.application";
@@ -256,9 +167,6 @@
 				Base,
 			);
 			mainGroup = C6C139C42C41485400AE2D9C;
-			packageReferences = (
-				374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */,
-			);
 			productRefGroup = C6C139CE2C41485400AE2D9C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,12 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C139D82C41485500AE2D9C /* Preview Assets.xcassets in Resources */,
-				C6C13A062C454C0E00AE2D9C /* Pretendard-Medium.otf in Resources */,
-				C6C13A092C454C0E00AE2D9C /* Pretendard-SemiBold.otf in Resources */,
-				C6C13A042C454C0E00AE2D9C /* Pretendard-Regular.otf in Resources */,
-				C6C13A0A2C454C0E00AE2D9C /* Pretendard-Bold.otf in Resources */,
 				C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */,
-				C6C13A132C4CE7F500AE2D9C /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,27 +193,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
-				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
-				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
-				4FB9343B2C4F96CC00994816 /* BudgetMainView.swift in Sources */,
-				4FB9344A2C5C81F000994816 /* CalendarView.swift in Sources */,
-				C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
-				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,
-				4FB934492C5C81F000994816 /* CalendarModel.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
-				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
-				9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */,
-				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
-				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
-				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
-				4FB9343F2C50F9A600994816 /* BudgetMainViewModel.swift in Sources */,
-				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
-				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
-				4FB9344B2C5C81F000994816 /* CalendarViewModel.swift in Sources */,
-				4FB934412C5361AD00994816 /* BudgetPullPushView.swift in Sources */,
-				4FB9343D2C50E49200994816 /* PercentageBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,14 +328,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HARUCHI/Preview Content\"";
-				DEVELOPMENT_TEAM = ZWZA259GK8;
+				DEVELOPMENT_TEAM = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HARUCHI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -461,7 +343,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "umc-6th.HARUCHI";
+				PRODUCT_BUNDLE_IDENTIFIER = umc6th.HARUCHI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -481,14 +363,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HARUCHI/Preview Content\"";
-				DEVELOPMENT_TEAM = ZWZA259GK8;
+				DEVELOPMENT_TEAM = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HARUCHI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -498,7 +378,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "umc-6th.HARUCHI";
+				PRODUCT_BUNDLE_IDENTIFIER = umc6th.HARUCHI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -532,25 +412,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		374E1D5A2C5A33C700323379 /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C6C139C52C41485400AE2D9C /* Project object */;
 }
