@@ -76,7 +76,7 @@ struct WeekCalendarView: UIViewRepresentable {
         calendar.appearance.titleSelectionColor = .black
         
         // WeekCalendarView 플래그 설정 (라이브러리 수정 부분)
-        calendar.isWeekCalendarView = true
+        // calendar.isWeekCalendarView = true
 
         // 커스텀 헤더 뷰 추가
         let headerView = UIView()
