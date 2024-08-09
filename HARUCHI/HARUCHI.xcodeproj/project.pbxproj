@@ -253,12 +253,12 @@
 		C6C139E72C414D9700AE2D9C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				4FCEF5172C6631D60076158D /* Budget */,
 				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
 				C6C139D22C41485400AE2D9C /* ContentView.swift */,
 				C6C13A1F2C4D16ED00AE2D9C /* SignIn */,
 				9FFC87462C4D178200E30A8F /* Onboarding */,
 				9FA2A75E2C4F96BD0082636F /* Home */,
+				4FCEF5172C6631D60076158D /* Budget */,
 			);
 			path = App;
 			sourceTree = "<group>";
