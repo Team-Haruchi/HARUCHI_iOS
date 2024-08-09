@@ -76,7 +76,7 @@
 		9FF30F362C609EE4005994BB /* HomeReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReceiptView.swift; sourceTree = "<group>"; };
 		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
-		C61A47162C663EFC0016986D /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseAPI.swift; path = ../../../../../../Documents/BaseAPI.swift; sourceTree = "<group>"; };
+		C61A47162C663EFC0016986D /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		C6346F462C5F98140048708D /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
 		C695BDA82C60E05C009DEC3C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
