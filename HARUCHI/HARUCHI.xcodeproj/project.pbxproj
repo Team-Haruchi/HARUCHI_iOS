@@ -11,6 +11,10 @@
 		374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5C2C5A340E00323379 /* CalendarModel.swift */; };
 		374E1D612C5A340E00323379 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5D2C5A340E00323379 /* CalendarView.swift */; };
 		374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5E2C5A340E00323379 /* CalendarViewModel.swift */; };
+		37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */; };
+		37FD1F342C5F927C00B2B44B /* WeekCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */; };
+		37FD1F362C5F928800B2B44B /* WeekCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */; };
+		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */; };
 		9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */; };
 		9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508BC2C5A0A8600DFF5CA /* HomeViewModel.swift */; };
@@ -25,6 +29,9 @@
 		9FF30F372C609EE4005994BB /* HomeReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF30F362C609EE4005994BB /* HomeReceiptView.swift */; };
 		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
 		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
+		C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6346F462C5F98140048708D /* EmailAuthView.swift */; };
+		C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDA82C60E05C009DEC3C /* AuthAPI.swift */; };
+		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D22C41485400AE2D9C /* ContentView.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
 		C6C139D82C41485500AE2D9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */; };
@@ -47,6 +54,9 @@
 		374E1D5C2C5A340E00323379 /* CalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		374E1D5D2C5A340E00323379 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		374E1D5E2C5A340E00323379 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewModel.swift; sourceTree = "<group>"; };
+		37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarModel.swift; sourceTree = "<group>"; };
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendSheetView.swift; sourceTree = "<group>"; };
 		9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSheetView.swift; sourceTree = "<group>"; };
@@ -60,6 +70,8 @@
 		9FF30F362C609EE4005994BB /* HomeReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReceiptView.swift; sourceTree = "<group>"; };
 		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
+		C6346F462C5F98140048708D /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
+		C695BDA82C60E05C009DEC3C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
 		C6C139D22C41485400AE2D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +115,16 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		37FD1F302C5F836700B2B44B /* WeekCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */,
+				37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */,
+				37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */,
+			);
+			path = WeekCalendar;
+			sourceTree = "<group>";
+		};
 		9FA2A75E2C4F96BD0082636F /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +155,22 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		C695BDA62C60DD33009DEC3C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDA72C60DD3D009DEC3C /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C695BDA72C60DD3D009DEC3C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDA82C60E05C009DEC3C /* AuthAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		C6C139C42C41485400AE2D9C = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +198,7 @@
 				C6C139E52C414C9E00AE2D9C /* Helper */,
 				C6C139E62C414D8900AE2D9C /* Components */,
 				C6C139E72C414D9700AE2D9C /* App */,
+				C695BDA62C60DD33009DEC3C /* Network */,
 				C6C139D62C41485500AE2D9C /* Preview Content */,
 			);
 			path = HARUCHI;
@@ -184,6 +223,7 @@
 		C6C139E62C414D8900AE2D9C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				37FD1F302C5F836700B2B44B /* WeekCalendar */,
 				374E1D5F2C5A340E00323379 /* Calendar */,
 				C6C139F42C4549B800AE2D9C /* MainButton.swift */,
 				4FB934372C47AC2700994816 /* CircleButton.swift */,
@@ -233,6 +273,7 @@
 			children = (
 				C6C13A212C4D173700AE2D9C /* StartView.swift */,
 				C6C13A202C4D173700AE2D9C /* SignInView.swift */,
+				C6346F462C5F98140048708D /* EmailAuthView.swift */,
 				C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */,
 			);
 			path = SignIn;
@@ -295,6 +336,7 @@
 			mainGroup = C6C139C42C41485400AE2D9C;
 			packageReferences = (
 				374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = C6C139CE2C41485400AE2D9C /* Products */;
 			projectDirPath = "";
@@ -330,6 +372,7 @@
 				9FF30F322C5FBC28005994BB /* CircleButton.swift in Sources */,
 				9FF30F312C5FBC23005994BB /* HARUCHIApp.swift in Sources */,
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
+				37FD1F362C5F928800B2B44B /* WeekCalendarModel.swift in Sources */,
 				374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */,
 				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
@@ -338,6 +381,7 @@
 				9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */,
+				37FD1F342C5F927C00B2B44B /* WeekCalendarViewModel.swift in Sources */,
 				374E1D612C5A340E00323379 /* CalendarView.swift in Sources */,
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,
 				9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */,
@@ -347,6 +391,12 @@
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
 				9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */,
 				9FAB27012C5FB31D007FDD23 /* SmallCircleButton.swift in Sources */,
+				C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */,
+				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
+				9F1508BA2C57921F00DFF5CA /* IncomeSheetView.swift in Sources */,
+				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
+				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
+				37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */,
 				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
 				9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
@@ -582,6 +632,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.8.4;
+			};
+		};
+		C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

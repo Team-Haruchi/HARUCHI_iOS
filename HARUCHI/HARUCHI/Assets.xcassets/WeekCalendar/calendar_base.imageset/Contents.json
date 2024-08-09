@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "Ellipse 2906.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -9,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "체크박스-전 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
