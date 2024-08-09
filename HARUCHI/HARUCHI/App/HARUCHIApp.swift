@@ -22,7 +22,9 @@ struct HARUCHIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            StartView()
+//            StartView()
+            BudgetMainView().environmentObject(BudgetMainViewModel())
+                            .environmentObject(CalendarViewModel())
 //            ContentView()
 //            ContentView2()
 //            OnboardingBudgetView(viewModel: viewModel)

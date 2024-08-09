@@ -15,6 +15,9 @@
 		37FD1F342C5F927C00B2B44B /* WeekCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */; };
 		37FD1F362C5F928800B2B44B /* WeekCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */; };
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
+		4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF5182C6632060076158D /* BudgetMainView.swift */; };
+		4FCEF51B2C6632370076158D /* BudgetPullPushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF51A2C6632370076158D /* BudgetPullPushView.swift */; };
+		4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF51C2C6632630076158D /* BudgetMainViewModel.swift */; };
 		9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */; };
 		9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508BC2C5A0A8600DFF5CA /* HomeViewModel.swift */; };
 		9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D78D92C4D6221004B9C7D /* OnboardingNicknameView.swift */; };
@@ -56,6 +59,9 @@
 		37FD1F332C5F927C00B2B44B /* WeekCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarViewModel.swift; sourceTree = "<group>"; };
 		37FD1F352C5F928800B2B44B /* WeekCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarModel.swift; sourceTree = "<group>"; };
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		4FCEF5182C6632060076158D /* BudgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMainView.swift; sourceTree = "<group>"; };
+		4FCEF51A2C6632370076158D /* BudgetPullPushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPullPushView.swift; sourceTree = "<group>"; };
+		4FCEF51C2C6632630076158D /* BudgetMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMainViewModel.swift; sourceTree = "<group>"; };
 		9F1508B72C54DA1700DFF5CA /* SpendSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendSheetView.swift; sourceTree = "<group>"; };
 		9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSheetView.swift; sourceTree = "<group>"; };
 		9F1508BC2C5A0A8600DFF5CA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +127,16 @@
 				37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */,
 			);
 			path = WeekCalendar;
+			sourceTree = "<group>";
+		};
+		4FCEF5172C6631D60076158D /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				4FCEF5182C6632060076158D /* BudgetMainView.swift */,
+				4FCEF51A2C6632370076158D /* BudgetPullPushView.swift */,
+				4FCEF51C2C6632630076158D /* BudgetMainViewModel.swift */,
+			);
+			path = Budget;
 			sourceTree = "<group>";
 		};
 		9FA2A75E2C4F96BD0082636F /* Home */ = {
@@ -237,6 +253,7 @@
 		C6C139E72C414D9700AE2D9C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4FCEF5172C6631D60076158D /* Budget */,
 				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
 				C6C139D22C41485400AE2D9C /* ContentView.swift */,
 				C6C13A1F2C4D16ED00AE2D9C /* SignIn */,
@@ -377,8 +394,10 @@
 				C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */,
 				9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */,
 				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
+				4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */,
 				9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */,
 				37FD1F342C5F927C00B2B44B /* WeekCalendarViewModel.swift in Sources */,
+				4FCEF51B2C6632370076158D /* BudgetPullPushView.swift in Sources */,
 				374E1D612C5A340E00323379 /* CalendarView.swift in Sources */,
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,
 				9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */,
@@ -391,6 +410,7 @@
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
+				4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */,
 				37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */,
 				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
 				9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */,

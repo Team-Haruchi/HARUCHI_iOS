@@ -89,7 +89,7 @@ class CalendarViewModel: ObservableObject {
 
     // 날짜를 문자열로 변환하는 함수
     func dateString(from date: Date?) -> String {
-        guard let date = date else { return "None" }
+        guard let date = date else { return "선택해주세요" }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: date)
