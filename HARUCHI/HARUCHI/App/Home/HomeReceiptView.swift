@@ -12,6 +12,18 @@ struct HomeReceiptView: View {
     
     @ObservedObject private var viewModel = HomeViewModel()
     
+    let categoryImages: [String: String] = [
+        "식비": "circle_pizza",
+        "커피": "circle_coffee",
+        "교통": "circle_creditCard",
+        "취미": "circle_gym",
+        "패션": "circle_cart",
+        "교육": "circle_books",
+        "경조사": "circle_networking",
+        "구독": "circle_youtube",
+        "기타": "circle_etc"
+    ]
+    
     var selectedCategory: String
 
     var body: some View {
@@ -34,7 +46,7 @@ struct HomeReceiptView: View {
                                     .padding(.bottom, 25)
                                 
                                 HStack {
-                                    Text("20000원")
+                                    Text("지출 \(viewModel.money) 원")
                                 }
                                 .font(.haruchi(.h1))
                                 .foregroundColor(Color.black)
@@ -54,7 +66,11 @@ struct HomeReceiptView: View {
                                     .padding(.leading, 24)
                                     .padding(.bottom, 15)
                                 
-                                SmallCircleButton(image: "circle_pizza", text: viewModel.selectedCategory, charge: "5000원", action: {print("ㅇㅋ")})
+                                if let imageName = categoryImages[selectedCategory] {
+                                    SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "5000원", action: {
+                                        print("ㅇㅋ")
+                                    })
+                                }
                             }
                         }
 
@@ -73,7 +89,6 @@ struct HomeReceiptView: View {
                             
                             Spacer()
                             
-                            // 이거 데이터 넘겨줘야힘
                             Text("4000원")
                                 .font(.haruchi(.h2))
                                 .foregroundColor(Color.black)
