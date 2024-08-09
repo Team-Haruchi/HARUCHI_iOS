@@ -14,7 +14,7 @@ struct HomeMainView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            NavigationView {
+            NavigationStack {
                 ScrollView {
                     VStack(spacing: 0) {
                         VStack(spacing: 0) {
