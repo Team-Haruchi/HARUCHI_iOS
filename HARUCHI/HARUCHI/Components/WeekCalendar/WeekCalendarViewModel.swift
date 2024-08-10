@@ -34,7 +34,6 @@ class WeekCalendarViewModel: ObservableObject {
         let calendar = Calendar.current
         let weekOfMonth = calendar.component(.weekOfMonth, from: currentPage)
         let month = calendar.component(.month, from: currentPage)
-        let monthName = DateFormatter().monthSymbols[month - 1]
         headerTitle = "\(month)월 \(weekOfMonth)째주"
     }
 }
