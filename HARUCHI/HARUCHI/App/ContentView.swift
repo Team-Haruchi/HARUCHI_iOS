@@ -20,7 +20,7 @@ struct ContentView: View {
                     Image("tabbar_checkBook")
                     Text("예산")
                 }
-            Text("더보기")
+            DetailMainView()
                 .tabItem {
                     Image("tabbar_menu")
                     Text("더보기")
