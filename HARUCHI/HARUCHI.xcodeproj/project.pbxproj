@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		374E1D5B2C5A33C700323379 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 374E1D5A2C5A33C700323379 /* FSCalendar */; };
+		372CC8162C67AE960001A34A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 372CC8152C67AE960001A34A /* FSCalendar */; };
 		374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5C2C5A340E00323379 /* CalendarModel.swift */; };
 		374E1D612C5A340E00323379 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5D2C5A340E00323379 /* CalendarView.swift */; };
 		374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374E1D5E2C5A340E00323379 /* CalendarViewModel.swift */; };
@@ -106,7 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C61A471A2C663F980016986D /* Moya in Frameworks */,
-				374E1D5B2C5A33C700323379 /* FSCalendar in Frameworks */,
+				372CC8162C67AE960001A34A /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +332,8 @@
 			);
 			name = HARUCHI;
 			packageProductDependencies = (
-				374E1D5A2C5A33C700323379 /* FSCalendar */,
 				C61A47192C663F980016986D /* Moya */,
+				372CC8152C67AE960001A34A /* FSCalendar */,
 			);
 			productName = HARUCHI;
 			productReference = C6C139CD2C41485400AE2D9C /* HARUCHI.app */;
@@ -364,8 +364,8 @@
 			);
 			mainGroup = C6C139C42C41485400AE2D9C;
 			packageReferences = (
-				374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */,
+				372CC8142C67AE960001A34A /* XCRemoteSwiftPackageReference "FSCalendar2" */,
 			);
 			productRefGroup = C6C139CE2C41485400AE2D9C /* Products */;
 			projectDirPath = "";
@@ -658,12 +658,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+		372CC8142C67AE960001A34A /* XCRemoteSwiftPackageReference "FSCalendar2" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			repositoryURL = "https://github.com/leeseulgi0208/FSCalendar2.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.8.4;
+				branch = master;
+				kind = branch;
 			};
 		};
 		C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */ = {
@@ -677,9 +677,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		374E1D5A2C5A33C700323379 /* FSCalendar */ = {
+		372CC8152C67AE960001A34A /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 374E1D592C5A33C700323379 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			package = 372CC8142C67AE960001A34A /* XCRemoteSwiftPackageReference "FSCalendar2" */;
 			productName = FSCalendar;
 		};
 		C61A47192C663F980016986D /* Moya */ = {
