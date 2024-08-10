@@ -56,7 +56,7 @@ struct DetailMainView: View {
                 }.frame(height: 50)
                     .padding(.top, 70)
                 
-                Button(action: {}) {
+                NavigationLink(destination: CancelMembershipView()){
                     HStack{
                         Text("탈퇴")
                             .font(.haruchi(.body_r16))

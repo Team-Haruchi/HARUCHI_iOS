@@ -40,12 +40,13 @@ struct MemberInfo: View {
             .disableAutocorrection(true)
             .backButtonStyle()
             .toolbar {
-                ToolbarItem(placement: .principal) { // 가운데 제목 추가
+                ToolbarItem(placement: .principal) {
                     Text("계정/정보")
                         .font(.haruchi(.h2))
                         .foregroundColor(.black)
                 }
             }
+            .toolbar(.hidden, for: .tabBar)
     }
 }
 
