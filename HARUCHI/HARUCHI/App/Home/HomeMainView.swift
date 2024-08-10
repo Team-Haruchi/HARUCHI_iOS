@@ -138,8 +138,7 @@ struct HomeMainView: View {
                         
                         
                         VStack(spacing: 0) {
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.gray6)
+                            WeekCalendarView(viewModel: HomeViewModel())
                                 .frame(width: 345, height: 128)
                         }
                         .padding(.top, 25)

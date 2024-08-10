@@ -2,6 +2,13 @@ import SwiftUI
 import FSCalendar
 import UIKit
 
+struct WeekCalendarModel {
+    var date: Date
+    var icon: String
+    var value: Int?
+}
+
+
 class CustomWeekCalendarCell: FSCalendarCell {
     weak var iconImageView: UIImageView!
     weak var budgetLabel: UILabel!
@@ -39,7 +46,7 @@ class CustomWeekCalendarCell: FSCalendarCell {
 }
 
 struct WeekCalendarView: UIViewRepresentable {
-    @ObservedObject var viewModel: WeekCalendarViewModel
+    @ObservedObject var viewModel: HomeViewModel
     
     // currentPage와 headerTitle을 관리하는 상태 프로퍼티들
     @State private var currentPage: Date = Date()
@@ -133,11 +140,11 @@ struct WeekCalendarView: UIViewRepresentable {
 
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
         var parent: WeekCalendarView
-        var viewModel: WeekCalendarViewModel
+        var viewModel: HomeViewModel
         var titleLabel: UILabel?
         var calendar: FSCalendar?
 
-        init(_ parent: WeekCalendarView, viewModel: WeekCalendarViewModel) {
+        init(_ parent: WeekCalendarView, viewModel: HomeViewModel) {
             self.parent = parent
             self.viewModel = viewModel
         }
@@ -187,7 +194,7 @@ struct WeekCalendarView: UIViewRepresentable {
 }
 
 struct WeekCalendarPreview: View {
-    @StateObject private var viewModel = WeekCalendarViewModel()
+    @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
         VStack {
