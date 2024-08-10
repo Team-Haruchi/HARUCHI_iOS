@@ -40,6 +40,10 @@ class CustomWeekCalendarCell: FSCalendarCell {
 
 struct WeekCalendarView: UIViewRepresentable {
     @ObservedObject var viewModel: WeekCalendarViewModel
+    
+    // currentPage와 headerTitle을 관리하는 상태 프로퍼티들
+    @State private var currentPage: Date = Date()
+    @State private var headerTitle: String = ""
 
     func makeUIView(context: Context) -> FSCalendar {
         let calendar = FSCalendar()
@@ -99,25 +103,34 @@ struct WeekCalendarView: UIViewRepresentable {
         ])
         
         // 초기 타이틀 설정
-        titleLabel.text = viewModel.headerTitle
-        
         context.coordinator.titleLabel = titleLabel
         context.coordinator.calendar = calendar
         
+        DispatchQueue.main.async {
+            updateHeaderTitle()
+            titleLabel.text = headerTitle
+        }
+        
         return calendar
     }
+    
+    func updateHeaderTitle() {
+        var calendar = Calendar.current
+        calendar.firstWeekday = 2 // 한 주의 첫 날을 월요일로 설정
 
-    // updateUIView 메서드는 뷰모델의 데이터 변경에 따라 UI를 업데이트
+        let weekOfMonth = calendar.component(.weekOfMonth, from: currentPage)
+        let month = calendar.component(.month, from: currentPage)
+        headerTitle = "\(month)월 \(weekOfMonth)째주"
+    }
+
     func updateUIView(_ uiView: FSCalendar, context: Context) {
         uiView.reloadData()
     }
 
-    // makeCoordinator 메서드는 FSCalendar의 델리게이트와 데이터 소스를 관리하는 코디네이터를 생성
     func makeCoordinator() -> Coordinator {
         Coordinator(self, viewModel: viewModel)
     }
 
-    // Coordinator 클래스는 FSCalendar의 델리게이트와 데이터 소스를 구현
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
         var parent: WeekCalendarView
         var viewModel: WeekCalendarViewModel
@@ -129,19 +142,11 @@ struct WeekCalendarView: UIViewRepresentable {
             self.viewModel = viewModel
         }
         
-        // 해더 부분
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-            viewModel.currentPage = calendar.currentPage
-            titleLabel?.text = viewModel.headerTitle
+            parent.currentPage = calendar.currentPage
+            parent.updateHeaderTitle()
+            titleLabel?.text = parent.headerTitle
         }
-
-//        func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-//            return 0 // 이벤트가 없으므로 0 반환
-//        }
-//
-//        func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-//            return nil // 타이틀이 없으므로 nil 반환
-//        }
         
         func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
             let cell = calendar.dequeueReusableCell(withIdentifier: "customWeekCell", for: date, at: position) as! CustomWeekCalendarCell
@@ -149,18 +154,14 @@ struct WeekCalendarView: UIViewRepresentable {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             
-            // 셀 초기화
             cell.iconImageView.image = nil
             cell.budgetLabel.text = nil
             
-            // 주간 데이터에서 날짜에 해당하는 데이터를 찾기
             if let weekData = parent.viewModel.weekData.first(where: { formatter.string(from: $0.date) == formatter.string(from: date) }) {
-                // 아이콘 설정
                 if !weekData.icon.isEmpty {
                     cell.iconImageView.image = UIImage(named: weekData.icon)
                 }
                 
-                // 예산 설정
                 if let value = weekData.value {
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = .decimal
@@ -169,19 +170,16 @@ struct WeekCalendarView: UIViewRepresentable {
                     cell.budgetLabel.text = ""
                 }
             } else {
-                // 기본 아이콘 설정
                 cell.iconImageView.image = UIImage(named: "calendar_base")
                 cell.budgetLabel.text = ""
             }
             return cell
         }
         
-        // 오늘 날짜 이후로 선택 불가능
         func maximumDate(for calendar: FSCalendar) -> Date {
             return Date()
         }
         
-        // 글자 색상을 항상 검정색으로 유지
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
             return .black
         }

@@ -3,16 +3,8 @@ import SwiftUI
 class WeekCalendarViewModel: ObservableObject {
     @Published var weekData: [WeekCalendarModel] = []
     
-    @Published var currentPage: Date = Date() {
-        didSet {
-            updateHeaderTitle()
-        }
-    }
-    @Published var headerTitle: String = ""
-
     init() {
         setupDummyData()
-        updateHeaderTitle()
     }
     
     func setupDummyData() {
@@ -28,12 +20,5 @@ class WeekCalendarViewModel: ObservableObject {
             WeekCalendarModel(date: formatter.date(from: "2024-08-10")!, icon: "calendar_base", value: 20000),
             WeekCalendarModel(date: formatter.date(from: "2024-08-11")!, icon: "calendar_base", value: 20000),
         ]
-    }
-    
-    func updateHeaderTitle() {
-        let calendar = Calendar.current
-        let weekOfMonth = calendar.component(.weekOfMonth, from: currentPage)
-        let month = calendar.component(.month, from: currentPage)
-        headerTitle = "\(month)월 \(weekOfMonth)째주"
     }
 }
