@@ -69,7 +69,7 @@ struct HomeSpendView: View {
         .navigationBarBackButtonHidden(true)
         .disableAutocorrection(true)
         .backButtonStyle()
-        
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 
