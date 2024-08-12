@@ -2,6 +2,13 @@ import SwiftUI
 import FSCalendar
 import UIKit
 
+struct WeekCalendarModel {
+    var date: Date
+    var icon: String
+    var value: Int?
+}
+
+
 class CustomWeekCalendarCell: FSCalendarCell {
     weak var iconImageView: UIImageView!
     weak var budgetLabel: UILabel!
@@ -39,7 +46,7 @@ class CustomWeekCalendarCell: FSCalendarCell {
 }
 
 struct WeekCalendarView: UIViewRepresentable {
-    @ObservedObject var viewModel: WeekCalendarViewModel
+    @ObservedObject var viewModel: HomeViewModel
     
     // currentPage와 headerTitle을 관리하는 상태 프로퍼티들
     @State private var currentPage: Date = Date()
@@ -119,8 +126,11 @@ struct WeekCalendarView: UIViewRepresentable {
         calendar.firstWeekday = 2 // 한 주의 첫 날을 월요일로 설정
 
         let weekOfMonth = calendar.component(.weekOfMonth, from: currentPage)
-        let month = calendar.component(.month, from: currentPage)
-        headerTitle = "\(month)월 \(weekOfMonth)째주"
+        _ = calendar.component(.month, from: currentPage)
+        let monthFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MMMM"
+        monthFormatter.locale = Locale(identifier: "ko_KR") // 한국어
+        headerTitle = "\(monthFormatter.string(from: currentPage)) \(weekOfMonth)째주"
     }
 
     func updateUIView(_ uiView: FSCalendar, context: Context) {
@@ -133,11 +143,11 @@ struct WeekCalendarView: UIViewRepresentable {
 
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
         var parent: WeekCalendarView
-        var viewModel: WeekCalendarViewModel
+        var viewModel: HomeViewModel
         var titleLabel: UILabel?
         var calendar: FSCalendar?
 
-        init(_ parent: WeekCalendarView, viewModel: WeekCalendarViewModel) {
+        init(_ parent: WeekCalendarView, viewModel: HomeViewModel) {
             self.parent = parent
             self.viewModel = viewModel
         }
@@ -146,6 +156,12 @@ struct WeekCalendarView: UIViewRepresentable {
             parent.currentPage = calendar.currentPage
             parent.updateHeaderTitle()
             titleLabel?.text = parent.headerTitle
+            
+            // 월 자동으로 업데이트
+            let monthFormatter = DateFormatter()
+            monthFormatter.dateFormat = "LLLL"
+            monthFormatter.locale = Locale(identifier: "ko_KR")
+            viewModel.currentMonth = monthFormatter.string(from: calendar.currentPage)
         }
         
         func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
@@ -187,7 +203,7 @@ struct WeekCalendarView: UIViewRepresentable {
 }
 
 struct WeekCalendarPreview: View {
-    @StateObject private var viewModel = WeekCalendarViewModel()
+    @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
         VStack {

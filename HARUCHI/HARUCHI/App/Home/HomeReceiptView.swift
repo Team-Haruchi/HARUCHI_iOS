@@ -137,6 +137,7 @@ struct HomeReceiptView: View {
             .navigationBarBackButtonHidden(true)
             .disableAutocorrection(true)
             .backButtonStyle()
+            .toolbar(.hidden, for: .tabBar)
         }
         Spacer()
     }
