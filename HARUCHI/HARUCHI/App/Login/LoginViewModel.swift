@@ -19,8 +19,8 @@ final class LoginViewModel: ObservableObject {
     @Published var showSignInView: Bool = false
     
     private let appState: AppState
-    private var cancellables = Set<AnyCancellable>()
     private let authService = AuthService()
+    private var cancellables = Set<AnyCancellable>()
     
     init(
         appState: AppState,
