@@ -56,6 +56,8 @@
 		C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */; };
 		C6CF82162C6A1FEE0006A98C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82152C6A1FEE0006A98C /* AppState.swift */; };
 		C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */; };
+		C6CF82202C6A35790006A98C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF821F2C6A35790006A98C /* Example.swift */; };
+		C6CF82232C6A36130006A98C /* APIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82222C6A36130006A98C /* APIRequestable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,8 @@
 		C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldStyle.swift; sourceTree = "<group>"; };
 		C6CF82152C6A1FEE0006A98C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		C6CF821F2C6A35790006A98C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C6CF82222C6A36130006A98C /* APIRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 		C695BDA62C60DD33009DEC3C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C6CF82212C6A357C0006A98C /* Service */,
+				C6CF821E2C6A356D0006A98C /* Entity */,
 				C695BDA72C60DD3D009DEC3C /* API */,
 			);
 			path = Network;
@@ -354,6 +360,22 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		C6CF821E2C6A356D0006A98C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF821F2C6A35790006A98C /* Example.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		C6CF82212C6A357C0006A98C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF82222C6A36130006A98C /* APIRequestable.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,8 +490,10 @@
 				4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */,
 				378A0FE92C680220002D932A /* CancelMembershipView.swift in Sources */,
 				37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */,
+				C6CF82202C6A35790006A98C /* Example.swift in Sources */,
 				C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */,
 				9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */,
+				C6CF82232C6A36130006A98C /* APIRequestable.swift in Sources */,
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 				374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */,
