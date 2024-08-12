@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-enum Field: Int, CaseIterable {
+enum SignInTextFieldType: Int, CaseIterable {
     case email
     case password
     case passwordValid
@@ -41,7 +41,7 @@ class SignInViewModel: ObservableObject {
         }
     }
     
-    @Published var validationStatus: [Field: Bool] = [
+    @Published var validationStatus: [SignInTextFieldType: Bool] = [
         .email: true,
         .password: true,
         .passwordValid: true

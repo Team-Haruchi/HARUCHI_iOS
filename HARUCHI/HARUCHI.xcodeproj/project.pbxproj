@@ -52,6 +52,9 @@
 		C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */; };
 		C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */; };
 		C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */; };
+		C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF820E2C68C9540006A98C /* LoginView.swift */; };
+		C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82112C68C96A0006A98C /* LoginViewModel.swift */; };
+		C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +103,9 @@
 		C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonModifier.swift; sourceTree = "<group>"; };
 		C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLine.swift; sourceTree = "<group>"; };
 		C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		C6CF820E2C68C9540006A98C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C6CF82112C68C96A0006A98C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +284,7 @@
 			children = (
 				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
 				C6C139D22C41485400AE2D9C /* ContentView.swift */,
+				C6CF820D2C68C9450006A98C /* Login */,
 				C6C13A1F2C4D16ED00AE2D9C /* SignIn */,
 				9FFC87462C4D178200E30A8F /* Onboarding */,
 				9FA2A75E2C4F96BD0082636F /* Home */,
@@ -322,8 +329,18 @@
 			isa = PBXGroup;
 			children = (
 				C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */,
+				C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */,
 			);
 			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		C6CF820D2C68C9450006A98C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF820E2C68C9540006A98C /* LoginView.swift */,
+				C6CF82112C68C96A0006A98C /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +452,8 @@
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
+				C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */,
+				C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */,
 				4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */,
 				378A0FE92C680220002D932A /* CancelMembershipView.swift in Sources */,
 				37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */,
@@ -443,6 +462,7 @@
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 				374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */,
+				C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */,
 				9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */,
 				C61A47172C663EFC0016986D /* BaseAPI.swift in Sources */,
 			);

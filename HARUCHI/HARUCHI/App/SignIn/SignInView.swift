@@ -10,7 +10,7 @@ import SwiftUI
 struct SignInView: View {
     
     @StateObject private var viewModel = SignInViewModel()
-    @FocusState private var focusedField: Field?
+    @FocusState private var focusedField: SignInTextFieldType?
     
     var seeTermInfo: some View {
         VStack(spacing: 3) {
@@ -224,13 +224,13 @@ struct SignInView: View {
 extension SignInView {
     private func focusPreviousField() {
         focusedField = focusedField.map {
-            Field(rawValue: $0.rawValue - 1) ?? .passwordValid
+            SignInTextFieldType(rawValue: $0.rawValue - 1) ?? .passwordValid
         }
     }
 
     private func focusNextField() {
         focusedField = focusedField.map {
-            Field(rawValue: $0.rawValue + 1) ?? .email
+            SignInTextFieldType(rawValue: $0.rawValue + 1) ?? .email
         }
     }
     
@@ -245,6 +245,6 @@ extension SignInView {
         guard let currentFocusedField = focusedField else {
             return false
         }
-        return currentFocusedField.rawValue < Field.allCases.count - 1
+        return currentFocusedField.rawValue < SignInTextFieldType.allCases.count - 1
     }
 }
