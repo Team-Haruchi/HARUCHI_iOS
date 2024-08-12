@@ -4,6 +4,11 @@
 <dict>
 	<key>API_BASE_URL</key>
 	<string>http://haruchi-dev-env.eba-pik8vaex.ap-northeast-2.elasticbeanstalk.com</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Thin.otf</string>

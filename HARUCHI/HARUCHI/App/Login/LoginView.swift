@@ -47,7 +47,7 @@ struct LoginView: View {
             .padding(.horizontal, 46)
             
             MainButton(text: "로그인", enable: loginViewModel.checkInput()) {
-                // login process
+                loginViewModel.login()
             }
             .padding(.top, 40)
             .padding(.bottom, 10)
@@ -58,7 +58,7 @@ struct LoginView: View {
                     .foregroundStyle(Color.gray5)
                 
                 Button {
-                    // go signInView
+                    loginViewModel.showSignInView = true
                 } label: {
                     Text("회원가입")
                         .font(.haruchi(.button12))
@@ -66,6 +66,9 @@ struct LoginView: View {
                         .underline()
                 }
             }
+        }
+        .navigationDestination(isPresented: $loginViewModel.showSignInView) {
+            SignInView()
         }
     }
 }

@@ -47,7 +47,6 @@
 		C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */; };
 		C6C13A132C4CE7F500AE2D9C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */; };
 		C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A202C4D173700AE2D9C /* SignInView.swift */; };
-		C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A212C4D173700AE2D9C /* StartView.swift */; };
 		C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */; };
 		C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */; };
 		C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */; };
@@ -58,7 +57,10 @@
 		C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */; };
 		C6CF82202C6A35790006A98C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF821F2C6A35790006A98C /* Example.swift */; };
 		C6CF82232C6A36130006A98C /* APIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82222C6A36130006A98C /* APIRequestable.swift */; };
+		C6CF82252C6A4B0A0006A98C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82242C6A4B0A0006A98C /* AuthService.swift */; };
 		C6CF82272C6A572F0006A98C /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C6CF82262C6A572F0006A98C /* CombineMoya */; };
+		C6CF82292C6A5D5B0006A98C /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82282C6A5D5B0006A98C /* Base.swift */; };
+		C6CF822B2C6A5E490006A98C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF822A2C6A5E490006A98C /* LoginResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,7 +104,6 @@
 		C6C13A0E2C464EC200AE2D9C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C6C13A122C4CE7F500AE2D9C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C6C13A202C4D173700AE2D9C /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		C6C13A212C4D173700AE2D9C /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonModifier.swift; sourceTree = "<group>"; };
 		C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLine.swift; sourceTree = "<group>"; };
 		C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +114,9 @@
 		C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		C6CF821F2C6A35790006A98C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C6CF82222C6A36130006A98C /* APIRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestable.swift; sourceTree = "<group>"; };
+		C6CF82242C6A4B0A0006A98C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		C6CF82282C6A5D5B0006A98C /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		C6CF822A2C6A5E490006A98C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,7 +332,6 @@
 		C6C13A1F2C4D16ED00AE2D9C /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				C6C13A212C4D173700AE2D9C /* StartView.swift */,
 				C6C13A202C4D173700AE2D9C /* SignInView.swift */,
 				C6346F462C5F98140048708D /* EmailAuthView.swift */,
 				C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */,
@@ -366,6 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				C6CF821F2C6A35790006A98C /* Example.swift */,
+				C6CF82282C6A5D5B0006A98C /* Base.swift */,
+				C6CF822A2C6A5E490006A98C /* LoginResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				C6CF82222C6A36130006A98C /* APIRequestable.swift */,
+				C6CF82242C6A4B0A0006A98C /* AuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -480,16 +486,17 @@
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,
 				9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */,
 				9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */,
-				C6C13A232C4D173700AE2D9C /* StartView.swift in Sources */,
 				9FF30F372C609EE4005994BB /* HomeReceiptView.swift in Sources */,
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
 				9FAB27012C5FB31D007FDD23 /* SmallCircleButton.swift in Sources */,
 				C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */,
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
+				C6CF82292C6A5D5B0006A98C /* Base.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
 				C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */,
 				C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */,
+				C6CF82252C6A4B0A0006A98C /* AuthService.swift in Sources */,
 				4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */,
 				378A0FE92C680220002D932A /* CancelMembershipView.swift in Sources */,
 				37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */,
@@ -503,6 +510,7 @@
 				C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */,
 				C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */,
 				9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */,
+				C6CF822B2C6A5E490006A98C /* LoginResponse.swift in Sources */,
 				C61A47172C663EFC0016986D /* BaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
