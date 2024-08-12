@@ -127,7 +127,10 @@ struct WeekCalendarView: UIViewRepresentable {
 
         let weekOfMonth = calendar.component(.weekOfMonth, from: currentPage)
         let month = calendar.component(.month, from: currentPage)
-        headerTitle = "\(month)월 \(weekOfMonth)째주"
+        let monthFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MMMM"
+        monthFormatter.locale = Locale(identifier: "ko_KR") // 한국어
+        headerTitle = "\(monthFormatter.string(from: currentPage)) \(weekOfMonth)째주"
     }
 
     func updateUIView(_ uiView: FSCalendar, context: Context) {
@@ -153,6 +156,12 @@ struct WeekCalendarView: UIViewRepresentable {
             parent.currentPage = calendar.currentPage
             parent.updateHeaderTitle()
             titleLabel?.text = parent.headerTitle
+            
+            // 월 자동으로 업데이트
+            let monthFormatter = DateFormatter()
+            monthFormatter.dateFormat = "LLLL"
+            monthFormatter.locale = Locale(identifier: "ko_KR")
+            viewModel.currentMonth = monthFormatter.string(from: calendar.currentPage)
         }
         
         func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
