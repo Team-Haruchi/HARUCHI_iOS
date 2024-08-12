@@ -58,6 +58,7 @@
 		C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */; };
 		C6CF82202C6A35790006A98C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF821F2C6A35790006A98C /* Example.swift */; };
 		C6CF82232C6A36130006A98C /* APIRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82222C6A36130006A98C /* APIRequestable.swift */; };
+		C6CF82272C6A572F0006A98C /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C6CF82262C6A572F0006A98C /* CombineMoya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 			files = (
 				C61A471A2C663F980016986D /* Moya in Frameworks */,
 				372CC8162C67AE960001A34A /* FSCalendar in Frameworks */,
+				C6CF82272C6A572F0006A98C /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +397,7 @@
 			packageProductDependencies = (
 				C61A47192C663F980016986D /* Moya */,
 				372CC8152C67AE960001A34A /* FSCalendar */,
+				C6CF82262C6A572F0006A98C /* CombineMoya */,
 			);
 			productName = HARUCHI;
 			productReference = C6C139CD2C41485400AE2D9C /* HARUCHI.app */;
@@ -754,6 +757,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		C6CF82262C6A572F0006A98C /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C695BDA52C60DB02009DEC3C /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
