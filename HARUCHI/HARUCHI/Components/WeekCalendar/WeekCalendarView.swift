@@ -126,7 +126,7 @@ struct WeekCalendarView: UIViewRepresentable {
         calendar.firstWeekday = 2 // 한 주의 첫 날을 월요일로 설정
 
         let weekOfMonth = calendar.component(.weekOfMonth, from: currentPage)
-        let month = calendar.component(.month, from: currentPage)
+        _ = calendar.component(.month, from: currentPage)
         let monthFormatter = DateFormatter()
         monthFormatter.dateFormat = "MMMM"
         monthFormatter.locale = Locale(identifier: "ko_KR") // 한국어
