@@ -20,6 +20,7 @@ struct HomeMainView: View {
                         VStack(spacing: 0) {
                             HStack {
                                 Image("mainLogo")
+                                    .frame(width: 111, height: 14)
                                 
                                 Spacer()
                                 
