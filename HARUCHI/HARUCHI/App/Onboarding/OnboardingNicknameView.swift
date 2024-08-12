@@ -69,7 +69,7 @@ struct OnboardingNicknameView: View {
                 EmptyView()
             }
             .navigationDestination(isPresented: $viewModel.isNavigationActive) {
-                ContentView().navigationBarBackButtonHidden(true)
+                // go mainView
             }
             .navigationBarTitleDisplayMode(.inline)
         }

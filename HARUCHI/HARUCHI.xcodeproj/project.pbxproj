@@ -36,7 +36,6 @@
 		C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6346F462C5F98140048708D /* EmailAuthView.swift */; };
 		C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDA82C60E05C009DEC3C /* AuthAPI.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
-		C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D22C41485400AE2D9C /* ContentView.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
 		C6C139D82C41485500AE2D9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */; };
 		C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139F42C4549B800AE2D9C /* MainButton.swift */; };
@@ -55,6 +54,8 @@
 		C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF820E2C68C9540006A98C /* LoginView.swift */; };
 		C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82112C68C96A0006A98C /* LoginViewModel.swift */; };
 		C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */; };
+		C6CF82162C6A1FEE0006A98C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82152C6A1FEE0006A98C /* AppState.swift */; };
+		C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,7 +87,6 @@
 		C695BDA82C60E05C009DEC3C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
-		C6C139D22C41485400AE2D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C6C139D42C41485500AE2D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C6C139F42C4549B800AE2D9C /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
@@ -106,6 +106,8 @@
 		C6CF820E2C68C9540006A98C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C6CF82112C68C96A0006A98C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldStyle.swift; sourceTree = "<group>"; };
+		C6CF82152C6A1FEE0006A98C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 		C6C139E52C414C9E00AE2D9C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				C6CF82172C6A21A20006A98C /* Manager */,
 				C6C13A102C46604400AE2D9C /* Extension */,
 			);
 			path = Helper;
@@ -282,8 +285,8 @@
 		C6C139E72C414D9700AE2D9C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				C6CF82152C6A1FEE0006A98C /* AppState.swift */,
 				C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */,
-				C6C139D22C41485400AE2D9C /* ContentView.swift */,
 				C6CF820D2C68C9450006A98C /* Login */,
 				C6C13A1F2C4D16ED00AE2D9C /* SignIn */,
 				9FFC87462C4D178200E30A8F /* Onboarding */,
@@ -341,6 +344,14 @@
 				C6CF82112C68C96A0006A98C /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		C6CF82172C6A21A20006A98C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,9 +445,9 @@
 				C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */,
 				C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */,
 				9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */,
-				C6C139D32C41485400AE2D9C /* ContentView.swift in Sources */,
 				4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */,
 				9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */,
+				C6CF82162C6A1FEE0006A98C /* AppState.swift in Sources */,
 				4FCEF51B2C6632370076158D /* BudgetPullPushView.swift in Sources */,
 				378A0FE32C67D9CD002D932A /* DetailMainView.swift in Sources */,
 				378A0FE72C67FD41002D932A /* MemberInfo.swift in Sources */,
@@ -462,6 +473,7 @@
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 				374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */,
+				C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */,
 				C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */,
 				9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */,
 				C61A47172C663EFC0016986D /* BaseAPI.swift in Sources */,
