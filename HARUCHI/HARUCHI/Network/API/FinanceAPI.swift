@@ -49,7 +49,7 @@ extension FinanceAPI: BaseAPI {
         case .expenditure(let expenditureAmount, let category):
             let body = FinanceRequestEntity(expenditureAmount: expenditureAmount, category: category)
             return .requestJSONEncodable(body)
-        case .incomeDelete(let cdoe):
+        case .incomeDelete(let code):
             let param = ["code" : code]
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         case .expenditureDelete(let code):
@@ -61,21 +61,18 @@ extension FinanceAPI: BaseAPI {
     
     fileprivate extension FinanceAPI {
         struct FinanceRequestEntity: Encodable {
-            let income: String?
-            let expenditure: String?
-            let incomeDelete: Int?
-            let exprnditureDelete: Int?
+            let incomeAmount: Int?
+            let expenditureAmount: Int?
+            let category: String?
             
             init(
-                income: String? = nil,
-                expenditure: String? = nil,
-                incomeDelete: Int? = nil,
-                exprnditureDelete: Int? = nil
+                incomeAmount: Int? = nil,
+                expenditureAmount: Int? = nil,
+                category: String? = nil
             ) {
-                self.income = income
-                self.expenditure = expenditure
-                self.incomeDelete = incomeDelete
-                self .exprnditureDelete = exprnditureDelete
+                self.incomeAmount = incomeAmount
+                self.expenditureAmount = expenditureAmount
+                self.category = category
             }
         }
     }
