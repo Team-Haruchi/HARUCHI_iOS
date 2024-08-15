@@ -9,7 +9,10 @@ struct HARUCHIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RootView()
+            //RootView()
+            BudgetMainView()
+                .environmentObject(BudgetMainViewModel())
+                .environmentObject(CalendarViewModel())
         }
     }
 }

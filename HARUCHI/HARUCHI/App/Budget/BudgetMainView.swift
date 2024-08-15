@@ -13,6 +13,8 @@ struct BudgetMainView : View {
     @State private var navigateToNextView = false
     @EnvironmentObject var calendarViewModel : CalendarViewModel
     
+    @State private var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6OSwiZW1haWwiOiJoYXJ1Y2hpb3NAdGVzdC5jb20iLCJpYXQiOjE3MjM3MDgwNjd9.K5vHVyL6myzSfZdDRv3BHuSFxd87A5sdsh6ydSPNrkU" // 실제 토큰을 여기에 넣어야 함
+    
     @State private var xOffset: CGFloat = (UIScreen.main.bounds.width - 48) / 4 // 초기값을 "당겨쓰기" 버튼 위치로 설정
     private let buttonWidth = (UIScreen.main.bounds.width - 68) / 2 // 각 버튼의 너비
     
@@ -64,6 +66,8 @@ struct BudgetMainView : View {
             VStack(alignment: .leading) {
                 HStack{
                     Image("mainLogo")
+                        .resizable()
+                        .frame(width: 111, height: 14)
                     Spacer()
 //                    Button(action:{ 알림창 미구현
 //
@@ -71,7 +75,11 @@ struct BudgetMainView : View {
 //                        Image("notification")
 //                            .frame(width: 30, height: 30)
 //                    }
-                }//HStack
+                    Text("dayBudget: \(budgetViewModel.dayBudget)")
+                }
+                .padding(.top, 16)
+                .padding(.bottom, 15)
+                
                 ScrollView {
                     FSCalendarView(viewModel: calendarViewModel)
                         .frame(width: 345, height: 380)
@@ -214,6 +222,9 @@ struct BudgetMainView : View {
                     }
                 }
             }//VStack
+            .onAppear {
+                budgetViewModel.loadBudget(accessToken: accessToken)
+            }
             .padding(.leading, 24)
             .padding(.trailing, 24)
             
