@@ -176,6 +176,7 @@ struct SaveButtonView: View {
         if viewModel.showMainButton {
             MainButton(text: "저장하기", enable: viewModel.selectedCategory != "미분류", action: {
                 viewModel.hideKeyboard()
+                viewModel.requestIncome()
                 if viewModel.selectedType == "지출" {
                     viewModel.navigateToReceipt = true
                 } else if viewModel.selectedType == "수입" {

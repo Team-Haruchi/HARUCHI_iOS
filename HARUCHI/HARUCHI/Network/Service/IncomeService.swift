@@ -16,31 +16,17 @@ class IncomeService {
     func requestIncome(
         incomeAmount: Int,
         category: String
-    ) -> AnyPublisher<IncomeResponse<IncomeResult>, Error> {
+    ) -> AnyPublisher<Base<IncomeResult>, Error> {
         provider.requestPublisher(.income(incomeAmount: incomeAmount, category: category))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
-                    throw URLError(.badServerResponse)
+                    print("[IncomeService] requestIncome() statusCode : ", response.statusCode)
+                    throw MoyaError.statusCode(response)
                 }
-                
-                let incomeResponse = try JSONDecoder().decode(IncomeResponse<IncomeResult>.self, from: response.data)
-                
-                return incomeResponse
+                return response.data
             }
-            .eraseToAnyPublisher()
-    }
-    
-    func deleteIncome(code: Int) -> AnyPublisher<IncomeResponse<IncomeResult>, Error> {
-        provider.requestPublisher(.incomeDelete(code: code))
-            .tryMap { response in
-                guard (200...299).contains(response.statusCode) else {
-                    throw URLError(.badServerResponse)
-                }
-
-                let incomeResponse = try JSONDecoder().decode(IncomeResponse<IncomeResult>.self, from: response.data)
-                
-                return incomeResponse
-            }
+            .decode(type: Base<IncomeResult>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }

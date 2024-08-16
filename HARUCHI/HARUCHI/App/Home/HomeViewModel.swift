@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class HomeViewModel: ObservableObject {
     @Published var currentMonth: String = ""
@@ -21,7 +22,9 @@ class HomeViewModel: ObservableObject {
     @Published var showMainButton: Bool = false
     @Published var weekData: [WeekCalendarModel] = []
     
-    
+    private var cancellables: Set<AnyCancellable> = []
+    private let incomeService = IncomeService()
+
     var todayDate: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -37,6 +40,28 @@ class HomeViewModel: ObservableObject {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+    
+    func requestIncome() {
+        guard let amount = Int(money), selectedCategory != "미분류" else {
+            // Handle invalid state
+            return
+        }
+        
+        incomeService.requestIncome(incomeAmount: amount, category: selectedCategory)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("저장이 불가능합니다: \(error)")
+                }
+            }, receiveValue: { response in
+                print("인증이 필요합니다: \(response)")
+                self.navigateToHomeMain = true
+            })
+            .store(in: &cancellables)
+    }
+
     
     func setupDummyData() {
         let formatter = DateFormatter()
