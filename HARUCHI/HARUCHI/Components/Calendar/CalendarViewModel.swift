@@ -21,12 +21,12 @@ class CalendarViewModel: ObservableObject {
         
         // 샘플 데이터 생성
         calendarData = [
-            CalendarModel(date: dateFormatter.date(from: "2024-06-15")!, budget: 2000000),
-            CalendarModel(date: dateFormatter.date(from: "2024-06-16")!, budget: 20000),
-            CalendarModel(date: dateFormatter.date(from: "2024-06-30")!, budget: 20000),
-            CalendarModel(date: dateFormatter.date(from: "2024-07-01")!, budget: 2000000),
-            CalendarModel(date: dateFormatter.date(from: "2024-07-02")!, budget: 2000000),
-            CalendarModel(date: dateFormatter.date(from: "2024-07-03")!, budget: 20000),
+            CalendarModel(date: dateFormatter.date(from: "2024-08-15")!, budget: 2000000),
+            CalendarModel(date: dateFormatter.date(from: "2024-08-16")!, budget: 20000),
+            CalendarModel(date: dateFormatter.date(from: "2024-08-30")!, budget: 20000),
+            CalendarModel(date: dateFormatter.date(from: "2024-08-01")!, budget: 2000000),
+            CalendarModel(date: dateFormatter.date(from: "2024-08-02")!, budget: 2000000),
+            CalendarModel(date: dateFormatter.date(from: "2024-08-03")!, budget: 20000),
             // ... 추가 데이터
         ]
     }

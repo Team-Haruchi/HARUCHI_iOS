@@ -28,6 +28,7 @@ class BudgetMainViewModel: ObservableObject {
     @Published var money = ""
     
     @Published var dayBudget: Int = 0
+    @Published var safeBox: Int = 0
     @Published var accessToken: String = ""
     @Published var errorMessage: String?
     
@@ -58,6 +59,22 @@ class BudgetMainViewModel: ObservableObject {
                 }
             }, receiveValue: { budgetResponse in
                 self.dayBudget = budgetResponse.result.dayBudget
+            })
+            .store(in: &cancellables)
+    }
+    
+    func loadSafeBox(accessToken: String) {
+        budgetService.fetchSafeBox(accessToken: accessToken)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load SafeBox: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { safeBoxResponse in
+                self.safeBox = safeBoxResponse.result.safeBox
             })
             .store(in: &cancellables)
     }

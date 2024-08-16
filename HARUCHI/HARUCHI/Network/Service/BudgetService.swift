@@ -20,14 +20,32 @@ class BudgetService {
         provider.requestPublisher(.dailyBudgetCheck(accessToken: accessToken))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
-                    print("[BudgetService] requestCheckBudget() statusCode : ", response.statusCode)
+                    print("[BudgetService] fetchBudget() statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                //print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
             }
             .decode(type: Base<BudgetResponse>.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
+    
+    func fetchSafeBox (
+        accessToken: String
+    ) -> AnyPublisher<Base<SafeBoxResponse>, Error> {
+        provider.requestPublisher(.safeBoxCheck(accessToken: accessToken))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    print("[BudgetService] fetchSafeBox() statusCode : ", response.statusCode)
+                    throw MoyaError.statusCode(response)
+                }
+                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+                return response.data
+            }
+            .decode(type: Base<SafeBoxResponse>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
 }
