@@ -10,7 +10,16 @@ import SwiftUI
 struct HomeReceiptView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject private var viewModel = HomeViewModel()
+    var accessToken: String
+    var selectedCategory: String
+
+    @StateObject private var viewModel: HomeViewModel
+
+    init(accessToken: String, selectedCategory: String) {
+        self.accessToken = accessToken
+        self.selectedCategory = selectedCategory
+        _viewModel = StateObject(wrappedValue: HomeViewModel(accessToken: accessToken))
+    }
     
     let categoryImages: [String: String] = [
         "식비": "circle_pizza",
@@ -23,8 +32,6 @@ struct HomeReceiptView: View {
         "구독": "circle_youtube",
         "기타": "circle_etc"
     ]
-    
-    var selectedCategory: String
 
     var body: some View {
         NavigationStack {

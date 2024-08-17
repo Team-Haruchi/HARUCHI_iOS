@@ -9,8 +9,15 @@ import SwiftUI
 import Combine
 
 struct HomeMainView: View {
-    @ObservedObject private var viewModel = HomeViewModel()
+    @ObservedObject private var viewModel: HomeViewModel
     @StateObject private var percent = BudgetPercentage()
+    
+    @State private var accessToken: String
+    
+    init(accessToken: String) {
+        _viewModel = ObservedObject(wrappedValue: HomeViewModel(accessToken: accessToken)) // viewModel 초기화
+        _accessToken = State(initialValue: accessToken) // accessToken 초기화
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -81,7 +88,7 @@ struct HomeMainView: View {
                                                 .foregroundColor(Color.gray5)
                                             
                                             
-                                            NavigationLink(destination: HomeSpendView()) {
+                                            NavigationLink(destination: HomeSpendView(accessToken: accessToken)) {
                                                 Image(systemName: "plus")
                                                     .font(.system(size: 16, weight: .bold))
                                                     .frame(width: 30, height: 30)
@@ -139,7 +146,7 @@ struct HomeMainView: View {
                         
                         
                         VStack(spacing: 0) {
-                            WeekCalendarView(viewModel: HomeViewModel())
+                            WeekCalendarView(viewModel: HomeViewModel(accessToken: accessToken))
                                 .frame(width: 345, height: 128)
                         }
                         .padding(.top, 25)
@@ -181,8 +188,4 @@ struct HomeMainView: View {
             }
         }
     }
-}
-
-#Preview {
-    HomeMainView()
 }

@@ -9,7 +9,14 @@ import SwiftUI
 
 struct HomeSpendView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject private var viewModel = HomeViewModel()
+    
+    var accessToken: String
+    @StateObject private var viewModel: HomeViewModel
+    
+    init(accessToken: String) {
+        self.accessToken = accessToken
+        _viewModel = StateObject(wrappedValue: HomeViewModel(accessToken: accessToken))
+    }
     
     var body: some View {
         NavigationStack {
@@ -32,12 +39,12 @@ struct HomeSpendView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.navigateToHomeMain) {
-                HomeMainView()
+                HomeMainView(accessToken: accessToken)
                     .navigationBarBackButtonHidden(true)
                     .disableAutocorrection(true)
             }
             .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
-                HomeReceiptView(selectedCategory: viewModel.selectedCategory)
+                HomeReceiptView(accessToken: accessToken, selectedCategory: viewModel.selectedCategory)
                     .environmentObject(viewModel)
                     .navigationBarBackButtonHidden(true)
                     .disableAutocorrection(true)

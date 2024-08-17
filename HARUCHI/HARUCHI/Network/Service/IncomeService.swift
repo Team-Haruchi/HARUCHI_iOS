@@ -11,16 +11,20 @@ import Moya
 import CombineMoya
 
 class IncomeService {
-    private let provider = MoyaProvider<IncomeAPI>()
+    private var provider = MoyaProvider<IncomeAPI>()
+    
+    init(token: String) {
+        self.provider = MoyaProvider<IncomeAPI>(plugins: [AuthPlugin(token: token)])
+    }
     
     func requestIncome(
         incomeAmount: Int,
         category: String
     ) -> AnyPublisher<Base<IncomeResult>, Error> {
-        provider.requestPublisher(.income(incomeAmount: incomeAmount, category: category))
+        return provider.requestPublisher(.income(incomeAmount: incomeAmount, category: category))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
-                    print("[IncomeService] requestIncome() statusCode : ", response.statusCode)
+                    print("[IncomeService] requestIncome() statusCode: \(response.statusCode)")
                     throw MoyaError.statusCode(response)
                 }
                 return response.data

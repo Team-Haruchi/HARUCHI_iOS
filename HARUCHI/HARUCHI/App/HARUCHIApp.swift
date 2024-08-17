@@ -2,6 +2,7 @@ import SwiftUI
 
 @main
 struct HARUCHIApp: App {
+    var accessToken: String = "access_token_here"
     
     init() {
         HARUCHIApp.setUpNavBar()
@@ -9,7 +10,7 @@ struct HARUCHIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RootView()
+            RootView(accessToken: accessToken)
         }
     }
 }

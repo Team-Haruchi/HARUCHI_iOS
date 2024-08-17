@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct OnboardingBudgetView: View {
-    @ObservedObject private var viewModel = OnboardingViewModel()
+    @StateObject private var viewModel: OnboardingViewModel
+    var accessToken: String
+
+    init(accessToken: String) {
+        _viewModel = StateObject(wrappedValue: OnboardingViewModel(accessToken: accessToken))
+        self.accessToken = accessToken
+    }
     
     var body: some View {
         NavigationStack {
@@ -60,7 +66,8 @@ struct OnboardingBudgetView: View {
                     EmptyView()
                 }
                 .navigationDestination(isPresented: $viewModel.isNavigationActive) {
-                    OnboardingNicknameView().navigationBarBackButtonHidden(true)
+                    OnboardingNicknameView(accessToken: accessToken) // accessToken 전달
+                        .navigationBarBackButtonHidden(true)
                 }
                 .navigationBarTitleDisplayMode(.inline)
             }
@@ -81,8 +88,4 @@ struct OnboardingBudgetView: View {
             }
         }
     }
-}
-
-#Preview {
-    OnboardingBudgetView()
 }

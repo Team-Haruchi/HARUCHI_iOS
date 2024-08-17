@@ -23,7 +23,9 @@ class HomeViewModel: ObservableObject {
     @Published var weekData: [WeekCalendarModel] = []
     
     private var cancellables: Set<AnyCancellable> = []
-    private let incomeService = IncomeService()
+    private let incomeService: IncomeService
+
+    var accessToken: String? = nil
 
     var todayDate: String {
         let formatter = DateFormatter()
@@ -31,11 +33,13 @@ class HomeViewModel: ObservableObject {
         return formatter.string(from: Date())
     }
     
-    init() {
+    init(accessToken: String?) {
+        self.accessToken = accessToken
+        // IncomeService를 초기화할 때 token을 전달
+        self.incomeService = IncomeService(token: accessToken ?? "")
         setupDummyData()
         updateCurrentMonth()
     }
-    
     
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -43,7 +47,11 @@ class HomeViewModel: ObservableObject {
     
     func requestIncome() {
         guard let amount = Int(money), selectedCategory != "미분류" else {
-            // Handle invalid state
+            return
+        }
+        
+        guard let token = accessToken else {
+            print("엑세스토큰이 누락되었습니다.")
             return
         }
         
@@ -62,7 +70,6 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    
     func setupDummyData() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -100,7 +107,7 @@ class HomeViewModel: ObservableObject {
         let today = Date()
         let monthFormatter = DateFormatter()
         monthFormatter.dateFormat = "LLLL"
-        monthFormatter.locale = Locale(identifier: "ko_KR") // 한국어 
+        monthFormatter.locale = Locale(identifier: "ko_KR") // 한국어
         self.currentMonth = monthFormatter.string(from: today)
     }
 }
