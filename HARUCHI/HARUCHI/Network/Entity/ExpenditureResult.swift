@@ -9,5 +9,5 @@ import Foundation
 
 struct ExpenditureResult: Decodable {
     let createdAt: String
-    let expenditureResult: Int
+    let expenditureId: Int
 }
