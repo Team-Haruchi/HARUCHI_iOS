@@ -18,19 +18,19 @@ class ExpenditureService {
     }
     
     func requestExpenditure(
-        ExpenditureAmount: Int,
+        expenditureAmount: Int,
         category: String
     ) -> AnyPublisher<Base<ExpenditureResult>, Error> {
         return provider.requestPublisher(.expenditure(expenditureAmount: expenditureAmount, category: category))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
-                    print("[ExpenditureService] requestExpenditure() statusCode: \(resonse.statusCode)")
+                    print("[ExpenditureService] requestExpenditure() statusCode: \(response.statusCode)")
                     throw MoyaError.statusCode(response)
                 }
                 return response.data
             }
-            .decode(type: Base<IncomeResult>.self, decoder: JSONDecoder())
-            .receive(on: DisqatchQueue.main)
+            .decode(type: Base<ExpenditureResult>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
