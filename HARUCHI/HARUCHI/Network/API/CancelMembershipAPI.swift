@@ -1,39 +1,39 @@
 //
-//  MemberInfoAPI.swift
+//  CancelMembershipAPI.swift
 //  HARUCHI
 //
-//  Created by 이슬기 on 8/17/24.
+//  Created by 이슬기 on 8/19/24.
 //
 
 import Foundation
 import Moya
 
-enum MemberInfoAPI {
-    case getMemberInfo
+enum CancelMembershipAPI {
+    case cancelMembership(reason: String)
 }
 
-extension MemberInfoAPI: BaseAPI {
+extension CancelMembershipAPI: BaseAPI {
     // 요청 경로
     var path: String {
         switch self {
-        case .getMemberInfo:
-            return "/member/"
+        case .cancelMembership:
+            return "/member/delete"
         }
     }
     
     // HTTP 요청 메소드
     var method: Moya.Method {
         switch self {
-        case .getMemberInfo:
-            return .get
+        case .cancelMembership:
+            return .post
         }
     }
     
     // HTTP 작업 유형
     var task: Moya.Task {
         switch self {
-        case .getMemberInfo:
-            return .requestPlain
+        case .cancelMembership(let reason):
+            return .requestParameters(parameters: ["reason": reason], encoding: URLEncoding.queryString)
         }
     }
     
