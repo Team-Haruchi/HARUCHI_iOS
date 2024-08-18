@@ -37,11 +37,11 @@ extension MemberInfoAPI: BaseAPI {
         }
     }
     
-    // HTTP 헤더에 하드코딩된 엑세스 토큰 추가
-    public var headers: [String: String]? {
-        return [
-            "Content-type": "application/json",
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MjIsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTcyNDAwMDQwMH0.lsP2x89gCkkGHhv_bYY6petkIUFaavaZSYRnqAToSL8"
-        ]
-    }
+//    // HTTP 헤더에 하드코딩된 엑세스 토큰 추가
+//    public var headers: [String: String]? {
+//        return [
+//            "Content-type": "application/json",
+//            "Authorization": "Bearer accessToken"
+//        ]
+//    }
 }
