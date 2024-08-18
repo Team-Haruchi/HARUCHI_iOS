@@ -30,6 +30,7 @@
 		9FAB27012C5FB31D007FDD23 /* SmallCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB27002C5FB31D007FDD23 /* SmallCircleButton.swift */; };
 		9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD1F112C5126F700CDB0B8 /* HomeMainView.swift */; };
 		9FBDF3752C70D19500EB28CF /* AuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDF3742C70D19500EB28CF /* AuthPlugin.swift */; };
+		9FBDF3772C720BF900EB28CF /* ExpenditureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDF3762C720BF900EB28CF /* ExpenditureService.swift */; };
 		9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */; };
 		9FE4081F2C6F7199000BC55D /* IncomeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4081E2C6F7199000BC55D /* IncomeResult.swift */; };
 		9FF30F372C609EE4005994BB /* HomeReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF30F362C609EE4005994BB /* HomeReceiptView.swift */; };
@@ -93,6 +94,7 @@
 		9FAB27002C5FB31D007FDD23 /* SmallCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCircleButton.swift; sourceTree = "<group>"; };
 		9FBD1F112C5126F700CDB0B8 /* HomeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainView.swift; sourceTree = "<group>"; };
 		9FBDF3742C70D19500EB28CF /* AuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPlugin.swift; sourceTree = "<group>"; };
+		9FBDF3762C720BF900EB28CF /* ExpenditureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureService.swift; sourceTree = "<group>"; };
 		9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpendView.swift; sourceTree = "<group>"; };
 		9FE4081E2C6F7199000BC55D /* IncomeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeResult.swift; sourceTree = "<group>"; };
 		9FF30F362C609EE4005994BB /* HomeReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReceiptView.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				C6CF82242C6A4B0A0006A98C /* AuthService.swift */,
 				9F45D7AC2C6DE5BB00FC11DA /* IncomeService.swift */,
 				9FBDF3742C70D19500EB28CF /* AuthPlugin.swift */,
+				9FBDF3762C720BF900EB28CF /* ExpenditureService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C62EAD312C662C3700D199FA /* IncomeSheetView.swift in Sources */,
+				9FBDF3772C720BF900EB28CF /* ExpenditureService.swift in Sources */,
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
 				374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */,
 				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
