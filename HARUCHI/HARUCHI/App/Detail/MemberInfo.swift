@@ -1,6 +1,9 @@
 import SwiftUI
+import Moya
 
 struct MemberInfo: View {
+    @StateObject private var viewModel = MemberInfoViewModel()
+
     var body: some View {
         VStack(alignment: .leading, spacing: 15){
             HStack{
@@ -13,7 +16,7 @@ struct MemberInfo: View {
             VStack(alignment: .leading, spacing: 10){
                 Text("닉네임")
                     .font(.haruchi(.button14))
-                Text("저축왕")
+                Text(viewModel.memberInfoName)
                     .font(.haruchi(.button12))
                     .foregroundStyle(Color.gray7)
             }.frame(height: 50)
@@ -22,14 +25,14 @@ struct MemberInfo: View {
                 Text("이메일")
                     .font(.haruchi(.button14))
                 // AttributedString으로 이메일 텍스트를 명시적으로 정의
-                Text(AttributedString("haruchi@naver.com", attributes: .init([.foregroundColor: UIColor(Color.gray7)])))
+                Text(AttributedString(viewModel.memberInfoEmail, attributes: .init([.foregroundColor: UIColor(Color.gray7)])))
                     .font(.haruchi(.button12))
             }.frame(height: 50)
             
             VStack(alignment: .leading, spacing: 10){
                 Text("가입일")
                     .font(.haruchi(.button14))
-                Text("2024.01.01")
+                Text(viewModel.memberInfoCreatedAt)
                     .font(.haruchi(.button12))
                     .foregroundStyle(Color.gray7)
             }.frame(height: 50)
@@ -47,6 +50,9 @@ struct MemberInfo: View {
                 }
             }
             .toolbar(.hidden, for: .tabBar)
+            .onAppear {
+                viewModel.fetchMemberInfo()
+            }
     }
 }
 

@@ -1,12 +1,11 @@
 import SwiftUI
 
 struct CancelMembershipView: View {
-    @State private var feedback: String = "" // 입력된 탈퇴 이유를 저장하는 상태 변수
-    @State private var isChecked: Bool = false // 체크 상태를 추적하는 변수
     @FocusState private var isFocused: Bool // TextEditor의 포커스 상태를 추적
+    @StateObject private var viewModel = CancelMembershipViewModel() // ViewModel 객체 생성
     
     var body: some View {
-        GeometryReader { geometry in
+        NavigationStack {
             VStack(alignment: .leading, spacing: 0){
                 HStack{
                     Text("저축왕님\n정말 탈퇴하시겠어요?")
@@ -45,14 +44,14 @@ struct CancelMembershipView: View {
                     .frame(height: 110)
                     .overlay(
                         ZStack(alignment: .topLeading) {
-                            if feedback.isEmpty && !isFocused { // 텍스트가 비어 있고, 포커스가 없을 때만 플레이스홀더 표시
+                            if viewModel.message.isEmpty && !isFocused { // 텍스트가 비어 있고, 포커스가 없을 때만 플레이스홀더 표시
                                 Text("서비스 탈퇴 사유에 대해 알려주세요.\n고객님의 소중한 피드백을 담아\n더 나은 서비스로 보답 드리도록 하겠습니다.")
                                     .font(.haruchi(.button12))
                                     .foregroundColor(Color.gray5)
                                     .padding(15)
                             }
 
-                            TextEditor(text: $feedback)
+                            TextEditor(text: $viewModel.message)
                                 .font(.haruchi(.button12))
                                 .foregroundColor(.black)
                                 .padding(15)
@@ -68,10 +67,10 @@ struct CancelMembershipView: View {
                 Spacer()
                 
                 Button(action: {
-                    isChecked.toggle() // 버튼 클릭 시 체크 상태 변경
+                    viewModel.isChecked.toggle() // 버튼 클릭 시 체크 상태 변경
                 }) {
                     HStack {
-                        Image(isChecked ? "cancelMember_checked" : "cancelMember_unchecked")
+                        Image(viewModel.isChecked ? "cancelMember_checked" : "cancelMember_unchecked")
                             .resizable()
                             .frame(width: 17, height: 17)
                         Text("위 사항에 모두 동의합니다.")
@@ -84,11 +83,10 @@ struct CancelMembershipView: View {
                 
                 MainButton(
                     text: "탈퇴하기",
-                    enable: !feedback.isEmpty && isChecked,
-                    action: saveFeedback
+                    enable: !viewModel.message.isEmpty && viewModel.isChecked,
+                    action: viewModel.cancelMembership
                 )
-                
-            }//.padding(.horizontal, 26)
+            }
             .navigationBarBackButtonHidden(true)
             .disableAutocorrection(true)
             .backButtonStyle()
@@ -106,12 +104,11 @@ struct CancelMembershipView: View {
                 // 텍스트 에디터 외부를 누르면 키보드 내리기
                 isFocused = false
             }
+            .fullScreenCover(isPresented: $viewModel.isCanceled) {
+                LoginView(appState: AppState()) // 로그인 화면
+                    .navigationBarBackButtonHidden(true) // 로그인 화면에서 뒤로 가기 버튼 숨기기
+            }
         }
-    }
-    
-    // 탈퇴 이유를 저장하는 함수
-    private func saveFeedback() {
-        print("탈퇴 이유: \(feedback)")
     }
 }
 

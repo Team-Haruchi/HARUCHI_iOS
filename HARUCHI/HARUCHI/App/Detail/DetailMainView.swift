@@ -22,7 +22,7 @@ struct DetailMainView: View {
                             .frame(width: 6, height: 13)
                     }
                 }
-                .frame(width: 345, height: 45)
+                .frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
                 Button(action: {}) {
                     HStack{
@@ -34,7 +34,7 @@ struct DetailMainView: View {
                             .resizable()
                             .frame(width: 6, height: 13)
                     }
-                }.frame(width: 345, height: 45)
+                }.frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
                 Button(action: {}) {
                     HStack{
@@ -46,7 +46,7 @@ struct DetailMainView: View {
                             .resizable()
                             .frame(width: 6, height: 13)
                     }
-                }.frame(width: 345, height: 45)
+                }.frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
                 HStack{
                     Text("계정")
@@ -66,7 +66,7 @@ struct DetailMainView: View {
                             .resizable()
                             .frame(width: 6, height: 13)
                     }
-                }.frame(width: 345, height: 45)
+                }.frame(width: UIScreen.main.bounds.width - 48, height: 45)
                     .padding(.top, -10)
                 
                 Spacer()
