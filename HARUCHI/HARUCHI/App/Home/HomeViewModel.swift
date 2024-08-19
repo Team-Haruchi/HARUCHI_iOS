@@ -15,6 +15,7 @@ class HomeViewModel: ObservableObject {
     @Published var selectedType: String = "미분류"
     @Published var selectedCategory: String = "미분류"
     @Published var selectedIncome: String = "미분류"
+    @Published var formattedDate: String = ""
     @Published var showIncomeSheet: Bool = false
     @Published var upSpendSheet: Bool = false
     @Published var navigateToReceipt: Bool = false
@@ -46,6 +47,16 @@ class HomeViewModel: ObservableObject {
     
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
+    // 오늘 날짜 띄우는 함수
+    func updateDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d일 EEEE"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        
+        let today = Date()
+        self.formattedDate = dateFormatter.string(from: today)
     }
     
     func requestIncome() {

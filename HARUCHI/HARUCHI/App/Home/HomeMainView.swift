@@ -11,6 +11,8 @@ import Combine
 struct HomeMainView: View {
     @ObservedObject private var viewModel: HomeViewModel
     @StateObject private var percent = BudgetPercentage()
+    @State private var isEditing = false
+    @State private var editedBudget: String = ""
     
     @State private var accessToken: String
     
@@ -49,17 +51,50 @@ struct HomeMainView: View {
                                 
                                 Spacer()
                                 
-                                Text("수정")
+                                // 수정 버튼 추가
+                                Button(action: {
+                                    isEditing.toggle()
+                                    if isEditing {
+                                        editedBudget = viewModel.budget
+                                    }
+                                }) {
+                                    Text("수정")
+                                        .font(.haruchi(.button14))
+                                        .foregroundColor(Color.gray6)
+                                }
                             }
-                            .font(.haruchi(.button14))
-                            .foregroundColor(Color.gray6)
                             
-                            HStack(spacing: 0) {
-                                Text(viewModel.budget)
+                            if isEditing {
+                                HStack(spacing: 0) {
+                                    TextField("예산을 입력하세요", text: $editedBudget)
+                                        .font(.haruchi(.h1))
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .keyboardType(.numberPad)
+                                    
+                                    Spacer().frame(width: 15)
+                                    
+                                    Text("원")
+                                        .font(.haruchi(.h1))
+                                }
                                 
-                                Text("원")
+                                Button(action: {
+                                    if let newBudget = Int(editedBudget) {
+                                        viewModel.budget = String(newBudget)
+                                    }
+                                    isEditing = false
+                                }) {
+                                    Text("저장")
+                                        .font(.haruchi(.button14))
+                                        .foregroundColor(Color.black)
+                                }
+                            } else {
+                                HStack(spacing: 0) {
+                                    Text(viewModel.budget)
+                                    
+                                    Text("원")
+                                }
+                                .font(.haruchi(.h1))
                             }
-                            .font(.haruchi(.h1))
                         }
                         .padding(.horizontal, 24)
                         
@@ -73,11 +108,14 @@ struct HomeMainView: View {
                                 .overlay (
                                     
                                     VStack(spacing: 0) {
-                                        Text("15일 목요일")
+                                        Text(viewModel.formattedDate)
                                             .font(.haruchi(.body_r16))
                                             .foregroundColor(Color.black)
                                             .padding(.leading, 22)
                                             .frame(maxWidth: .infinity, alignment: .leading)
+                                            .onAppear {
+                                                viewModel.updateDate()
+                                            }
                                         
                                         Spacer()
                                         

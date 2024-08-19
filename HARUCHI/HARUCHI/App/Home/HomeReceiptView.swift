@@ -64,7 +64,6 @@ struct HomeReceiptView: View {
                         .padding(.horizontal, 24)
                         .padding(.bottom, 70)
                         
-                        // 라스트 커스텀 ?
                         ScrollView {
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("15일 오늘")
@@ -74,11 +73,12 @@ struct HomeReceiptView: View {
                                     .padding(.bottom, 15)
                                 
                                 if let imageName = categoryImages[selectedCategory] {
-                                    SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "5000원", action: {
+                                    SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "\(viewModel.money)원", action: {
                                         print("ㅇㅋ")
                                     })
                                 }
                             }
+                            .padding(.trailing, 100)
                         }
 
                         
