@@ -58,7 +58,7 @@
 		C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82112C68C96A0006A98C /* LoginViewModel.swift */; };
 		C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */; };
 		C6CF82162C6A1FEE0006A98C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82152C6A1FEE0006A98C /* AppState.swift */; };
-		C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */; };
+		C6CF821A2C6A21CC0006A98C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeychainManager.swift */; };
 		C6CF82202C6A35790006A98C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF821F2C6A35790006A98C /* Example.swift */; };
 		C6CF82252C6A4B0A0006A98C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82242C6A4B0A0006A98C /* AuthService.swift */; };
 		C6CF82272C6A572F0006A98C /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C6CF82262C6A572F0006A98C /* CombineMoya */; };
@@ -120,7 +120,7 @@
 		C6CF82112C68C96A0006A98C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldStyle.swift; sourceTree = "<group>"; };
 		C6CF82152C6A1FEE0006A98C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		C6CF82192C6A21CC0006A98C /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		C6CF821F2C6A35790006A98C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C6CF82242C6A4B0A0006A98C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C6CF82282C6A5D5B0006A98C /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		C6CF82172C6A21A20006A98C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				C6CF82192C6A21CC0006A98C /* KeyChainManager.swift */,
+				C6CF82192C6A21CC0006A98C /* KeychainManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -526,7 +526,7 @@
 				C6C13A0F2C464EC200AE2D9C /* ColorExtension.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 				374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */,
-				C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */,
+				C6CF821A2C6A21CC0006A98C /* KeychainManager.swift in Sources */,
 				C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */,
 				9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */,
 				C6CF822B2C6A5E490006A98C /* LoginResponse.swift in Sources */,
