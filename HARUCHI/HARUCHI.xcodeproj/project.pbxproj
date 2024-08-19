@@ -20,7 +20,7 @@
 		378A0FF52C712E46002D932A /* MemberInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A0FF42C712E46002D932A /* MemberInfoService.swift */; };
 		37CD69372C724B8C000137FC /* CancelMembershipAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */; };
 		37CD69392C724D12000137FC /* CancelMembershipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD69382C724D12000137FC /* CancelMembershipService.swift */; };
-		37CD693B2C724D8A000137FC /* CancelMembershipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693A2C724D8A000137FC /* CancelMembershipResponse.swift */; };
+		37CD693B2C724D8A000137FC /* BaseWithOutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693A2C724D8A000137FC /* BaseWithOutResult.swift */; };
 		37CD693D2C724E32000137FC /* CancelMembershipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693C2C724E32000137FC /* CancelMembershipViewModel.swift */; };
 		37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */; };
 		4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF5182C6632060076158D /* BudgetMainView.swift */; };
@@ -93,7 +93,7 @@
 		378A0FF42C712E46002D932A /* MemberInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoService.swift; sourceTree = "<group>"; };
 		37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipAPI.swift; sourceTree = "<group>"; };
 		37CD69382C724D12000137FC /* CancelMembershipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipService.swift; sourceTree = "<group>"; };
-		37CD693A2C724D8A000137FC /* CancelMembershipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipResponse.swift; sourceTree = "<group>"; };
+		37CD693A2C724D8A000137FC /* BaseWithOutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWithOutResult.swift; sourceTree = "<group>"; };
 		37CD693C2C724E32000137FC /* CancelMembershipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipViewModel.swift; sourceTree = "<group>"; };
 		37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
@@ -413,11 +413,11 @@
 			children = (
 				C6CF821F2C6A35790006A98C /* Example.swift */,
 				C6CF82282C6A5D5B0006A98C /* Base.swift */,
+				37CD693A2C724D8A000137FC /* BaseWithOutResult.swift */,
 				C6CF822A2C6A5E490006A98C /* LoginResponse.swift */,
 				9FE4081E2C6F7199000BC55D /* IncomeResult.swift */,
 				9FBDF3782C7211AF00EB28CF /* ExpenditureResult.swift */,
 				378A0FEA2C6FBF3B002D932A /* MemberInfoResponse.swift */,
-				37CD693A2C724D8A000137FC /* CancelMembershipResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -560,7 +560,7 @@
 				9F161E872C6DDA7A00E0537B /* ExpenditureAPI.swift in Sources */,
 				9F6799352C6DD92B00AEF96A /* IncomeAPI.swift in Sources */,
 				378A0FED2C6FC032002D932A /* MemberInfoAPI.swift in Sources */,
-				37CD693B2C724D8A000137FC /* CancelMembershipResponse.swift in Sources */,
+				37CD693B2C724D8A000137FC /* BaseWithOutResult.swift in Sources */,
 				C6CF82252C6A4B0A0006A98C /* AuthService.swift in Sources */,
 				4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */,
 				378A0FE92C680220002D932A /* CancelMembershipView.swift in Sources */,
