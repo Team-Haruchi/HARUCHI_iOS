@@ -28,7 +28,7 @@ class CancelMembershipViewModel: ObservableObject {
                 switch completion {
                 case .finished:
                     print("Membership cancellation completed.")
-                    self.isCanceled = true // 성공 시 네비게이션 트리거
+                    //self.isCanceled = true // 성공 시 네비게이션 트리거
                 case .failure(let error):
                     print("Failed to cancel membership with error: \(error)")
                 }

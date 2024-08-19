@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FinalConfirmButton: View {
+    var onOK: () -> Void // 확인 버튼 클릭 시 실행할 동작
+    
     var body: some View {
         ZStack{
             Rectangle()
@@ -21,7 +23,7 @@ struct FinalConfirmButton: View {
                     .frame(width: 178, height: 19)
                     .padding(.leading, 20)
                 
-                Button(action: {}) {
+                Button(action: onOK) {
                     Text("확인")
                         .font(.haruchi(size: 12, family: .SemiBold))
                 }.foregroundStyle(Color.mainBlue)
@@ -32,6 +34,6 @@ struct FinalConfirmButton: View {
     }
 }
 
-#Preview {
-    FinalConfirmButton()
-}
+//#Preview {
+//    FinalConfirmButton()
+//}
