@@ -46,26 +46,23 @@ final class LoginViewModel: ObservableObject {
                     break
                 case .failure(let error):
                     self.handleError(error)
-                    self.logInFail()
+                    self.loginFail()
                 }
             } receiveValue: { response in
                 print(response.result.accessToken)
-                
-                // MARK: - TODO
-                // save accessToken with Keychain
-                // other process... ex) AppState
-                
-                self.logInSuccess()
+                self.loginProcess(with: response.result.accessToken)
             }
             .store(in: &cancellables)
     }
     
-    private func logInFail() {
+    private func loginFail() {
         showErrorAlert = true
         isLoading = false
     }
     
-    private func logInSuccess() {
+    // Saving accessToken at Keychain & Change AppState
+    private func loginProcess(with token: String) {
+        KeychainManager.save(token: token, for: .accessToken)
         appState.isLoggedIn = true
         isLoading = false
     }
