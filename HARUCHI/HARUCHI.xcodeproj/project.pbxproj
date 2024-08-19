@@ -53,6 +53,7 @@
 		C6A10AD82C734F36001AA74E /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		C6A10AD92C734F3B001AA74E /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */; };
 		C6A10ADA2C734F48001AA74E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeychainManager.swift */; };
+		C6A10ADE2C735E57001AA74E /* LoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ADD2C735E57001AA74E /* LoadingModifier.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
 		C6C139D82C41485500AE2D9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */; };
@@ -121,6 +122,7 @@
 		C61A47162C663EFC0016986D /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		C6346F462C5F98140048708D /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
 		C695BDA82C60E05C009DEC3C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		C6A10ADD2C735E57001AA74E /* LoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModifier.swift; sourceTree = "<group>"; };
 		C6C139CD2C41485400AE2D9C /* HARUCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARUCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HARUCHIApp.swift; sourceTree = "<group>"; };
 		C6C139D42C41485500AE2D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			children = (
 				C6C13A252C4D17CE00AE2D9C /* BackButtonModifier.swift */,
 				C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */,
+				C6A10ADD2C735E57001AA74E /* LoadingModifier.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				9FBDF3772C720BF900EB28CF /* ExpenditureService.swift in Sources */,
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
 				374E1D602C5A340E00323379 /* CalendarModel.swift in Sources */,
+				C6A10ADE2C735E57001AA74E /* LoadingModifier.swift in Sources */,
 				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
 				C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */,
