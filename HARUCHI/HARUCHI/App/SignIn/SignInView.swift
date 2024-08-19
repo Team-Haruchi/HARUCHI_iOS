@@ -176,8 +176,8 @@ struct SignInView: View {
                     .padding(.horizontal, 24)
                     
                     
-                    MainButton(text: "인증번호 받기", enable: true) {
-                        viewModel.showEmailAuthView = true
+                    MainButton(text: "인증번호 받기", enable: viewModel.canGoNext) {
+                        viewModel.emailAuthProcess()
                     }
                     .padding(.top, 40)
                     .padding(.bottom, 18)
@@ -211,12 +211,20 @@ struct SignInView: View {
                 }
             }
         }
+        .backButtonStyle()
+        .loadingOverlay(isLoading: $viewModel.isLoading)
         .navigationTitle("회원가입")
         .navigationBarBackButtonHidden(true)
         .disableAutocorrection(true)
-        .backButtonStyle()
         .navigationDestination(isPresented: $viewModel.showEmailAuthView) {
             EmailAuthView().environmentObject(viewModel)
+        }
+        .alert(isPresented: $viewModel.showEmailDuplicateError) {
+            Alert(
+                title: Text("회원가입 실패"),
+                message: Text("이미 존재하는 이메일입니다."),
+                dismissButton: .default(Text("확인"))
+            )
         }
     }
 }

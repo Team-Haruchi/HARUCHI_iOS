@@ -1,5 +1,5 @@
 //
-//  CancelMembershipResponse.swift
+//  BaseWithOutResult.swift
 //  HARUCHI
 //
 //  Created by 이슬기 on 8/19/24.
