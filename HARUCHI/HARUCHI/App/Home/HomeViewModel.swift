@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine
+
 
 class HomeViewModel: ObservableObject {
     @Published var currentMonth: String = ""
@@ -20,7 +22,16 @@ class HomeViewModel: ObservableObject {
     @Published var navigateToHomeMain: Bool = false
     @Published var showMainButton: Bool = false
     @Published var weekData: [WeekCalendarModel] = []
+        
+    @Published var accessToken: String = ""
+    @Published var errorMessage: String?
+    @Published var monthBudget: Int = 0
+    @Published var leftDay: Int = 0
+    @Published var leftBudget: Int = 0
+    @Published var monthUsedPercent: Int = 0
     
+    private var cancellables = Set<AnyCancellable>()
+    private let budgetService = BudgetService()
     
     var todayDate: String {
         let formatter = DateFormatter()
@@ -28,11 +39,62 @@ class HomeViewModel: ObservableObject {
         return formatter.string(from: Date())
     }
     
-    init() {
+    init(
+        accessToken: String = ""
+    ) {
         setupDummyData()
         updateCurrentMonth()
+        self.accessToken = accessToken
     }
     
+    func loadMonthBudget(accessToken: String) {
+        budgetService.fetchMonthBudget(accessToken: accessToken)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load MonthBudget: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { monthBudgetResponse in
+                self.monthBudget = monthBudgetResponse.result.monthBudget
+            })
+            .store(in: &cancellables)
+    }
+    
+    func loadLeftNow(accessToken: String) {
+        budgetService.fetchLeftNow(accessToken: accessToken)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load LeftNow: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { leftNowResponse in
+                self.leftDay = leftNowResponse.result.leftDay
+                self.leftBudget = leftNowResponse.result.leftBudget
+            })
+            .store(in: &cancellables)
+    }
+    
+    func loadBudgetPercent(accessToken: String) {
+        budgetService.fetchBudgetPercent(accessToken: accessToken)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load BudgetPercent: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { budgetPercentResponse in
+                self.monthUsedPercent = budgetPercentResponse.result.monthUsedPercent
+            })
+            .store(in: &cancellables)
+    }
     
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

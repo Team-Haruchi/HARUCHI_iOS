@@ -12,6 +12,9 @@ enum BudgetAPI {
     case dailyBudgetCheck(accessToken: String)
     case dateBudgetCheck(accessToken: String)
     case safeBoxCheck(accessToken: String)
+    case monthlyBudgetCheck(accessToken: String)
+    case leftNowCheck(accessToken: String)
+    case budgetPercentCheck(accessToken: String)
 }
 
 extension BudgetAPI: BaseAPI {
@@ -25,6 +28,15 @@ extension BudgetAPI: BaseAPI {
             
         case .safeBoxCheck:
             return "/member/safebox"
+            
+        case .monthlyBudgetCheck:
+            return "/monthly-budget/"
+            
+        case .leftNowCheck:
+            return "/monthly-budget/left-now"
+            
+        case .budgetPercentCheck:
+            return "/monthly-budget/percent"
         }
     }
     
@@ -37,6 +49,15 @@ extension BudgetAPI: BaseAPI {
             return .get
             
         case .safeBoxCheck:
+            return .get
+            
+        case .monthlyBudgetCheck:
+            return .get
+            
+        case .leftNowCheck:
+            return .get
+            
+        case .budgetPercentCheck:
             return .get
         }
     }
@@ -51,6 +72,15 @@ extension BudgetAPI: BaseAPI {
             
         case .safeBoxCheck:
             return .requestPlain
+            
+        case .monthlyBudgetCheck:
+            return .requestPlain
+            
+        case .leftNowCheck:
+            return .requestPlain
+            
+        case .budgetPercentCheck:
+            return .requestPlain
         }
     }
     
@@ -59,10 +89,19 @@ extension BudgetAPI: BaseAPI {
         case .dailyBudgetCheck(let accessToken):
             return ["Authorization": "Bearer \(accessToken)"]
             
-        case .dateBudgetCheck:
-            return nil
+        case .dateBudgetCheck(let accessToken):
+            return ["Authorization": "Bearer \(accessToken)"]
             
         case .safeBoxCheck(let accessToken):
+            return ["Authorization": "Bearer \(accessToken)"]
+            
+        case .monthlyBudgetCheck(let accessToken):
+            return ["Authorization": "Bearer \(accessToken)"]
+            
+        case .leftNowCheck(let accessToken):
+            return ["Authorization": "Bearer \(accessToken)"]
+            
+        case .budgetPercentCheck(let accessToken):
             return ["Authorization": "Bearer \(accessToken)"]
         }
     }

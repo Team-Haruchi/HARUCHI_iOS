@@ -224,8 +224,10 @@ struct BudgetMainView : View {
             }//VStack
             .onAppear {
                 budgetViewModel.loadBudget(accessToken: accessToken)
-                budgetViewModel.loadSafeBox(accessToken: accessToken)
+                budgetViewModel.loadSafeBox(accessToken: accessToken)     
+                budgetViewModel.loadDateBudget(accessToken: accessToken)
             }
+            
             .padding(.leading, 24)
             .padding(.trailing, 24)
             

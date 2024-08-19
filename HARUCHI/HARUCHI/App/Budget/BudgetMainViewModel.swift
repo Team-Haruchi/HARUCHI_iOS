@@ -29,7 +29,8 @@ class BudgetMainViewModel: ObservableObject {
     
     @Published var dayBudget: Int = 0
     @Published var safeBox: Int = 0
-    @Published var accessToken: String = ""
+    @Published var dateBudget: Double = 0
+    @Published var accessToken: String
     @Published var errorMessage: String?
     
     @Published var pushMethod: Budget.Push?
@@ -78,6 +79,24 @@ class BudgetMainViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
+    
+    func loadDateBudget(accessToken: String) {
+        budgetService.fetchDateBudget(accessToken: accessToken)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load dateBudget: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { dateBudgetResponse in
+//                self.dateBudget = dateBudgetResponse.result.budget
+            })
+            .store(in: &cancellables)
+    }
+    
+    
     
     func activeMethodStr() -> String {
         if isPushButtonActive {

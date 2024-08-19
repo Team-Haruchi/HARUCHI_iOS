@@ -16,7 +16,24 @@ struct SafeBoxResponse: Decodable {
 }
 
 struct DateBudgetResponse: Decodable {
-    let budget: Int
+    let budget: [BudgetItem]
 }
 
+struct BudgetItem: Decodable {
+    let day: Int
+    let dayBudget: Double
+}
+
+struct MonthBudgetResponse: Decodable {
+    let monthBudget: Int
+}
+
+struct LeftNowResponse: Decodable {
+    let leftDay: Int
+    let leftBudget: Int
+}
+
+struct BudgetPercentResponse: Decodable {
+    let monthUsedPercent: Int
+}
 

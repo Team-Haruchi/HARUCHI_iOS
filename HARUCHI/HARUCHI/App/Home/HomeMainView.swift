@@ -9,8 +9,10 @@ import SwiftUI
 import Combine
 
 struct HomeMainView: View {
-    @ObservedObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel = HomeViewModel()
+    @ObservedObject private var budgetViewModel = BudgetMainViewModel()
     @StateObject private var percent = BudgetPercentage()
+    @State private var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
     
     var body: some View {
         GeometryReader { geometry in
@@ -47,15 +49,14 @@ struct HomeMainView: View {
                             .foregroundColor(Color.gray6)
                             
                             HStack(spacing: 0) {
-                                Text(viewModel.budget)
+                                Text("\(viewModel.monthBudget)")
                                 
                                 Text("원")
                             }
                             .font(.haruchi(.h1))
                         }
                         .padding(.horizontal, 24)
-                        
-                        PercentageBar(viewModel: percent)
+                        PercentageBar(percentViewModel: percent)
                             .padding(.top, 16)
                         
                         VStack(spacing: 0) {
@@ -75,7 +76,7 @@ struct HomeMainView: View {
                                         
                                         HStack {
                                             Spacer()
-                                            Text("하루치 20000원")
+                                            Text("하루치 \(budgetViewModel.dayBudget)원")
                                                 .font(.haruchi(.h2))
                                                 .foregroundColor(Color.gray5)
                                             
@@ -166,7 +167,7 @@ struct HomeMainView: View {
                                         
                                         Spacer()
                                         
-                                        Text("7000원")
+                                        Text("\(budgetViewModel.safeBox)원")
                                             .font(.haruchi(.body_r16))
                                             .foregroundColor(Color.black)
                                     }
@@ -176,6 +177,13 @@ struct HomeMainView: View {
                         .padding(.top, 25)
                         Spacer()
                     }
+                }
+                .onAppear {
+                    viewModel.loadMonthBudget(accessToken: accessToken)
+                    viewModel.loadBudgetPercent(accessToken: accessToken)
+                    budgetViewModel.loadBudget(accessToken: accessToken)
+                    budgetViewModel.loadSafeBox(accessToken: accessToken)
+                    percent.percentage = CGFloat(viewModel.monthUsedPercent)
                 }
             }
         }
