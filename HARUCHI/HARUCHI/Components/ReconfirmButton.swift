@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ReconfirmButton: View {
+    var onCancel: () -> Void // 취소 버튼 클릭 시 실행할 동작
+    var onConfirm: () -> Void // 탈퇴 버튼 클릭 시 실행할 동작
+    
     var body: some View {
         ZStack{
             Rectangle()
@@ -21,7 +24,7 @@ struct ReconfirmButton: View {
                 Text("모든 정보가 삭제되며, 복구할 수 없습니다.")
                     .font(.haruchi(.button12))
                 HStack(spacing: 13){
-                    Button(action: {}) {
+                    Button(action: onCancel) {
                         Text("취소")
                             .font(.haruchi(size: 12, family: .SemiBold))
                     }.foregroundStyle(Color.gray7)
@@ -29,7 +32,7 @@ struct ReconfirmButton: View {
                         .background(Color.gray2)
                         .cornerRadius(3)
                     
-                    Button(action: {}) {
+                    Button(action: onConfirm) {
                         Text("탈퇴하기")
                             .font(.haruchi(size: 12, family: .SemiBold))
                     }.foregroundStyle(.white)
@@ -42,6 +45,6 @@ struct ReconfirmButton: View {
     }
 }
 
-#Preview {
-    ReconfirmButton()
-}
+//#Preview {
+//    ReconfirmButton()
+//}
