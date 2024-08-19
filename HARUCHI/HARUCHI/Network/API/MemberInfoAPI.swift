@@ -37,11 +37,17 @@ extension MemberInfoAPI: BaseAPI {
         }
     }
     
-//    // HTTP 헤더에 하드코딩된 엑세스 토큰 추가
-//    public var headers: [String: String]? {
-//        return [
-//            "Content-type": "application/json",
-//            "Authorization": "Bearer accessToken"
-//        ]
-//    }
+    // HTTP 헤더에 저장된 엑세스 토큰 추가
+    var headers: [String: String]? {
+        var headers = ["Content-type": "application/json"]
+        
+        // 키체인에서 토큰을 가져와 Authorization 헤더에 추가
+        if let token = KeychainManager.load(for: .accessToken) {
+            headers["Authorization"] = "Bearer \(token)"
+        } else {
+            print("키체인에서 토큰을 찾을 수 없습니다.")
+        }
+        
+        return headers
+    }
 }
