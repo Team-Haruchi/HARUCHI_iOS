@@ -75,7 +75,6 @@ struct BudgetMainView : View {
 //                        Image("notification")
 //                            .frame(width: 30, height: 30)
 //                    }
-                    Text("dayBudget: \(budgetViewModel.dayBudget)")
                 }
                 .padding(.top, 16)
                 .padding(.bottom, 15)
@@ -225,7 +224,6 @@ struct BudgetMainView : View {
             .onAppear {
                 budgetViewModel.loadBudget(accessToken: accessToken)
                 budgetViewModel.loadSafeBox(accessToken: accessToken)     
-                budgetViewModel.loadDateBudget(accessToken: accessToken)
             }
             
             .padding(.leading, 24)

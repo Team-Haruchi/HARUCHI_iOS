@@ -23,7 +23,7 @@ class BudgetService {
                     print("[BudgetService] fetchBudget() statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
             }
             .decode(type: Base<BudgetResponse>.self, decoder: JSONDecoder())
@@ -40,7 +40,7 @@ class BudgetService {
                     print("[BudgetService] fetchSafeBox() statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
             }
             .decode(type: Base<SafeBoxResponse>.self, decoder: JSONDecoder())
@@ -74,7 +74,7 @@ class BudgetService {
                     print("[BudgetService] fetchMonthBudget statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
             }
             .decode(type: Base<MonthBudgetResponse>.self, decoder: JSONDecoder())
@@ -91,7 +91,7 @@ class BudgetService {
                     print("[BudgetService] fetchLeftNow statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
             }
             .decode(type: Base<LeftNowResponse>.self, decoder: JSONDecoder())
@@ -108,7 +108,7 @@ class BudgetService {
                     print("[BudgetService] fetchBudgetPercent statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
             }
             .decode(type: Base<BudgetPercentResponse>.self, decoder: JSONDecoder())

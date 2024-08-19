@@ -13,6 +13,7 @@ struct HARUCHIApp: App {
             BudgetMainView()
                 .environmentObject(BudgetMainViewModel())
                 .environmentObject(CalendarViewModel())
+//            HomeMainView()
         }
     }
 }
