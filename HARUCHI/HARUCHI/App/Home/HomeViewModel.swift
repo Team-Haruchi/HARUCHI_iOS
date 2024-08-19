@@ -24,6 +24,7 @@ class HomeViewModel: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
     private let incomeService: IncomeService
+    private let expenditureService: ExpenditureService
 
     var accessToken: String? = nil
 
@@ -37,6 +38,8 @@ class HomeViewModel: ObservableObject {
         self.accessToken = accessToken
         // IncomeService를 초기화할 때 token을 전달
         self.incomeService = IncomeService(token: accessToken ?? "")
+        self.expenditureService = ExpenditureService(token: accessToken ?? "")
+        
         setupDummyData()
         updateCurrentMonth()
     }
@@ -56,6 +59,31 @@ class HomeViewModel: ObservableObject {
         }
         
         incomeService.requestIncome(incomeAmount: amount, category: selectedCategory)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("저장이 불가능합니다: \(error)")
+                }
+            }, receiveValue: { response in
+                print("인증이 필요합니다: \(response)")
+                self.navigateToHomeMain = true
+            })
+            .store(in: &cancellables)
+    }
+    
+    func reqeustExpenditure() {
+        guard let amount = Int(money), selectedCategory != "미분류" else {
+            return
+        }
+        
+        guard let token = accessToken else {
+            print("엑세스토큰이 누락되었습니다.")
+            return
+        }
+        
+        expenditureService.requestExpenditure(expenditureAmount: amount, category: selectedCategory)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
