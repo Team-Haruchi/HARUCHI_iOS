@@ -219,7 +219,7 @@ struct SignInView: View {
         .navigationDestination(isPresented: $viewModel.showEmailAuthView) {
             EmailAuthView().environmentObject(viewModel)
         }
-        .alert(isPresented: $viewModel.showErrorAlert) {
+        .alert(isPresented: $viewModel.showEmailDuplicateError) {
             Alert(
                 title: Text("회원가입 실패"),
                 message: Text("이미 존재하는 이메일입니다."),

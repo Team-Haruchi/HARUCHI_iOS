@@ -103,8 +103,11 @@ class SignInViewModel: ObservableObject {
     
     // MARK: - Email Auth
     @Published var emailAuthCode: String = ""
-    @Published var showErrorAlert: Bool = false
+    @Published var showEmailDuplicateError: Bool = false
+    @Published var showEmailAuthCodeError: Bool = false
     @Published var isLoading: Bool = false
+    @Published var authCodeVerified: Bool = false
+    @Published var showOnboarding: Bool = false
     
     func emailAuthProcess() {
         isLoading = true
@@ -126,16 +129,44 @@ class SignInViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func verifyEmailAuthCode() {
+        isLoading = true
+        
+        authService.verifyEmailAuthCode(email: email, code: emailAuthCode)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.verifyEmailAuthCodeFail()
+                }
+            } receiveValue: { [weak self] response in
+                if response.isSuccess {
+                    self?.verifyEmailAuthCodeSuccess()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     private func emailAuthCodeRequestFail() {
-        print("fail!!!!!!!")
         isLoading = false
-        showErrorAlert = true
+        showEmailDuplicateError = true
     }
     
     private func emailAuthCodeRequestSuccess() {
-        print("success!!!!!!!")
         isLoading = false
         showEmailAuthView = true
+    }
+    
+    private func verifyEmailAuthCodeFail() {
+        isLoading = false
+        showEmailAuthCodeError = true
+    }
+    
+    private func verifyEmailAuthCodeSuccess() {
+        isLoading = false
+        authCodeVerified = true
     }
     
     func startTimer() {
