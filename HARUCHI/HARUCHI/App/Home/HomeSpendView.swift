@@ -183,10 +183,13 @@ struct SaveButtonView: View {
         if viewModel.showMainButton {
             MainButton(text: "저장하기", enable: viewModel.selectedCategory != "미분류", action: {
                 viewModel.hideKeyboard()
-                viewModel.requestIncome()
+                
+                // 수입/지출 구분하여 호출
                 if viewModel.selectedType == "지출" {
+                    viewModel.reqeustExpenditure()
                     viewModel.navigateToReceipt = true
                 } else if viewModel.selectedType == "수입" {
+                    viewModel.requestIncome()
                     viewModel.navigateToHomeMain = true
                 }
             })

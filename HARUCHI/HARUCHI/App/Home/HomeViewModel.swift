@@ -53,7 +53,7 @@ class HomeViewModel: ObservableObject {
             return
         }
         
-        guard accessToken != nil else {
+        guard let token = accessToken, !token.isEmpty else {
             print("엑세스토큰이 누락되었습니다.")
             return
         }
@@ -78,7 +78,7 @@ class HomeViewModel: ObservableObject {
             return
         }
         
-        guard accessToken != nil else {
+        guard let token = accessToken, !token.isEmpty else {
             print("엑세스토큰이 누락되었습니다.")
             return
         }
