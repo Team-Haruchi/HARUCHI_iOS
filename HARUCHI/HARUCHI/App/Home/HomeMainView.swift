@@ -28,8 +28,7 @@ struct HomeMainView: View {
                     VStack(spacing: 0) {
                         VStack(spacing: 0) {
                             HStack {
-                                Image("mainLogo")
-                                    .frame(width: 111, height: 14)
+                                Image("HomeLogo")
                                 
                                 Spacer()
                                 
@@ -37,7 +36,7 @@ struct HomeMainView: View {
                             }
                         }
                         .padding(.horizontal, 24)
-                        .padding(.top, 6)
+                        .padding(.top, 13)
                         .padding(.bottom, 25)
                         
                         
@@ -104,7 +103,7 @@ struct HomeMainView: View {
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.sub3Blue)
-                                .frame(width: 345, height: 120)
+                                .frame(width: geometry.size.width * 0.9, height: 120)
                                 .overlay (
                                     
                                     VStack(spacing: 0) {
@@ -150,7 +149,7 @@ struct HomeMainView: View {
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray1)
-                                .frame(width: 346, height: 58)
+                                .frame(width: geometry.size.width * 0.9, height: 58)
                                 .overlay {
                                     HStack {
                                         ZStack {
@@ -193,7 +192,7 @@ struct HomeMainView: View {
                         
                         VStack(spacing: 0) {
                             WeekCalendarView(viewModel: HomeViewModel(accessToken: accessToken))
-                                .frame(width: 345, height: 128)
+                                .frame(width: geometry.size.width * 0.9, height: 128)
                         }
                         .padding(.top, 25)
                         
@@ -201,7 +200,7 @@ struct HomeMainView: View {
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray1)
-                                .frame(width: 345, height: 58)
+                                .frame(width: geometry.size.width * 0.9, height: 58)
                                 .overlay {
                                     HStack {
                                         ZStack {
