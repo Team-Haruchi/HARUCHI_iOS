@@ -18,6 +18,10 @@
 		378A0FED2C6FC032002D932A /* MemberInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A0FEC2C6FC032002D932A /* MemberInfoAPI.swift */; };
 		378A0FF12C6FCC12002D932A /* MemberInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A0FF02C6FCC12002D932A /* MemberInfoViewModel.swift */; };
 		378A0FF52C712E46002D932A /* MemberInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A0FF42C712E46002D932A /* MemberInfoService.swift */; };
+		37CD69372C724B8C000137FC /* CancelMembershipAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */; };
+		37CD69392C724D12000137FC /* CancelMembershipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD69382C724D12000137FC /* CancelMembershipService.swift */; };
+		37CD693B2C724D8A000137FC /* CancelMembershipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693A2C724D8A000137FC /* CancelMembershipResponse.swift */; };
+		37CD693D2C724E32000137FC /* CancelMembershipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693C2C724E32000137FC /* CancelMembershipViewModel.swift */; };
 		37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */; };
 		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF5182C6632060076158D /* BudgetMainView.swift */; };
@@ -79,6 +83,10 @@
 		378A0FEC2C6FC032002D932A /* MemberInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoAPI.swift; sourceTree = "<group>"; };
 		378A0FF02C6FCC12002D932A /* MemberInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoViewModel.swift; sourceTree = "<group>"; };
 		378A0FF42C712E46002D932A /* MemberInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoService.swift; sourceTree = "<group>"; };
+		37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipAPI.swift; sourceTree = "<group>"; };
+		37CD69382C724D12000137FC /* CancelMembershipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipService.swift; sourceTree = "<group>"; };
+		37CD693A2C724D8A000137FC /* CancelMembershipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipResponse.swift; sourceTree = "<group>"; };
+		37CD693C2C724E32000137FC /* CancelMembershipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipViewModel.swift; sourceTree = "<group>"; };
 		37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
 		4FB934372C47AC2700994816 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		4FCEF5182C6632060076158D /* BudgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMainView.swift; sourceTree = "<group>"; };
@@ -160,6 +168,7 @@
 				378A0FE62C67FD41002D932A /* MemberInfo.swift */,
 				378A0FF02C6FCC12002D932A /* MemberInfoViewModel.swift */,
 				378A0FE82C680220002D932A /* CancelMembershipView.swift */,
+				37CD693C2C724E32000137FC /* CancelMembershipViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -235,6 +244,7 @@
 				C61A47162C663EFC0016986D /* BaseAPI.swift */,
 				C695BDA82C60E05C009DEC3C /* AuthAPI.swift */,
 				378A0FEC2C6FC032002D932A /* MemberInfoAPI.swift */,
+				37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -386,6 +396,7 @@
 				C6CF82282C6A5D5B0006A98C /* Base.swift */,
 				C6CF822A2C6A5E490006A98C /* LoginResponse.swift */,
 				378A0FEA2C6FBF3B002D932A /* MemberInfoResponse.swift */,
+				37CD693A2C724D8A000137FC /* CancelMembershipResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -395,6 +406,7 @@
 			children = (
 				C6CF82242C6A4B0A0006A98C /* AuthService.swift */,
 				378A0FF42C712E46002D932A /* MemberInfoService.swift */,
+				37CD69382C724D12000137FC /* CancelMembershipService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -492,6 +504,7 @@
 				C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */,
 				9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */,
 				4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */,
+				37CD69392C724D12000137FC /* CancelMembershipService.swift in Sources */,
 				9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */,
 				378A0FF52C712E46002D932A /* MemberInfoService.swift in Sources */,
 				C6CF82162C6A1FEE0006A98C /* AppState.swift in Sources */,
@@ -501,6 +514,7 @@
 				378A0FEB2C6FBF3B002D932A /* MemberInfoResponse.swift in Sources */,
 				C6CF822D2C6A6FFF0006A98C /* RootView.swift in Sources */,
 				374E1D612C5A340E00323379 /* CalendarView.swift in Sources */,
+				37CD69372C724B8C000137FC /* CancelMembershipAPI.swift in Sources */,
 				9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */,
 				9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */,
 				9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */,
@@ -515,6 +529,7 @@
 				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
 				C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */,
 				C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */,
+				37CD693B2C724D8A000137FC /* CancelMembershipResponse.swift in Sources */,
 				C6CF82252C6A4B0A0006A98C /* AuthService.swift in Sources */,
 				4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */,
 				378A0FE92C680220002D932A /* CancelMembershipView.swift in Sources */,
@@ -531,6 +546,7 @@
 				9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */,
 				C6CF822B2C6A5E490006A98C /* LoginResponse.swift in Sources */,
 				C61A47172C663EFC0016986D /* BaseAPI.swift in Sources */,
+				37CD693D2C724E32000137FC /* CancelMembershipViewModel.swift in Sources */,
 				C6CF822F2C6A77740006A98C /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
