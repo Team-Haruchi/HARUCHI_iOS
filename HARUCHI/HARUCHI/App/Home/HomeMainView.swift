@@ -140,9 +140,17 @@ struct HomeMainView: View {
                                     }
                                     .padding(.horizontal, 10)
                                 }
-                            
+                                .onTapGesture {
+                                    viewModel.navigateToReceipt = true
+                                }
                         }
                         .padding(.top, 20)
+                        .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
+                            HomeReceiptView(accessToken: accessToken, selectedCategory: viewModel.selectedCategory)
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                                .disableAutocorrection(true)
+                        }
                         
                         
                         VStack(spacing: 0) {
