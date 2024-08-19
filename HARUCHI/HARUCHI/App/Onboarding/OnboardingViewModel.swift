@@ -19,13 +19,14 @@ class OnboardingViewModel: ObservableObject {
     @Published var isNavigationActive: Bool = false
     @Published var budget: String = "0" // 예산값 저장
     @Published var limitLength: TextLengthStatus = .default
-    @Published var homeViewModel = HomeViewModel()
-    
-    let maxLength = 5
+    @Published var homeViewModel: HomeViewModel
 
+    let maxLength = 5
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(accessToken: String) {
+        self.homeViewModel = HomeViewModel(accessToken: accessToken)
+ 
         $text
             .sink { [weak self] newValue in
                 self?.validateAndLimitText()
