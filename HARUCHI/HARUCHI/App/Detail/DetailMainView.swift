@@ -24,16 +24,14 @@ struct DetailMainView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
-                Button(action: {}) {
-                    HStack{
-                        Text("버전정보")
-                            .font(.haruchi(.body_r16))
-                            .foregroundStyle(.black)
-                        Spacer()
-                        Image("chevron.right")
-                            .resizable()
-                            .frame(width: 6, height: 13)
-                    }
+                HStack{
+                    Text("버전정보")
+                        .font(.haruchi(.body_r16))
+                        .foregroundStyle(.black)
+                    Spacer()
+                    Text("v 3.34.0")
+                        .font(.haruchi(.body_r16))
+                        .foregroundStyle(.black)
                 }.frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
                 Button(action: {}) {
