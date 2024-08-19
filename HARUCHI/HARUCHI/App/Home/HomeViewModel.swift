@@ -131,7 +131,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func updateCurrentMonth() {
-        let calendar = Calendar.current
+        _ = Calendar.current
         let today = Date()
         let monthFormatter = DateFormatter()
         monthFormatter.dateFormat = "LLLL"
