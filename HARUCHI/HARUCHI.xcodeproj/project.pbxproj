@@ -23,7 +23,6 @@
 		37CD693B2C724D8A000137FC /* CancelMembershipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693A2C724D8A000137FC /* CancelMembershipResponse.swift */; };
 		37CD693D2C724E32000137FC /* CancelMembershipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693C2C724E32000137FC /* CancelMembershipViewModel.swift */; };
 		37FD1F322C5F838200B2B44B /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD1F312C5F838200B2B44B /* WeekCalendarView.swift */; };
-		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF5182C6632060076158D /* BudgetMainView.swift */; };
 		4FCEF51B2C6632370076158D /* BudgetPullPushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF51A2C6632370076158D /* BudgetPullPushView.swift */; };
 		4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF51C2C6632630076158D /* BudgetMainViewModel.swift */; };
@@ -50,6 +49,10 @@
 		C62EAD312C662C3700D199FA /* IncomeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1508B92C57921F00DFF5CA /* IncomeSheetView.swift */; };
 		C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6346F462C5F98140048708D /* EmailAuthView.swift */; };
 		C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDA82C60E05C009DEC3C /* AuthAPI.swift */; };
+		C6A10AD72C734F32001AA74E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82112C68C96A0006A98C /* LoginViewModel.swift */; };
+		C6A10AD82C734F36001AA74E /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
+		C6A10AD92C734F3B001AA74E /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */; };
+		C6A10ADA2C734F48001AA74E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeychainManager.swift */; };
 		C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C139D02C41485400AE2D9C /* HARUCHIApp.swift */; };
 		C6C139D52C41485500AE2D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D42C41485500AE2D9C /* Assets.xcassets */; };
 		C6C139D82C41485500AE2D9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C139D72C41485500AE2D9C /* Preview Assets.xcassets */; };
@@ -66,10 +69,7 @@
 		C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A272C4D1C6A00AE2D9C /* GrayLine.swift */; };
 		C6C13A2A2C4E8CD100AE2D9C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C13A292C4E8CD100AE2D9C /* SignInViewModel.swift */; };
 		C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF820E2C68C9540006A98C /* LoginView.swift */; };
-		C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82112C68C96A0006A98C /* LoginViewModel.swift */; };
-		C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82132C68D4DF0006A98C /* LoginTextFieldStyle.swift */; };
 		C6CF82162C6A1FEE0006A98C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82152C6A1FEE0006A98C /* AppState.swift */; };
-		C6CF821A2C6A21CC0006A98C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82192C6A21CC0006A98C /* KeychainManager.swift */; };
 		C6CF82202C6A35790006A98C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF821F2C6A35790006A98C /* Example.swift */; };
 		C6CF82252C6A4B0A0006A98C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF82242C6A4B0A0006A98C /* AuthService.swift */; };
 		C6CF82272C6A572F0006A98C /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C6CF82262C6A572F0006A98C /* CombineMoya */; };
@@ -516,6 +516,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6A10ADA2C734F48001AA74E /* KeychainManager.swift in Sources */,
+				C6A10AD92C734F3B001AA74E /* LoginTextFieldStyle.swift in Sources */,
+				C6A10AD82C734F36001AA74E /* CircleButton.swift in Sources */,
+				C6A10AD72C734F32001AA74E /* LoginViewModel.swift in Sources */,
 				C62EAD312C662C3700D199FA /* IncomeSheetView.swift in Sources */,
 				9FBDF3772C720BF900EB28CF /* ExpenditureService.swift in Sources */,
 				9F4D78DA2C4D6221004B9C7D /* OnboardingNicknameView.swift in Sources */,
@@ -550,14 +554,8 @@
 				C6CF82292C6A5D5B0006A98C /* Base.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				9F161E872C6DDA7A00E0537B /* ExpenditureAPI.swift in Sources */,
-				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
-				C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */,
-				C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */,
 				9F6799352C6DD92B00AEF96A /* IncomeAPI.swift in Sources */,
 				378A0FED2C6FC032002D932A /* MemberInfoAPI.swift in Sources */,
-				4FB934382C47AC2700994816 /* CircleButton.swift in Sources */,
-				C6CF82142C68D4DF0006A98C /* LoginTextFieldStyle.swift in Sources */,
-				C6CF82122C68C96A0006A98C /* LoginViewModel.swift in Sources */,
 				37CD693B2C724D8A000137FC /* CancelMembershipResponse.swift in Sources */,
 				C6CF82252C6A4B0A0006A98C /* AuthService.swift in Sources */,
 				4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */,
@@ -571,9 +569,7 @@
 				9FBDF3792C7211AF00EB28CF /* ExpenditureResult.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 				374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */,
-				C6CF821A2C6A21CC0006A98C /* KeyChainManager.swift in Sources */,
 				9F45D7AD2C6DE5BB00FC11DA /* IncomeService.swift in Sources */,
-				C6CF821A2C6A21CC0006A98C /* KeychainManager.swift in Sources */,
 				C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */,
 				9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */,
 				C6CF822B2C6A5E490006A98C /* LoginResponse.swift in Sources */,
