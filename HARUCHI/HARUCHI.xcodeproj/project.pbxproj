@@ -19,6 +19,7 @@
 		378A0FF12C6FCC12002D932A /* MemberInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A0FF02C6FCC12002D932A /* MemberInfoViewModel.swift */; };
 		378A0FF52C712E46002D932A /* MemberInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A0FF42C712E46002D932A /* MemberInfoService.swift */; };
 		3797F3DA2C73CC6E00048A18 /* ReconfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3797F3D92C73CC6E00048A18 /* ReconfirmButton.swift */; };
+		3797F3DC2C73DCA100048A18 /* FinalConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3797F3DB2C73DCA100048A18 /* FinalConfirmButton.swift */; };
 		37CD69372C724B8C000137FC /* CancelMembershipAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */; };
 		37CD69392C724D12000137FC /* CancelMembershipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD69382C724D12000137FC /* CancelMembershipService.swift */; };
 		37CD693B2C724D8A000137FC /* BaseWithOutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD693A2C724D8A000137FC /* BaseWithOutResult.swift */; };
@@ -93,6 +94,7 @@
 		378A0FF02C6FCC12002D932A /* MemberInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoViewModel.swift; sourceTree = "<group>"; };
 		378A0FF42C712E46002D932A /* MemberInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoService.swift; sourceTree = "<group>"; };
 		3797F3D92C73CC6E00048A18 /* ReconfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconfirmButton.swift; sourceTree = "<group>"; };
+		3797F3DB2C73DCA100048A18 /* FinalConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalConfirmButton.swift; sourceTree = "<group>"; };
 		37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipAPI.swift; sourceTree = "<group>"; };
 		37CD69382C724D12000137FC /* CancelMembershipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelMembershipService.swift; sourceTree = "<group>"; };
 		37CD693A2C724D8A000137FC /* BaseWithOutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWithOutResult.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				9FAB27002C5FB31D007FDD23 /* SmallCircleButton.swift */,
 				C6CF822E2C6A77740006A98C /* LoadingView.swift */,
 				3797F3D92C73CC6E00048A18 /* ReconfirmButton.swift */,
+				3797F3DB2C73DCA100048A18 /* FinalConfirmButton.swift */,
 				C6C13A242C4D17A900AE2D9C /* ViewModifier */,
 			);
 			path = Components;
@@ -561,6 +564,7 @@
 				C6CF82292C6A5D5B0006A98C /* Base.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
 				9F161E872C6DDA7A00E0537B /* ExpenditureAPI.swift in Sources */,
+				3797F3DC2C73DCA100048A18 /* FinalConfirmButton.swift in Sources */,
 				9F6799352C6DD92B00AEF96A /* IncomeAPI.swift in Sources */,
 				378A0FED2C6FC032002D932A /* MemberInfoAPI.swift in Sources */,
 				37CD693B2C724D8A000137FC /* BaseWithOutResult.swift in Sources */,
