@@ -11,4 +11,5 @@ struct CloseResult: Decodable {
     let year: Int
     let month: Int
     let day: Int
+    let amount: Int
 }
