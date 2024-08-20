@@ -14,7 +14,7 @@ class CloseService {
     private var provider = MoyaProvider<CloseAPI>()
     
     init(token: String) {
-        self.provider = MoyaProvider<CloseAPI>(plugins: [AuthPlugin(token: token)])
+        self.provider = MoyaProvider<CloseAPI>(plugins: [AuthPlugin()])
     }
     
     func closeBudget(

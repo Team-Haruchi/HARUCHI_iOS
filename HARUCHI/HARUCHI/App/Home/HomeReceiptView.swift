@@ -14,6 +14,8 @@ struct HomeReceiptView: View {
 
     @ObservedObject private var viewModel = HomeViewModel()
 
+    @State private var selectedOption: String? = nil
+
 
     let categoryImages: [String: String] = [
         "식비": "circle_pizza",
