@@ -4,6 +4,7 @@ struct CancelMembershipView: View {
     @FocusState private var isFocused: Bool // TextEditor의 포커스 상태를 추적
     @StateObject private var viewModel = CancelMembershipViewModel() // ViewModel 객체 생성
     @State private var showReconfirmButton: Bool = false // ReconfirmButton 표시 여부를 제어하는 상태 변수
+    @State private var showFinalConfirmButton: Bool = false // FinalConfirmButton 표시 여부를 제어하는 상태 변수
     
     var body: some View {
         ZStack{
@@ -121,8 +122,24 @@ struct CancelMembershipView: View {
                         showReconfirmButton = false // 취소 버튼을 누르면 오버레이 닫기
                     },
                     onConfirm: {
-                        viewModel.cancelMembership() // 실제 탈퇴 작업 수행
                         showReconfirmButton = false
+                        viewModel.cancelMembership() // 실제 탈퇴 작업 수행
+                        showFinalConfirmButton = true
+                    }
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.clear)
+            }
+            
+            // FinalConfirmButton 오버레이
+            if showFinalConfirmButton {
+                Color.black.opacity(0.6)
+                    .edgesIgnoringSafeArea(.all)
+                
+                FinalConfirmButton(
+                    onOK: {
+                        showFinalConfirmButton = false
+                        viewModel.isCanceled = true // 로그인 화면으로 이동하기 위해 설정
                     }
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
