@@ -9,22 +9,22 @@ import SwiftUI
 
 struct HomeSpendView: View {
     @Environment(\.presentationMode) var presentationMode
-    
-    var accessToken: String
-    @StateObject private var viewModel: HomeViewModel
-    
-    init(accessToken: String) {
-        self.accessToken = accessToken
-        _viewModel = StateObject(wrappedValue: HomeViewModel(accessToken: accessToken))
-    }
+    @ObservedObject private var viewModel = HomeViewModel()
+    @ObservedObject private var budgetViewModel = BudgetMainViewModel()
+
+
     
     var body: some View {
         NavigationStack {
             VStack {
-                HeaderView(viewModel: viewModel)
+                HeaderView(viewModel: viewModel, budgetViewModel: budgetViewModel)
                 CategorySelectorView(viewModel: viewModel)
                 CategoryDisplayView(viewModel: viewModel)
                 SaveButtonView(viewModel: viewModel)
+            }
+            .onAppear {
+                viewModel.loadLeftNow()
+                budgetViewModel.loadBudget()
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -39,7 +39,7 @@ struct HomeSpendView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.navigateToHomeMain) {
-                HomeMainView(accessToken: accessToken)
+                HomeMainView()
                     .navigationBarBackButtonHidden(true)
                     .disableAutocorrection(true)
             }
@@ -77,6 +77,7 @@ struct HomeSpendView: View {
 
 struct HeaderView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var budgetViewModel = BudgetMainViewModel()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -86,16 +87,17 @@ struct HeaderView: View {
                 .padding(.top, 21)
                 .padding(.bottom, 10)
             
-            Text("D-14 / 230000원")
+            Text("D-\(viewModel.leftDay) / \(viewModel.leftBudget)원")
                 .font(.haruchi(.caption3))
                 .foregroundColor(Color.gray5)
                 .padding(.bottom, 25)
             
-            TextField("하루치 20000원", text: $viewModel.money)
+            TextField("하루치 \(budgetViewModel.dayBudget)원", text: $viewModel.money)
                 .font(.haruchi(.h1))
                 .foregroundColor(Color.black)
                 .keyboardType(.numberPad)
                 .multilineTextAlignment(.leading)
+            
         }
         .padding(.horizontal, 24)
         

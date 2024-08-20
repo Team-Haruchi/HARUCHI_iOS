@@ -38,7 +38,8 @@ struct EmailAuthView: View {
                     Spacer()
                     
                     Button {
-                        // re request
+                        viewModel.emailAuthProcess()
+                        viewModel.startTimer()
                     } label: {
                         VStack(spacing: 0) {
                             Text("재요청")
@@ -60,14 +61,15 @@ struct EmailAuthView: View {
                         .keyboardType(.numberPad)
                     
                     Button {
-                        // authentication
+                        viewModel.verifyEmailAuthCode()
                     } label: {
                         Text("인증하기")
                             .font(.haruchi(size: 10, family: .Regular))
-                            .foregroundStyle(Color.gray5) // 색 분기처리
+                            .foregroundStyle(viewModel.authCodeVerified ? Color.mainBlue : Color.gray5)
                             .frame(width: 65, height: 25)
-                            .border(Color.gray3)
+                            .border(viewModel.authCodeVerified ? Color.mainBlue : Color.gray3)
                     }
+                    .disabled(viewModel.timeRemaining == .zero)
                 }
                 .padding(.bottom, 10)
                 
@@ -85,13 +87,29 @@ struct EmailAuthView: View {
             .padding(.horizontal, 24)
             
             Spacer()
+            
+            MainButton(text: "가입하기", enable: viewModel.authCodeVerified) {
+                viewModel.showOnboarding = true
+            }
+            .padding(.bottom, 17)
         }
         .navigationTitle("회원가입")
         .navigationBarBackButtonHidden(true)
         .disableAutocorrection(true)
         .backButtonStyle()
+        .loadingOverlay(isLoading: $viewModel.isLoading)
         .onAppear {
             viewModel.startTimer()
+        }
+        .navigationDestination(isPresented: $viewModel.showOnboarding) {
+            OnboardingBudgetView()
+        }
+        .alert(isPresented: $viewModel.showEmailAuthCodeError) {
+            Alert(
+                title: Text("인증 실패"),
+                message: Text("인증번호가 올바르지 않습니다."),
+                dismissButton: .default(Text("확인"))
+            )
         }
     }
 }

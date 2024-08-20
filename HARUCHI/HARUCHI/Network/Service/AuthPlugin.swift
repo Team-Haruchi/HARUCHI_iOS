@@ -10,6 +10,10 @@ import Moya
 
 struct AuthPlugin: PluginType {
     let token: String
+    
+    init() {
+        self.token = KeychainManager.load(for: .accessToken) ?? "FatalError"
+    }
 
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         var request = request

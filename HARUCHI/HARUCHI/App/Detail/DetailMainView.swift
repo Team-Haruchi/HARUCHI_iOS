@@ -24,20 +24,18 @@ struct DetailMainView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
-                Button(action: {}) {
-                    HStack{
-                        Text("버전정보")
-                            .font(.haruchi(.body_r16))
-                            .foregroundStyle(.black)
-                        Spacer()
-                        Image("chevron.right")
-                            .resizable()
-                            .frame(width: 6, height: 13)
-                    }
+                HStack{
+                    Text("버전정보")
+                        .font(.haruchi(.body_r16))
+                        .foregroundStyle(.black)
+                    Spacer()
+                    Text("v 3.34.0")
+                        .font(.haruchi(.body_r16))
+                        .foregroundStyle(.black)
                 }.frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
-                Button(action: {}) {
-                    HStack{
+                ShareLink(item: URL(string: "https://www.naver.com/")!) {
+                    HStack {
                         Text("친구에게 앱 공유하기")
                             .font(.haruchi(.body_r16))
                             .foregroundStyle(.black)
@@ -46,7 +44,8 @@ struct DetailMainView: View {
                             .resizable()
                             .frame(width: 6, height: 13)
                     }
-                }.frame(width: UIScreen.main.bounds.width - 48, height: 45)
+                }
+                .frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
                 HStack{
                     Text("계정")

@@ -46,18 +46,18 @@ extension IncomeAPI: BaseAPI {
         }
     }
 }
-    
-    fileprivate extension IncomeAPI {
-        struct IncomeRequestEntity: Encodable {
-            let incomeAmount: Int?
-            let category: String?
-            
-            init(
-                incomeAmount: Int? = nil,
-                category: String? = nil
-            ) {
-                self.incomeAmount = incomeAmount
-                self.category = category
-            }
+
+fileprivate extension IncomeAPI {
+    struct IncomeRequestEntity: Encodable {
+        let incomeAmount: Int?
+        let category: String?
+        
+        init(
+            incomeAmount: Int? = nil,
+            category: String? = nil
+        ) {
+            self.incomeAmount = incomeAmount
+            self.category = category
         }
     }
+}

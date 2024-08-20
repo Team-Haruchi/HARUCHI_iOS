@@ -13,8 +13,8 @@ import CombineMoya
 class IncomeService {
     private var provider = MoyaProvider<IncomeAPI>()
     
-    init(token: String) {
-        self.provider = MoyaProvider<IncomeAPI>(plugins: [AuthPlugin(token: token)])
+    init() {
+        self.provider = MoyaProvider<IncomeAPI>(plugins: [AuthPlugin()])
     }
     
     func requestIncome(

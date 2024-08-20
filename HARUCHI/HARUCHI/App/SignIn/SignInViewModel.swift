@@ -22,7 +22,6 @@ class SignInViewModel: ObservableObject {
     
     @Published var timeRemaining: Int = 120 // 이메일 인증시간 (2분)
     @Published var formattedTime: String = "2분00초"
-    private var timer: AnyCancellable?
     
     // MARK: - SignIn
     @Published var email: String = "" {
@@ -49,6 +48,25 @@ class SignInViewModel: ObservableObject {
     
     @Published var termAgree: Bool = false
     @Published var collectInfoAgree: Bool = false
+    
+    private var timer: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
+    private let authService = AuthService()
+    
+    init() {
+        setupCanGoNextPublisher()
+    }
+    
+    private func setupCanGoNextPublisher() {
+        Publishers.CombineLatest3(
+            $validationStatus.map { $0.values.allSatisfy { $0 } },
+            $termAgree,
+            $collectInfoAgree
+        )
+        .map { $0 && $1 && $2 }
+        .assign(to: \.canGoNext, on: self)
+        .store(in: &cancellables)
+    }
     
     func agreeAllTapped() {
         if termAgree && collectInfoAgree {
@@ -85,6 +103,71 @@ class SignInViewModel: ObservableObject {
     
     // MARK: - Email Auth
     @Published var emailAuthCode: String = ""
+    @Published var showEmailDuplicateError: Bool = false
+    @Published var showEmailAuthCodeError: Bool = false
+    @Published var isLoading: Bool = false
+    @Published var authCodeVerified: Bool = false
+    @Published var showOnboarding: Bool = false
+    
+    func emailAuthProcess() {
+        isLoading = true
+        
+        authService.requestEmailAuthCode(for: email)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.emailAuthCodeRequestFail()
+                }
+            } receiveValue: { [weak self] response in
+                if response.isSuccess {
+                    self?.emailAuthCodeRequestSuccess()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    func verifyEmailAuthCode() {
+        isLoading = true
+        
+        authService.verifyEmailAuthCode(email: email, code: emailAuthCode)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.verifyEmailAuthCodeFail()
+                }
+            } receiveValue: { [weak self] response in
+                if response.isSuccess {
+                    self?.verifyEmailAuthCodeSuccess()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func emailAuthCodeRequestFail() {
+        isLoading = false
+        showEmailDuplicateError = true
+    }
+    
+    private func emailAuthCodeRequestSuccess() {
+        isLoading = false
+        showEmailAuthView = true
+    }
+    
+    private func verifyEmailAuthCodeFail() {
+        isLoading = false
+        showEmailAuthCodeError = true
+    }
+    
+    private func verifyEmailAuthCodeSuccess() {
+        isLoading = false
+        authCodeVerified = true
+    }
     
     func startTimer() {
         timer?.cancel() // 기존 타이머 취소

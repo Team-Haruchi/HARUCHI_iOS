@@ -22,12 +22,22 @@ class HomeViewModel: ObservableObject {
     @Published var navigateToHomeMain: Bool = false
     @Published var showMainButton: Bool = false
     @Published var weekData: [WeekCalendarModel] = []
+        
+    @Published var errorMessage: String?
+    @Published var monthBudget: Int = 0
+    @Published var leftDay: Int = 0
+    @Published var leftBudget: Int = 0
+    @Published var monthUsedPercent: Int = 0
+    @Published var weekBudget: Int = 0
+    @Published var weekDay: Int = 0
+    @Published var weekStatus: String = ""
     
-    private var cancellables: Set<AnyCancellable> = []
-    private let incomeService: IncomeService
-    private let expenditureService: ExpenditureService
+    private var cancellables = Set<AnyCancellable>()
+    private let budgetService = BudgetService()
+    
+    private let incomeService = IncomeService()
+    private let expenditureService = ExpenditureService()
 
-    var accessToken: String? = nil
 
     var todayDate: String {
         let formatter = DateFormatter()
@@ -35,14 +45,77 @@ class HomeViewModel: ObservableObject {
         return formatter.string(from: Date())
     }
     
-    init(accessToken: String?) {
-        self.accessToken = accessToken
-        // IncomeService를 초기화할 때 token을 전달
-        self.incomeService = IncomeService(token: accessToken ?? "")
-        self.expenditureService = ExpenditureService(token: accessToken ?? "")
-        
-        setupDummyData()
-        updateCurrentMonth()
+    init() {
+        self.updateCurrentMonth()
+    }
+    
+    func loadMonthBudget() {
+        budgetService.fetchMonthBudget()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load MonthBudget: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { monthBudgetResponse in
+                self.monthBudget = monthBudgetResponse.result.monthBudget
+            })
+            .store(in: &cancellables)
+    }
+    
+    func loadLeftNow() {
+        budgetService.fetchLeftNow()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load LeftNow: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { leftNowResponse in
+                self.leftDay = leftNowResponse.result.leftDay
+                self.leftBudget = leftNowResponse.result.leftBudget
+            })
+            .store(in: &cancellables)
+    }
+    
+    func loadBudgetPercent() {
+        budgetService.fetchBudgetPercent()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load BudgetPercent: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { budgetPercentResponse in
+                self.monthUsedPercent = budgetPercentResponse.result.monthUsedPercent
+            })
+            .store(in: &cancellables)
+    }
+    
+    func loadWeekBudget() {
+        budgetService.fetchWeekBudget()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load WeekBudget: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { [weak self] weekBudgetResponse in
+                guard let self = self else { return }
+                
+                // weekBudgetResponse에서 데이터를 추출하여 setupCalendarData로 전달
+                let weekBudgets = weekBudgetResponse.result.weekBudget
+                self.setupCalendarData(with: weekBudgets)
+            })
+            .store(in: &cancellables)
     }
     
     func hideKeyboard() {
@@ -63,11 +136,7 @@ class HomeViewModel: ObservableObject {
         guard let amount = Int(money), selectedCategory != "미분류" else {
             return
         }
-        
-        guard let token = accessToken, !token.isEmpty else {
-            print("엑세스토큰이 누락되었습니다.")
-            return
-        }
+
         
         incomeService.requestIncome(incomeAmount: amount, category: selectedCategory)
             .sink(receiveCompletion: { completion in
@@ -89,10 +158,6 @@ class HomeViewModel: ObservableObject {
             return
         }
         
-        guard let token = accessToken, !token.isEmpty else {
-            print("엑세스토큰이 누락되었습니다.")
-            return
-        }
         
         expenditureService.requestExpenditure(expenditureAmount: amount, category: selectedCategory)
             .sink(receiveCompletion: { completion in
@@ -109,7 +174,7 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func setupDummyData() {
+    func setupCalendarData(with weekBudgets: [WeekBudgetItem]) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
@@ -125,14 +190,21 @@ class HomeViewModel: ObservableObject {
         var weekData = [WeekCalendarModel]()
         
         // 일주일 동안 날짜를 생성, 데이터 추가
-        for dayOffset in 0..<7 {
+        for dayOffset in 0..<8 {
             if let date = calendar.date(byAdding: .day, value: dayOffset, to: startDate) {
-                // 데이터 에시로 넣어둠, 나중에 네트워크 연결하면서 수정필요
-                let iconName = ["calendar_smiling", "calendar_pouting", "calendar_base"].randomElement() ?? "calendar_base"
-                let value = [0, 20000].randomElement()
-                
-                let model = WeekCalendarModel(date: date, icon: iconName, value: value)
-                weekData.append(model)
+                // 해당 날짜의 예산 데이터를 찾음
+                let day = calendar.component(.day, from: date)
+                if let budgetForDay = weekBudgets.first(where: { $0.day == day }) {
+                    let iconName = ["calendar_smiling", "calendar_pouting", "calendar_base"].randomElement() ?? "calendar_base"
+                    let value = budgetForDay.dayBudget
+                    
+                    let model = WeekCalendarModel(date: date, icon: iconName, value: value)
+                    weekData.append(model)
+                } else {
+                    // 해당 날짜에 데이터가 없을 경우 기본값으로 처리
+                    let model = WeekCalendarModel(date: date, icon: "calendar_base", value: 0)
+                    weekData.append(model)
+                }
             }
         }
         
