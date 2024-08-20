@@ -11,11 +11,7 @@ import Moya
 import CombineMoya
 
 class ExpenditureService {
-    private var provider = MoyaProvider<ExpenditureAPI>()
-    
-    init(token: String) {
-        self.provider = MoyaProvider<ExpenditureAPI>(plugins:[AuthPlugin(token: token)])
-    }
+    private var provider = MoyaProvider<ExpenditureAPI>(plugins:[AuthPlugin()])
     
     func requestExpenditure(
         expenditureAmount: Int,

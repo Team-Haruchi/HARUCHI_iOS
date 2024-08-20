@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct OnboardingNicknameView: View {
-    @StateObject private var viewModel: OnboardingViewModel
+    @ObservedObject var viewModel: OnboardingViewModel
 
-    init(accessToken: String) {
-        _viewModel = StateObject(wrappedValue: OnboardingViewModel(accessToken: accessToken))
+    init(viewModel: OnboardingViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -33,16 +33,16 @@ struct OnboardingNicknameView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center) {
                         ZStack(alignment: .trailing) {
-                            TextField("(한글) 5글자 내로 입력해주세요.", text: $viewModel.text)
+                            TextField("(한글) 5글자 내로 입력해주세요.", text: $viewModel.nickname)
                                 .font(.haruchi(.h2))
-                                .foregroundColor(viewModel.limitLength == .invalid ? Color.black : Color.red)
+                                .foregroundColor(viewModel.nicknameStatus == .invalid ? Color.black : Color.red)
                                 .keyboardType(.default)
                                 .multilineTextAlignment(.leading)
                                 .padding(.leading, 24)
                             
-                            Text("\(viewModel.text.count)/\(viewModel.maxLength)")
+                            Text("\(viewModel.nickname.count)/\(viewModel.maxLength)")
                                 .font(.haruchi(.h2))
-                                .foregroundColor(viewModel.text.isEmpty ? Color.gray : (viewModel.limitLength == .invalid ? Color.red : Color.black))
+                                .foregroundColor(viewModel.nickname.isEmpty ? Color.gray : (viewModel.nicknameStatus == .invalid ? Color.red : Color.black))
                                 .padding(.leading, 56)
                         }
                         .padding(.vertical, 5)
@@ -50,7 +50,7 @@ struct OnboardingNicknameView: View {
                     .padding(.trailing, 24)
                     
                     HStack {
-                        if viewModel.limitLength == .invalid && !viewModel.text.isEmpty {
+                        if viewModel.nicknameStatus == .invalid && !viewModel.nickname.isEmpty {
                             Text("올바르지 않은 형식입니다.")
                                 .font(.haruchi(.caption3))
                                 .foregroundColor(Color.red)
@@ -68,21 +68,12 @@ struct OnboardingNicknameView: View {
                 Spacer()
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
-            
-            NavigationLink(value: true) {
-                EmptyView()
-            }
-            .navigationDestination(isPresented: $viewModel.isNavigationActive) {
-                // go mainView
-            }
-            .navigationBarTitleDisplayMode(.inline)
         }
         .ignoresSafeArea(.keyboard)
-        
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
-                KeypadButton(text: "가입완료", enable: viewModel.limitLength == .valid && viewModel.text.count <= viewModel.maxLength) {
-                    viewModel.isNavigationActive = true
+                KeypadButton(text: "가입완료", enable: viewModel.canGoNext) {
+                    // go mainView
                 }
             }
         }

@@ -15,34 +15,46 @@ enum TextLengthStatus {
 }
 
 class OnboardingViewModel: ObservableObject {
-    @Published var text = ""
-    @Published var isNavigationActive: Bool = false
+    @Published var monthBudget = ""
+    @Published var nickname = ""
+    @Published var showOnboardingNicknameView: Bool = false
     @Published var budget: String = "0" // 예산값 저장
-    @Published var limitLength: TextLengthStatus = .default
-    @Published var homeViewModel: HomeViewModel
-
-    let maxLength = 5
-    private var cancellables = Set<AnyCancellable>()
+    @Published var nicknameStatus: TextLengthStatus = .default
+    @Published var canGoNext: Bool = false
     
-    init(accessToken: String) {
-        self.homeViewModel = HomeViewModel(accessToken: accessToken)
- 
-        $text
+    private var cancellables = Set<AnyCancellable>()
+    let maxLength = 5
+    
+    init() {
+        sinkNickname()
+    }
+    
+    private func sinkNickname() {
+        $nickname
             .sink { [weak self] newValue in
                 self?.validateAndLimitText()
             }
             .store(in: &cancellables)
     }
     
-    func validateAndLimitText() {
-        if text.count > maxLength || text.isEmpty || !isKoreanOnly(text) {
-            limitLength = .invalid
+    private func sinkCanGoNext() {
+        Publishers.CombineLatest($nicknameStatus, $nickname)
+            .map { status, nickname in
+                return status == .valid && nickname.count <= self.maxLength
+            }
+            .assign(to: \.canGoNext, on: self)
+            .store(in: &cancellables)
+    }
+    
+    private func validateAndLimitText() {
+        if nickname.count > maxLength || nickname.isEmpty || !validateNickname(nickname) {
+            nicknameStatus = .invalid
         } else {
-            limitLength = .valid
+            nicknameStatus = .valid
         }
     }
 
-    private func isKoreanOnly(_ input: String) -> Bool {
+    private func validateNickname(_ input: String) -> Bool {
         let pattern = "^[가-힣]*$"
         if let regex = try? NSRegularExpression(pattern: pattern) {
             let range = NSRange(location: 0, length: input.utf16.count)

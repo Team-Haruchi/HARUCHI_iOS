@@ -219,7 +219,6 @@ struct FSCalendarView: UIViewRepresentable {
 struct CalendarPreview: View {
     @StateObject private var viewModel = CalendarViewModel()
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
-    @State private var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
     
     var body: some View {
         VStack {

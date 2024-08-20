@@ -9,13 +9,13 @@ import Foundation
 import Moya
 
 enum BudgetAPI {
-    case dailyBudgetCheck(accessToken: String)
-    case dateBudgetCheck(accessToken: String)
-    case safeBoxCheck(accessToken: String)
-    case monthlyBudgetCheck(accessToken: String)
-    case leftNowCheck(accessToken: String)
-    case budgetPercentCheck(accessToken: String)
-    case weekBudgetCheck(accessToken: String)
+    case dailyBudgetCheck
+    case dateBudgetCheck
+    case safeBoxCheck
+    case monthlyBudgetCheck
+    case leftNowCheck
+    case budgetPercentCheck
+    case weekBudgetCheck
 
 }
 
@@ -97,32 +97,4 @@ extension BudgetAPI: BaseAPI {
             
         }
     }
-    
-    var headers: [String : String]? {
-        switch self {
-        case .dailyBudgetCheck(let accessToken):
-            return ["Authorization": "Bearer \(accessToken)"]
-            
-        case .dateBudgetCheck(let accessToken):
-            return ["Authorization": "Bearer \(accessToken)"]
-            
-        case .safeBoxCheck(let accessToken):
-            return ["Authorization": "Bearer \(accessToken)"]
-            
-        case .monthlyBudgetCheck(let accessToken):
-            return ["Authorization": "Bearer \(accessToken)"]
-            
-        case .leftNowCheck(let accessToken):
-            return ["Authorization": "Bearer \(accessToken)"]
-            
-        case .budgetPercentCheck(let accessToken):
-            return ["Authorization": "Bearer \(accessToken)"]
-            
-        case .weekBudgetCheck(let accessToken):
-            return ["Authorization": "Bearer \(accessToken)"]
-            
-        }
-    }
-    
-    
 }

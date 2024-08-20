@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject private var appState = AppState()
-    var accessToken: String 
 
     var body: some View {
         NavigationStack {
@@ -17,7 +16,7 @@ struct RootView: View {
                 LoginView(appState: appState)
             } else {
                 TabView {
-                    HomeMainView(accessToken: accessToken)
+                    HomeMainView()
                         .tabItem {
                             Image("tabbar_home")
                             Text("홈")
