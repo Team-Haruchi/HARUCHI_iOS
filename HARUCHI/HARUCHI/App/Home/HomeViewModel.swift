@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-
 class HomeViewModel: ObservableObject {
     @Published var currentMonth: String = ""
     @Published var money = ""
@@ -16,6 +15,7 @@ class HomeViewModel: ObservableObject {
     @Published var selectedType: String = "미분류"
     @Published var selectedCategory: String = "미분류"
     @Published var selectedIncome: String = "미분류"
+    @Published var formattedDate: String = ""
     @Published var showIncomeSheet: Bool = false
     @Published var upSpendSheet: Bool = false
     @Published var navigateToReceipt: Bool = false
@@ -33,11 +33,14 @@ class HomeViewModel: ObservableObject {
     @Published var weekDay: Int = 0
     @Published var weekStatus: String = ""
     
-    
-    
     private var cancellables = Set<AnyCancellable>()
     private let budgetService = BudgetService()
     
+    private let incomeService: IncomeService
+    private let expenditureService: ExpenditureService
+
+    var accessToken: String? = nil
+
     var todayDate: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -124,6 +127,66 @@ class HomeViewModel: ObservableObject {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
+    // 오늘 날짜 띄우는 함수
+    func updateDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d일 EEEE"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        
+        let today = Date()
+        self.formattedDate = dateFormatter.string(from: today)
+    }
+    
+    func requestIncome() {
+        guard let amount = Int(money), selectedCategory != "미분류" else {
+            return
+        }
+        
+        guard let token = accessToken, !token.isEmpty else {
+            print("엑세스토큰이 누락되었습니다.")
+            return
+        }
+        
+        incomeService.requestIncome(incomeAmount: amount, category: selectedCategory)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("저장이 불가능합니다: \(error)")
+                }
+            }, receiveValue: { response in
+                print("인증이 필요합니다: \(response)")
+                self.navigateToHomeMain = true
+            })
+            .store(in: &cancellables)
+    }
+    
+    func reqeustExpenditure() {
+        guard let amount = Int(money), selectedCategory != "미분류" else {
+            return
+        }
+        
+        guard let token = accessToken, !token.isEmpty else {
+            print("엑세스토큰이 누락되었습니다.")
+            return
+        }
+        
+        expenditureService.requestExpenditure(expenditureAmount: amount, category: selectedCategory)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("저장이 불가능합니다: \(error)")
+                }
+            }, receiveValue: { response in
+                print("인증이 필요합니다: \(response)")
+                self.navigateToHomeMain = true
+            })
+            .store(in: &cancellables)
+    }
+
     func setupCalendarData(with weekBudgets: [WeekBudgetItem]) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -164,11 +227,11 @@ class HomeViewModel: ObservableObject {
     }
     
     func updateCurrentMonth() {
-        let calendar = Calendar.current
+        _ = Calendar.current
         let today = Date()
         let monthFormatter = DateFormatter()
         monthFormatter.dateFormat = "LLLL"
-        monthFormatter.locale = Locale(identifier: "ko_KR") // 한국어 
+        monthFormatter.locale = Locale(identifier: "ko_KR") // 한국어
         self.currentMonth = monthFormatter.string(from: today)
     }
 }

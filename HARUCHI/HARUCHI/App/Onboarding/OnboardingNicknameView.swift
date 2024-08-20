@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct OnboardingNicknameView: View {
-    @ObservedObject private var viewModel = OnboardingViewModel()
+    @StateObject private var viewModel: OnboardingViewModel
 
+    init(accessToken: String) {
+        _viewModel = StateObject(wrappedValue: OnboardingViewModel(accessToken: accessToken))
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
@@ -83,8 +87,4 @@ struct OnboardingNicknameView: View {
             }
         }
     }
-}
-
-#Preview {
-    OnboardingNicknameView()
 }

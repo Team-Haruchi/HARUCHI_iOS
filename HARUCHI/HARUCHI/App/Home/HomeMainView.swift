@@ -12,7 +12,10 @@ struct HomeMainView: View {
     @StateObject private var viewModel = HomeViewModel()
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
     @StateObject private var percent = BudgetPercentage()
-    @State private var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
+    @State private var accessToken: String = ""
+
+    @State private var isEditing = false
+    @State private var editedBudget: String = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -21,7 +24,7 @@ struct HomeMainView: View {
                     VStack(spacing: 0) {
                         VStack(spacing: 0) {
                             HStack {
-                                Image("mainLogo")
+                                Image("HomeLogo")
                                 
                                 Spacer()
                                 
@@ -30,7 +33,7 @@ struct HomeMainView: View {
                             }
                         }
                         .padding(.horizontal, 24)
-                        .padding(.top, 6)
+                        .padding(.top, 13)
                         .padding(.bottom, 25)
                         
                         
@@ -44,17 +47,50 @@ struct HomeMainView: View {
                                 
                                 Spacer()
                                 
-                                Text("수정")
+                                // 수정 버튼 추가
+                                Button(action: {
+                                    isEditing.toggle()
+                                    if isEditing {
+                                        editedBudget = viewModel.budget
+                                    }
+                                }) {
+                                    Text("수정")
+                                        .font(.haruchi(.button14))
+                                        .foregroundColor(Color.gray6)
+                                }
                             }
-                            .font(.haruchi(.button14))
-                            .foregroundColor(Color.gray6)
                             
-                            HStack(spacing: 0) {
-                                Text("\(viewModel.monthBudget)")
+                            if isEditing {
+                                HStack(spacing: 0) {
+                                    TextField("예산을 입력하세요", text: $editedBudget)
+                                        .font(.haruchi(.h1))
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .keyboardType(.numberPad)
+                                    
+                                    Spacer().frame(width: 15)
+                                    
+                                    Text("원")
+                                        .font(.haruchi(.h1))
+                                }
                                 
-                                Text("원")
+                                Button(action: {
+                                    if let newBudget = Int(editedBudget) {
+                                        viewModel.budget = String(newBudget)
+                                    }
+                                    isEditing = false
+                                }) {
+                                    Text("저장")
+                                        .font(.haruchi(.button14))
+                                        .foregroundColor(Color.black)
+                                }
+                            } else {
+                                HStack(spacing: 0) {
+                                    Text("\(viewModel.monthBudget")
+                                    
+                                    Text("원")
+                                }
+                                .font(.haruchi(.h1))
                             }
-                            .font(.haruchi(.h1))
                         }
                         .padding(.horizontal, 24)
                         PercentageBar(percentViewModel: percent)
@@ -63,15 +99,18 @@ struct HomeMainView: View {
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.sub3Blue)
-                                .frame(width: 345, height: 120)
+                                .frame(width: geometry.size.width * 0.9, height: 120)
                                 .overlay (
                                     
                                     VStack(spacing: 0) {
-                                        Text("15일 목요일")
+                                        Text(viewModel.formattedDate)
                                             .font(.haruchi(.body_r16))
                                             .foregroundColor(Color.black)
                                             .padding(.leading, 22)
                                             .frame(maxWidth: .infinity, alignment: .leading)
+                                            .onAppear {
+                                                viewModel.updateDate()
+                                            }
                                         
                                         Spacer()
                                         
@@ -82,7 +121,7 @@ struct HomeMainView: View {
                                                 .foregroundColor(Color.gray5)
                                             
                                             
-                                            NavigationLink(destination: HomeSpendView()) {
+                                            NavigationLink(destination: HomeSpendView(accessToken: accessToken)) {
                                                 Image(systemName: "plus")
                                                     .font(.system(size: 16, weight: .bold))
                                                     .frame(width: 30, height: 30)
@@ -106,7 +145,7 @@ struct HomeMainView: View {
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray1)
-                                .frame(width: 346, height: 58)
+                                .frame(width: geometry.size.width * 0.9, height: 58)
                                 .overlay {
                                     HStack {
                                         ZStack {
@@ -134,15 +173,22 @@ struct HomeMainView: View {
                                     }
                                     .padding(.horizontal, 10)
                                 }
-                            
+                                .onTapGesture {
+                                    viewModel.navigateToReceipt = true
+                                }
                         }
                         .padding(.top, 20)
+                        .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
+                            HomeReceiptView(accessToken: accessToken, selectedCategory: viewModel.selectedCategory)
+                                .environmentObject(viewModel)
+                                .navigationBarBackButtonHidden(true)
+                                .disableAutocorrection(true)
+                        }
                         
                         
                         VStack(spacing: 0) {
-                            WeekCalendarView(viewModel: viewModel)
-                                .frame(width: 345, height: 128)
-                            
+                            WeekCalendarView(viewModel: HomeViewModel(accessToken: accessToken))
+                                .frame(width: geometry.size.width * 0.9, height: 128)
                         }
                         .padding(.top, 25)
                         
@@ -150,7 +196,7 @@ struct HomeMainView: View {
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray1)
-                                .frame(width: 345, height: 58)
+                                .frame(width: geometry.size.width * 0.9, height: 58)
                                 .overlay {
                                     HStack {
                                         ZStack {
@@ -191,8 +237,4 @@ struct HomeMainView: View {
             }
         }
     }
-}
-
-#Preview {
-    HomeMainView()
 }

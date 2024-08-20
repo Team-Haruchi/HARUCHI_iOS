@@ -12,7 +12,7 @@ struct HomeSpendView: View {
     @ObservedObject private var viewModel = HomeViewModel()
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
 
-    @State private var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
+    @State private var accessToken: String = ""
     
     var body: some View {
         NavigationStack {
@@ -39,16 +39,11 @@ struct HomeSpendView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.navigateToHomeMain) {
-                HomeMainView()
+                HomeMainView(accessToken: accessToken)
                     .navigationBarBackButtonHidden(true)
                     .disableAutocorrection(true)
             }
-            .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
-                HomeReceiptView(selectedCategory: viewModel.selectedCategory)
-                    .environmentObject(viewModel)
-                    .navigationBarBackButtonHidden(true)
-                    .disableAutocorrection(true)
-            }
+            
             .sheet(isPresented: $viewModel.upSpendSheet) {
                 SpendSheetView(selectedCategory: $viewModel.selectedCategory)
                     .presentationDragIndicator(.hidden)
@@ -185,9 +180,13 @@ struct SaveButtonView: View {
         if viewModel.showMainButton {
             MainButton(text: "저장하기", enable: viewModel.selectedCategory != "미분류", action: {
                 viewModel.hideKeyboard()
+                
+                // 수입/지출 구분하여 호출
                 if viewModel.selectedType == "지출" {
-                    viewModel.navigateToReceipt = true
+                    viewModel.reqeustExpenditure()
+                    viewModel.navigateToHomeMain = true
                 } else if viewModel.selectedType == "수입" {
+                    viewModel.requestIncome()
                     viewModel.navigateToHomeMain = true
                 }
             })

@@ -203,7 +203,7 @@ struct WeekCalendarView: UIViewRepresentable {
 }
 
 struct WeekCalendarPreview: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel = HomeViewModel(accessToken: "access_token_here")
     
     var body: some View {
         VStack {

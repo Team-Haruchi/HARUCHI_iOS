@@ -9,11 +9,17 @@ import Foundation
 import Combine
 
 import Moya
-import CombineMoya	
+import CombineMoya
+
+// TODO: - 각 상황별로 더 자세한 에러처리 필요
+enum EmailAuthError: Error {
+    
+}
 
 class AuthService {
     private let provider = MoyaProvider<AuthAPI>()
     
+    // 로그인은 발생할 수 있는 에러가 한 가지이기 때문에 따로 에러처리를 세분화 하지 않음
     func requestLogin(
         email : String,
         password: String
@@ -27,6 +33,37 @@ class AuthService {
                 return response.data
             }
             .decode(type: Base<LoginResponse>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func requestEmailAuthCode(for email: String) -> AnyPublisher<BaseWithOutResult, Error>{
+        provider.requestPublisher(.emailAuth(email: email))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    print("[AuthService] requestEmailAuthCode() statusCode : ", response.statusCode)
+                    throw MoyaError.statusCode(response)
+                }
+                return response.data
+            }
+            .decode(type: BaseWithOutResult.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func verifyEmailAuthCode(
+        email: String,
+        code: String
+    ) -> AnyPublisher<BaseWithOutResult, Error>{
+        provider.requestPublisher(.emailAuthVerify(email: email, code: code))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    print("[AuthService] verifyEmailAuthCode() statusCode : ", response.statusCode)
+                    throw MoyaError.statusCode(response)
+                }
+                return response.data
+            }
+            .decode(type: BaseWithOutResult.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

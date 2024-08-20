@@ -10,7 +10,16 @@ import SwiftUI
 struct HomeReceiptView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject private var viewModel = HomeViewModel()
+    var accessToken: String
+    var selectedCategory: String
+
+    @StateObject private var viewModel: HomeViewModel
+
+    init(accessToken: String, selectedCategory: String) {
+        self.accessToken = accessToken
+        self.selectedCategory = selectedCategory
+        _viewModel = StateObject(wrappedValue: HomeViewModel(accessToken: accessToken))
+    }
     
     let categoryImages: [String: String] = [
         "식비": "circle_pizza",
@@ -23,8 +32,6 @@ struct HomeReceiptView: View {
         "구독": "circle_youtube",
         "기타": "circle_etc"
     ]
-    
-    var selectedCategory: String
 
     var body: some View {
         NavigationStack {
@@ -57,7 +64,6 @@ struct HomeReceiptView: View {
                         .padding(.horizontal, 24)
                         .padding(.bottom, 70)
                         
-                        // 라스트 커스텀 ?
                         ScrollView {
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("15일 오늘")
@@ -67,11 +73,12 @@ struct HomeReceiptView: View {
                                     .padding(.bottom, 15)
                                 
                                 if let imageName = categoryImages[selectedCategory] {
-                                    SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "5000원", action: {
+                                    SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "\(viewModel.money)원", action: {
                                         print("ㅇㅋ")
                                     })
                                 }
                             }
+                            .padding(.trailing, 100)
                         }
 
                         
