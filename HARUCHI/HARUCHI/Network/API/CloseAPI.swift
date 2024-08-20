@@ -9,41 +9,55 @@ import Foundation
 import Moya
 
 enum CloseAPI {
-    case close(redistributionOption: String, year: Int, month: Int, day: Int) // body
-    case closeCheck(code: Int) // parameters
-    case clodseConfirm(code: Int) // parameters
+    case closeRecepit(year: Int, month: Int, day: Int) // body
+    case closeBudget(redistributionOption: String, year: Int, month: Int, day: Int) // parameters
+    case closeCheck(year: Int, month: Int, day: Int) // parameters
+    case closeCheckLast // no parameters
+    case closeAmount(year: Int, month: Int, day: Int) // parameters
 }
 
 extension CloseAPI: BaseAPI {
     var path: String {
         switch self {
-        case .close, .closeCheck:
+        case .closeRecepit, .closeBudget:
             return "/budget-redistribution/closing"
         
-        case .clodseConfirm:
-            return "/budget-redistribution/check"
+        case .closeCheck:
+            return "/budget-redistribution/closing/check"
+            
+        case .closeCheckLast:
+            return "/budget-redistribution/closing/check/last"
+            
+        case .closeAmount:
+            return "/budget-redistribution/closing/amount"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .close:
+        case .closeBudget:
             return .post
         
-        case .closeCheck, .clodseConfirm:
+        case .closeRecepit, .closeCheck, .closeCheckLast, .closeAmount:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .close(let redistributionOption, let year, let month, let day):
+        case .closeRecepit(let year, let month, let day):
+            let body = CloseRequestEntity(year: year, month: month, day: day)
+            return .requestJSONEncodable(body)
+            
+        case .closeBudget(let redistributionOption, let year, let month, let day):
             let body = CloseRequestEntity(redistributionOption: redistributionOption, year: year, month: month, day: day)
             return .requestJSONEncodable(body)
 
-        case .closeCheck(let code), .clodseConfirm(let code):
-            let param = ["code" : code]
+        case .closeCheck(let year, let month, let day), .closeAmount(let year, let month, let day):
+            let param = ["year": year, "month": month, "day": day]
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+        case .closeCheckLast:
+            <#code#>
         }
     }
 }
