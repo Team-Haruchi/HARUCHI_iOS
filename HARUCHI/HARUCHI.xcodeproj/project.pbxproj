@@ -28,7 +28,6 @@
 		4FAE09132C6BA92E00B235FE /* BudgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE09122C6BA92E00B235FE /* BudgetAPI.swift */; };
 		4FAE09152C6CA98C00B235FE /* BudgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE09142C6CA98C00B235FE /* BudgetService.swift */; };
 		4FAE09172C6CB25900B235FE /* BudgetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAE09162C6CB25900B235FE /* BudgetResponse.swift */; };
-		4FB934382C47AC2700994816 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB934372C47AC2700994816 /* CircleButton.swift */; };
 		4FCEF5192C6632060076158D /* BudgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF5182C6632060076158D /* BudgetMainView.swift */; };
 		4FCEF51B2C6632370076158D /* BudgetPullPushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF51A2C6632370076158D /* BudgetPullPushView.swift */; };
 		4FCEF51D2C6632630076158D /* BudgetMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEF51C2C6632630076158D /* BudgetMainViewModel.swift */; };
@@ -734,7 +733,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HARUCHI/Preview Content\"";
-				DEVELOPMENT_TEAM = 6JLYLDSW4U;
+				DEVELOPMENT_TEAM = 2NXXPAMZ67;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HARUCHI/Info.plist;
@@ -772,7 +771,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HARUCHI/Preview Content\"";
-				DEVELOPMENT_TEAM = 6JLYLDSW4U;
+				DEVELOPMENT_TEAM = 2NXXPAMZ67;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HARUCHI/Info.plist;

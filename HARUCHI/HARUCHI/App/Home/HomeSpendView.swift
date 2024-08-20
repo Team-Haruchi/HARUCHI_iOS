@@ -12,7 +12,7 @@ struct HomeSpendView: View {
     @ObservedObject private var viewModel = HomeViewModel()
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
 
-    @State private var accessToken: String = ""
+
     
     var body: some View {
         NavigationStack {
@@ -23,13 +23,13 @@ struct HomeSpendView: View {
                 SaveButtonView(viewModel: viewModel)
             }
             .onAppear {
-                viewModel.loadLeftNow(accessToken: accessToken)
-                budgetViewModel.loadBudget(accessToken: accessToken)
+                viewModel.loadLeftNow()
+                budgetViewModel.loadBudget()
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     KeypadButton(
-                        text: "저장하기", enable: viewModel.money.isEmpty, action: {
+                        text: "저장하기", enable: !viewModel.money.isEmpty, action: {
                             viewModel.hideKeyboard()
                             if viewModel.selectedCategory != "미분류" {
 
@@ -39,7 +39,7 @@ struct HomeSpendView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.navigateToHomeMain) {
-                HomeMainView(accessToken: accessToken)
+                HomeMainView()
                     .navigationBarBackButtonHidden(true)
                     .disableAutocorrection(true)
             }

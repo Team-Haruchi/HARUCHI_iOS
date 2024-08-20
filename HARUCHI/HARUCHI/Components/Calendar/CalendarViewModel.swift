@@ -11,7 +11,6 @@ class CalendarViewModel: ObservableObject {
     
     @Published var dateBudget: Double = 30
     @Published var calendarDate: Int = 0
-    @Published var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
     @Published var errorMessage: String?
     
     private let budgetService = BudgetService()
@@ -22,8 +21,8 @@ class CalendarViewModel: ObservableObject {
         setupBindings()
     }
     
-    func loadDateBudget(accessToken: String) {
-        budgetService.fetchDateBudget(accessToken: accessToken)
+    func loadDateBudget() {
+        budgetService.fetchDateBudget()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -66,7 +65,7 @@ class CalendarViewModel: ObservableObject {
         self.calendarData = []
         
         // 예산 데이터 가져오기
-        budgetService.fetchDateBudget(accessToken: accessToken)
+        budgetService.fetchDateBudget()
             .map { dateBudgetResponse in
                 dateBudgetResponse.result.budget
             }

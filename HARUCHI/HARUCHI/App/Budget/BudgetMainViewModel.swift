@@ -48,8 +48,8 @@ class BudgetMainViewModel: ObservableObject {
         self.accessToken = accessToken
     }
     
-    func loadBudget(accessToken: String) {
-        budgetService.fetchBudget(accessToken: accessToken)
+    func loadBudget() {
+        budgetService.fetchBudget()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -64,8 +64,8 @@ class BudgetMainViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func loadSafeBox(accessToken: String) {
-        budgetService.fetchSafeBox(accessToken: accessToken)
+    func loadSafeBox() {
+        budgetService.fetchSafeBox()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -79,10 +79,6 @@ class BudgetMainViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
-    
-    
-    
-    
     
     func activeMethodStr() -> String {
         if isPushButtonActive {

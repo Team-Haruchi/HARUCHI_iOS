@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct HomeMainView: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @ObservedObject private var viewModel = HomeViewModel()
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
     @StateObject private var percent = BudgetPercentage()
     @State private var accessToken: String = ""
@@ -85,7 +85,7 @@ struct HomeMainView: View {
                                 }
                             } else {
                                 HStack(spacing: 0) {
-                                    Text("\(viewModel.monthBudget")
+                                    Text("\(viewModel.monthBudget)")
                                     
                                     Text("원")
                                 }
@@ -121,7 +121,7 @@ struct HomeMainView: View {
                                                 .foregroundColor(Color.gray5)
                                             
                                             
-                                            NavigationLink(destination: HomeSpendView(accessToken: accessToken)) {
+                                            NavigationLink(destination: HomeSpendView()) {
                                                 Image(systemName: "plus")
                                                     .font(.system(size: 16, weight: .bold))
                                                     .frame(width: 30, height: 30)
@@ -179,7 +179,7 @@ struct HomeMainView: View {
                         }
                         .padding(.top, 20)
                         .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
-                            HomeReceiptView(accessToken: accessToken, selectedCategory: viewModel.selectedCategory)
+                            HomeReceiptView(selectedCategory: viewModel.selectedCategory)
                                 .environmentObject(viewModel)
                                 .navigationBarBackButtonHidden(true)
                                 .disableAutocorrection(true)
@@ -187,7 +187,7 @@ struct HomeMainView: View {
                         
                         
                         VStack(spacing: 0) {
-                            WeekCalendarView(viewModel: HomeViewModel(accessToken: accessToken))
+                            WeekCalendarView(viewModel: HomeViewModel())
                                 .frame(width: geometry.size.width * 0.9, height: 128)
                         }
                         .padding(.top, 25)
@@ -227,11 +227,11 @@ struct HomeMainView: View {
                     }
                 }
                 .onAppear {
-                    viewModel.loadMonthBudget(accessToken: accessToken)
-                    viewModel.loadWeekBudget(accessToken: accessToken)
-                    viewModel.loadBudgetPercent(accessToken: accessToken)
-                    budgetViewModel.loadBudget(accessToken: accessToken)
-                    budgetViewModel.loadSafeBox(accessToken: accessToken)
+                    viewModel.loadMonthBudget()
+                    viewModel.loadWeekBudget()
+                    viewModel.loadBudgetPercent()
+                    budgetViewModel.loadBudget()
+                    budgetViewModel.loadSafeBox()
                     percent.percentage = CGFloat(viewModel.monthUsedPercent)
                 }
             }

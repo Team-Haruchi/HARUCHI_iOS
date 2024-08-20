@@ -12,12 +12,10 @@ import Moya
 import CombineMoya
 
 class BudgetService {
-    private let provider = MoyaProvider<BudgetAPI>()
+    private let provider = MoyaProvider<BudgetAPI>(plugins: [AuthPlugin()])
     
-    func fetchBudget (
-        accessToken: String
-    ) -> AnyPublisher<Base<BudgetResponse>, Error> {
-        provider.requestPublisher(.dailyBudgetCheck(accessToken: accessToken))
+    func fetchBudget() -> AnyPublisher<Base<BudgetResponse>, Error> {
+        provider.requestPublisher(.dailyBudgetCheck)
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print("[BudgetService] fetchBudget() statusCode : ", response.statusCode)
@@ -31,10 +29,8 @@ class BudgetService {
             .eraseToAnyPublisher()
     }
     
-    func fetchSafeBox (
-        accessToken: String
-    ) -> AnyPublisher<Base<SafeBoxResponse>, Error> {
-        provider.requestPublisher(.safeBoxCheck(accessToken: accessToken))
+    func fetchSafeBox() -> AnyPublisher<Base<SafeBoxResponse>, Error> {
+        provider.requestPublisher(.safeBoxCheck)
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print("[BudgetService] fetchSafeBox() statusCode : ", response.statusCode)
@@ -48,10 +44,8 @@ class BudgetService {
             .eraseToAnyPublisher()
     }
     
-    func fetchDateBudget (
-        accessToken: String
-    ) -> AnyPublisher<Base<DateBudgetResponse>, Error> {
-        provider.requestPublisher(.dateBudgetCheck(accessToken: accessToken))
+    func fetchDateBudget() -> AnyPublisher<Base<DateBudgetResponse>, Error> {
+        provider.requestPublisher(.dateBudgetCheck)
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print("[BudgetService] fetchDateBudget statusCode : ", response.statusCode)
@@ -65,10 +59,8 @@ class BudgetService {
             .eraseToAnyPublisher()
     }
     
-    func fetchMonthBudget (
-        accessToken: String
-    ) -> AnyPublisher<Base<MonthBudgetResponse>, Error> {
-        provider.requestPublisher(.monthlyBudgetCheck(accessToken: accessToken))
+    func fetchMonthBudget() -> AnyPublisher<Base<MonthBudgetResponse>, Error> {
+        provider.requestPublisher(.monthlyBudgetCheck)
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print("[BudgetService] fetchMonthBudget statusCode : ", response.statusCode)
@@ -82,10 +74,8 @@ class BudgetService {
             .eraseToAnyPublisher()
     }
     
-    func fetchLeftNow (
-        accessToken: String
-    ) -> AnyPublisher<Base<LeftNowResponse>, Error> {
-        provider.requestPublisher(.leftNowCheck(accessToken: accessToken))
+    func fetchLeftNow() -> AnyPublisher<Base<LeftNowResponse>, Error> {
+        provider.requestPublisher(.leftNowCheck)
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print("[BudgetService] fetchLeftNow statusCode : ", response.statusCode)
@@ -99,10 +89,8 @@ class BudgetService {
             .eraseToAnyPublisher()
     }
     
-    func fetchBudgetPercent (
-        accessToken: String
-    ) -> AnyPublisher<Base<BudgetPercentResponse>, Error> {
-        provider.requestPublisher(.budgetPercentCheck(accessToken: accessToken))
+    func fetchBudgetPercent() -> AnyPublisher<Base<BudgetPercentResponse>, Error> {
+        provider.requestPublisher(.budgetPercentCheck)
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print("[BudgetService] fetchBudgetPercent statusCode : ", response.statusCode)
@@ -116,10 +104,8 @@ class BudgetService {
             .eraseToAnyPublisher()
     }
     
-    func fetchWeekBudget (
-        accessToken: String
-    ) -> AnyPublisher<Base<WeekBudgetResponse>, Error> {
-        provider.requestPublisher(.weekBudgetCheck(accessToken: accessToken))
+    func fetchWeekBudget() -> AnyPublisher<Base<WeekBudgetResponse>, Error> {
+        provider.requestPublisher(.weekBudgetCheck)
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     print("[BudgetService] fetchWeekBudget statusCode : ", response.statusCode)

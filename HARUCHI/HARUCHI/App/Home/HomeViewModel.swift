@@ -23,7 +23,6 @@ class HomeViewModel: ObservableObject {
     @Published var showMainButton: Bool = false
     @Published var weekData: [WeekCalendarModel] = []
         
-    @Published var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
     @Published var errorMessage: String?
     @Published var monthBudget: Int = 0
     @Published var leftDay: Int = 0
@@ -36,10 +35,9 @@ class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let budgetService = BudgetService()
     
-    private let incomeService: IncomeService
-    private let expenditureService: ExpenditureService
+    private let incomeService = IncomeService()
+    private let expenditureService = ExpenditureService()
 
-    var accessToken: String? = nil
 
     var todayDate: String {
         let formatter = DateFormatter()
@@ -47,15 +45,12 @@ class HomeViewModel: ObservableObject {
         return formatter.string(from: Date())
     }
     
-    init(
-        accessToken: String = ""
-    ) {
-        updateCurrentMonth()
-        self.accessToken = accessToken
+    init() {
+        self.updateCurrentMonth()
     }
     
-    func loadMonthBudget(accessToken: String) {
-        budgetService.fetchMonthBudget(accessToken: accessToken)
+    func loadMonthBudget() {
+        budgetService.fetchMonthBudget()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -70,8 +65,8 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func loadLeftNow(accessToken: String) {
-        budgetService.fetchLeftNow(accessToken: accessToken)
+    func loadLeftNow() {
+        budgetService.fetchLeftNow()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -87,8 +82,8 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func loadBudgetPercent(accessToken: String) {
-        budgetService.fetchBudgetPercent(accessToken: accessToken)
+    func loadBudgetPercent() {
+        budgetService.fetchBudgetPercent()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -103,8 +98,8 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func loadWeekBudget(accessToken: String) {
-        budgetService.fetchWeekBudget(accessToken: accessToken)
+    func loadWeekBudget() {
+        budgetService.fetchWeekBudget()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -141,11 +136,7 @@ class HomeViewModel: ObservableObject {
         guard let amount = Int(money), selectedCategory != "미분류" else {
             return
         }
-        
-        guard let token = accessToken, !token.isEmpty else {
-            print("엑세스토큰이 누락되었습니다.")
-            return
-        }
+
         
         incomeService.requestIncome(incomeAmount: amount, category: selectedCategory)
             .sink(receiveCompletion: { completion in
@@ -167,10 +158,6 @@ class HomeViewModel: ObservableObject {
             return
         }
         
-        guard let token = accessToken, !token.isEmpty else {
-            print("엑세스토큰이 누락되었습니다.")
-            return
-        }
         
         expenditureService.requestExpenditure(expenditureAmount: amount, category: selectedCategory)
             .sink(receiveCompletion: { completion in
