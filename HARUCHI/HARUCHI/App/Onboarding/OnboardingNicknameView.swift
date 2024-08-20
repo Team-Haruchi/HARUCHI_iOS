@@ -72,7 +72,7 @@ struct OnboardingNicknameView: View {
         .ignoresSafeArea(.keyboard)
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
-                KeypadButton(text: "가입완료", enable: viewModel.canGoNext) {
+                KeypadButton(text: "가입완료", enable: viewModel.nicknameStatus == .valid && viewModel.nickname.count <= viewModel.maxLength) {
                     // go mainView
                 }
             }
