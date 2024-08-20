@@ -26,7 +26,7 @@ class CloseService {
         return provider.requestPublisher(.closeBudget(redistributionOption: redistributionOption, year: year, month: month, day: day))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
-                    print("[CloseService] requestIncome() statusCode: \(response.statusCode)")
+                    print("[CloseService] closeBudget() statusCode: \(response.statusCode)")
                     throw MoyaError.statusCode(response)
                 }
                 return response.data
@@ -36,7 +36,7 @@ class CloseService {
             .eraseToAnyPublisher()
     }
     
-    func closeCheck (
+    func closeCheck(
         year: Int,
         month: Int,
         day: Int

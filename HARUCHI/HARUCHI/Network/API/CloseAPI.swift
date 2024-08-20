@@ -9,17 +9,17 @@ import Foundation
 import Moya
 
 enum CloseAPI {
-    case closeRecepit(year: Int, month: Int, day: Int) // body
+    case closeReceipt(year: Int, month: Int, day: Int) // body
     case closeBudget(redistributionOption: String, year: Int, month: Int, day: Int) // parameters
     case closeCheck(year: Int, month: Int, day: Int) // parameters
-    case closeCheckLast // no parameters
+    case closeCheckLast // parameters
     case closeAmount(year: Int, month: Int, day: Int) // parameters
 }
 
 extension CloseAPI: BaseAPI {
     var path: String {
         switch self {
-        case .closeRecepit, .closeBudget:
+        case .closeReceipt, .closeBudget:
             return "/budget-redistribution/closing"
         
         case .closeCheck:
@@ -38,14 +38,14 @@ extension CloseAPI: BaseAPI {
         case .closeBudget:
             return .post
         
-        case .closeRecepit, .closeCheck, .closeCheckLast, .closeAmount:
+        case .closeReceipt, .closeCheck, .closeCheckLast, .closeAmount:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .closeRecepit(let year, let month, let day):
+        case .closeReceipt(let year, let month, let day):
             let body = CloseRequestEntity(year: year, month: month, day: day)
             return .requestJSONEncodable(body)
             
@@ -54,31 +54,32 @@ extension CloseAPI: BaseAPI {
             return .requestJSONEncodable(body)
 
         case .closeCheck(let year, let month, let day), .closeAmount(let year, let month, let day):
-            let param = ["year": year, "month": month, "day": day]
-            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+            let params = ["year": year, "month": month, "day": day]
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+            
         case .closeCheckLast:
-            <#code#>
+            return .requestPlain
         }
     }
 }
     
-    fileprivate extension CloseAPI {
-        struct CloseRequestEntity: Encodable {
-            let redistributionOption: String?
-            let year: Int?
-            let month: Int?
-            let day: Int?
-            
-            init(
-                redistributionOption: String? = nil,
-                year: Int? = nil,
-                month: Int? = nil,
-                day: Int? = nil
-            ) {
-                self.redistributionOption = redistributionOption
-                self.year = year
-                self.month = month
-                self.day = day
-            }
+fileprivate extension CloseAPI {
+    struct CloseRequestEntity: Encodable {
+        let redistributionOption: String?
+        let year: Int?
+        let month: Int?
+        let day: Int?
+        
+        init(
+            redistributionOption: String? = nil,
+            year: Int? = nil,
+            month: Int? = nil,
+            day: Int? = nil
+        ) {
+            self.redistributionOption = redistributionOption
+            self.year = year
+            self.month = month
+            self.day = day
         }
     }
+}
