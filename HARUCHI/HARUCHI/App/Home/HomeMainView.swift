@@ -29,7 +29,6 @@ struct HomeMainView: View {
                                 Spacer()
                                 
                                 // Image("HomeAlarm") 알림창 미구현
-                                Text("\(viewModel.weekBudget)")
                             }
                         }
                         .padding(.horizontal, 24)
