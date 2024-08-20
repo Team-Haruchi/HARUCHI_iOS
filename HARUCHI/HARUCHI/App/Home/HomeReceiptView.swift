@@ -13,6 +13,7 @@ struct HomeReceiptView: View {
     var selectedCategory: String
 
     @ObservedObject private var viewModel = HomeViewModel()
+    @ObservedObject private var budgetViewModel = BudgetMainViewModel()
 
     @State private var selectedOption: String? = nil
 
@@ -42,8 +43,7 @@ struct HomeReceiptView: View {
                                     .padding(.top, 21)
                                     .padding(.bottom, 10)
                                 
-                                // 나중에 바꾸기
-                                Text("하루치 20000원")
+                                Text("하루치 \(budgetViewModel.dayBudget)원")
                                     .font(.haruchi(.caption3))
                                     .foregroundColor(Color.gray5)
                                     .padding(.bottom, 25)
