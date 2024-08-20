@@ -98,26 +98,43 @@ struct HomeReceiptView: View {
                         Spacer().frame(height: 15)
                         
                         VStack(spacing: 0) {
-                            HStack {
-                                Text("남은 일수에서 1/n")
-                                
-                                Spacer()
-                                
-                                Text("고르게 차감하기")
+                            Button(action: {
+                                selectedOption = "차감하기"
+                            }) {
+                                HStack {
+                                    Text("차감하기")
+                                    
+                                    Spacer()
+                                    
+                                    Text("고르게 차감하기")
+                                    
+                                    if selectedOption == "차감하기" {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                                .padding()
                             }
-                            .padding()
+                            .buttonStyle(PlainButtonStyle())
                             
                             Divider()
                                 .frame(height: 2)
                             
-                            HStack {
-                                Text("￦ 70000")
-                                
-                                Spacer()
-                                
-                                Text("세이프박스")
+                            Button(action: {
+                                selectedOption = "분배하기"
+                            }) {
+                                HStack {
+                                    Text("세이프박스")
+                                    
+                                    Spacer()
+                                    
+                                    Text("70000원")
+                                    if selectedOption == "분배하기" {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                                .padding()
                             }
-                            .padding()
+                            .buttonStyle(PlainButtonStyle())
                         }
                         .font(.haruchi(.body_m14))
                         .foregroundColor(Color.gray5)
@@ -126,12 +143,14 @@ struct HomeReceiptView: View {
                         .frame(width: 345, height: 107)
                         
                         VStack {
-                            MainButton(
-                                text: "치김하기",
-                                action: { viewModel.hideKeyboard()
-                            })
+                            if let option = selectedOption {
+                                MainButton(
+                                    text: "\(option)",
+                                    action: { viewModel.hideKeyboard()
+                                })
+                                .padding(.top, 39)
+                            }
                         }
-                        .padding(.top, 39)
                     }
                 }
             }

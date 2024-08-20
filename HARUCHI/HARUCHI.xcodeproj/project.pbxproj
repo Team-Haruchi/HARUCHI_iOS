@@ -46,6 +46,9 @@
 		9FBDF3792C7211AF00EB28CF /* ExpenditureResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDF3782C7211AF00EB28CF /* ExpenditureResult.swift */; };
 		9FD1AC202C525B82001D2EB7 /* HomeSpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */; };
 		9FE4081F2C6F7199000BC55D /* IncomeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4081E2C6F7199000BC55D /* IncomeResult.swift */; };
+		9FE715F52C736A11002EC56C /* CloseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE715F42C736A11002EC56C /* CloseAPI.swift */; };
+		9FE715F72C739947002EC56C /* CloseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE715F62C739947002EC56C /* CloseService.swift */; };
+		9FE715FB2C739B94002EC56C /* CloseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE715FA2C739B94002EC56C /* CloseResult.swift */; };
 		9FF30F372C609EE4005994BB /* HomeReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF30F362C609EE4005994BB /* HomeReceiptView.swift */; };
 		9FFC87432C4CEA4600E30A8F /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */; };
 		9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */; };
@@ -126,6 +129,9 @@
 		9FBDF3782C7211AF00EB28CF /* ExpenditureResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureResult.swift; sourceTree = "<group>"; };
 		9FD1AC1F2C525B82001D2EB7 /* HomeSpendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpendView.swift; sourceTree = "<group>"; };
 		9FE4081E2C6F7199000BC55D /* IncomeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeResult.swift; sourceTree = "<group>"; };
+		9FE715F42C736A11002EC56C /* CloseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAPI.swift; sourceTree = "<group>"; };
+		9FE715F62C739947002EC56C /* CloseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseService.swift; sourceTree = "<group>"; };
+		9FE715FA2C739B94002EC56C /* CloseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseResult.swift; sourceTree = "<group>"; };
 		9FF30F362C609EE4005994BB /* HomeReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReceiptView.swift; sourceTree = "<group>"; };
 		9FFC87422C4CEA4600E30A8F /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		9FFC87442C4D059400E30A8F /* OnboardingBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBudgetView.swift; sourceTree = "<group>"; };
@@ -274,6 +280,7 @@
 				9F161E862C6DDA7A00E0537B /* ExpenditureAPI.swift */,
 				378A0FEC2C6FC032002D932A /* MemberInfoAPI.swift */,
 				37CD69362C724B8C000137FC /* CancelMembershipAPI.swift */,
+				9FE715F42C736A11002EC56C /* CloseAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -432,6 +439,7 @@
 				9FE4081E2C6F7199000BC55D /* IncomeResult.swift */,
 				9FBDF3782C7211AF00EB28CF /* ExpenditureResult.swift */,
 				378A0FEA2C6FBF3B002D932A /* MemberInfoResponse.swift */,
+				9FE715FA2C739B94002EC56C /* CloseResult.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 				9FBDF3762C720BF900EB28CF /* ExpenditureService.swift */,
 				378A0FF42C712E46002D932A /* MemberInfoService.swift */,
 				37CD69382C724D12000137FC /* CancelMembershipService.swift */,
+				9FE715F62C739947002EC56C /* CloseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -545,6 +554,7 @@
 				C6A10ADE2C735E57001AA74E /* LoadingModifier.swift in Sources */,
 				9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */,
 				C6C139F92C454B6100AE2D9C /* FontExtension.swift in Sources */,
+				9FE715F52C736A11002EC56C /* CloseAPI.swift in Sources */,
 				C6C13A222C4D173700AE2D9C /* SignInView.swift in Sources */,
 				C6C13A282C4D1C6A00AE2D9C /* GrayLine.swift in Sources */,
 				9F1508BD2C5A0A8600DFF5CA /* HomeViewModel.swift in Sources */,
@@ -568,6 +578,7 @@
 				9F1508B82C54DA1700DFF5CA /* SpendSheetView.swift in Sources */,
 				9FFC87452C4D059400E30A8F /* OnboardingBudgetView.swift in Sources */,
 				9FF30F372C609EE4005994BB /* HomeReceiptView.swift in Sources */,
+				9FE715FB2C739B94002EC56C /* CloseResult.swift in Sources */,
 				C6C13A262C4D17CE00AE2D9C /* BackButtonModifier.swift in Sources */,
 				9FAB27012C5FB31D007FDD23 /* SmallCircleButton.swift in Sources */,
 				C6346F472C5F98140048708D /* EmailAuthView.swift in Sources */,
@@ -593,6 +604,7 @@
 				9FBDF3792C7211AF00EB28CF /* ExpenditureResult.swift in Sources */,
 				C6C139F52C4549B800AE2D9C /* MainButton.swift in Sources */,
 				374E1D622C5A340E00323379 /* CalendarViewModel.swift in Sources */,
+				9FE715F72C739947002EC56C /* CloseService.swift in Sources */,
 				9F45D7AD2C6DE5BB00FC11DA /* IncomeService.swift in Sources */,
 				C6CF820F2C68C9540006A98C /* LoginView.swift in Sources */,
 				9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */,
