@@ -37,3 +37,13 @@ struct BudgetPercentResponse: Decodable {
     let monthUsedPercent: Int
 }
 
+struct WeekBudgetResponse: Decodable {
+    let weekBudget: [WeekBudgetItem]
+}
+
+struct WeekBudgetItem: Decodable {
+    let day: Int
+    let dayBudget: Int
+    let status: String
+}
+

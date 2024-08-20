@@ -115,4 +115,22 @@ class BudgetService {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
+    
+    func fetchWeekBudget (
+        accessToken: String
+    ) -> AnyPublisher<Base<WeekBudgetResponse>, Error> {
+        provider.requestPublisher(.weekBudgetCheck(accessToken: accessToken))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    print("[BudgetService] fetchWeekBudget statusCode : ", response.statusCode)
+                    throw MoyaError.statusCode(response)
+                }
+                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+                return response.data
+            }
+            .decode(type: Base<WeekBudgetResponse>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
 }

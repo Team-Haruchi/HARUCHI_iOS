@@ -15,6 +15,8 @@ enum BudgetAPI {
     case monthlyBudgetCheck(accessToken: String)
     case leftNowCheck(accessToken: String)
     case budgetPercentCheck(accessToken: String)
+    case weekBudgetCheck(accessToken: String)
+
 }
 
 extension BudgetAPI: BaseAPI {
@@ -37,6 +39,10 @@ extension BudgetAPI: BaseAPI {
             
         case .budgetPercentCheck:
             return "/monthly-budget/percent"
+            
+        case .weekBudgetCheck:
+            return "/monthly-budget/week"
+            
         }
     }
     
@@ -59,6 +65,10 @@ extension BudgetAPI: BaseAPI {
             
         case .budgetPercentCheck:
             return .get
+            
+        case .weekBudgetCheck:
+            return .get
+            
         }
     }
     
@@ -81,6 +91,10 @@ extension BudgetAPI: BaseAPI {
             
         case .budgetPercentCheck:
             return .requestPlain
+            
+        case .weekBudgetCheck:
+            return .requestPlain
+            
         }
     }
     
@@ -103,6 +117,10 @@ extension BudgetAPI: BaseAPI {
             
         case .budgetPercentCheck(let accessToken):
             return ["Authorization": "Bearer \(accessToken)"]
+            
+        case .weekBudgetCheck(let accessToken):
+            return ["Authorization": "Bearer \(accessToken)"]
+            
         }
     }
     

@@ -26,6 +26,7 @@ struct HomeMainView: View {
                                 Spacer()
                                 
                                 // Image("HomeAlarm") 알림창 미구현
+                                Text("\(viewModel.weekBudget)")
                             }
                         }
                         .padding(.horizontal, 24)
@@ -139,8 +140,9 @@ struct HomeMainView: View {
                         
                         
                         VStack(spacing: 0) {
-                            WeekCalendarView(viewModel: HomeViewModel())
+                            WeekCalendarView(viewModel: viewModel)
                                 .frame(width: 345, height: 128)
+                            
                         }
                         .padding(.top, 25)
                         
@@ -180,6 +182,7 @@ struct HomeMainView: View {
                 }
                 .onAppear {
                     viewModel.loadMonthBudget(accessToken: accessToken)
+                    viewModel.loadWeekBudget(accessToken: accessToken)
                     viewModel.loadBudgetPercent(accessToken: accessToken)
                     budgetViewModel.loadBudget(accessToken: accessToken)
                     budgetViewModel.loadSafeBox(accessToken: accessToken)
