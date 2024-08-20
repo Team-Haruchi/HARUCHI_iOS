@@ -46,7 +46,7 @@ class CustomWeekCalendarCell: FSCalendarCell {
 }
 
 struct WeekCalendarView: UIViewRepresentable {
-    @ObservedObject var viewModel: HomeViewModel
+    @StateObject var viewModel: HomeViewModel
     
     // currentPage와 headerTitle을 관리하는 상태 프로퍼티들
     @State private var currentPage: Date = Date()

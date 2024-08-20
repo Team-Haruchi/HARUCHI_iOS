@@ -9,17 +9,13 @@ import SwiftUI
 import Combine
 
 struct HomeMainView: View {
-    @ObservedObject private var viewModel: HomeViewModel
+    @StateObject private var viewModel = HomeViewModel()
+    @ObservedObject private var budgetViewModel = BudgetMainViewModel()
     @StateObject private var percent = BudgetPercentage()
+    @State private var accessToken: String = ""
+
     @State private var isEditing = false
     @State private var editedBudget: String = ""
-    
-    @State private var accessToken: String
-    
-    init(accessToken: String) {
-        _viewModel = ObservedObject(wrappedValue: HomeViewModel(accessToken: accessToken)) // viewModel 초기화
-        _accessToken = State(initialValue: accessToken) // accessToken 초기화
-    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -33,6 +29,7 @@ struct HomeMainView: View {
                                 Spacer()
                                 
                                 // Image("HomeAlarm") 알림창 미구현
+                                Text("\(viewModel.weekBudget)")
                             }
                         }
                         .padding(.horizontal, 24)
@@ -88,7 +85,7 @@ struct HomeMainView: View {
                                 }
                             } else {
                                 HStack(spacing: 0) {
-                                    Text(viewModel.budget)
+                                    Text("\(viewModel.monthBudget")
                                     
                                     Text("원")
                                 }
@@ -96,8 +93,7 @@ struct HomeMainView: View {
                             }
                         }
                         .padding(.horizontal, 24)
-                        
-                        PercentageBar(viewModel: percent)
+                        PercentageBar(percentViewModel: percent)
                             .padding(.top, 16)
                         
                         VStack(spacing: 0) {
@@ -120,7 +116,7 @@ struct HomeMainView: View {
                                         
                                         HStack {
                                             Spacer()
-                                            Text("하루치 20000원")
+                                            Text("하루치 \(budgetViewModel.dayBudget)원")
                                                 .font(.haruchi(.h2))
                                                 .foregroundColor(Color.gray5)
                                             
@@ -219,7 +215,7 @@ struct HomeMainView: View {
                                         
                                         Spacer()
                                         
-                                        Text("7000원")
+                                        Text("\(budgetViewModel.safeBox)원")
                                             .font(.haruchi(.body_r16))
                                             .foregroundColor(Color.black)
                                     }
@@ -229,6 +225,14 @@ struct HomeMainView: View {
                         .padding(.top, 25)
                         Spacer()
                     }
+                }
+                .onAppear {
+                    viewModel.loadMonthBudget(accessToken: accessToken)
+                    viewModel.loadWeekBudget(accessToken: accessToken)
+                    viewModel.loadBudgetPercent(accessToken: accessToken)
+                    budgetViewModel.loadBudget(accessToken: accessToken)
+                    budgetViewModel.loadSafeBox(accessToken: accessToken)
+                    percent.percentage = CGFloat(viewModel.monthUsedPercent)
                 }
             }
         }

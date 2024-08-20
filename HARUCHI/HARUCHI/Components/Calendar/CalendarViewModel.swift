@@ -6,31 +6,94 @@ class CalendarViewModel: ObservableObject {
     @Published var firstSelectedDate: Date?
     @Published var secondSelectedDate: Date?
     @Published var currentMonth: Date = Date()
-
+    
+    @Published var formattedDate: String = ""
+    
+    @Published var dateBudget: Double = 30
+    @Published var calendarDate: Int = 0
+    @Published var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
+    @Published var errorMessage: String?
+    
+    private let budgetService = BudgetService()
     private var cancellables = Set<AnyCancellable>()
 
     init() {
         fetchCalendarData()
         setupBindings()
     }
-
+    
+    func loadDateBudget(accessToken: String) {
+        budgetService.fetchDateBudget(accessToken: accessToken)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load dateBudget: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { dateBudgetResponse in
+                self.dateBudget = dateBudgetResponse.result.budget[0].dayBudget
+                self.calendarDate = dateBudgetResponse.result.budget[0].day
+            })
+            .store(in: &cancellables)
+    }
+    
     // 샘플 데이터를 생성하는 함수
     func fetchCalendarData() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        // 샘플 데이터 생성
-        calendarData = [
-            CalendarModel(date: dateFormatter.date(from: "2024-06-15")!, budget: 2000000),
-            CalendarModel(date: dateFormatter.date(from: "2024-06-16")!, budget: 20000),
-            CalendarModel(date: dateFormatter.date(from: "2024-06-30")!, budget: 20000),
-            CalendarModel(date: dateFormatter.date(from: "2024-07-01")!, budget: 2000000),
-            CalendarModel(date: dateFormatter.date(from: "2024-07-02")!, budget: 2000000),
-            CalendarModel(date: dateFormatter.date(from: "2024-07-03")!, budget: 20000),
-            // ... 추가 데이터
-        ]
+        // 오늘 날짜 가져오기
+        let today = Date()
+        
+        // 오늘을 포함한 이번 달의 마지막 날짜 계산
+        let calendar = Calendar.current
+        let range = calendar.range(of: .day, in: .month, for: today)!
+        let lastDay = range.count
+        let todayDay = calendar.component(.day, from: today)
+        
+        var dates: [Date] = []
+        
+        // 오늘부터 이번 달의 마지막 날짜까지 배열에 추가
+        for day in todayDay...lastDay {
+            if let date = calendar.date(bySetting: .day, value: day, of: today) {
+                dates.append(date)
+            }
+        }
+        
+        // 캘린더 데이터 초기화
+        self.calendarData = []
+        
+        // 예산 데이터 가져오기
+        budgetService.fetchDateBudget(accessToken: accessToken)
+            .map { dateBudgetResponse in
+                dateBudgetResponse.result.budget
+            }
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to load dateBudget: \(error.localizedDescription)"
+                }
+            }, receiveValue: { budgetData in
+                // 날짜별 예산 데이터 매핑
+                for budget in budgetData {
+                    let day = budget.day
+                    let dayBudget = budget.dayBudget
+                    
+                    if let date = calendar.date(bySetting: .day, value: day, of: today) {
+                        self.calendarData.append(CalendarModel(date: date, budget: dayBudget))
+                    }
+                }
+                
+                // 캘린더 데이터 확인
+                print(self.calendarData)
+            })
+            .store(in: &cancellables)
     }
-
+    
     // Combine을 사용하여 선택 로직을 설정하는 함수
     private func setupBindings() {
         $firstSelectedDate
@@ -94,4 +157,6 @@ class CalendarViewModel: ObservableObject {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: date)
     }
+    
+    
 }

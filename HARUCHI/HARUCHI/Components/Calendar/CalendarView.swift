@@ -75,6 +75,7 @@ class CustomCalendarCell: FSCalendarCell {
 struct FSCalendarView: UIViewRepresentable {
     @ObservedObject var viewModel: CalendarViewModel
     
+    
     func makeUIView(context: Context) -> FSCalendar {
         let calendar = FSCalendar()
         calendar.delegate = context.coordinator
@@ -217,6 +218,8 @@ struct FSCalendarView: UIViewRepresentable {
 
 struct CalendarPreview: View {
     @StateObject private var viewModel = CalendarViewModel()
+    @ObservedObject private var budgetViewModel = BudgetMainViewModel()
+    @State private var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg"
     
     var body: some View {
         VStack {
@@ -226,8 +229,10 @@ struct CalendarPreview: View {
                 let dates = viewModel.selectedDates()
                 Text("첫 번째 선택한 날짜: \(viewModel.dateString(from: dates.0))")
                 Text("두 번째 선택한 날짜: \(viewModel.dateString(from: dates.1))")
+                Text("두 번째 선택한 날짜: \(viewModel.dateBudget)")
             }
         }
+        
     }
 }
 
