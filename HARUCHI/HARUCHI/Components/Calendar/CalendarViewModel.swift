@@ -88,7 +88,7 @@ class CalendarViewModel: ObservableObject {
                 }
                 
                 // 캘린더 데이터 확인
-                print(self.calendarData)
+//                print(self.calendarData)
             })
             .store(in: &cancellables)
     }
@@ -153,7 +153,7 @@ class CalendarViewModel: ObservableObject {
     func dateString(from date: Date?) -> String {
         guard let date = date else { return "선택해주세요" }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "MM-dd"
         return dateFormatter.string(from: date)
     }
     

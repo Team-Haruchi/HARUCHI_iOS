@@ -128,11 +128,33 @@ class BudgetService {
                     print("[BudgetService] requestEditBudget() statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
 
             }
             .decode(type: Base<EditBudgetResponse>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func requestPushBudget(
+        redistributionOption : String,
+        amount : Int,
+        sourceDay : Int,
+        targetDay : Int?
+
+    ) -> AnyPublisher<Base<PushRedistributionResponse>, Error> {
+        provider.requestPublisher(.pushBudget(redistributionOption: redistributionOption, amount: amount, sourceDay: sourceDay, targetDay: targetDay))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    print("[BudgetService] requestEditBudget() statusCode : ", response.statusCode)
+                    throw MoyaError.statusCode(response)
+                }
+                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+                return response.data
+
+            }
+            .decode(type: Base<PushRedistributionResponse>.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

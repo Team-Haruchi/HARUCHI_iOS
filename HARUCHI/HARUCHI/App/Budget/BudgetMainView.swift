@@ -10,11 +10,13 @@ import SwiftUI
 struct BudgetMainView : View {
     
     @EnvironmentObject var budgetViewModel : BudgetMainViewModel
-    @State private var navigateToNextView = false
     @EnvironmentObject var calendarViewModel : CalendarViewModel
+    @State private var navigateToNextView = false
     
-    @State private var xOffset: CGFloat = (UIScreen.main.bounds.width - 48) / 4 // 초기값을 "당겨쓰기" 버튼 위치로 설정
-    private let buttonWidth = (UIScreen.main.bounds.width - 68) / 2 // 각 버튼의 너비
+    @FocusState private var isFocused: Bool
+    @State private var xOffset: CGFloat = (UIScreen.main.bounds.width - 48) / 4
+    private let buttonWidth = (UIScreen.main.bounds.width - 68) / 2
+    
     
     var bubbleRadioButton: some View {
         
@@ -67,12 +69,12 @@ struct BudgetMainView : View {
                         .resizable()
                         .frame(width: 111, height: 14)
                     Spacer()
-//                    Button(action:{ 알림창 미구현
-//
-//                    }){
-//                        Image("notification")
-//                            .frame(width: 30, height: 30)
-//                    }
+                    //                    Button(action:{ 알림창 미구현
+                    //
+                    //                    }){
+                    //                        Image("notification")
+                    //                            .frame(width: 30, height: 30)
+                    //                    }
                 }
                 .padding(.top, 16)
                 .padding(.bottom, 15)
@@ -119,7 +121,7 @@ struct BudgetMainView : View {
                                     Spacer()
                                     HStack {
                                         Text("남은 일수에서 1/n")
-                                            .font(.system(size: 14)) // Custom font can be used here
+                                            .font(.system(size: 14))
                                             .foregroundColor(Color.gray5)
                                         Spacer()
                                         Button(action: {
@@ -131,7 +133,7 @@ struct BudgetMainView : View {
                                             }
                                         }) {
                                             Text(budgetViewModel.isPushButtonActive ? "고르게 넘기기" : "고르게 당겨쓰기")
-                                                .font(.system(size: 14)) // Custom font can be used here
+                                                .font(.system(size: 14))
                                                 .foregroundColor(Color.gray5)
                                                 .animation(nil)
                                         }
@@ -140,7 +142,7 @@ struct BudgetMainView : View {
                                     Divider()
                                     HStack {
                                         Text("₩ \(budgetViewModel.safeBox)")
-                                            .font(.system(size: 14)) // Custom font can be used here
+                                            .font(.system(size: 14))
                                             .foregroundColor(Color.gray5)
                                         Spacer()
                                         Button(action: {
@@ -152,7 +154,7 @@ struct BudgetMainView : View {
                                             }
                                         }) {
                                             Text("세이프박스")
-                                                .font(.system(size: 14)) // Custom font can be used here
+                                                .font(.system(size: 14))
                                                 .foregroundColor(Color.gray5)
                                         }
                                     }
@@ -172,6 +174,7 @@ struct BudgetMainView : View {
                             Text("\(calendarViewModel.dateString(from: dates.0))" )
                                 .font(.haruchi(.body_m14))
                                 .foregroundColor(Color.gray5)
+                                
                         }
                         .padding(.top, 21)
                         
@@ -183,50 +186,59 @@ struct BudgetMainView : View {
                             TextField("입력해주세요", text: $budgetViewModel.pullPushBudget)
                                 .font(.haruchi(.body_m14))
                                 .foregroundColor(Color.black)
-                                .keyboardType(.numberPad) //키보드 타입 설정
+                                .keyboardType(.numberPad)
                                 .frame(width: 75)
+                                .focused($isFocused)
                             
                         }
                         .padding(.top, 21)
                         
                     }//VStack
+                    .onTapGesture {
+                        isFocused = false
+                    }
                     .padding(.bottom, 84)
                     
                     Spacer()
                     
-                    //                    NavigationLink(destination: BudgetPullPushView() // 기본 백 버튼 숨김
-                    //                        , isActive: $navigateToNextView) {
-                    //                            EmptyView()//EmptyView()를 사용하여 NavigationLink를 보이지 않게 만들고 .hidden()으로 숨겨
-                    //                        }
-                    //                        .hidden()
                     Button("Go to BudgetPullPushView") {
                         navigateToNextView = true
-                    } .hidden()
-                        .navigationDestination(isPresented: $navigateToNextView){
-                            BudgetPullPushView()
-                        }
+                    }
+                    .hidden()
+                    .navigationDestination(isPresented: $navigateToNextView) {
+                        BudgetPullPushView()
+                            .environmentObject(budgetViewModel)
+                            .environmentObject(calendarViewModel)
+                    }
                 }//scrollView
-                .scrollIndicators(.hidden) // 스크롤 바를 숨기도록 설정
+                .scrollIndicators(.hidden)
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
                         KeypadButton(
                             text: budgetViewModel.isPushButtonActive ? "넘기기" :"당겨쓰기",
                             enable: !budgetViewModel.pullPushBudget.isEmpty,
                             action: {
+                                if let firstDate = calendarViewModel.selectedDates().0 {
+                                    budgetViewModel.firstDate = firstDate
+                                }
+                                if let secondDate = calendarViewModel.selectedDates().1 {
+                                    budgetViewModel.secondDate = secondDate
+                                }
                                 navigateToNextView = true
                             }
                         )
                     }
                 }
-            }//VStack
-            .onAppear {
-                budgetViewModel.loadBudget()
-                budgetViewModel.loadSafeBox()     
             }
+            .onAppear {
+                budgetViewModel.loadSafeBox()
+                budgetViewModel.refreshData()
+            }
+            
             
             .padding(.leading, 24)
             .padding(.trailing, 24)
             
-        }//NavigationView
+        }
     }
 }

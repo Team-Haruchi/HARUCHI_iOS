@@ -18,7 +18,9 @@ struct BudgetPullPushView: View {
         
         VStack(spacing: 0) {
             
-            Image("mainLogo")
+            Image("circleLogo")
+                .resizable()
+                .frame(width: 103, height: 103)
                 .padding(.top, 194)
             
             HStack(spacing: 0){
@@ -82,6 +84,11 @@ struct BudgetPullPushView: View {
             Spacer()
             Button(action:{
                 presentationMode.wrappedValue.dismiss()
+                if budgetViewModel.isPushButtonActive {
+                    budgetViewModel.pushBudget()
+                } else {
+                    //                    budgetViewModel.pullBudget()
+                }
             }){
                 Text(budgetViewModel.isPushButtonActive  ? "넘기기" : "당겨쓰기")
                     .frame(width: 345, height: 45)
@@ -91,37 +98,8 @@ struct BudgetPullPushView: View {
                     .cornerRadius(10)
                     .padding(.bottom, 17)
             }
-            
-            
-            
-            
-            
-            //            Button(action:{
-            //                print("isPushButtonActive: \(budgetViewModel.isPushButtonActive)")
-            //                //                                print("changableTextPull: \(budgetViewModel.changableTextPull)")
-            //                //                                print("changableTextPush: \(budgetViewModel.changableTextPush)")
-            //                print("moneyText: \(budgetViewModel.money)")
-            //            }){
-            //                Text("test")
-            //            }
-        }//VStack
+        }
         .navigationBarBackButtonHidden(true)
         .backButtonStyle()
     }
 }
-
-
-//struct CustomBackButton: View {
-//    @Environment(\.presentationMode) var presentationMode
-//
-//    var body: some View {
-//        Button(action: {
-//            presentationMode.wrappedValue.dismiss()
-//        }) {
-//            HStack {
-//                Image(systemName: "chevron.left")
-//                    .foregroundStyle(Color.black)
-//            }
-//        }
-//    }
-//}
