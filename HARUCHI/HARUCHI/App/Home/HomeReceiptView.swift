@@ -58,14 +58,13 @@ struct HomeReceiptView: View {
                             Spacer()
                         }
                         .padding(.horizontal, 24)
-                        .padding(.bottom, 70)
+                        .padding(.bottom, 50)
                         
                         ScrollView {
                             VStack(alignment: .leading, spacing: 0) {
                                 Text(viewModel.formattedDate)
                                     .foregroundColor(Color.gray5)
                                     .font(.haruchi(.caption3))
-                                    .padding(.leading, 24)
                                     .padding(.bottom, 15)
                                     .onAppear {
                                         viewModel.updateDate()
@@ -77,7 +76,8 @@ struct HomeReceiptView: View {
                                     })
                                 }
                             }
-                            .padding(.trailing, 100)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 24)
                         }
 
                         
