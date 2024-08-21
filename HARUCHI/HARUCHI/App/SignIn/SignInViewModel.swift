@@ -48,6 +48,11 @@ class SignInViewModel: ObservableObject {
     
     @Published var termAgree: Bool = false
     @Published var collectInfoAgree: Bool = false
+    @Published var showTermAgreeLink: Bool = false
+    @Published var showcollectInfoAgreeLink: Bool = false
+    
+    var termAgreeLinkURL = URL(string: "https://delightful-delphinium-b9c.notion.site/_-3587c2c1dcf9431886f8c72edda886b7?pvs=4")
+    var showcollectInfoAgreeLinkURL = URL(string: "https://delightful-delphinium-b9c.notion.site/_-fdaab060f7a4433a9464937113931ecb?pvs=4")
     
     private var timer: AnyCancellable?
     private var cancellables = Set<AnyCancellable>()
