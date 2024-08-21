@@ -3,6 +3,7 @@ import SwiftUI
 struct CancelMembershipView: View {
     @FocusState private var isFocused: Bool // TextEditor의 포커스 상태를 추적
     @StateObject private var viewModel = CancelMembershipViewModel() // ViewModel 객체 생성
+    @StateObject private var memberInfoViewModel = MemberInfoViewModel() // MemberInfoViewModel 객체 생성
     @State private var showReconfirmButton: Bool = false // ReconfirmButton 표시 여부를 제어하는 상태 변수
     @State private var showFinalConfirmButton: Bool = false // FinalConfirmButton 표시 여부를 제어하는 상태 변수
     @EnvironmentObject var appState: AppState // AppState를 환경 변수로 가져옴
@@ -13,7 +14,7 @@ struct CancelMembershipView: View {
             NavigationStack {
                 VStack(alignment: .leading, spacing: 0){
                     HStack{
-                        Text("저축왕님\n정말 탈퇴하시겠어요?")
+                        Text("\(memberInfoViewModel.memberInfoName)님\n정말 탈퇴하시겠어요?")
                             .font(.haruchi(.h2))
                             .padding(.top, 21)
                         Spacer()
@@ -108,6 +109,9 @@ struct CancelMembershipView: View {
                 .onTapGesture {
                     // 텍스트 에디터 외부를 누르면 키보드 내리기
                     isFocused = false
+                }
+                .onAppear {
+                    memberInfoViewModel.fetchMemberInfo() // 뷰가 나타날 때 회원 정보를 가져옴
                 }
             }
             // ReconfirmButton 오버레이
