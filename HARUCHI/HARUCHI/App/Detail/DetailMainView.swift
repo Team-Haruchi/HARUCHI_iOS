@@ -34,7 +34,7 @@ struct DetailMainView: View {
                         .foregroundStyle(.black)
                 }.frame(width: UIScreen.main.bounds.width - 48, height: 45)
                 
-                ShareLink(item: URL(string: "https://www.naver.com/")!) {
+                ShareLink(item: URL(string: "https://delightful-delphinium-b9c.notion.site/20716ce6a84c4bd18454d34b23a7f2e5?pvs=4")!) {
                     HStack {
                         Text("친구에게 앱 공유하기")
                             .font(.haruchi(.body_r16))
