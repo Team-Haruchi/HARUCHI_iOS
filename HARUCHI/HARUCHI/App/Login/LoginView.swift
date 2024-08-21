@@ -13,6 +13,7 @@ fileprivate enum LoginTextFieldType {
 }
 
 struct LoginView: View {
+    @EnvironmentObject var appState: AppState
     @ObservedObject private var loginViewModel: LoginViewModel
     @FocusState private var focusedField: LoginTextFieldType?
     

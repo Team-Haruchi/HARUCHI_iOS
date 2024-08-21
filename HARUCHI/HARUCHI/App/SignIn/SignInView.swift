@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    
+    @EnvironmentObject var appState: AppState
     @StateObject private var viewModel = SignInViewModel()
     @FocusState private var focusedField: SignInTextFieldType?
     
@@ -217,7 +217,7 @@ struct SignInView: View {
         .navigationBarBackButtonHidden(true)
         .disableAutocorrection(true)
         .navigationDestination(isPresented: $viewModel.showEmailAuthView) {
-            EmailAuthView().environmentObject(viewModel)
+            EmailAuthView(viewModel: viewModel)
         }
         .alert(isPresented: $viewModel.showEmailDuplicateError) {
             Alert(

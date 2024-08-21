@@ -55,6 +55,7 @@ struct OnboardingBudgetView: View {
             
             Spacer()
         }
+        .navigationBarBackButtonHidden()
         .ignoresSafeArea(.keyboard)
         .onDisappear {
             if let homebudgetValue = Int(viewModel.monthBudget) {
@@ -70,7 +71,6 @@ struct OnboardingBudgetView: View {
         }
         .navigationDestination(isPresented: $viewModel.showOnboardingNicknameView) {
             OnboardingNicknameView(viewModel: viewModel)
-                .navigationBarBackButtonHidden(true)
         }
     }
 }

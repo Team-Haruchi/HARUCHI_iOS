@@ -10,10 +10,6 @@ import SwiftUI
 struct OnboardingNicknameView: View {
     @ObservedObject var viewModel: OnboardingViewModel
 
-    init(viewModel: OnboardingViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 0) {
@@ -69,6 +65,7 @@ struct OnboardingNicknameView: View {
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
         }
+        .navigationBarBackButtonHidden(true)
         .ignoresSafeArea(.keyboard)
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {

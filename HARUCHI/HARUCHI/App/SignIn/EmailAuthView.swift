@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct EmailAuthView: View {
+    @ObservedObject var viewModel: SignInViewModel
     
-    @EnvironmentObject var viewModel: SignInViewModel
+    init(viewModel: SignInViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -88,7 +91,7 @@ struct EmailAuthView: View {
             
             Spacer()
             
-            MainButton(text: "가입하기", enable: viewModel.authCodeVerified) {
+            MainButton(text: "가입하기", enable: true) {
                 viewModel.showOnboarding = true
             }
             .padding(.bottom, 17)
