@@ -173,7 +173,13 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func closeReceipt(year: Int, month: Int, day: Int) {
+    func closeReceipt() {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: currentDate)
+        let month = calendar.component(.month, from: currentDate)
+        let day = calendar.component(.day, from: currentDate)
+
         closeService.closeReceipt(year: year, month: month, day: day)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -181,15 +187,24 @@ class HomeViewModel: ObservableObject {
                     break
                 case .failure(let error):
                     self.errorMessage = "영수증 조회 불가: \(error.localizedDescription)"
-                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                    print("errorMessage: \(String(describing: self.errorMessage))")
                 }
             }, receiveValue: { closeResult in
                 print("영수증 조회 성공: \(closeResult)")
+                
                 let result = closeResult.result
-                self.money = "\(result.year)-\(result.month)-\(result.day)"
+                
+                if result.incomeList.isEmpty && result.expenditureList.isEmpty {
+                    self.errorMessage = "해당 날짜에 수입 및 지출이 존재하지 않습니다."
+                    print(self.errorMessage ?? "Unknown error")
+                } else {
+                    self.money = "\(result.dayBudget)"
+                }
             })
             .store(in: &cancellables)
     }
+
+
 
 
     func closeBudget(redistributionOption: String, year: Int, month: Int, day: Int) {

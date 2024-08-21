@@ -28,12 +28,19 @@ class CloseService {
                     print("[IncomeService] requestIncome() statusCode: \(response.statusCode)")
                     throw MoyaError.statusCode(response)
                 }
+                // 서버 응답 데이터 확인
+                if let jsonString = String(data: response.data, encoding: .utf8) {
+                    print("서버 응답 데이터: \(jsonString)")
+                } else {
+                    print("응답 데이터가 올바른 형식으로 변환되지 않았습니다.")
+                }
                 return response.data
             }
             .decode(type: Base<CloseResponse>.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
+
     
     func closeBudget(
         redistributionOption: String,

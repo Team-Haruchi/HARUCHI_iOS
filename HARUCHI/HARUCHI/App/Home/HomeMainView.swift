@@ -176,8 +176,8 @@ struct HomeMainView: View {
                                     .padding(.horizontal, 10)
                                 }
                                 .onTapGesture {
+                                    viewModel.closeReceipt()
                                     viewModel.navigateToReceipt = true
-                                    viewModel.closeCheckLast ()
                                 }
 
                                 .padding(.top, 20)
@@ -233,6 +233,7 @@ struct HomeMainView: View {
                         viewModel.loadMonthBudget()
                         viewModel.loadWeekBudget()
                         viewModel.loadBudgetPercent()
+//                        viewModel.closeReceipt()
                         budgetViewModel.loadBudget()
                         budgetViewModel.loadSafeBox()
                         percent.percentage = CGFloat(viewModel.monthUsedPercent)

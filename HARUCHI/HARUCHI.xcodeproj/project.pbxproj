@@ -40,6 +40,7 @@
 		9F70220C2C513D5C00405610 /* PercentageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F70220B2C513D5C00405610 /* PercentageBar.swift */; };
 		9F9C4C212C4EBE2C00940551 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */; };
 		9FA27BEB2C7648570062030A /* CloseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA27BEA2C7648570062030A /* CloseResponse.swift */; };
+		9FA27BEF2C769F760062030A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA27BEE2C769F760062030A /* Category.swift */; };
 		9FAB27012C5FB31D007FDD23 /* SmallCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB27002C5FB31D007FDD23 /* SmallCircleButton.swift */; };
 		9FBD1F122C5126F700CDB0B8 /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD1F112C5126F700CDB0B8 /* HomeMainView.swift */; };
 		9FBDF3752C70D19500EB28CF /* AuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDF3742C70D19500EB28CF /* AuthPlugin.swift */; };
@@ -123,6 +124,7 @@
 		9F70220B2C513D5C00405610 /* PercentageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentageBar.swift; sourceTree = "<group>"; };
 		9F9C4C202C4EBE2C00940551 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		9FA27BEA2C7648570062030A /* CloseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseResponse.swift; sourceTree = "<group>"; };
+		9FA27BEE2C769F760062030A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		9FAB27002C5FB31D007FDD23 /* SmallCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCircleButton.swift; sourceTree = "<group>"; };
 		9FBD1F112C5126F700CDB0B8 /* HomeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainView.swift; sourceTree = "<group>"; };
 		9FBDF3742C70D19500EB28CF /* AuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPlugin.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				9FBDF3782C7211AF00EB28CF /* ExpenditureResult.swift */,
 				378A0FEA2C6FBF3B002D932A /* MemberInfoResponse.swift */,
 				9FA27BEA2C7648570062030A /* CloseResponse.swift */,
+				9FA27BEE2C769F760062030A /* Category.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				C6C139D12C41485400AE2D9C /* HARUCHIApp.swift in Sources */,
 				C6CF82292C6A5D5B0006A98C /* Base.swift in Sources */,
 				C695BDA92C60E05C009DEC3C /* AuthAPI.swift in Sources */,
+				9FA27BEF2C769F760062030A /* Category.swift in Sources */,
 				9F161E872C6DDA7A00E0537B /* ExpenditureAPI.swift in Sources */,
 				3797F3DC2C73DCA100048A18 /* FinalConfirmButton.swift in Sources */,
 				9F6799352C6DD92B00AEF96A /* IncomeAPI.swift in Sources */,

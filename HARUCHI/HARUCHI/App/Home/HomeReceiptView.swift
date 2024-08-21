@@ -155,15 +155,11 @@ struct HomeReceiptView: View {
                             if let option = selectedOption {
                                 MainButton(
                                     text: "\(option)",
-                                    action: { viewModel.hideKeyboard()
-                                        
-                                    let currentDate = Date()
-                                    let calendar = Calendar.current
-                                    let year = calendar.component(.year, from: currentDate)
-                                    let month = calendar.component(.month, from: currentDate)
-                                    let day = calendar.component(.day, from: currentDate)
-                                
-                                    viewModel.closeCheck(year: year, month: month, day: day)
+                                    action: {
+                                        viewModel.hideKeyboard()
+                                        viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
+                                        // 추가 작업을 통해 영수증 뷰를 마감
+                                        presentationMode.wrappedValue.dismiss()
                                 })
                                 .padding(.top, 39)
                                 
@@ -178,9 +174,8 @@ struct HomeReceiptView: View {
             .backButtonStyle()
             .toolbar(.hidden, for: .tabBar)
         }
-        Spacer()
         .onAppear {
-            viewModel.closeReceipt(year: selectedYear, month: selectedMonth, day: selectedDay)
+//            viewModel.closeReceipt()
             viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
         }
     }

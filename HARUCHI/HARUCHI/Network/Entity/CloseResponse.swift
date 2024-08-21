@@ -8,9 +8,12 @@
 import Foundation
 
 struct CloseResponse: Decodable {
-    let year: Int
-    let month: Int
-    let day: Int
+    let dayBudget: Int
+    let todayExpenditureAmount: Int
+    let incomeList: [IncomeResult]
+    let expenditureList: [ExpenditureResult]
+    let pullList: [String] 
+    let pushList: [String]
 }
 
 struct RedistributionResponse: Decodable {
