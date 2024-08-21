@@ -47,3 +47,7 @@ struct WeekBudgetItem: Decodable {
     let status: String
 }
 
+struct EditBudgetResponse: Decodable {
+    let id: Int
+    let updatedAt: String
+}

@@ -16,6 +16,7 @@ enum BudgetAPI {
     case leftNowCheck
     case budgetPercentCheck
     case weekBudgetCheck
+    case monthlyBudgetEdit(monthBudget: Int)
 
 }
 
@@ -43,6 +44,8 @@ extension BudgetAPI: BaseAPI {
         case .weekBudgetCheck:
             return "/monthly-budget/week"
             
+        case .monthlyBudgetEdit:
+            return "/monthly-budget/"
         }
     }
     
@@ -69,6 +72,8 @@ extension BudgetAPI: BaseAPI {
         case .weekBudgetCheck:
             return .get
             
+        case .monthlyBudgetEdit:
+            return .patch
         }
     }
     
@@ -95,6 +100,10 @@ extension BudgetAPI: BaseAPI {
         case .weekBudgetCheck:
             return .requestPlain
             
+        case .monthlyBudgetEdit(let monthBudget):
+            return .requestParameters(parameters: ["monthBudget": monthBudget], encoding: JSONEncoding.default)
         }
     }
 }
+
+

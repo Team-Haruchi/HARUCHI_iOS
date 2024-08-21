@@ -25,7 +25,7 @@ enum Budget {
 class BudgetMainViewModel: ObservableObject {
     @Published var isPushButtonActive: Bool = false
     @Published var isBoxButtonActive: Bool = false
-    @Published var money = ""
+    @Published var pullPushBudget = ""
     
     @Published var dayBudget: Int = 0
     @Published var safeBox: Int = 0

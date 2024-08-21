@@ -15,7 +15,6 @@ struct HomeMainView: View {
     @State private var accessToken: String = ""
 
     @State private var isEditing = false
-    @State private var editedBudget: String = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -50,7 +49,7 @@ struct HomeMainView: View {
                                 Button(action: {
                                     isEditing.toggle()
                                     if isEditing {
-                                        editedBudget = viewModel.budget
+                                        viewModel.editedBudget = String(viewModel.monthBudget)
                                     }
                                 }) {
                                     Text("수정")
@@ -61,7 +60,7 @@ struct HomeMainView: View {
                             
                             if isEditing {
                                 HStack(spacing: 0) {
-                                    TextField("예산을 입력하세요", text: $editedBudget)
+                                    TextField("예산을 입력하세요", text: $viewModel.editedBudget)
                                         .font(.haruchi(.h1))
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .keyboardType(.numberPad)
@@ -73,9 +72,8 @@ struct HomeMainView: View {
                                 }
                                 
                                 Button(action: {
-                                    if let newBudget = Int(editedBudget) {
-                                        viewModel.budget = String(newBudget)
-                                    }
+                                    viewModel.monthBudget = Int(viewModel.editedBudget)!
+                                    viewModel.editMonthlyBudget()
                                     isEditing = false
                                 }) {
                                     Text("저장")
