@@ -16,6 +16,9 @@ struct HomeReceiptView: View {
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
 
     @State private var selectedOption: String? = nil
+    @State private var selectedYear: Int = Calendar.current.component(.year, from: Date())
+    @State private var selectedMonth: Int = Calendar.current.component(.month, from: Date())
+    @State private var selectedDay: Int = Calendar.current.component(.day, from: Date())
 
 
     let categoryImages: [String: String] = [
@@ -108,7 +111,7 @@ struct HomeReceiptView: View {
                                 selectedOption = "차감하기"
                             }) {
                                 HStack {
-                                    Text("차감하기")
+                                    Text("남은 일수에서 1/n")
                                     
                                     Spacer()
                                     
@@ -129,11 +132,11 @@ struct HomeReceiptView: View {
                                 selectedOption = "분배하기"
                             }) {
                                 HStack {
-                                    Text("세이프박스")
+                                    Text("70000원")
                                     
                                     Spacer()
                                     
-                                    Text("70000원")
+                                    Text("세이프박스")
                                     if selectedOption == "분배하기" {
                                         Image(systemName: "checkmark")
                                     }
@@ -160,7 +163,7 @@ struct HomeReceiptView: View {
                                     let month = calendar.component(.month, from: currentDate)
                                     let day = calendar.component(.day, from: currentDate)
                                 
-                                    viewModel.closeCheck(year: year, month: month, day: day) 
+                                    viewModel.closeCheck(year: year, month: month, day: day)
                                 })
                                 .padding(.top, 39)
                                 
@@ -176,5 +179,9 @@ struct HomeReceiptView: View {
             .toolbar(.hidden, for: .tabBar)
         }
         Spacer()
+        .onAppear {
+            viewModel.closeReceipt(year: selectedYear, month: selectedMonth, day: selectedDay)
+            viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
+        }
     }
 }

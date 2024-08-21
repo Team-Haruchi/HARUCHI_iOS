@@ -184,11 +184,10 @@ struct SaveButtonView: View {
                 // 수입/지출 구분하여 호출
                 if viewModel.selectedType == "지출" {
                     viewModel.reqeustExpenditure()
-                    viewModel.navigateToHomeMain = true
                 } else if viewModel.selectedType == "수입" {
                     viewModel.requestIncome()
-                    viewModel.navigateToHomeMain = true
                 }
+                viewModel.navigateToHomeMain = true
             })
         }
         Spacer().frame(height: 25)

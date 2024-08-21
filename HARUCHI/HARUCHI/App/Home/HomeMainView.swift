@@ -13,6 +13,9 @@ struct HomeMainView: View {
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
     @StateObject private var percent = BudgetPercentage()
     @State private var accessToken: String = ""
+    @State private var selectedYear: Int = Calendar.current.component(.year, from: Date())
+    @State private var selectedMonth: Int = Calendar.current.component(.month, from: Date())
+    @State private var selectedDay: Int = Calendar.current.component(.day, from: Date())
     
     @State private var isEditing = false
     @State private var editedBudget: String = ""
@@ -174,10 +177,9 @@ struct HomeMainView: View {
                                 }
                                 .onTapGesture {
                                     viewModel.navigateToReceipt = true
-                                    viewModel.closeCheckLast() { lastCloseDate in
-                                        print("마지막 지출 마감일: \(lastCloseDate)")
-                                    }
+                                    viewModel.closeCheckLast ()
                                 }
+
                                 .padding(.top, 20)
                                 .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
                                     HomeReceiptView(selectedCategory: viewModel.selectedCategory)
