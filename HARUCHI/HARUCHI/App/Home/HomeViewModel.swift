@@ -146,8 +146,8 @@ class HomeViewModel: ObservableObject {
                 case .failure(let error):
                     print("해당 수입이 존재하지 않습니다: \(error)")
                 }
-            }, receiveValue: { response in
-                self.navigateToHomeMain = true
+            }, receiveValue: { incomeResponse in
+                print("수입이 성공적으로 등록되었습니다: \(incomeResponse)")
             })
             .store(in: &cancellables)
     }
@@ -166,15 +166,15 @@ class HomeViewModel: ObservableObject {
                 case .failure(let error):
                     print("해당 지출이 존재하지 않습니다: \(error)")
                 }
-            }, receiveValue: { response in
-                self.navigateToHomeMain = true
+            }, receiveValue: { expenditureResponse in
+                print("지출이 성공적으로 등록되었습니다: \(expenditureResponse)")
             })
             .store(in: &cancellables)
     }
 
     func setupCalendarData(with weekBudgets: [WeekBudgetItem]) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd"  
         
         // 현재 날짜, 현재 주의 시작일과 종료일 계산
         let calendar = Calendar.current
