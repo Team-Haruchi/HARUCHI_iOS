@@ -154,8 +154,10 @@ struct HomeReceiptView: View {
                                     action: { viewModel.hideKeyboard()
                                 })
                                 .padding(.top, 39)
+                                
                             }
                         }
+                        Spacer().frame(height: 25)
                     }
                 }
             }
