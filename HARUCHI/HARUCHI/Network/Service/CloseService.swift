@@ -13,7 +13,7 @@ import CombineMoya
 class CloseService {
     private var provider = MoyaProvider<CloseAPI>()
     
-    init(token: String) {
+    init() {
         self.provider = MoyaProvider<CloseAPI>(plugins: [AuthPlugin()])
     }
     
