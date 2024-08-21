@@ -13,8 +13,6 @@ struct BudgetMainView : View {
     @State private var navigateToNextView = false
     @EnvironmentObject var calendarViewModel : CalendarViewModel
     
-    @State private var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MTgsImVtYWlsIjoidGVzdHl1cEB0ZXN0LmNvbSIsImlhdCI6MTcyMzc4MjI1MX0.RQYp5-xAV3NOmvLIMcyOrR_HUSoT_nd-URntobYOymg" // 실제 토큰을 여기에 넣어야 함
-    
     @State private var xOffset: CGFloat = (UIScreen.main.bounds.width - 48) / 4 // 초기값을 "당겨쓰기" 버튼 위치로 설정
     private let buttonWidth = (UIScreen.main.bounds.width - 68) / 2 // 각 버튼의 너비
     
