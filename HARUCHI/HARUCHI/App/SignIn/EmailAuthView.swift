@@ -91,7 +91,7 @@ struct EmailAuthView: View {
             
             Spacer()
             
-            MainButton(text: "가입하기", enable: true) {
+            MainButton(text: "가입하기", enable: viewModel.authCodeVerified) {
                 viewModel.showOnboarding = true
             }
             .padding(.bottom, 17)
