@@ -18,7 +18,7 @@ extension ExpenditureAPI: BaseAPI {
     var path: String {
         switch self {
         case .expenditure:
-            return "/daily-budget/expeenditure"
+            return "/daily-budget/expenditure"
 
         case .expenditureDelete:
             return "/daily-budget/expenditure/{expenditureId}"
