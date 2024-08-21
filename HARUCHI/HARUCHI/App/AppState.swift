@@ -5,8 +5,9 @@
 //  Created by 이건우 on 8/12/24.
 //
 
-import Foundation
+import SwiftUI
 
-class AppState: ObservableObject {
+final class AppState: ObservableObject {
     @Published var isLoggedIn: Bool = false
+    @Published var path = NavigationPath()
 }

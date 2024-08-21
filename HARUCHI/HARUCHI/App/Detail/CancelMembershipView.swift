@@ -107,10 +107,10 @@ struct CancelMembershipView: View {
                     // 텍스트 에디터 외부를 누르면 키보드 내리기
                     isFocused = false
                 }
-                .fullScreenCover(isPresented: $viewModel.isCanceled) {
-                    LoginView(appState: AppState()) // 로그인 화면
-                        .navigationBarBackButtonHidden(true) // 로그인 화면에서 뒤로 가기 버튼 숨기기
-                }
+//                .fullScreenCover(isPresented: $viewModel.isCanceled) {
+//                    LoginView(appState: AppState()) // 로그인 화면
+//                        .navigationBarBackButtonHidden(true) // 로그인 화면에서 뒤로 가기 버튼 숨기기
+//                }
             }
             // ReconfirmButton 오버레이
             if showReconfirmButton {

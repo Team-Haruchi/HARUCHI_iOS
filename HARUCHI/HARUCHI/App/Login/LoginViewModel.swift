@@ -63,7 +63,9 @@ final class LoginViewModel: ObservableObject {
     // Saving accessToken at Keychain & Change AppState
     private func loginProcess(with token: String) {
         KeychainManager.save(token: token, for: .accessToken)
+        UserDefaultsManager.shared.setLoggedIn(true)
         appState.isLoggedIn = true
+        
         isLoading = false
     }
     

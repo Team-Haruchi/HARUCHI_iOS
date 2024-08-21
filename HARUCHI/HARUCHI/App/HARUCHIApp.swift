@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct HARUCHIApp: App {    
+struct HARUCHIApp: App {
     
     init() {
         HARUCHIApp.setUpNavBar()

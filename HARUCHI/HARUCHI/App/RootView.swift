@@ -9,9 +9,9 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject private var appState = AppState()
-
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $appState.path) {
             if !appState.isLoggedIn {
                 LoginView(appState: appState)
             } else {
@@ -36,5 +36,6 @@ struct RootView: View {
                 }
             }
         }
+        .environmentObject(appState)
     }
 }
