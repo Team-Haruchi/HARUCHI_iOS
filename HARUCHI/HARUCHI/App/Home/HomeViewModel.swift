@@ -38,6 +38,7 @@ class HomeViewModel: ObservableObject {
     
     private let incomeService = IncomeService()
     private let expenditureService = ExpenditureService()
+    private let closeService = CloseService()
 
 
     var todayDate: String {
@@ -164,11 +165,10 @@ class HomeViewModel: ObservableObject {
                 case .finished:
                     break
                 case .failure(let error):
-                    print("저장이 불가능합니다: \(error)")
+                    print("해당 수입이 존재하지 않습니다: \(error)")
                 }
-            }, receiveValue: { response in
-                print("인증이 필요합니다: \(response)")
-                self.navigateToHomeMain = true
+            }, receiveValue: { incomeResponse in
+                print("수입이 성공적으로 등록되었습니다: \(incomeResponse)")
             })
             .store(in: &cancellables)
     }
@@ -185,18 +185,90 @@ class HomeViewModel: ObservableObject {
                 case .finished:
                     break
                 case .failure(let error):
-                    print("저장이 불가능합니다: \(error)")
+                    print("해당 지출이 존재하지 않습니다: \(error)")
                 }
-            }, receiveValue: { response in
-                print("인증이 필요합니다: \(response)")
-                self.navigateToHomeMain = true
+            }, receiveValue: { expenditureResponse in
+                print("지출이 성공적으로 등록되었습니다: \(expenditureResponse)")
+            })
+            .store(in: &cancellables)
+    }
+    
+    func closeReceipt() {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: currentDate)
+        let month = calendar.component(.month, from: currentDate)
+        let day = calendar.component(.day, from: currentDate)
+
+        closeService.closeReceipt(year: year, month: month, day: day)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "영수증 조회 불가: \(error.localizedDescription)"
+                    print("errorMessage: \(String(describing: self.errorMessage))")
+                }
+            }, receiveValue: { closeResult in
+                print("영수증 조회 성공: \(closeResult)")
+                
+                let result = closeResult.result
+                
+                if result.incomeList.isEmpty && result.expenditureList.isEmpty {
+                    self.errorMessage = "해당 날짜에 수입 및 지출이 존재하지 않습니다."
+                    print(self.errorMessage ?? "Unknown error")
+                } else {
+                    self.money = "\(result.dayBudget)"
+                }
             })
             .store(in: &cancellables)
     }
 
+
+
+
+    func closeBudget(redistributionOption: String, year: Int, month: Int, day: Int) {
+        closeService.closeBudget(redistributionOption: redistributionOption, year: year, month: month, day: day)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "지출 마감에 실패하셨습니다: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { closeResult in
+                print("지출 마감 성공: \(closeResult)")
+            })
+            .store(in: &cancellables)
+    }
+
+    func closeAmount(year: Int, month: Int, day: Int) {
+        guard monthBudget > 0 else {
+            self.errorMessage = "amount가 0일 때는 1/n을 할 수 없습니다"
+            return
+        }
+        
+        closeService.closeAmount(year: year, month: month, day: day)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "차감/분배 조회 실패: \(error.localizedDescription)"
+                    print("errorMessage:\(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { closeResult in
+                print("차감/분배 조회 성공: \(closeResult)")
+                // 여기서 받아온 데이터를 UI에 반영
+            })
+            .store(in: &cancellables)
+    }
+
+    
     func setupCalendarData(with weekBudgets: [WeekBudgetItem]) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd"  
         
         // 현재 날짜, 현재 주의 시작일과 종료일 계산
         let calendar = Calendar.current

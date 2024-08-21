@@ -11,8 +11,6 @@ import Moya
 enum CloseAPI {
     case closeReceipt(year: Int, month: Int, day: Int) // body
     case closeBudget(redistributionOption: String, year: Int, month: Int, day: Int) // parameters
-    case closeCheck(year: Int, month: Int, day: Int) // parameters
-    case closeCheckLast // parameters
     case closeAmount(year: Int, month: Int, day: Int) // parameters
 }
 
@@ -22,12 +20,6 @@ extension CloseAPI: BaseAPI {
         case .closeReceipt, .closeBudget:
             return "/budget-redistribution/closing"
         
-        case .closeCheck:
-            return "/budget-redistribution/closing/check"
-            
-        case .closeCheckLast:
-            return "/budget-redistribution/closing/check/last"
-            
         case .closeAmount:
             return "/budget-redistribution/closing/amount"
         }
@@ -38,7 +30,7 @@ extension CloseAPI: BaseAPI {
         case .closeBudget:
             return .post
         
-        case .closeReceipt, .closeCheck, .closeCheckLast, .closeAmount:
+        case .closeReceipt, .closeAmount:
             return .get
         }
     }
@@ -46,19 +38,16 @@ extension CloseAPI: BaseAPI {
     var task: Moya.Task {
         switch self {
         case .closeReceipt(let year, let month, let day):
-            let body = CloseRequestEntity(year: year, month: month, day: day)
-            return .requestJSONEncodable(body)
+            let params = ["year": year, "month": month, "day": day]
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
             
         case .closeBudget(let redistributionOption, let year, let month, let day):
             let body = CloseRequestEntity(redistributionOption: redistributionOption, year: year, month: month, day: day)
             return .requestJSONEncodable(body)
 
-        case .closeCheck(let year, let month, let day), .closeAmount(let year, let month, let day):
+        case .closeAmount(let year, let month, let day):
             let params = ["year": year, "month": month, "day": day]
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
-            
-        case .closeCheckLast:
-            return .requestPlain
         }
     }
 }

@@ -13,7 +13,10 @@ struct HomeMainView: View {
     @ObservedObject private var budgetViewModel = BudgetMainViewModel()
     @StateObject private var percent = BudgetPercentage()
     @State private var accessToken: String = ""
-
+    @State private var selectedYear: Int = Calendar.current.component(.year, from: Date())
+    @State private var selectedMonth: Int = Calendar.current.component(.month, from: Date())
+    @State private var selectedDay: Int = Calendar.current.component(.day, from: Date())
+    
     @State private var isEditing = false
     
     var body: some View {
@@ -138,7 +141,7 @@ struct HomeMainView: View {
                                 )
                         }
                         .padding(.top, 20)
-
+                        
                         VStack(spacing: 0) {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray1)
@@ -171,65 +174,68 @@ struct HomeMainView: View {
                                     .padding(.horizontal, 10)
                                 }
                                 .onTapGesture {
+                                    viewModel.closeReceipt()
                                     viewModel.navigateToReceipt = true
                                 }
-                        }
-                        .padding(.top, 20)
-                        .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
-                            HomeReceiptView(selectedCategory: viewModel.selectedCategory)
-                                .environmentObject(viewModel)
-                                .navigationBarBackButtonHidden(true)
-                                .disableAutocorrection(true)
-                        }
-                        
-                        
-                        VStack(spacing: 0) {
-                            WeekCalendarView(viewModel: viewModel)
-                                .frame(width: geometry.size.width * 0.9, height: 128)
-                        }
-                        .padding(.top, 25)
-                        
-                        
-                        VStack(spacing: 0) {
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.gray1)
-                                .frame(width: geometry.size.width * 0.9, height: 58)
-                                .overlay {
-                                    HStack {
-                                        ZStack {
-                                            Circle()
-                                                .frame(width: 42, height: 42)
-                                                .foregroundColor(Color.white)
-                                            
-                                            Image("HomeCoin")
-                                                .frame(width: 28, height: 30)
-                                                .scaledToFit()
-                                        }
-                                        
-                                        Text("세이프박스")
-                                            .font(.haruchi(.button12))
-                                            .foregroundColor(Color.gray7)
-                                        
-                                        Spacer()
-                                        
-                                        Text("\(budgetViewModel.safeBox)원")
-                                            .font(.haruchi(.body_r16))
-                                            .foregroundColor(Color.black)
-                                    }
-                                    .padding(.horizontal, 10)
+
+                                .padding(.top, 20)
+                                .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
+                                    HomeReceiptView(selectedCategory: viewModel.selectedCategory)
+                                        .environmentObject(viewModel)
+                                        .navigationBarBackButtonHidden(true)
+                                        .disableAutocorrection(true)
                                 }
+                            
+                            
+                            VStack(spacing: 0) {
+                                WeekCalendarView(viewModel: viewModel)
+                                    .frame(width: geometry.size.width * 0.9, height: 128)
+                            }
+                            .padding(.top, 25)
+                            
+                            
+                            VStack(spacing: 0) {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.gray1)
+                                    .frame(width: geometry.size.width * 0.9, height: 58)
+                                    .overlay {
+                                        HStack {
+                                            ZStack {
+                                                Circle()
+                                                    .frame(width: 42, height: 42)
+                                                    .foregroundColor(Color.white)
+                                                
+                                                Image("HomeCoin")
+                                                    .frame(width: 28, height: 30)
+                                                    .scaledToFit()
+                                            }
+                                            
+                                            Text("세이프박스")
+                                                .font(.haruchi(.button12))
+                                                .foregroundColor(Color.gray7)
+                                            
+                                            Spacer()
+                                            
+                                            Text("\(budgetViewModel.safeBox)원")
+                                                .font(.haruchi(.body_r16))
+                                                .foregroundColor(Color.black)
+                                        }
+                                        .padding(.horizontal, 10)
+                                    }
+                            }
+                            .padding(.top, 25)
+                            Spacer()
                         }
-                        .padding(.top, 25)
-                        Spacer()
                     }
-                }
-                .onAppear {
-                    viewModel.loadMonthBudget()
-                    viewModel.loadWeekBudget()
-                    viewModel.loadBudgetPercent()
-                    budgetViewModel.loadBudget()
-                    budgetViewModel.loadSafeBox()
-                    percent.percentage = CGFloat(viewModel.monthUsedPercent)
+                    .onAppear {
+                        viewModel.loadMonthBudget()
+                        viewModel.loadWeekBudget()
+                        viewModel.loadBudgetPercent()
+//                        viewModel.closeReceipt()
+                        budgetViewModel.loadBudget()
+                        budgetViewModel.loadSafeBox()
+                        percent.percentage = CGFloat(viewModel.monthUsedPercent)
+                    }
                 }
             }
         }

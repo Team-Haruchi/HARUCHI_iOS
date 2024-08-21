@@ -18,7 +18,7 @@ extension ExpenditureAPI: BaseAPI {
     var path: String {
         switch self {
         case .expenditure:
-            return "/daily-budget/expeenditure"
+            return "/daily-budget/expenditure"
 
         case .expenditureDelete:
             return "/daily-budget/expenditure/{expenditureId}"
@@ -48,17 +48,18 @@ extension ExpenditureAPI: BaseAPI {
     }
 }
     
-    fileprivate extension ExpenditureAPI {
-        struct ExpenditureRequestEntity: Encodable {
-            let expenditureAmount: Int?
-            let category: String?
-            
-            init(
-                expenditureAmount: Int? = nil,
-                category: String? = nil
-            ) {
-                self.expenditureAmount = expenditureAmount
-                self.category = category
-            }
+fileprivate extension ExpenditureAPI {
+    struct ExpenditureRequestEntity: Encodable {
+        let expenditureAmount: Int
+        let category: String
+        
+        init(
+            expenditureAmount: Int,
+            category: String
+        ) {
+            self.expenditureAmount = expenditureAmount
+            self.category = category
         }
     }
+}
+
