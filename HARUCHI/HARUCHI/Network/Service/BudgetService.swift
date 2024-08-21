@@ -111,7 +111,7 @@ class BudgetService {
                     print("[BudgetService] fetchWeekBudget statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
             }
             .decode(type: Base<WeekBudgetResponse>.self, decoder: JSONDecoder())

@@ -29,7 +29,6 @@ struct HomeMainView: View {
                                 Spacer()
                                 
                                 // Image("HomeAlarm") 알림창 미구현
-                                Text("\(viewModel.weekBudget)")
                             }
                         }
                         .padding(.horizontal, 24)
@@ -187,7 +186,7 @@ struct HomeMainView: View {
                         
                         
                         VStack(spacing: 0) {
-                            WeekCalendarView(viewModel: HomeViewModel())
+                            WeekCalendarView(viewModel: viewModel)
                                 .frame(width: geometry.size.width * 0.9, height: 128)
                         }
                         .padding(.top, 25)

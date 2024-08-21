@@ -197,7 +197,6 @@ class HomeViewModel: ObservableObject {
                 if let budgetForDay = weekBudgets.first(where: { $0.day == day }) {
                     let iconName = ["calendar_smiling", "calendar_pouting", "calendar_base"].randomElement() ?? "calendar_base"
                     let value = budgetForDay.dayBudget
-                    
                     let model = WeekCalendarModel(date: date, icon: iconName, value: value)
                     weekData.append(model)
                 } else {

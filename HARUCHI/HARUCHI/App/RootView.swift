@@ -21,7 +21,9 @@ struct RootView: View {
                             Image("tabbar_home")
                             Text("홈")
                         }
-                    Text("예산")
+                    BudgetMainView()
+                        .environmentObject(BudgetMainViewModel())
+                        .environmentObject(CalendarViewModel())
                         .tabItem {
                             Image("tabbar_checkBook")
                             Text("예산")
