@@ -12,8 +12,10 @@ struct HARUCHIApp: App {
             RootView()
                 .onAppear {
                     print("Login Status: ", UserDefaultsManager.shared.checkLoginStatus())
-                    print("Token: ", KeychainManager.load(for: .accessToken)!)
                 }
+            
+//            OnboardingBudgetView(email: "", password: "")
+//            OnboardingNicknameView(viewModel: OnboardingViewModel(email: "", password: ""))
         }
     }
 }

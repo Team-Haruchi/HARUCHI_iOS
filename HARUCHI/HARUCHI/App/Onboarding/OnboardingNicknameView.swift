@@ -10,63 +10,50 @@ import SwiftUI
 struct OnboardingNicknameView: View {
     @EnvironmentObject var appState: AppState
     @ObservedObject var viewModel: OnboardingViewModel
-
+    
     var body: some View {
-        GeometryReader { geometry in
-            VStack(alignment: .leading, spacing: 0) {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("가입을 축하드려요!")
-                        .padding(.bottom, 7)
-                    Text("어떻게 불러드리면 될까요?")
-                }
-                .font(.haruchi(.h1))
-                .foregroundColor(Color.black)
-                .frame(width: 253, height: 64)
-                .padding(.top, 124)
-                .padding(.bottom, 150)
-                .padding(.leading, 24)
-                .padding(.trailing, 25)
-                
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack(alignment: .center) {
-                        ZStack(alignment: .trailing) {
-                            TextField("(한글) 5글자 내로 입력해주세요.", text: $viewModel.nickname)
-                                .font(.haruchi(.h2))
-                                .foregroundColor(viewModel.nicknameStatus == .invalid ? Color.black : Color.red)
-                                .keyboardType(.default)
-                                .multilineTextAlignment(.leading)
-                                .padding(.leading, 24)
-                            
-                            Text("\(viewModel.nickname.count)/\(viewModel.maxLength)")
-                                .font(.haruchi(.h2))
-                                .foregroundColor(viewModel.nickname.isEmpty ? Color.gray : (viewModel.nicknameStatus == .invalid ? Color.red : Color.black))
-                                .padding(.leading, 56)
-                        }
-                        .padding(.vertical, 5)
-                    }
-                    .padding(.trailing, 24)
-                    
-                    HStack {
-                        if viewModel.nicknameStatus == .invalid && !viewModel.nickname.isEmpty {
-                            Text("올바르지 않은 형식입니다.")
-                                .font(.haruchi(.caption3))
-                                .foregroundColor(Color.red)
-                        } else {
-                            Text(" ")
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding(.top, 4)
-                    .padding(.leading, 24)
-                    .padding(.trailing, 24)
-                }
-                .padding(.top, 30)
-                Spacer()
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("가입을 축하드려요!")
+                Text("어떻게 불러드리면 될까요?")
             }
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+            .font(.haruchi(.h1))
+            .foregroundColor(Color.black)
+            .padding(.top, 70)
+            .padding(.bottom, 150)
+            .padding(.horizontal, 24)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Group {
+                HStack(alignment: .center) {
+                    TextField("(한글) 5글자 내로 입력해주세요.", text: $viewModel.nickname)
+                        .font(.haruchi(.h2))
+                        .keyboardType(.default)
+                    
+                    Text("\(viewModel.nickname.count)/\(viewModel.maxLength)")
+                        .font(.haruchi(.h2))
+                        .foregroundColor(viewModel.nickname.isEmpty ? Color.gray : (viewModel.nicknameStatus == .invalid ? Color.red : Color.black))
+                }
+                
+                HStack {
+                    if viewModel.nicknameStatus == .invalid && !viewModel.nickname.isEmpty {
+                        Text("올바르지 않은 형식입니다.")
+                            .font(.haruchi(.caption3))
+                            .foregroundColor(Color.red)
+                    } else {
+                        Text("")
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.top, 4)
+            }
+            .padding(.horizontal, 24)
+            
+            Spacer()
         }
         .loadingOverlay(isLoading: $viewModel.isLoading)
+        .backButtonStyle()
         .navigationBarBackButtonHidden(true)
         .ignoresSafeArea(.keyboard)
         .toolbar {

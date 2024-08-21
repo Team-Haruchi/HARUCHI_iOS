@@ -23,20 +23,17 @@ struct OnboardingBudgetView: View {
                 Text("한 달 예산을 정해볼까요?")
                     .font(.haruchi(.h1))
                     .foregroundColor(Color.black)
-                    .frame(width: 237, height: 29)
                     .padding(.bottom, 14)
-                    .padding(.trailing, 132)
                 
                 Text("예산을 설정하고 계획적으로 관리해보세요.")
                     .font(.haruchi(.button12))
                     .foregroundColor(.gray7)
-                    .frame(width: 202, height: 22)
-                    .padding(.trailing, 24)
             }
-            .padding(.top, 124)
-            .padding(.leading, 24)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 70)
+            .padding(.horizontal, 24)
             
-            HStack(alignment: .center) {
+            HStack(spacing: 0) {
                 Text("한 달 예산")
                     .font(.haruchi(.body_r16))
                     .padding(.vertical, 5)
@@ -54,11 +51,16 @@ struct OnboardingBudgetView: View {
                     .padding(.leading, 8)
                     .padding(.vertical, 5)
             }
-            .overlay(Rectangle().foregroundColor(Color.gray5).frame(height: 1).padding(.top, 7), alignment: .bottom)
-            .frame(width: 345, height: 31)
-            .padding(.top, 175)
-            .padding(.leading, 24)
-            .padding(.trailing, 24)
+            .overlay(
+                Rectangle()
+                    .foregroundColor(Color.gray5)
+                    .frame(height: 1)
+                    .padding(.top, 7)
+                , alignment: .bottom
+            )
+            .frame(height: 32)
+            .padding(.top, 185)
+            .padding(.horizontal, 24)
             
             Spacer()
         }

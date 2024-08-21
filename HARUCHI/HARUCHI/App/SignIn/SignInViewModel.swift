@@ -167,6 +167,8 @@ class SignInViewModel: ObservableObject {
     private func verifyEmailAuthCodeSuccess() {
         isLoading = false
         authCodeVerified = true
+        
+        self.timer?.cancel()
     }
     
     func startTimer() {

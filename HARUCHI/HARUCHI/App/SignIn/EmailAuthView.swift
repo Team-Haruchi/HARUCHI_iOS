@@ -34,9 +34,15 @@ struct EmailAuthView: View {
                         .foregroundStyle(.black)
                         .padding(.trailing, 15)
                     
-                    Text("인증번호를 보내드렸어요. (\(viewModel.formattedTime))")
-                        .font(.haruchi(.button12))
-                        .foregroundStyle(Color.haruchiRed)
+                    if !viewModel.authCodeVerified {
+                        Text("인증번호를 보내드렸어요. (\(viewModel.formattedTime))")
+                            .font(.haruchi(.button12))
+                            .foregroundStyle(Color.haruchiRed)
+                    } else {
+                        Text("인증이 성공적으로 완료되었어요")
+                            .font(.haruchi(.button12))
+                            .foregroundStyle(Color.mainBlue)
+                    }
                     
                     Spacer()
                     
@@ -53,7 +59,7 @@ struct EmailAuthView: View {
                                 .frame(width: 25)
                         }
                     }
-                    
+                    .disabled(viewModel.authCodeVerified)
                 }
                 .padding(.bottom, 35)
                 
