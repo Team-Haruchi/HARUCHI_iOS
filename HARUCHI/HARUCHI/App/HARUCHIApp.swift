@@ -9,7 +9,7 @@ struct HARUCHIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeMainView()
+            RootView()
         }
     }
 }

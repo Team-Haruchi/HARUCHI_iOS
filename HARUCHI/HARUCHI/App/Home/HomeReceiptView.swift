@@ -79,6 +79,7 @@ struct HomeReceiptView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 24)
                         }
+                        .scrollBounceBehavior(.basedOnSize)
 
                         
                         HStack {
