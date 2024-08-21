@@ -144,10 +144,9 @@ class HomeViewModel: ObservableObject {
                 case .finished:
                     break
                 case .failure(let error):
-                    print("저장이 불가능합니다: \(error)")
+                    print("해당 수입이 존재하지 않습니다: \(error)")
                 }
             }, receiveValue: { response in
-                print("인증이 필요합니다: \(response)")
                 self.navigateToHomeMain = true
             })
             .store(in: &cancellables)
@@ -165,10 +164,9 @@ class HomeViewModel: ObservableObject {
                 case .finished:
                     break
                 case .failure(let error):
-                    print("저장이 불가능합니다: \(error)")
+                    print("해당 지출이 존재하지 않습니다: \(error)")
                 }
             }, receiveValue: { response in
-                print("인증이 필요합니다: \(response)")
                 self.navigateToHomeMain = true
             })
             .store(in: &cancellables)
