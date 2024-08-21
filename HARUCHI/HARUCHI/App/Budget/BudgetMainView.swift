@@ -182,7 +182,7 @@ struct BudgetMainView : View {
                                 .font(.haruchi(.body_m14))
                                 .foregroundColor(Color.gray5)
                             Spacer()
-                            TextField("입력해주세요", text: $budgetViewModel.money)
+                            TextField("입력해주세요", text: $budgetViewModel.pullPushBudget)
                                 .font(.haruchi(.body_m14))
                                 .foregroundColor(Color.black)
                                 .keyboardType(.numberPad) //키보드 타입 설정
@@ -213,7 +213,7 @@ struct BudgetMainView : View {
                     ToolbarItemGroup(placement: .keyboard) {
                         KeypadButton(
                             text: budgetViewModel.isPushButtonActive ? "넘기기" :"당겨쓰기",
-                            enable: !budgetViewModel.money.isEmpty,
+                            enable: !budgetViewModel.pullPushBudget.isEmpty,
                             action: {
                                 navigateToNextView = true
                             }

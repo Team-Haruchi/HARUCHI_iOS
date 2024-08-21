@@ -50,7 +50,7 @@ struct BudgetPullPushView: View {
             HStack(spacing: 0) {
                 if budgetViewModel.pushMethod == .split {
                     // 텍스트 필드 입력 값과 정수 변환 후 계산된 값을 표시
-                    if let changableInt = Int(budgetViewModel.money) {
+                    if let changableInt = Int(budgetViewModel.pullPushBudget) {
                         Text("\(changableInt / 30)원")
                             .font(.haruchi(.h1))
                             .foregroundStyle(Color.mainBlue)
@@ -63,7 +63,7 @@ struct BudgetPullPushView: View {
                         .foregroundStyle(Color.black)
                 } else {
                     // 텍스트 필드 입력 값과 정수 변환 후 계산된 값을 표시
-                    if let changableInt = Int(budgetViewModel.money) {
+                    if let changableInt = Int(budgetViewModel.pullPushBudget) {
                         Text("\(changableInt)원")
                             .font(.haruchi(.h1))
                             .foregroundStyle(Color.mainBlue)
