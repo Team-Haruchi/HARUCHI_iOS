@@ -12,6 +12,7 @@ class HomeViewModel: ObservableObject {
     @Published var currentMonth: String = ""
     @Published var money = ""
     @Published var budget: String = "0"
+    @Published var editedBudget: String = ""
     @Published var selectedType: String = "미분류"
     @Published var selectedCategory: String = "미분류"
     @Published var selectedIncome: String = "미분류"
@@ -114,6 +115,25 @@ class HomeViewModel: ObservableObject {
                 // weekBudgetResponse에서 데이터를 추출하여 setupCalendarData로 전달
                 let weekBudgets = weekBudgetResponse.result.weekBudget
                 self.setupCalendarData(with: weekBudgets)
+            })
+            .store(in: &cancellables)
+    }
+    
+    func editMonthlyBudget() {
+        budgetService.requestEditBudget(monthBudget: monthBudget)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to Edit Budget: \(error.localizedDescription)"
+                    print("errorMessage: \(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { editBudgetResponse in
+                print("success ID : \(editBudgetResponse.result.id)")
+                print("변경된 예산: \(self.monthBudget)")
+
+
             })
             .store(in: &cancellables)
     }
