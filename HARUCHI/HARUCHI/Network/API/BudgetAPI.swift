@@ -17,8 +17,11 @@ enum BudgetAPI {
     case budgetPercentCheck
     case weekBudgetCheck
     case monthlyBudgetEdit(monthBudget: Int)
+    case pushBudget(redistributionOption: String, amount: Int, sourceDay: Int, targetDay: Int?)
+    case pullBudget(redistributionOption: String, amount: Int, sourceDay: Int, targetDay: Int)
 
 }
+
 
 extension BudgetAPI: BaseAPI {
     var path: String {
@@ -46,6 +49,12 @@ extension BudgetAPI: BaseAPI {
             
         case .monthlyBudgetEdit:
             return "/monthly-budget/"
+            
+        case .pushBudget:
+            return "budget-redistribution/push"
+            
+        case .pullBudget:
+            return "budget-redistribution/pull"
         }
     }
     
@@ -74,6 +83,12 @@ extension BudgetAPI: BaseAPI {
             
         case .monthlyBudgetEdit:
             return .patch
+            
+        case .pushBudget:
+            return .post
+            
+        case .pullBudget:
+            return .post
         }
     }
     
@@ -102,7 +117,24 @@ extension BudgetAPI: BaseAPI {
             
         case .monthlyBudgetEdit(let monthBudget):
             return .requestParameters(parameters: ["monthBudget": monthBudget], encoding: JSONEncoding.default)
+            
+        case .pushBudget(redistributionOption: let redistributionOption, amount: let amount, sourceDay: let sourceDay, targetDay: let targetDay):
+            let body = RedistributionRequestEntity(redistributionOption: redistributionOption, amount: amount, sourceDay: sourceDay, targetDay: targetDay)
+            return .requestJSONEncodable(body)
+            
+        case .pullBudget(redistributionOption: let redistributionOption, amount: let amount, sourceDay: let sourceDay, targetDay: let targetDay):
+            let body = RedistributionRequestEntity(redistributionOption: redistributionOption, amount: amount, sourceDay: sourceDay, targetDay: targetDay)
+            return .requestJSONEncodable(body)
         }
+    }
+}
+
+private extension BudgetAPI {
+    struct RedistributionRequestEntity: Encodable {
+        let redistributionOption: String
+        let amount: Int
+        let sourceDay: Int
+        let targetDay: Int?
     }
 }
 

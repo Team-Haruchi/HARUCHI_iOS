@@ -51,3 +51,14 @@ struct EditBudgetResponse: Decodable {
     let id: Int
     let updatedAt: String
 }
+
+struct PushRedistributionResponse: Decodable {
+    let pushId: Int
+    let createdAt: String
+}
+
+struct PullRedistributionResponse: Decodable {
+    let pullId: Int
+    let createdAt: String
+}
+
