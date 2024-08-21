@@ -30,7 +30,6 @@ class BudgetMainViewModel: ObservableObject {
     @Published var dayBudget: Int = 0
     @Published var safeBox: Int = 0
     
-    @Published var accessToken: String
     @Published var errorMessage: String?
     
     @Published var pushMethod: Budget.Push?
@@ -42,11 +41,7 @@ class BudgetMainViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let budgetService = BudgetService()
     
-    init(
-        accessToken: String = ""
-    ) {
-        self.accessToken = accessToken
-    }
+    
     
     func loadBudget() {
         budgetService.fetchBudget()
