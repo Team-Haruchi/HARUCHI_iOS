@@ -185,6 +185,7 @@ class HomeViewModel: ObservableObject {
                 }
             }, receiveValue: { closeResult in
                 print("영수증 조회 성공: \(closeResult)")
+                self.money = "\(closeResult.result.amount)"
             })
             .store(in: &cancellables)
     }
@@ -238,20 +239,27 @@ class HomeViewModel: ObservableObject {
     }
 
     func closeAmount(year: Int, month: Int, day: Int) {
+        guard monthBudget > 0 else {
+            self.errorMessage = "amount가 0일 때는 1/n을 할 수 없습니다"
+            return
+        }
+        
         closeService.closeAmount(year: year, month: month, day: day)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
-                    self.errorMessage = "amount가 0일 때는 1/n을 할 수 없습니다: \(error.localizedDescription)"
+                    self.errorMessage = "차감/분배 조회 실패: \(error.localizedDescription)"
                     print("errorMessage:\(String(describing: self.errorMessage!))")
                 }
             }, receiveValue: { closeResult in
-                print("차감/분배 조회: \(closeResult)")
+                print("차감/분배 조회 성공: \(closeResult)")
+                // 여기서 받아온 데이터를 UI에 반영
             })
             .store(in: &cancellables)
     }
+
     
     func setupCalendarData(with weekBudgets: [WeekBudgetItem]) {
         let formatter = DateFormatter()
