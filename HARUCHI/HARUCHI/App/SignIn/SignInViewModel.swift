@@ -58,12 +58,13 @@ class SignInViewModel: ObservableObject {
     }
     
     private func setupCanGoNextPublisher() {
-        Publishers.CombineLatest3(
+        Publishers.CombineLatest4(
             $validationStatus.map { $0.values.allSatisfy { $0 } },
             $termAgree,
-            $collectInfoAgree
+            $collectInfoAgree,
+            $isLoading
         )
-        .map { $0 && $1 && $2 }
+        .map { $0 && $1 && $2 && !$3 }
         .assign(to: \.canGoNext, on: self)
         .store(in: &cancellables)
     }
