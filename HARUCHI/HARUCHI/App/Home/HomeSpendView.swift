@@ -22,6 +22,7 @@ struct HomeSpendView: View {
                 CategoryDisplayView(viewModel: viewModel)
                 SaveButtonView(viewModel: viewModel)
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             .onAppear {
                 viewModel.loadLeftNow()
                 budgetViewModel.loadBudget()
@@ -96,8 +97,7 @@ struct HeaderView: View {
                 .font(.haruchi(.h1))
                 .foregroundColor(Color.black)
                 .keyboardType(.numberPad)
-                .multilineTextAlignment(.leading)
-            
+                .multilineTextAlignment(.leading)            
         }
         .padding(.horizontal, 24)
         
@@ -190,8 +190,7 @@ struct SaveButtonView: View {
                     viewModel.navigateToHomeMain = true
                 }
             })
-            .padding(.top, 400)
         }
-        Spacer()
+        Spacer().frame(height: 25)
     }
 }
