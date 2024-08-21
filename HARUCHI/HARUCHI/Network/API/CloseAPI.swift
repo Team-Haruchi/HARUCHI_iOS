@@ -46,8 +46,8 @@ extension CloseAPI: BaseAPI {
     var task: Moya.Task {
         switch self {
         case .closeReceipt(let year, let month, let day):
-            let body = CloseRequestEntity(year: year, month: month, day: day)
-            return .requestJSONEncodable(body)
+            let params = ["year": year, "month": month, "day": day]
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
             
         case .closeBudget(let redistributionOption, let year, let month, let day):
             let body = CloseRequestEntity(redistributionOption: redistributionOption, year: year, month: month, day: day)
