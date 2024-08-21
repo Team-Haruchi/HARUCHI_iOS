@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @StateObject private var appState = AppState()
+    @StateObject private var appState = AppState(isLoggedIn: UserDefaultsManager.shared.checkLoginStatus())
     
     var body: some View {
         NavigationStack(path: $appState.path) {

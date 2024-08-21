@@ -10,6 +10,10 @@ struct HARUCHIApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .onAppear {
+                    print("Login Status: ", UserDefaultsManager.shared.checkLoginStatus())
+                    print("Token: ", KeychainManager.load(for: .accessToken)!)
+                }
         }
     }
 }
