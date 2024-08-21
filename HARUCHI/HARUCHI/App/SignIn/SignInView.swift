@@ -164,7 +164,7 @@ struct SignInView: View {
                                 Spacer()
                                 
                                 Button {
-                                    viewModel.showTermAgreeLink = true
+                                    viewModel.showcollectInfoAgreeLinkURL = true
                                 } label: {
                                     seeTermInfo
                                 }
