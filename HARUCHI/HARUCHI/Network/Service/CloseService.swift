@@ -17,6 +17,24 @@ class CloseService {
         self.provider = MoyaProvider<CloseAPI>(plugins: [AuthPlugin()])
     }
     
+    func closeReceipt(
+        year: Int,
+        month: Int,
+        day: Int
+    ) -> AnyPublisher<Base<CloseResult>, Error> {
+        return provider.requestPublisher(.closeReceipt(year: year, month: month, day: day))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    print("[IncomeService] requestIncome() statusCode: \(response.statusCode)")
+                    throw MoyaError.statusCode(response)
+                }
+                return response.data
+            }
+            .decode(type: Base<CloseResult>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func closeBudget(
         redistributionOption: String,
         year: Int,

@@ -13,6 +13,7 @@ struct HomeReceiptView: View {
     var selectedCategory: String
 
     @ObservedObject private var viewModel = HomeViewModel()
+    @ObservedObject private var budgetViewModel = BudgetMainViewModel()
 
     @State private var selectedOption: String? = nil
 
@@ -42,8 +43,7 @@ struct HomeReceiptView: View {
                                     .padding(.top, 21)
                                     .padding(.bottom, 10)
                                 
-                                // 나중에 바꾸기
-                                Text("하루치 20000원")
+                                Text("하루치 \(budgetViewModel.dayBudget)원")
                                     .font(.haruchi(.caption3))
                                     .foregroundColor(Color.gray5)
                                     .padding(.bottom, 25)
@@ -58,15 +58,17 @@ struct HomeReceiptView: View {
                             Spacer()
                         }
                         .padding(.horizontal, 24)
-                        .padding(.bottom, 70)
+                        .padding(.bottom, 50)
                         
                         ScrollView {
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("15일 오늘")
+                                Text(viewModel.formattedDate)
                                     .foregroundColor(Color.gray5)
                                     .font(.haruchi(.caption3))
-                                    .padding(.leading, 24)
                                     .padding(.bottom, 15)
+                                    .onAppear {
+                                        viewModel.updateDate()
+                                    }
                                 
                                 if let imageName = categoryImages[selectedCategory] {
                                     SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "\(viewModel.money)원", action: {
@@ -74,8 +76,10 @@ struct HomeReceiptView: View {
                                     })
                                 }
                             }
-                            .padding(.trailing, 100)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 24)
                         }
+                        .scrollBounceBehavior(.basedOnSize)
 
                         
                         HStack {
@@ -151,8 +155,10 @@ struct HomeReceiptView: View {
                                     action: { viewModel.hideKeyboard()
                                 })
                                 .padding(.top, 39)
+                                
                             }
                         }
+                        Spacer().frame(height: 25)
                     }
                 }
             }
