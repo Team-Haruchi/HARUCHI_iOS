@@ -105,7 +105,7 @@ struct EmailAuthView: View {
             viewModel.startTimer()
         }
         .navigationDestination(isPresented: $viewModel.showOnboarding) {
-            OnboardingBudgetView()
+            OnboardingBudgetView(email: viewModel.email, password: viewModel.password)
         }
         .alert(isPresented: $viewModel.showEmailAuthCodeError) {
             Alert(

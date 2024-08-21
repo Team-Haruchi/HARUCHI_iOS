@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct OnboardingBudgetView: View {
-    @StateObject private var viewModel = OnboardingViewModel()
+    @ObservedObject private var viewModel: OnboardingViewModel
+    
+    init(
+        email: String,
+        password: String
+    ) {
+        self.viewModel = OnboardingViewModel(email: email, password: password)
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -57,11 +64,6 @@ struct OnboardingBudgetView: View {
         }
         .navigationBarBackButtonHidden()
         .ignoresSafeArea(.keyboard)
-        .onDisappear {
-            if let homebudgetValue = Int(viewModel.monthBudget) {
-                viewModel.budget = "\(homebudgetValue)원"
-            }
-        }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 KeypadButton(

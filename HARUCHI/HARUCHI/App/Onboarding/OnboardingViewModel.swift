@@ -18,14 +18,58 @@ class OnboardingViewModel: ObservableObject {
     @Published var monthBudget = ""
     @Published var nickname = ""
     @Published var showOnboardingNicknameView: Bool = false
-    @Published var budget: String = "0" // 예산값 저장
     @Published var nicknameStatus: TextLengthStatus = .default
+    @Published var isLoading: Bool = false
     
+    @Published var showErrorAlert: Bool = false
+    @Published var goToLoginAlert: Bool = false
+    
+    private var email: String
+    private var password: String
     private var cancellables = Set<AnyCancellable>()
+    private let authService = AuthService()
     let maxLength = 5
     
-    init() {
+    init(email: String, password: String) {
+        self.email = email
+        self.password = password
+        
         sinkNickname()
+    }
+    
+    func signIn() {
+        isLoading = true
+        
+        authService.requestSignIn(
+            email: email,
+            password: password,
+            monthBudget: Int(monthBudget)!,
+            name: nickname
+        )
+        .sink { completion in
+            switch completion {
+            case .finished:
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.signInFail()
+            }
+        } receiveValue: { [weak self] response in
+            if response.isSuccess {
+                self?.signInSuccess()
+            }
+        }
+        .store(in: &cancellables)
+    }
+    
+    private func signInFail() {
+        isLoading = false
+        showErrorAlert = true
+    }
+    
+    private func signInSuccess() {
+        isLoading = false
+        goToLoginAlert = true
     }
     
     private func sinkNickname() {
