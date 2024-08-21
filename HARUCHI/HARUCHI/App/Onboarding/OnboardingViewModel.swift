@@ -20,7 +20,6 @@ class OnboardingViewModel: ObservableObject {
     @Published var showOnboardingNicknameView: Bool = false
     @Published var budget: String = "0" // 예산값 저장
     @Published var nicknameStatus: TextLengthStatus = .default
-    @Published var canGoNext: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
     let maxLength = 5
@@ -34,15 +33,6 @@ class OnboardingViewModel: ObservableObject {
             .sink { [weak self] newValue in
                 self?.validateAndLimitText()
             }
-            .store(in: &cancellables)
-    }
-    
-    private func sinkCanGoNext() {
-        Publishers.CombineLatest($nicknameStatus, $nickname)
-            .map { status, nickname in
-                return status == .valid && nickname.count <= self.maxLength
-            }
-            .assign(to: \.canGoNext, on: self)
             .store(in: &cancellables)
     }
     
