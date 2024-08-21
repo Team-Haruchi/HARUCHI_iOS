@@ -153,6 +153,14 @@ struct HomeReceiptView: View {
                                 MainButton(
                                     text: "\(option)",
                                     action: { viewModel.hideKeyboard()
+                                        
+                                    let currentDate = Date()
+                                    let calendar = Calendar.current
+                                    let year = calendar.component(.year, from: currentDate)
+                                    let month = calendar.component(.month, from: currentDate)
+                                    let day = calendar.component(.day, from: currentDate)
+                                
+                                    viewModel.closeCheck(year: year, month: month, day: day) 
                                 })
                                 .padding(.top, 39)
                                 
