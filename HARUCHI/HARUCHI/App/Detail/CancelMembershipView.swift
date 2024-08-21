@@ -5,6 +5,8 @@ struct CancelMembershipView: View {
     @StateObject private var viewModel = CancelMembershipViewModel() // ViewModel 객체 생성
     @State private var showReconfirmButton: Bool = false // ReconfirmButton 표시 여부를 제어하는 상태 변수
     @State private var showFinalConfirmButton: Bool = false // FinalConfirmButton 표시 여부를 제어하는 상태 변수
+    @EnvironmentObject var appState: AppState // AppState를 환경 변수로 가져옴
+    @Environment(\.dismiss) private var dismiss // 현재 뷰를 닫기 위한 dismiss 환경 변수
     
     var body: some View {
         ZStack{
@@ -107,10 +109,6 @@ struct CancelMembershipView: View {
                     // 텍스트 에디터 외부를 누르면 키보드 내리기
                     isFocused = false
                 }
-//                .fullScreenCover(isPresented: $viewModel.isCanceled) {
-//                    LoginView(appState: AppState()) // 로그인 화면
-//                        .navigationBarBackButtonHidden(true) // 로그인 화면에서 뒤로 가기 버튼 숨기기
-//                }
             }
             // ReconfirmButton 오버레이
             if showReconfirmButton {
@@ -138,8 +136,10 @@ struct CancelMembershipView: View {
                 
                 FinalConfirmButton(
                     onOK: {
-                        showFinalConfirmButton = false
-                        viewModel.isCanceled = true // 로그인 화면으로 이동하기 위해 설정
+                        UserDefaultsManager.shared.clearUserData() // 로그인 플래그 삭제
+                        KeychainManager.delete(key: .accessToken) // 키체인에서 토큰 삭제
+                        appState.isLoggedIn = false // AppState를 통해 로그아웃 상태로 전환
+                        dismiss() // 화면을 닫음
                     }
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
