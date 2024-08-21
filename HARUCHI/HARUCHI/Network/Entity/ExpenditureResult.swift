@@ -7,7 +7,10 @@
 
 import Foundation
 
+
 struct ExpenditureResult: Decodable {
+    let expenditureCategory: Category?
+    let expenditureAmount: Int?
     let createdAt: String
     let expenditureId: Int
 }
