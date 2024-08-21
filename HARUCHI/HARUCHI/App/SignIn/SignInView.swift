@@ -142,7 +142,7 @@ struct SignInView: View {
                                 Spacer()
                                 
                                 Button {
-                                    // to link
+                                    viewModel.showTermAgreeLink = true
                                 } label: {
                                     seeTermInfo
                                 }
@@ -164,7 +164,7 @@ struct SignInView: View {
                                 Spacer()
                                 
                                 Button {
-                                    // to link
+                                    viewModel.showTermAgreeLink = true
                                 } label: {
                                     seeTermInfo
                                 }
@@ -225,6 +225,16 @@ struct SignInView: View {
                 message: Text("이미 존재하는 이메일입니다."),
                 dismissButton: .default(Text("확인"))
             )
+        }
+        .fullScreenCover(isPresented: $viewModel.showTermAgreeLink) {
+            if let url = viewModel.termAgreeLinkURL {
+                SafariView(url: url)
+            }
+        }
+        .fullScreenCover(isPresented: $viewModel.showcollectInfoAgreeLink) {
+            if let url = viewModel.showcollectInfoAgreeLinkURL {
+                SafariView(url: url)
+            }
         }
     }
 }
