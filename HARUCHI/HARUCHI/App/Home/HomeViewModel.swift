@@ -185,10 +185,12 @@ class HomeViewModel: ObservableObject {
                 }
             }, receiveValue: { closeResult in
                 print("영수증 조회 성공: \(closeResult)")
-                self.money = "\(closeResult.result.amount)"
+                let result = closeResult.result
+                self.money = "\(result.year)-\(result.month)-\(result.day)"
             })
             .store(in: &cancellables)
     }
+
 
     func closeBudget(redistributionOption: String, year: Int, month: Int, day: Int) {
         closeService.closeBudget(redistributionOption: redistributionOption, year: year, month: month, day: day)
@@ -202,38 +204,6 @@ class HomeViewModel: ObservableObject {
                 }
             }, receiveValue: { closeResult in
                 print("지출 마감 성공: \(closeResult)")
-            })
-            .store(in: &cancellables)
-    }
-
-    func closeCheck(year: Int, month: Int, day: Int) {
-        closeService.closeCheck(year: year, month: month, day: day)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    self.errorMessage = "마지막 날에는 해당 기능을 사용할 수 없습니다: \(error.localizedDescription)"
-                    print("errorMessage:\(String(describing: self.errorMessage!))")
-                }
-            }, receiveValue: { closeResult in
-                print("지출 마감 확인: \(closeResult)")
-            })
-            .store(in: &cancellables)
-    }
-
-    func closeCheckLast() {
-        closeService.closeCheckLast()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    self.errorMessage = "마지막 날에는 해당 기능을 사용할 수 없습니다: \(error.localizedDescription)"
-                    print("errorMessage:\(String(describing: self.errorMessage!))")
-                }
-            }, receiveValue: { closeResult in
-                print("마지막 날짜 확인: \(closeResult)")
             })
             .store(in: &cancellables)
     }
