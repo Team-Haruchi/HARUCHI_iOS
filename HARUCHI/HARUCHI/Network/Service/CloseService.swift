@@ -21,7 +21,7 @@ class CloseService {
         year: Int,
         month: Int,
         day: Int
-    ) -> AnyPublisher<Base<CloseResult>, Error> {
+    ) -> AnyPublisher<Base<CloseResponse>, Error> {
         return provider.requestPublisher(.closeReceipt(year: year, month: month, day: day))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -30,7 +30,7 @@ class CloseService {
                 }
                 return response.data
             }
-            .decode(type: Base<CloseResult>.self, decoder: JSONDecoder())
+            .decode(type: Base<CloseResponse>.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
@@ -40,7 +40,7 @@ class CloseService {
         year: Int,
         month: Int,
         day: Int
-    ) -> AnyPublisher<Base<CloseResult>, Error> {
+    ) -> AnyPublisher<Base<RedistributionResponse>, Error> {
         return provider.requestPublisher(.closeBudget(redistributionOption: redistributionOption, year: year, month: month, day: day))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -49,39 +49,7 @@ class CloseService {
                 }
                 return response.data
             }
-            .decode(type: Base<CloseResult>.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    
-    func closeCheck(
-        year: Int,
-        month: Int,
-        day: Int
-    ) -> AnyPublisher<Base<CloseResult>, Error> {
-        return provider.requestPublisher(.closeCheck(year: year, month: month, day: day))
-            .tryMap { response in
-                guard (200...299).contains(response.statusCode) else {
-                    print("[CloseService] closeCheck() statusCode: \(response.statusCode)")
-                    throw MoyaError.statusCode(response)
-                }
-                return response.data
-            }
-            .decode(type: Base<CloseResult>.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    
-    func closeCheckLast() -> AnyPublisher<Base<CloseResult>, Error> {
-        return provider.requestPublisher(.closeCheckLast)
-            .tryMap { response in
-                guard (200...299).contains(response.statusCode) else {
-                    print("[CloseService] closeCheckLast() statusCode: \(response.statusCode)")
-                    throw MoyaError.statusCode(response)
-                }
-                return response.data
-            }
-            .decode(type: Base<CloseResult>.self, decoder: JSONDecoder())
+            .decode(type: Base<RedistributionResponse>.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
@@ -90,7 +58,7 @@ class CloseService {
         year: Int,
         month: Int,
         day: Int
-    ) -> AnyPublisher<Base<CloseResult>, Error> {
+    ) -> AnyPublisher<Base<CloseResponse>, Error> {
         return provider.requestPublisher(.closeAmount(year: year, month: month, day: day))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -99,7 +67,7 @@ class CloseService {
                 }
                 return response.data
             }
-            .decode(type: Base<CloseResult>.self, decoder: JSONDecoder())
+            .decode(type: Base<CloseResponse>.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
