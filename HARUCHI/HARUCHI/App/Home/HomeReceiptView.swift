@@ -62,11 +62,14 @@ struct HomeReceiptView: View {
                         
                         ScrollView {
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("15일 오늘")
+                                Text(viewModel.formattedDate)
                                     .foregroundColor(Color.gray5)
                                     .font(.haruchi(.caption3))
                                     .padding(.leading, 24)
                                     .padding(.bottom, 15)
+                                    .onAppear {
+                                        viewModel.updateDate()
+                                    }
                                 
                                 if let imageName = categoryImages[selectedCategory] {
                                     SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "\(viewModel.money)원", action: {
