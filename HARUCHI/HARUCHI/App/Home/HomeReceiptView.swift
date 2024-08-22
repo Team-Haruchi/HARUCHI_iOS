@@ -20,7 +20,6 @@ struct HomeReceiptView: View {
     @State private var selectedMonth: Int = Calendar.current.component(.month, from: Date())
     @State private var selectedDay: Int = Calendar.current.component(.day, from: Date())
 
-
     let categoryImages: [String: String] = [
         "식비": "circle_pizza",
         "커피": "circle_coffee",
@@ -73,17 +72,22 @@ struct HomeReceiptView: View {
                                         viewModel.updateDate()
                                     }
                                 
-                                if let imageName = categoryImages[selectedCategory] {
-                                    SmallCircleButton(image: imageName, text: "\(selectedCategory)", charge: "\(viewModel.money)원", action: {
-                                        print("ㅇㅋ")
-                                    })
+                                ForEach(viewModel.expenditureList, id: \.expenditureId) { expenditure in
+                                    HStack {
+                                        if let imageName = categoryImages[expenditure.expenditureCategory?.krName ?? "기타"] {
+                                            SmallCircleButton(image: imageName, text: "\(expenditure.expenditureCategory?.krName ?? "기타")", charge: "\(expenditure.expenditureAmount ?? 0)원", action: {
+                                                print("ㅇㅋ")
+                                            })
+                                        }
+                                    }
+                                    .padding(.bottom, 10)
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 24)
                         }
                         .scrollBounceBehavior(.basedOnSize)
-
+                        .padding(.bottom, 30)
                         
                         HStack {
                             Rectangle()
@@ -91,7 +95,7 @@ struct HomeReceiptView: View {
                                 .frame(height: 1)
                         }
                         .padding(.horizontal, 24)
-                        .padding(.top, 100)
+                        
                         .padding(.bottom, 12)
                         
                         HStack {
@@ -99,7 +103,7 @@ struct HomeReceiptView: View {
                             
                             Spacer()
                             
-                            Text("4000원")
+                            Text("\(viewModel.expenditureList.map { $0.expenditureAmount ?? 0 }.reduce(0, +))원") // Sum of all expenditures
                                 .font(.haruchi(.h2))
                                 .foregroundColor(Color.black)
                         }
@@ -109,13 +113,14 @@ struct HomeReceiptView: View {
                         VStack(spacing: 0) {
                             Button(action: {
                                 selectedOption = "차감하기"
+                                viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
                             }) {
                                 HStack {
                                     Text("남은 일수에서 1/n")
                                     
                                     Spacer()
                                     
-                                    Text("고르게 차감하기")
+                                    Text("고르게 분배하기")
                                     
                                     if selectedOption == "차감하기" {
                                         Image(systemName: "checkmark")
@@ -157,12 +162,10 @@ struct HomeReceiptView: View {
                                     text: "\(option)",
                                     action: {
                                         viewModel.hideKeyboard()
-                                        viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
-                                        // 추가 작업을 통해 영수증 뷰를 마감
+//                                        viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
                                         presentationMode.wrappedValue.dismiss()
                                 })
                                 .padding(.top, 39)
-                                
                             }
                         }
                         Spacer().frame(height: 25)
@@ -175,8 +178,7 @@ struct HomeReceiptView: View {
             .toolbar(.hidden, for: .tabBar)
         }
         .onAppear {
-//            viewModel.closeReceipt()
-            viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
+            viewModel.closeReceipt()
         }
     }
 }

@@ -23,6 +23,7 @@ class HomeViewModel: ObservableObject {
     @Published var navigateToHomeMain: Bool = false
     @Published var showMainButton: Bool = false
     @Published var weekData: [WeekCalendarModel] = []
+    @Published var expenditureList: [ExpenditureResult] = []
         
     @Published var errorMessage: String?
     @Published var monthBudget: Int = 0
@@ -32,6 +33,10 @@ class HomeViewModel: ObservableObject {
     @Published var weekBudget: Int = 0
     @Published var weekDay: Int = 0
     @Published var weekStatus: String = ""
+    
+    @Published var closeAmountSuccess: Bool = false
+    @Published var closeBudgetSuccess: Bool = false
+    @Published var closeReceiptSuccess: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
     private let budgetService = BudgetService()
@@ -219,23 +224,22 @@ class HomeViewModel: ObservableObject {
                     print(self.errorMessage ?? "Unknown error")
                 } else {
                     self.money = "\(result.dayBudget)"
+                    self.expenditureList = result.expenditureList
                 }
             })
             .store(in: &cancellables)
     }
-
-
-
 
     func closeBudget(redistributionOption: String, year: Int, month: Int, day: Int) {
         closeService.closeBudget(redistributionOption: redistributionOption, year: year, month: month, day: day)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
-                    break
+                    self.closeBudgetSuccess = true // UI can react to this
                 case .failure(let error):
                     self.errorMessage = "지출 마감에 실패하셨습니다: \(error.localizedDescription)"
                     print("errorMessage:\(String(describing: self.errorMessage!))")
+                    self.closeBudgetSuccess = false
                 }
             }, receiveValue: { closeResult in
                 print("지출 마감 성공: \(closeResult)")
@@ -246,6 +250,7 @@ class HomeViewModel: ObservableObject {
     func closeAmount(year: Int, month: Int, day: Int) {
         guard monthBudget > 0 else {
             self.errorMessage = "amount가 0일 때는 1/n을 할 수 없습니다"
+            self.closeAmountSuccess = false
             return
         }
         
@@ -253,18 +258,19 @@ class HomeViewModel: ObservableObject {
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
-                    break
+                    self.closeAmountSuccess = true
                 case .failure(let error):
                     self.errorMessage = "차감/분배 조회 실패: \(error.localizedDescription)"
                     print("errorMessage:\(String(describing: self.errorMessage!))")
+                    self.closeAmountSuccess = false
                 }
             }, receiveValue: { closeResult in
                 print("차감/분배 조회 성공: \(closeResult)")
                 // 여기서 받아온 데이터를 UI에 반영
+                self.money = "\(closeResult.result.dayBudget)"
             })
             .store(in: &cancellables)
     }
-
     
     func setupCalendarData(with weekBudgets: [WeekBudgetItem]) {
         let formatter = DateFormatter()
