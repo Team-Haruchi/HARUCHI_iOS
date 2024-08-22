@@ -113,13 +113,14 @@ struct HomeReceiptView: View {
                         VStack(spacing: 0) {
                             Button(action: {
                                 selectedOption = "차감하기"
+                                viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
                             }) {
                                 HStack {
                                     Text("남은 일수에서 1/n")
                                     
                                     Spacer()
                                     
-                                    Text("고르게 차감하기")
+                                    Text("고르게 분배하기")
                                     
                                     if selectedOption == "차감하기" {
                                         Image(systemName: "checkmark")
@@ -161,7 +162,7 @@ struct HomeReceiptView: View {
                                     text: "\(option)",
                                     action: {
                                         viewModel.hideKeyboard()
-                                        viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
+//                                        viewModel.closeAmount(year: selectedYear, month: selectedMonth, day: selectedDay)
                                         presentationMode.wrappedValue.dismiss()
                                 })
                                 .padding(.top, 39)
