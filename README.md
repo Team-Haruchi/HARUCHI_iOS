@@ -33,10 +33,10 @@
 
 |                      팀원                       | 기능구현 |
 | :---------------------------------------------: | :------: |
-|     [두부/이건우](https://github.com/2dubu)     |          |
-| [위즈/이슬기](https://github.com/leeseulgi0208) |          |
-|  [체리/채리원](https://github.com/cherry-p0p)   |          |
-|   [이바/이상엽](https://github.com/sangyup12)   |          |
+|     [두부/이건우](https://github.com/2dubu)     | 회원가입 및 로그인 뷰 (이메일 인증), 온보딩 뷰 (예산 등록 및 닉네임 지정)|
+| [위즈/이슬기](https://github.com/leeseulgi0208) | 메인 홈 탭 (지출 및 수입 등록, 지출 마감), 온보딩 뷰 (예산 등록 및 닉네임 지정)|
+|  [체리/채리원](https://github.com/cherry-p0p)   | 예산 탭 (예산 재분배 - 당겨쓰기, 넘기기), 메인 홈 탭 (예산 수정)|
+|   [이바/이상엽](https://github.com/sangyup12)   | 더보기 탭 (회원정보 및 탈퇴), 캘린더 커스텀 (FSCalendar)|
 
 
 <br>
@@ -54,14 +54,6 @@
 #### - 더보기 탭 (회원정보 및 탈퇴)
 
 #### - 캘린더 커스텀 (FSCalendar)
-
-<br>
-
-## 배운 점 & 아쉬운 점
-
-<p align="justify">
-
-</p>
 
 <br>
 
