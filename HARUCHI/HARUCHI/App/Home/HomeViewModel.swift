@@ -23,6 +23,7 @@ class HomeViewModel: ObservableObject {
     @Published var navigateToHomeMain: Bool = false
     @Published var showMainButton: Bool = false
     @Published var weekData: [WeekCalendarModel] = []
+    @Published var expenditureList: [ExpenditureResult] = []
         
     @Published var errorMessage: String?
     @Published var monthBudget: Int = 0
@@ -223,6 +224,7 @@ class HomeViewModel: ObservableObject {
                     print(self.errorMessage ?? "Unknown error")
                 } else {
                     self.money = "\(result.dayBudget)"
+                    self.expenditureList = result.expenditureList
                 }
             })
             .store(in: &cancellables)
