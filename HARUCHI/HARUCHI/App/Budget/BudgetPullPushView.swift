@@ -87,7 +87,7 @@ struct BudgetPullPushView: View {
                 if budgetViewModel.isPushButtonActive {
                     budgetViewModel.pushBudget()
                 } else {
-                    //                    budgetViewModel.pullBudget()
+                    budgetViewModel.pullBudget()
                 }
             }){
                 Text(budgetViewModel.isPushButtonActive  ? "넘기기" : "당겨쓰기")

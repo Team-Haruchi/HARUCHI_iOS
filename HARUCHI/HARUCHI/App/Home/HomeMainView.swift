@@ -18,6 +18,19 @@ struct HomeMainView: View {
     @State private var selectedDay: Int = Calendar.current.component(.day, from: Date())
     
     @State private var isEditing = false
+    @State private var hasLoaded: Bool = false
+        
+        private func setupView() {
+            viewModel.loadMonthBudget()
+            viewModel.loadWeekBudget()
+            viewModel.loadBudgetPercent()
+//                        viewModel.closeReceipt()
+            budgetViewModel.loadBudget()
+            budgetViewModel.loadSafeBox()
+            percent.percentage = CGFloat(viewModel.monthUsedPercent)
+            
+            hasLoaded = true
+        }
     
     var body: some View {
         GeometryReader { geometry in
@@ -227,17 +240,18 @@ struct HomeMainView: View {
                             Spacer()
                         }
                     }
-                    .onAppear {
-                        viewModel.loadMonthBudget()
-                        viewModel.loadWeekBudget()
-                        viewModel.loadBudgetPercent()
-//                        viewModel.closeReceipt()
-                        budgetViewModel.loadBudget()
-                        budgetViewModel.loadSafeBox()
-                        percent.percentage = CGFloat(viewModel.monthUsedPercent)
-                    }
                 }
+                .refreshable {
+                            // 새로고침 시 실행할 코드
+                            setupView()
+                        }
+                .onAppear {
+                    if !hasLoaded { setupView() }
+                }
+                
+                
             }
         }
     }
+    
 }

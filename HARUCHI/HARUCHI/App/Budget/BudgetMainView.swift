@@ -31,6 +31,7 @@ struct BudgetMainView : View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .font(.haruchi(.body_sb16))
                     .onTapGesture {
+                        budgetViewModel.pullMethod = .none
                         withAnimation {
                             budgetViewModel.isPushButtonActive = true
                             budgetViewModel.isBoxButtonActive = false
@@ -41,6 +42,7 @@ struct BudgetMainView : View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .font(.haruchi(.body_sb16))
                     .onTapGesture {
+                        budgetViewModel.pushMethod = .none
                         withAnimation {
                             budgetViewModel.isPushButtonActive = false
                             budgetViewModel.isBoxButtonActive = false
@@ -173,8 +175,8 @@ struct BudgetMainView : View {
                             let dates = calendarViewModel.selectedDates()
                             Text("\(calendarViewModel.dateString(from: dates.0))" )
                                 .font(.haruchi(.body_m14))
-                                .foregroundColor(Color.gray5)
-                                
+                                .foregroundColor(Color.black)
+
                         }
                         .padding(.top, 21)
                         
@@ -216,7 +218,7 @@ struct BudgetMainView : View {
                     ToolbarItemGroup(placement: .keyboard) {
                         KeypadButton(
                             text: budgetViewModel.isPushButtonActive ? "넘기기" :"당겨쓰기",
-                            enable: !budgetViewModel.pullPushBudget.isEmpty,
+                            enable: !budgetViewModel.pullPushBudget.isEmpty && (budgetViewModel.pushMethod != .none || budgetViewModel.pullMethod != .none),
                             action: {
                                 if let firstDate = calendarViewModel.selectedDates().0 {
                                     budgetViewModel.firstDate = firstDate
