@@ -153,7 +153,7 @@ class BudgetMainViewModel: ObservableObject {
         let amount = Int(pullPushBudget)!
         let target: Int? = targetDay != nil ? targetDay : nil
         let source: Int? = sourceDay != nil ? sourceDay : nil
-        print("옵션: \(option),날짜1: \(String(describing: source)),날짜2: \(String(describing: target)),금액: \(amount)")
+//        print("옵션: \(option),날짜1: \(String(describing: source)),날짜2: \(String(describing: target)),금액: \(amount)")
         budgetService.requestPushBudget(
             redistributionOption: option,
             amount: amount,
@@ -181,7 +181,7 @@ class BudgetMainViewModel: ObservableObject {
         let amount = Int(pullPushBudget)!
         let target: Int? = targetDay != nil ? targetDay : nil
         let source : Int? = sourceDay != nil ? sourceDay : nil
-        print("옵션: \(option),날짜1: \(String(describing: source)),날짜2: \(String(describing: target))),금액: \(amount)")
+//        print("옵션: \(option),날짜1: \(String(describing: source)),날짜2: \(String(describing: target))),금액: \(amount)")
         budgetService.requestPullBudget(
             redistributionOption: option,
             amount: amount,

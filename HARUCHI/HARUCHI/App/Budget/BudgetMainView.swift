@@ -17,6 +17,15 @@ struct BudgetMainView : View {
     @State private var xOffset: CGFloat = (UIScreen.main.bounds.width - 48) / 4
     private let buttonWidth = (UIScreen.main.bounds.width - 68) / 2
     
+    @State private var hasLoaded: Bool = false
+        
+        private func setupView() {
+            budgetViewModel.loadSafeBox()
+            budgetViewModel.refreshData()
+            calendarViewModel.fetchCalendarData()
+            hasLoaded = true
+        }
+    
     
     var bubbleRadioButton: some View {
         
@@ -213,12 +222,16 @@ struct BudgetMainView : View {
                             .environmentObject(calendarViewModel)
                     }
                 }//scrollView
+                .refreshable {
+                            // 새로고침 시 실행할 코드
+                            setupView()
+                        }
                 .scrollIndicators(.hidden)
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
                         KeypadButton(
                             text: budgetViewModel.isPushButtonActive ? "넘기기" :"당겨쓰기",
-                            enable: !budgetViewModel.pullPushBudget.isEmpty && (budgetViewModel.pushMethod != .none || budgetViewModel.pullMethod != .none),
+                            enable: !budgetViewModel.pullPushBudget.isEmpty /*&& (budgetViewModel.pushMethod != .none || budgetViewModel.pullMethod != .none)*/,
                             action: {
                                 if let firstDate = calendarViewModel.selectedDates().0 {
                                     budgetViewModel.firstDate = firstDate
@@ -233,8 +246,7 @@ struct BudgetMainView : View {
                 }
             }
             .onAppear {
-                budgetViewModel.loadSafeBox()
-                budgetViewModel.refreshData()
+                if !hasLoaded { setupView() }
             }
             
             
