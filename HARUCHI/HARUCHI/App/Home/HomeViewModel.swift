@@ -29,7 +29,7 @@ class HomeViewModel: ObservableObject {
     @Published var monthBudget: Int = 0
     @Published var leftDay: Int = 0
     @Published var leftBudget: Int = 0
-    @Published var monthUsedPercent: Int = 0
+    @Published var monthUsedPercent: Double = 0.0
     @Published var weekBudget: Int = 0
     @Published var weekDay: Int = 0
     @Published var weekStatus: String = ""

@@ -137,7 +137,7 @@ struct HomeReceiptView: View {
                                 selectedOption = "분배하기"
                             }) {
                                 HStack {
-                                    Text("70000원")
+                                    Text("\(budgetViewModel.safeBox)원")
                                     
                                     Spacer()
                                     
