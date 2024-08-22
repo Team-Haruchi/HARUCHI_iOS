@@ -48,7 +48,9 @@ class BudgetMainViewModel: ObservableObject {
     private let budgetService = BudgetService()
     
     private var pushOption: PushOption?
-    @Published var sourceDay: Int = 0
+    private var pullOption: PushOption?
+
+    @Published var sourceDay: Int? = nil
     @Published var targetDay: Int? = nil
     
     @Published var firstDate: Date = Date()
@@ -57,14 +59,26 @@ class BudgetMainViewModel: ObservableObject {
     func refreshData() {
         pushMethod = .none
         pullMethod = .none
+        pullPushBudget = ""
     }
     
     func dateToDay() {
         if pushMethod == .safebox || pushMethod == .split {
             let firstCalendar = Calendar.current
             self.sourceDay = firstCalendar.component(.day, from: firstDate)
-            print("targetDay: ", targetDay)
-            print("sourceDay: ", sourceDay)
+        } else {
+            // Calendar 객체를 통해 날짜의 일(day) 부분을 추출
+            let firstCalendar = Calendar.current
+            self.sourceDay = firstCalendar.component(.day, from: firstDate)
+            let secondCalendar = Calendar.current
+            self.targetDay = secondCalendar.component(.day, from: secondDate)
+        }
+    }
+    
+    func pullDateToDay() {
+        if pullMethod == .safebox || pushMethod == .split {
+            let secondCalendar = Calendar.current
+            self.targetDay = secondCalendar.component(.day, from: secondDate)
         } else {
             // Calendar 객체를 통해 날짜의 일(day) 부분을 추출
             let firstCalendar = Calendar.current
@@ -119,18 +133,31 @@ class BudgetMainViewModel: ObservableObject {
         }
     }
     
+    func ChoosePullOption() {
+        switch pullMethod {
+        case .safebox:
+            pullOption = .safeBox
+            targetDay = nil
+        case .split:
+            pullOption = .evenly
+            targetDay = nil
+        case .none:
+            pullOption = .date
+        }
+    }
+    
     func pushBudget() {
         ChoosePushOption()
         dateToDay()
         let option = pushOption?.rawValue ?? "EVENLY"
         let amount = Int(pullPushBudget)!
         let target: Int? = targetDay != nil ? targetDay : nil
-        let source = sourceDay
-        print("옵션: \(option),날짜1: \(source),날짜2: \(String(describing: target)),금액: \(amount)")
+        let source: Int? = sourceDay != nil ? sourceDay : nil
+        print("옵션: \(option),날짜1: \(String(describing: source)),날짜2: \(String(describing: target)),금액: \(amount)")
         budgetService.requestPushBudget(
             redistributionOption: option,
             amount: amount,
-            sourceDay: source,
+            sourceDay: source!,
             targetDay: target
         )
             .sink(receiveCompletion: { completion in
@@ -142,6 +169,34 @@ class BudgetMainViewModel: ObservableObject {
                     print("errorMessage: \(String(describing: self.errorMessage!))")
                 }
             }, receiveValue: { pushBudgetResponse in
+
+            })
+            .store(in: &cancellables)
+    }
+    
+    func pullBudget() {
+        ChoosePullOption()
+        pullDateToDay()
+        let option = pullOption?.rawValue ?? "EVENLY"
+        let amount = Int(pullPushBudget)!
+        let target: Int? = targetDay != nil ? targetDay : nil
+        let source : Int? = sourceDay != nil ? sourceDay : nil
+        print("옵션: \(option),날짜1: \(String(describing: source)),날짜2: \(String(describing: target))),금액: \(amount)")
+        budgetService.requestPullBudget(
+            redistributionOption: option,
+            amount: amount,
+            sourceDay: source,
+            targetDay: target!
+        )
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Failed to Pull Budget: \(error.localizedDescription)"
+                    print("errorMessage: \(String(describing: self.errorMessage!))")
+                }
+            }, receiveValue: { pullBudgetResponse in
 
             })
             .store(in: &cancellables)

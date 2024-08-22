@@ -159,4 +159,26 @@ class BudgetService {
             .eraseToAnyPublisher()
     }
     
+    func requestPullBudget(
+        redistributionOption : String,
+        amount : Int,
+        sourceDay : Int?,
+        targetDay : Int
+
+    ) -> AnyPublisher<Base<PullRedistributionResponse>, Error> {
+        provider.requestPublisher(.pullBudget(redistributionOption: redistributionOption, amount: amount, sourceDay: sourceDay, targetDay: targetDay))
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    print("[BudgetService] requestEditBudget() statusCode : ", response.statusCode)
+                    throw MoyaError.statusCode(response)
+                }
+                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+                return response.data
+
+            }
+            .decode(type: Base<PullRedistributionResponse>.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
 }

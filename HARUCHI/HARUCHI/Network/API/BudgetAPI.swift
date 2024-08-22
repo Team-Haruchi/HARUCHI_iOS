@@ -18,7 +18,7 @@ enum BudgetAPI {
     case weekBudgetCheck
     case monthlyBudgetEdit(monthBudget: Int)
     case pushBudget(redistributionOption: String, amount: Int, sourceDay: Int, targetDay: Int?)
-    case pullBudget(redistributionOption: String, amount: Int, sourceDay: Int, targetDay: Int)
+    case pullBudget(redistributionOption: String, amount: Int, sourceDay: Int?, targetDay: Int)
 
 }
 
@@ -133,7 +133,7 @@ private extension BudgetAPI {
     struct RedistributionRequestEntity: Encodable {
         let redistributionOption: String
         let amount: Int
-        let sourceDay: Int
+        let sourceDay: Int?
         let targetDay: Int?
     }
 }
