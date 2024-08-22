@@ -34,7 +34,7 @@ struct LeftNowResponse: Decodable {
 }
 
 struct BudgetPercentResponse: Decodable {
-    let monthUsedPercent: Int
+    let monthUsedPercent: Double
 }
 
 struct WeekBudgetResponse: Decodable {

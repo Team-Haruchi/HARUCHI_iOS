@@ -150,7 +150,7 @@ class BudgetService {
                     print("[BudgetService] requestEditBudget() statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
 
             }
@@ -172,7 +172,7 @@ class BudgetService {
                     print("[BudgetService] requestEditBudget() statusCode : ", response.statusCode)
                     throw MoyaError.statusCode(response)
                 }
-                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
+//                print("Raw JSON Data: \(String(data: response.data, encoding: .utf8) ?? "No Data")")
                 return response.data
 
             }
