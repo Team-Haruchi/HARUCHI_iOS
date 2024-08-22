@@ -10,6 +10,12 @@ import SwiftUI
 struct RootView: View {
     @StateObject private var appState = AppState(isLoggedIn: UserDefaultsManager.shared.checkLoginStatus())
     
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.systemBackground
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+    }
+    
     var body: some View {
         NavigationStack(path: $appState.path) {
             if !appState.isLoggedIn {
