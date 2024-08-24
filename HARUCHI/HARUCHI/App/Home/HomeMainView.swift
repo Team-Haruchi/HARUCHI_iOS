@@ -24,7 +24,7 @@ struct HomeMainView: View {
             viewModel.loadMonthBudget()
             viewModel.loadWeekBudget()
             viewModel.loadBudgetPercent()
-//                        viewModel.closeReceipt()
+//            viewModel.closeReceipt()
             budgetViewModel.loadBudget()
             budgetViewModel.loadSafeBox()
             percent.percentage = CGFloat(viewModel.monthUsedPercent)
@@ -193,7 +193,7 @@ struct HomeMainView: View {
 
                                 .padding(.top, 20)
                                 .navigationDestination(isPresented: $viewModel.navigateToReceipt) {
-                                    HomeReceiptView(selectedCategory: viewModel.selectedCategory)
+                                    HomeReceiptView(selectedCategory: viewModel.selectedCategory, viewModel: viewModel, budgetViewModel: budgetViewModel)
                                         .environmentObject(viewModel)
                                         .navigationBarBackButtonHidden(true)
                                         .disableAutocorrection(true)

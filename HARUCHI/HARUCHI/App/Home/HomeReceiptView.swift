@@ -12,8 +12,8 @@ struct HomeReceiptView: View {
     
     var selectedCategory: String
 
-    @ObservedObject private var viewModel = HomeViewModel()
-    @ObservedObject private var budgetViewModel = BudgetMainViewModel()
+    @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var budgetViewModel: BudgetMainViewModel
 
     @State private var selectedOption: String? = nil
     @State private var selectedYear: Int = Calendar.current.component(.year, from: Date())
@@ -51,7 +51,7 @@ struct HomeReceiptView: View {
                                     .padding(.bottom, 25)
                                 
                                 HStack {
-                                    Text("지출 \(viewModel.money) 원")
+                                    Text("지출 \(viewModel.expenditureList.map { $0.expenditureAmount ?? 0 }.reduce(0, +)) 원")
                                 }
                                 .font(.haruchi(.h1))
                                 .foregroundColor(Color.black)
@@ -103,7 +103,7 @@ struct HomeReceiptView: View {
                             
                             Spacer()
                             
-                            Text("\(viewModel.expenditureList.map { $0.expenditureAmount ?? 0 }.reduce(0, +))원") // Sum of all expenditures
+                            Text("\(viewModel.money)원") // Sum of all expenditures
                                 .font(.haruchi(.h2))
                                 .foregroundColor(Color.black)
                         }
@@ -179,6 +179,8 @@ struct HomeReceiptView: View {
         }
         .onAppear {
             viewModel.closeReceipt()
+            budgetViewModel.loadBudget()
+            budgetViewModel.loadSafeBox()
         }
     }
 }
