@@ -1,7 +1,7 @@
 # HARUCHI (하루치) iOS
 <p align="center">
   <br>
-<img width="1410" alt="HARUCIReadme" src="https://github.com/user-attachments/assets/20a3dd95-5934-4b9e-954c-efd6dc24a455">
+<img width="1410" alt="HARUCIReadme" src="https://github.com/user-attachments/assets/578c4bf3-ce59-44af-b556-2f4e6c658048">
   <br>
 </p>
 
