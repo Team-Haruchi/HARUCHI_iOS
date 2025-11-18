@@ -37,9 +37,9 @@
 
 ## 팀원 소개
 
-| <img src="https://avatars.githubusercontent.com/2dubu" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/sangyup12" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/leeseulgi0208" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/cherry-p0p" width="100" height="100"> |
+| <img src="https://avatars.githubusercontent.com/2dubu" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/sangyup12" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/wiz0208" width="100" height="100"> | <img src="https://avatars.githubusercontent.com/cherry-p0p" width="100" height="100"> |
 |:--:|:--:|:--:|:--:|
-| **두부/이건우** <br> [@2dubu](https://github.com/2dubu) | **이바/이상엽** <br> [@sangyup12](https://github.com/sangyup12) | **위즈/이슬기** <br> [@leeseulgi0208](https://github.com/leeseulgi0208) | **체리/채리원** <br> [@cherry-p0p](https://github.com/cherry-p0p) |
+| **두부/이건우** <br> [@2dubu](https://github.com/2dubu) | **이바/이상엽** <br> [@sangyup12](https://github.com/sangyup12) | **위즈/이슬기** <br> [@wiz0208](https://github.com/wiz0208) | **체리/채리원** <br> [@cherry-p0p](https://github.com/cherry-p0p) |
 | 회원가입 및 로그인 뷰 (이메일 인증), 온보딩 뷰 (예산 등록 및 닉네임 지정) | 예산 탭 (예산 재분배 - 당겨쓰기, 넘기기), 메인 홈 탭 (예산 수정) | 더보기 탭 (회원정보 및 탈퇴), 캘린더 커스텀 (FSCalendar) | 메인 홈 탭 (지출 및 수입 등록, 지출 마감), 온보딩 뷰 (예산 등록 및 닉네임 지정) |
 
 <br>
